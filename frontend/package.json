@@ -1,0 +1,16 @@
+{
+  "name": "faso-orientation-frontend",
+  "version": "1.0.0",
+  "description": "Frontend pour la plateforme d'orientation universitaire FasoOrientation",
+  "main": "index.html",
+  "scripts": {
+    "dev": "open index.html",
+    "build": "echo 'Build process to be implemented'",
+    "lint": "echo 'Linting to be implemented'"
+  },
+  "keywords": ["orientation", "université", "Burkina Faso", "éducation"],
+  "author": "FasoInnovation",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {}
+}

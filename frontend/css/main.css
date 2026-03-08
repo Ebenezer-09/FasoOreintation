@@ -1,0 +1,68 @@
+/* FasoOrientation - Styles personnalisés */
+
+/* Désactiver le focus par défaut sur les boutons */
+button:focus {
+  outline: none;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animation de fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Hover effect pour les cards */
+.feature-card {
+  transition: all 0.3s ease-in-out;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(30, 128, 79, 0.1);
+}
+
+/* Active state pour navigation */
+.nav-link.active {
+  color: #1e804f;
+  font-weight: 600;
+}
+
+/* Responsive images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Loading spinner (optionnel) */
+.spinner {
+  border: 3px solid rgba(30, 128, 79, 0.1);
+  border-top: 3px solid #1e804f;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style>
+  .material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+  }
+</style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1e804f",
+                        "secondary": "#fbbf24",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#131f19",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>FasoOrientation - Trouvez votre voie</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<nav class="sticky top-0 z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/10">
+<div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="text-primary">
+<span class="material-symbols-outlined text-3xl">school</span>
+</div>
+<h2 class="text-primary text-xl font-bold tracking-tight">FasoOrientation</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:flex items-center text-sm font-medium hover:text-primary transition-colors">
+                    A propos
+                </button>
+<button class="p-2 rounded-full hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<main class="flex-1">
+<div class="max-w-7xl mx-auto px-4 py-8 md:py-16 grid lg:grid-cols-2 gap-12 items-center">
+<div class="order-2 lg:order-1">
+<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-slate-900 dark:text-white mb-6">
+                    Trouve la filière universitaire faite pour toi
+                </h1>
+<p class="text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-xl">
+                    Analyse tes résultats scolaires, tes intérêts et ton budget pour recevoir des recommandations personnalisées.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a href="profil.html" class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 shadow-lg shadow-primary/20 transition-all">
+<span>Commencer mon orientation</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</a>
+<a href="#filieres" class="bg-secondary hover:bg-secondary/90 text-slate-900 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all">
+<span>Découvrir les filières</span>
+<span class="material-symbols-outlined">explore</span>
+</a>
+</div>
+<div class="mt-12 flex items-center gap-4">
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of an African student smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOyUYchWgPUa7g71Q0lDul-xX-uXWjTS-SGERM24T10re1Qvc0aVxZ_BtcTQjT4PlmR09ZIB6BQcnnbOpmwM_Y08a81xzZiBwvY_XDdZ9Ie61vippuTmE8XYmReb448-rspkIEEGzKhXUMWR_bvw3mDgRwb9REobN-ZYr83qzEeZF3ACgMQY_MHwAC__1eBvntQpPQrXWpfOsGyT03FH9ovI0mygS6sPFLziKeR98UjOuS8vty1LEIwQvG6FD9Glj87IHxY4b96-k"/>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of a focused university student" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqpAdWTPepGX-G4kQpnI1G8SwMvotgA2ch0tgqKjkwkbw5GK3YsBzoD94x3_J9bQwNRrFe4zJUAFAMnoRrRmrrwVQ94FJGMslx-eXvXL8bWqys6gApXVb4eHbU79bZQK0all7BuEJMQp0SUhIgQx5NapZ6tw592_19E9COv1xxzeQQ0AmelMJYmwiP-s1SMDgM8d-tVcy53HH2Jd6GwpXokOBCJLYoFGtFooEGTR3Cor90wxEKj0C-h_i7gJEosH1n929pWjdLZnc"/>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of a young professional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5dG_booL6iMUkI3ipbJLKX04CKS1zigAi-PzXfNmyTFs_Th7pZl6iG3HIf96oIUbIy1khPggAacpSwhLP-CWokEkP5kJyl-jT5CPQm15ra7pNt9Ps2okuWgO418qSZ9zfLtTPNMPyHcw4agnTQAT94XwWY3T3yPHYyfxcrJRlylmOvkdOha7lbl_eENQM6BBXfJK400zIL01TCscJtmwU6SewNvrWv5v2GzLxP-pIpfZ3jgNZb88FgAne-0Y_Di-w-lzEF0MdOW8"/>
+</div>
+</div>
+<p class="text-sm text-slate-500 font-medium">Rejoins +5,000 étudiants déjà orientés</p>
+</div>
+</div>
+<div class="order-1 lg:order-2">
+<div class="relative rounded-3xl overflow-hidden shadow-2xl">
+<div class="aspect-square bg-primary/5 flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="African university students smiling and using a tablet app" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOBHmUnmHyLgx0va5mdumHUxJWtf-F2rtjRwQRMTMzdOnownmfQWkPxnQOMz933mb1pjKlbaaKDcR-lLDsLkxthQ3zLbCpW_rYydiQQf0R1tu_8SKq-lOpNEeREJD3iEL7wqKtPDw_1G4xiieXVGbY7lCn84feRzU5YZHLfysJW2jHZkhzjB98M852KUkCErQVM5Y5tTckUEaloRe9SN3d-K4os7ABjLj7bgVXXPXT1g_6_9gRAGd8mmtcgfAjpVRx3Hbd_z5o2lA"/>
+</div>
+<!-- Stats Card Overlay -->
+<div class="absolute bottom-6 left-6 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md p-4 rounded-2xl shadow-xl flex items-center gap-4 border border-white/20">
+<div class="bg-primary/20 p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<div>
+<p class="text-xs text-slate-500 font-medium">Taux de réussite</p>
+<p class="text-xl font-bold text-slate-900 dark:text-white">92% Satisfaction</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Features Section -->
+<section class="bg-white dark:bg-background-dark/50 py-16">
+<div class="max-w-7xl mx-auto px-4">
+<div class="grid md:grid-cols-3 gap-8">
+<div class="p-6 rounded-2xl border border-primary/5 hover:border-primary/20 transition-all bg-background-light/50 dark:bg-background-dark/30">
+<span class="material-symbols-outlined text-primary text-3xl mb-4">analytics</span>
+<h3 class="text-xl font-bold mb-2">Analyse Intelligente</h3>
+<p class="text-slate-600 dark:text-slate-400">Algorithme basé sur les critères d'admission réels du Burkina Faso.</p>
+</div>
+<div class="p-6 rounded-2xl border border-primary/5 hover:border-primary/20 transition-all bg-background-light/50 dark:bg-background-dark/30">
+<span class="material-symbols-outlined text-primary text-3xl mb-4">payments</span>
+<h3 class="text-xl font-bold mb-2">Gestion de Budget</h3>
+<p class="text-slate-600 dark:text-slate-400">Trouvez des formations adaptées à vos moyens financiers et bourses.</p>
+</div>
+<div class="p-6 rounded-2xl border border-primary/5 hover:border-primary/20 transition-all bg-background-light/50 dark:bg-background-dark/30">
+<span class="material-symbols-outlined text-primary text-3xl mb-4">verified</span>
+<h3 class="text-xl font-bold mb-2">Diplômes Reconnus</h3>
+<p class="text-slate-600 dark:text-slate-400">Uniquement des filières accréditées par le CAMES et l'État.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<div class="md:hidden sticky bottom-0 z-50 bg-white dark:bg-background-dark border-t border-primary/10 px-4 pb-3 pt-2">
+<div class="flex gap-2 justify-around max-w-md mx-auto">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">home</span>
+<p class="text-[10px] font-medium">Accueil</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">school</span>
+<p class="text-[10px] font-medium">Filières</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">favorite</span>
+<p class="text-[10px] font-medium">Favoris</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">person</span>
+<p class="text-[10px] font-medium">Profil</p>
+</a>
+</div>
+</div>
+</body></html>

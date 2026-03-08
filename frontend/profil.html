@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html class="light" lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#1e804f",
+            "secondary": "#fbbf24",
+            "background-light": "#f6f8f7",
+            "background-dark": "#131f19",
+          },
+          fontFamily: { "display": ["Lexend", "sans-serif"] },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+  <title>Profil Étudiant - FasoOrientation</title>
+  <style>
+    body { min-height: 100dvh; }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none; appearance: none;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: #1e804f; cursor: pointer;
+      border: 2px solid white; box-shadow: 0 1px 6px rgba(30,128,79,.35);
+    }
+    input[type=range]::-moz-range-thumb {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: #1e804f; cursor: pointer; border: 2px solid white;
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+
+  <!-- TOP NAV -->
+  <nav class="sticky top-0 z-50 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-primary/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center gap-3">
+      <a href="index.html" class="flex items-center justify-center w-9 h-9 rounded-full hover:bg-primary/10 text-primary transition-colors">
+        <span class="material-symbols-outlined text-[22px]">arrow_back</span>
+      </a>
+      <div class="flex items-center gap-2">
+        <span class="text-primary"><span class="material-symbols-outlined text-[22px]">school</span></span>
+        <h1 class="font-bold text-base text-slate-800 dark:text-slate-100">FasoOrientation</h1>
+      </div>
+      <span class="hidden sm:inline text-slate-300 dark:text-slate-600">/</span>
+      <span class="hidden sm:inline text-sm text-slate-500">Profil Étudiant</span>
+      <div class="ml-auto">
+        <span class="text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full uppercase tracking-wider">Étape 1/5</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PROGRESS BAR -->
+  <div class="bg-white dark:bg-slate-900 border-b border-primary/5 px-4 sm:px-6 py-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-sm font-semibold text-primary">Informations de parcours et préférences</span>
+        <span class="text-xs text-slate-400 font-medium">20%</span>
+      </div>
+      <div class="flex gap-1.5">
+        <div class="h-2 flex-1 rounded-full bg-primary"></div>
+        <div class="h-2 flex-1 rounded-full bg-primary/15"></div>
+        <div class="h-2 flex-1 rounded-full bg-primary/15"></div>
+        <div class="h-2 flex-1 rounded-full bg-primary/15"></div>
+        <div class="h-2 flex-1 rounded-full bg-primary/15"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 pb-28">
+
+    <div class="mb-8">
+      <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white mb-1">Étape 1 — Parle-nous un peu de toi</h2>
+      <p class="text-slate-500 dark:text-slate-400">Aide-nous à personnaliser tes recommandations d'orientation.</p>
+    </div>
+
+    <!-- GRID 2 colonnes Desktop -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+      <!-- COLONNE GAUCHE -->
+      <div class="flex flex-col gap-6">
+
+        <!-- Série du Bac -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-5 sm:p-6 shadow-sm border border-slate-100 dark:border-slate-800">
+          <h3 class="font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[22px]">school</span>
+            Série du Baccalauréat
+          </h3>
+          <div class="grid grid-cols-5 gap-2">
+            <label class="cursor-pointer">
+              <input class="peer sr-only" name="bac" type="radio" value="A"/>
+              <div class="flex h-12 items-center justify-center rounded-xl border-2 border-slate-200 dark:border-slate-700 text-slate-600 font-bold text-lg peer-checked:border-primary peer-checked:bg-primary peer-checked:text-white transition-all hover:border-primary/50">A</div>
+            </label>
+            <label class="cursor-pointer">
+              <input class="peer sr-only" name="bac" type="radio" value="C"/>
+              <div class="flex h-12 items-center justify-center rounded-xl border-2 border-slate-200 dark:border-slate-700 text-slate-600 font-bold text-lg peer-checked:border-primary peer-checked:bg-primary peer-checked:text-white transition-all hover:border-primary/50">C</div>
+            </label>
+            <label class="cursor-pointer">
+              <input checked class="peer sr-only" name="bac" type="radio" value="D"/>
+              <div class="flex h-12 items-center justify-center rounded-xl border-2 border-slate-200 dark:border-slate-700 text-slate-600 font-bold text-lg peer-checked:border-primary peer-checked:bg-primary peer-checked:text-white transition-all hover:border-primary/50">D</div>
+            </label>
+            <label class="cursor-pointer">
+              <input class="peer sr-only" name="bac" type="radio" value="G"/>
+              <div class="flex h-12 items-center justify-center rounded-xl border-2 border-slate-200 dark:border-slate-700 text-slate-600 font-bold text-lg peer-checked:border-primary peer-checked:bg-primary peer-checked:text-white transition-all hover:border-primary/50">G</div>
+            </label>
+            <label class="cursor-pointer">
+              <input class="peer sr-only" name="bac" type="radio" value="F"/>
+              <div class="flex h-12 items-center justify-center rounded-xl border-2 border-slate-200 dark:border-slate-700 text-slate-600 font-bold text-lg peer-checked:border-primary peer-checked:bg-primary peer-checked:text-white transition-all hover:border-primary/50">F</div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Matières favorites -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-5 sm:p-6 shadow-sm border border-slate-100 dark:border-slate-800">
+          <h3 class="font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[22px]">menu_book</span>
+            Matières favorites
+          </h3>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <label class="flex items-center gap-3 p-3 rounded-xl border-2 cursor-pointer transition-all border-primary/30 bg-primary/5 has-[:checked]:border-primary has-[:checked]:bg-primary/10 hover:border-primary/50">
+              <input checked class="rounded text-primary h-4 w-4 shrink-0 focus:ring-primary" type="checkbox"/>
+              <span class="text-sm font-medium">Mathématiques</span>
+            </label>
+            <label class="flex items-center gap-3 p-3 rounded-xl border-2 cursor-pointer transition-all border-slate-200 dark:border-slate-700 has-[:checked]:border-primary has-[:checked]:bg-primary/10 hover:border-primary/50">
+              <input class="rounded text-primary h-4 w-4 shrink-0 focus:ring-primary" type="checkbox"/>
+              <span class="text-sm font-medium">Physique-Chimie</span>
+            </label>
+            <label class="flex items-center gap-3 p-3 rounded-xl border-2 cursor-pointer transition-all border-slate-200 dark:border-slate-700 has-[:checked]:border-primary has-[:checked]:bg-primary/10 hover:border-primary/50">
+              <input class="rounded text-primary h-4 w-4 shrink-0 focus:ring-primary" type="checkbox"/>
+              <span class="text-sm font-medium">SVT</span>
+            </label>
+            <label class="flex items-center gap-3 p-3 rounded-xl border-2 cursor-pointer transition-all border-primary/30 bg-primary/5 has-[:checked]:border-primary has-[:checked]:bg-primary/10 hover:border-primary/50">
+              <input checked class="rounded text-primary h-4 w-4 shrink-0 focus:ring-primary" type="checkbox"/>
+              <span class="text-sm font-medium">Informatique</span>
+            </label>
+            <label class="flex items-center gap-3 p-3 rounded-xl border-2 cursor-pointer transition-all border-slate-200 dark:border-slate-700 has-[:checked]:border-primary has-[:checked]:bg-primary/10 hover:border-primary/50">
+              <input class="rounded text-primary h-4 w-4 shrink-0 focus:ring-primary" type="checkbox"/>
+              <span class="text-sm font-medium">Français</span>
+            </label>
+            <label class="flex items-center gap-3 p-3 rounded-xl border-2 cursor-pointer transition-all border-slate-200 dark:border-slate-700 has-[:checked]:border-primary has-[:checked]:bg-primary/10 hover:border-primary/50">
+              <input class="rounded text-primary h-4 w-4 shrink-0 focus:ring-primary" type="checkbox"/>
+              <span class="text-sm font-medium">Économie</span>
+            </label>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- COLONNE DROITE -->
+      <div class="flex flex-col gap-6">
+
+        <!-- Domaine de carrière -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-5 sm:p-6 shadow-sm border border-slate-100 dark:border-slate-800">
+          <h3 class="font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[22px]">work</span>
+            Domaine de carrière souhaité
+          </h3>
+          <div class="grid grid-cols-3 gap-3">
+            <label class="flex flex-col items-center gap-2 p-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 cursor-pointer hover:border-primary/40 transition-all has-[:checked]:border-primary has-[:checked]:bg-primary/10">
+              <input class="sr-only" name="career" type="radio" value="tech"/>
+              <span class="material-symbols-outlined text-2xl text-primary">computer</span>
+              <span class="text-[11px] font-bold uppercase tracking-wide">Tech</span>
+            </label>
+            <label class="flex flex-col items-center gap-2 p-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 cursor-pointer hover:border-primary/40 transition-all has-[:checked]:border-primary has-[:checked]:bg-primary/10">
+              <input class="sr-only" name="career" type="radio" value="health"/>
+              <span class="material-symbols-outlined text-2xl text-primary">medical_services</span>
+              <span class="text-[11px] font-bold uppercase tracking-wide">Santé</span>
+            </label>
+            <label class="flex flex-col items-center gap-2 p-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 cursor-pointer hover:border-primary/40 transition-all has-[:checked]:border-primary has-[:checked]:bg-primary/10">
+              <input class="sr-only" name="career" type="radio" value="biz"/>
+              <span class="material-symbols-outlined text-2xl text-primary">trending_up</span>
+              <span class="text-[11px] font-bold uppercase tracking-wide">Business</span>
+            </label>
+            <label class="flex flex-col items-center gap-2 p-3 rounded-xl border-2 border-primary bg-primary/10 cursor-pointer transition-all has-[:checked]:border-primary has-[:checked]:bg-primary/10">
+              <input checked class="sr-only" name="career" type="radio" value="eng"/>
+              <span class="material-symbols-outlined text-2xl text-primary">engineering</span>
+              <span class="text-[11px] font-bold uppercase tracking-wide">Ingénierie</span>
+            </label>
+            <label class="flex flex-col items-center gap-2 p-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 cursor-pointer hover:border-primary/40 transition-all has-[:checked]:border-primary has-[:checked]:bg-primary/10">
+              <input class="sr-only" name="career" type="radio" value="edu"/>
+              <span class="material-symbols-outlined text-2xl text-primary">history_edu</span>
+              <span class="text-[11px] font-bold uppercase tracking-wide">Éducation</span>
+            </label>
+            <label class="flex flex-col items-center gap-2 p-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 cursor-pointer hover:border-primary/40 transition-all has-[:checked]:border-primary has-[:checked]:bg-primary/10">
+              <input class="sr-only" name="career" type="radio" value="admin"/>
+              <span class="material-symbols-outlined text-2xl text-primary">account_balance</span>
+              <span class="text-[11px] font-bold uppercase tracking-wide">Admin</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Budget annuel -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-5 sm:p-6 shadow-sm border border-slate-100 dark:border-slate-800">
+          <div class="flex items-center justify-between mb-5">
+            <h3 class="font-bold text-slate-800 dark:text-white flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-[22px]">payments</span>
+              Budget annuel
+            </h3>
+            <span id="budget-label" class="text-sm font-bold text-white bg-primary px-3 py-1 rounded-full">300k – 600k FCFA</span>
+          </div>
+          <input id="budget-range" type="range" min="0" max="3" step="1" value="1"
+            class="w-full h-2 bg-primary/20 rounded-lg appearance-none cursor-pointer accent-primary"
+            oninput="updateBudget(this.value)"/>
+          <div class="flex justify-between text-[11px] text-slate-400 mt-3 font-semibold">
+            <span>&lt; 300k</span>
+            <span>300k–600k</span>
+            <span>600k–1M</span>
+            <span>&gt; 1M FCFA</span>
+          </div>
+        </div>
+
+        <!-- Ville souhaitée -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-5 sm:p-6 shadow-sm border border-slate-100 dark:border-slate-800">
+          <h3 class="font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[22px]">location_on</span>
+            Ville souhaitée
+            <span class="text-xs font-normal text-slate-400">(Optionnel)</span>
+          </h3>
+          <div class="relative">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+            <input class="w-full pl-11 pr-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:outline-none placeholder:text-slate-400 transition-all text-sm" placeholder="Ex: Ouagadougou, Bobo-Dioulasso..." type="text"/>
+          </div>
+          <p class="text-xs text-slate-400 mt-2">La ville dans laquelle vous souhaitez étudier.</p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER STICKY -->
+  <div class="fixed bottom-0 left-0 right-0 z-50 bg-white/95 dark:bg-background-dark/95 backdrop-blur-md border-t border-primary/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-xs text-slate-400 hidden sm:block flex items-center gap-1">
+        <span class="material-symbols-outlined text-[16px] align-middle text-primary">lock</span>
+        Vos données sont confidentielles et sécurisées.
+      </p>
+      <div class="flex gap-3 w-full sm:w-auto">
+        <a href="index.html" class="flex-1 sm:flex-none border-2 border-primary/20 text-primary font-bold py-3 px-6 rounded-xl flex items-center justify-center gap-2 hover:bg-primary/5 transition-all">
+          <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+          Retour
+        </a>
+        <a href="bulletins.html" class="flex-1 sm:flex-none bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-primary/20 transition-all active:scale-95">
+          Continuer
+          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+        </a>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const budgetLabels = ['< 300k FCFA', '300k – 600k FCFA', '600k – 1M FCFA', '> 1M FCFA'];
+    function updateBudget(val) {
+      document.getElementById('budget-label').textContent = budgetLabels[val];
+    }
+    function goToNextStep() {
+      alert('Étape 3 en cours de développement !');
+    }
+  </script>
+</body>
+</html>

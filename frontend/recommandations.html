@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html class="light" lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#1e804f",
+            "secondary": "#fbbf24",
+            "background-light": "#f6f8f7",
+            "background-dark": "#131f19",
+          },
+          fontFamily: { "display": ["Lexend", "sans-serif"] },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+  <title>Recommandations - FasoOrientation</title>
+  <style>
+    body { min-height: 100dvh; font-family: 'Lexend', sans-serif; }
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal; font-style: normal; line-height: 1;
+      letter-spacing: normal; text-transform: none;
+      display: inline-block; white-space: nowrap;
+      direction: ltr; -webkit-font-feature-settings: 'liga';
+      font-feature-settings: 'liga'; -webkit-font-smoothing: antialiased;
+    }
+    .bar-fill { transition: width 1.2s ease-in-out; }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+
+  <!-- TOP NAV -->
+  <nav class="sticky top-0 z-50 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-primary/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center gap-3">
+      <a href="analyse.html" class="flex items-center justify-center w-9 h-9 rounded-full hover:bg-primary/10 text-primary transition-colors">
+        <span class="material-symbols-outlined text-[22px]">arrow_back</span>
+      </a>
+      <div class="flex items-center gap-2">
+        <span class="text-primary"><span class="material-symbols-outlined text-[22px]">school</span></span>
+        <h1 class="font-bold text-base text-slate-800 dark:text-slate-100">FasoOrientation</h1>
+      </div>
+      <span class="hidden sm:inline text-slate-300 dark:text-slate-600">/</span>
+      <span class="hidden sm:inline text-sm text-slate-500">Mes recommandations</span>
+      <div class="ml-auto flex items-center gap-2">
+        <button class="flex items-center justify-center w-9 h-9 rounded-full hover:bg-primary/10 text-primary transition-colors">
+          <span class="material-symbols-outlined text-[22px]">account_circle</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PROGRESS BAR -->
+  <div class="bg-white dark:bg-slate-900 border-b border-primary/5 px-4 sm:px-6 py-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-sm font-semibold text-primary">Orientation complétée !</span>
+        <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full">100%</span>
+      </div>
+      <div class="flex gap-1.5">
+        <div class="h-2 flex-1 rounded-full bg-primary"></div>
+        <div class="h-2 flex-1 rounded-full bg-primary"></div>
+        <div class="h-2 flex-1 rounded-full bg-primary"></div>
+        <div class="h-2 flex-1 rounded-full bg-primary"></div>
+        <div class="h-2 flex-1 rounded-full bg-primary"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 pb-12">
+
+    <!-- INTRO -->
+    <div class="mb-8">
+      <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white mb-2">
+        Les filières qui correspondent à ton profil
+      </h2>
+      <p class="text-slate-500 dark:text-slate-400 max-w-2xl">
+        Basé sur tes intérêts, tes notes et tes aspirations professionnelles au Burkina Faso.
+      </p>
+    </div>
+
+    <!-- CARDS GRID -->
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+
+      <!-- Card 1: Génie Informatique (Top choix) -->
+      <div class="flex flex-col overflow-hidden rounded-2xl border-2 border-primary shadow-lg shadow-primary/10 bg-white dark:bg-slate-900">
+        <!-- Badge top choix -->
+        <div class="relative">
+          <div class="w-full aspect-video bg-cover bg-center bg-no-repeat"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD7PmKAeUX-K3d7XS8ynlhvmHxmmBLLRztt_T1YpUzmRysQcnw_Sp-pnO7CZUYR2udo_vGp4AQPiKcVkQq4U63ONbi2Fp1PNgiFlJhysy0ECHFZRzJiYyIWt4mkp9zbJpSMla9v87zrjzzSrY_O_RSx1f1-mi0uDGLewyYLEhSu5i02Nxg4FjMPayv-v8baac66JD5goDMmOOUQXS7Ls6Fc-z1MZoQTzWBO4jOAq9P0utg02CNNN2Vi6GgcZEKB15TGl52Bdn4CFIM");'></div>
+          <span class="absolute top-3 right-3 bg-primary text-white text-[11px] font-bold px-3 py-1 rounded-full shadow">
+            ⭐ Top Choix
+          </span>
+        </div>
+        <div class="flex flex-col p-5 gap-4 flex-1">
+          <div>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Génie Informatique</h3>
+            <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Développement logiciel, réseaux et intelligence artificielle.</p>
+          </div>
+          <!-- Score -->
+          <div>
+            <div class="flex justify-between text-xs font-semibold mb-1.5">
+              <span class="text-slate-500">Score de compatibilité</span>
+              <span class="text-primary font-bold">87 %</span>
+            </div>
+            <div class="w-full bg-slate-100 dark:bg-slate-700 h-2.5 rounded-full overflow-hidden">
+              <div class="bar-fill bg-primary h-full rounded-full" style="width: 87%"></div>
+            </div>
+          </div>
+          <!-- Infos -->
+          <div class="grid grid-cols-2 gap-3 text-sm">
+            <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+              <span class="material-symbols-outlined text-primary text-[20px]">schedule</span>
+              <span>3 – 5 ans</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+              <span class="material-symbols-outlined text-primary text-[20px]">account_balance</span>
+              <span>12 Univ. (BF)</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+              <span class="material-symbols-outlined text-primary text-[20px]">payments</span>
+              <span>~500k FCFA/an</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+              <span class="material-symbols-outlined text-primary text-[20px]">trending_up</span>
+              <span>Forte demande</span>
+            </div>
+          </div>
+          <!-- Actions -->
+          <div class="flex flex-col gap-2 mt-auto">
+            <button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all active:scale-95">
+              <span class="material-symbols-outlined text-[18px]">visibility</span>
+              Voir les détails
+            </button>
+            <button class="w-full bg-primary/10 hover:bg-primary/20 text-primary font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all">
+              <span class="material-symbols-outlined text-[18px]">smart_toy</span>
+              Conseiller IA
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Génie Industriel -->
+      <div class="flex flex-col overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900">
+        <div class="w-full aspect-video bg-cover bg-center bg-no-repeat"
+          style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDiGY_HNlZVBjQ2hCnfZqPcPP4Z91BKwOq5iurVsHa7yPclC9wlb1zttZ9ZNG_ErA97ImjdSFWIfoJMUs2kvADpIEBpcvfIHV4lKB7Elt0h6RKZs76ev4vPLV7omQ5LNxnYMFnD2A3XN0yguL_wfU712F1_fdpLSeoygVFvmChKHbtC3X5qxk9nFg1BuhKtGFahspjFomaUIUT1ItfPyybriwYQ8HiOzSYMZwGzjlN9qrTqiD2iJYWM3EG1J2jt_sBaI1jR1u6FpJY");'></div>
+        <div class="flex flex-col p-5 gap-4 flex-1">
+          <div>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Génie Industriel</h3>
+            <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Optimisation des processus et gestion de production.</p>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs font-semibold mb-1.5">
+              <span class="text-slate-500">Score de compatibilité</span>
+              <span class="text-primary font-bold">79 %</span>
+            </div>
+            <div class="w-full bg-slate-100 dark:bg-slate-700 h-2.5 rounded-full overflow-hidden">
+              <div class="bar-fill bg-primary h-full rounded-full" style="width: 79%"></div>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3 text-sm">
+            <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+              <span class="material-symbols-outlined text-primary text-[20px]">schedule</span>
+              <span>5 ans</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+              <span class="material-symbols-outlined text-primary text-[20px]">account_balance</span>
+              <span>8 Univ. (BF)</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+              <span class="material-symbols-outlined text-primary text-[20px]">payments</span>
+              <span>~650k FCFA/an</span>
+            </div>
+          </div>
+          <div class="flex flex-col gap-2 mt-auto">
+            <button class="w-full border-2 border-primary text-primary font-bold py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-primary/5 transition-all">
+              <span class="material-symbols-outlined text-[18px]">visibility</span>
+              Voir les détails
+            </button>
+            <button class="w-full bg-slate-100 dark:bg-slate-800 text-slate-500 font-bold py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-slate-200 transition-all">
+              <span class="material-symbols-outlined text-[18px]">bookmark_add</span>
+              Ajouter aux favoris
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Expertise Comptable -->
+      <div class="flex flex-col overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900">
+        <div class="w-full aspect-video bg-cover bg-center bg-no-repeat"
+          style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAk27cCSRzKKx6TipuE6yyTNIMbKjcR3m7EgfyiJ8FkMITM0teWGxIfcj25wl5QfFDubWmguYVJqZM3FXx7eqdV41ThzgmK_ndx8UJ9zp3mY3fAs4s_0QkzHWIqZngStnoM8vb7F3a6sntfhjJyMBoq0gx1k4hjGFox8UBnvBQKm5gMP9u5x2H5YbV6wKlMa-L5Nc39dGaxX5chIa2wXd2GDZQz83OfWR7MKUaLU6W7zZ4Ns5xuDGLFkroZ80BF9__soJ2YNeMjjQc");'></div>
+        <div class="flex flex-col p-5 gap-4 flex-1">
+          <div>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Expertise Comptable</h3>
+            <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Gestion financière, audit et conseil juridique.</p>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs font-semibold mb-1.5">
+              <span class="text-slate-500">Score de compatibilité</span>
+              <span class="text-primary font-bold">72 %</span>
+            </div>
+            <div class="w-full bg-slate-100 dark:bg-slate-700 h-2.5 rounded-full overflow-hidden">
+              <div class="bar-fill bg-primary h-full rounded-full" style="width: 72%"></div>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3 text-sm">
+            <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+              <span class="material-symbols-outlined text-primary text-[20px]">schedule</span>
+              <span>3 – 8 ans</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+              <span class="material-symbols-outlined text-primary text-[20px]">account_balance</span>
+              <span>15 Univ. (BF)</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+              <span class="material-symbols-outlined text-primary text-[20px]">payments</span>
+              <span>~400k FCFA/an</span>
+            </div>
+          </div>
+          <div class="flex flex-col gap-2 mt-auto">
+            <button class="w-full border-2 border-primary text-primary font-bold py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-primary/5 transition-all">
+              <span class="material-symbols-outlined text-[18px]">visibility</span>
+              Voir les détails
+            </button>
+            <button class="w-full bg-slate-100 dark:bg-slate-800 text-slate-500 font-bold py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-slate-200 transition-all">
+              <span class="material-symbols-outlined text-[18px]">bookmark_add</span>
+              Ajouter aux favoris
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA FINAL -->
+    <div class="mt-10 bg-slate-900 dark:bg-primary/20 rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 border dark:border-primary/30">
+      <div class="flex gap-4 items-start">
+        <div class="bg-primary/20 p-3 rounded-xl shrink-0">
+          <span class="material-symbols-outlined text-primary text-[24px]">smart_toy</span>
+        </div>
+        <div>
+          <h4 class="font-bold text-white dark:text-slate-100 mb-1">Besoin d'aide pour choisir ?</h4>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            Notre conseiller IA peut t'aider à affiner ton choix selon ta situation personnelle.
+          </p>
+        </div>
+      </div>
+      <button class="shrink-0 bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-all active:scale-95 shadow-lg shadow-primary/20 w-full sm:w-auto justify-center">
+        <span class="material-symbols-outlined text-[18px]">chat</span>
+        Discuter avec l'IA
+      </button>
+    </div>
+
+  </main>
+
+
+</body>
+</html>
