@@ -550,9 +550,16 @@
         window.__FO_UNIVS_DATA = [];
       }
 
-      // Cache : ré-enrichit avec les vraies universités du JSON même si déjà en cache
+      // Cache : invalide automatiquement si le profil a changé
+      const _profilHash = JSON.stringify({
+        bac: profil?.bac,
+        carriere: profil?.carriere,
+        ville: profil?.ville,
+        budget: profil?.budget,
+        matieres: (profil?.matieres || []).slice().sort()
+      });
       const cached = FoStorage.getReco();
-      if (cached && cached.filieres && cached.filieres.length >= 3) {
+      if (cached && cached.filieres && cached.filieres.length >= 3 && cached._profilHash === _profilHash) {
         const filieres = enrichFilieres(cached.filieres, allUnivsData);
         renderCards(filieres);
         buildFilieresData(filieres);
@@ -563,12 +570,12 @@
       // Appel Groq avec la liste réelle des filières
       try {
         const prompt = buildRecoPrompt(profil, analyse, allUnivsData);
-        const raw = await groqChat([{ role: 'user', content: prompt }], { maxTokens: 2048, temperature: 0.6 });
+        const raw = await groqChat([{ role: 'user', content: prompt }], { maxTokens: 2048, temperature: 0.7 });
         const jsonStr = raw.replace(/```json\s*/gi, '').replace(/```/g, '').trim();
         const data = JSON.parse(jsonStr);
 
         if (data.filieres && data.filieres.length >= 3) {
-          FoStorage.saveReco(data);
+          FoStorage.saveReco({ ...data, _profilHash });
           const filieres = enrichFilieres(data.filieres, allUnivsData);
           renderCards(filieres);
           buildFilieresData(filieres);

@@ -428,13 +428,20 @@
       document.getElementById('moy-text').textContent = moyenne.toFixed(1) + ' / 20';
       document.getElementById('moy-appreciation').textContent = appreciation(moyenne);
 
-      // Sauvegarder l'analyse globale
+      // Sauvegarder l'analyse globale avec un fingerprint du profil
+      const _savedProfil = FoStorage.getProfil();
+      const _savedProfilHash = JSON.stringify({
+        bac: _savedProfil?.bac,
+        carriere: _savedProfil?.carriere,
+        matieres: (_savedProfil?.matieres || []).slice().sort()
+      });
       FoStorage.saveAnalyse({
         notes,
         moyenne,
         pointsForts: forts.map(e => e[0]),
         axesAmelioration: faibles.map(e => e[0]),
-        conseilIA
+        conseilIA,
+        _profilHash: _savedProfilHash
       });
     }
 
@@ -458,9 +465,14 @@
         return;
       }
 
-      // Vérifier si on a déjà une analyse sauvegardée
+      // Vérifier si on a déjà une analyse sauvegardée (invalide si le profil a changé)
+      const _profilHash = JSON.stringify({
+        bac: profil?.bac,
+        carriere: profil?.carriere,
+        matieres: (profil?.matieres || []).slice().sort()
+      });
       const savedAnalyse = FoStorage.getAnalyse();
-      if (savedAnalyse && savedAnalyse.conseilIA && savedAnalyse.notes) {
+      if (savedAnalyse && savedAnalyse.conseilIA && savedAnalyse.notes && savedAnalyse._profilHash === _profilHash) {
         renderPage(notes, savedAnalyse.conseilIA);
         return;
       }

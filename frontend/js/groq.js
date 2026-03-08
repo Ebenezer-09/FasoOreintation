@@ -126,16 +126,25 @@ function buildRecoPrompt(profil, analyse, univData) {
     filiereSection = `\n\nFILIÈRES DISPONIBLES DANS LES UNIVERSITÉS PUBLIQUES DU BURKINA FASO (toutes à ~15 500 FCFA/an) :\n${uniqueNames.map(f => `• ${f}`).join('\n')}\n\nUtilise EXACTEMENT ces noms dans tes recommandations. Laisse "universites": [] vide (les données seront ajoutées séparément).`;
   }
 
+  const carriere = profil?.carriere || 'non précisée';
   return `Tu es un système de recommandation d'orientation universitaire au Burkina Faso.
 
-PROFIL : Série ${profil?.bac || 'D'}, carrière : ${profil?.carriere || 'non précisée'}, budget : ${profil?.budget || 'non précisé'}, ville : ${profil?.ville || 'non précisée'}.
+⚠️ CONTRAINTE ABSOLUE : L'élève veut devenir "${carriere}". Tu DOIS recommander UNIQUEMENT des filières qui mènent directement à ce métier/domaine. Toute filière sans lien direct avec "${carriere}" est STRICTEMENT INTERDITE, même si les notes de l'élève s'y prêtent mieux.
 
-NOTES : ${JSON.stringify(analyse?.notes || {})}
-Moyenne : ${analyse?.moyenne || 'N/A'}/20
-Points forts : ${(analyse?.pointsForts || []).join(', ')}
+PROFIL :
+- Série : ${profil?.bac || 'D'}
+- Carrière visée (PRIORITÉ #1) : ${carriere}
+- Budget : ${profil?.budget || 'non précisé'}
+- Ville : ${profil?.ville || 'non précisée'}
+
+RÉSULTATS ACADÉMIQUES :
+- Notes : ${JSON.stringify(analyse?.notes || {})}
+- Moyenne : ${analyse?.moyenne || 'N/A'}/20
+- Points forts : ${(analyse?.pointsForts || []).join(', ')}
 ${filiereSection}
 
-Recommande EXACTEMENT 3 filières adaptées au profil, classées par score de compatibilité décroissant.
+Recommande EXACTEMENT 3 filières menant à la carrière "${carriere}", classées par score de compatibilité décroissant.
+Dans chaque description, explique explicitement comment cette filière conduit à "${carriere}".
 
 Réponds UNIQUEMENT en JSON valide (sans markdown) :
 {
@@ -143,7 +152,7 @@ Réponds UNIQUEMENT en JSON valide (sans markdown) :
     {
       "nom": "Nom exact de la filière (depuis la liste ci-dessus)",
       "score": 87,
-      "description": "Description courte (2-3 phrases) expliquant la filière et ses débouchés au Burkina Faso.",
+      "description": "2-3 phrases expliquant la filière et comment elle mène à ${carriere} au Burkina Faso.",
       "duree": "3 – 5 ans",
       "cout": "~15 500 FCFA/an",
       "debouches": "Forte demande",
