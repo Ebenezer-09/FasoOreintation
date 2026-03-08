@@ -35,6 +35,9 @@
       font-feature-settings: 'liga'; -webkit-font-smoothing: antialiased;
     }
     .bar-fill { transition: width 1.2s ease-in-out; }
+    #modal { transition: opacity 0.25s ease, transform 0.25s ease; }
+    #modal.hidden { pointer-events: none; }
+    #modal-panel { transition: transform 0.3s ease, opacity 0.3s ease; }
   </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
@@ -138,14 +141,14 @@
           </div>
           <!-- Actions -->
           <div class="flex flex-col gap-2 mt-auto">
-            <button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all active:scale-95">
+            <button onclick="openModal('informatique')" class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all active:scale-95">
               <span class="material-symbols-outlined text-[18px]">visibility</span>
               Voir les détails
             </button>
-            <button class="w-full bg-primary/10 hover:bg-primary/20 text-primary font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all">
+            <a href="conseiller.html" class="w-full bg-primary/10 hover:bg-primary/20 text-primary font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all no-underline">
               <span class="material-symbols-outlined text-[18px]">smart_toy</span>
               Conseiller IA
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -183,14 +186,14 @@
             </div>
           </div>
           <div class="flex flex-col gap-2 mt-auto">
-            <button class="w-full border-2 border-primary text-primary font-bold py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-primary/5 transition-all">
+            <button onclick="openModal('industriel')" class="w-full border-2 border-primary text-primary font-bold py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-primary/5 transition-all">
               <span class="material-symbols-outlined text-[18px]">visibility</span>
               Voir les détails
             </button>
-            <button class="w-full bg-slate-100 dark:bg-slate-800 text-slate-500 font-bold py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-slate-200 transition-all">
-              <span class="material-symbols-outlined text-[18px]">bookmark_add</span>
-              Ajouter aux favoris
-            </button>
+            <a href="conseiller.html" class="w-full bg-primary/10 hover:bg-primary/20 text-primary font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all no-underline">
+              <span class="material-symbols-outlined text-[18px]">smart_toy</span>
+              Conseiller IA
+            </a>
           </div>
         </div>
       </div>
@@ -228,14 +231,14 @@
             </div>
           </div>
           <div class="flex flex-col gap-2 mt-auto">
-            <button class="w-full border-2 border-primary text-primary font-bold py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-primary/5 transition-all">
+            <button onclick="openModal('comptable')" class="w-full border-2 border-primary text-primary font-bold py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-primary/5 transition-all">
               <span class="material-symbols-outlined text-[18px]">visibility</span>
               Voir les détails
             </button>
-            <button class="w-full bg-slate-100 dark:bg-slate-800 text-slate-500 font-bold py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-slate-200 transition-all">
-              <span class="material-symbols-outlined text-[18px]">bookmark_add</span>
-              Ajouter aux favoris
-            </button>
+            <a href="conseiller.html" class="w-full bg-primary/10 hover:bg-primary/20 text-primary font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all no-underline">
+              <span class="material-symbols-outlined text-[18px]">smart_toy</span>
+              Conseiller IA
+            </a>
           </div>
         </div>
       </div>
@@ -255,14 +258,238 @@
           </p>
         </div>
       </div>
-      <button class="shrink-0 bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-all active:scale-95 shadow-lg shadow-primary/20 w-full sm:w-auto justify-center">
+      <a href="conseiller.html" class="shrink-0 bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-all active:scale-95 shadow-lg shadow-primary/20 w-full sm:w-auto justify-center no-underline">
         <span class="material-symbols-outlined text-[18px]">chat</span>
         Discuter avec l'IA
-      </button>
+      </a>
     </div>
 
   </main>
 
+  <!-- ===================== MODAL DÉTAIL ===================== -->
+  <div id="modal" class="hidden fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-0 sm:p-4 bg-slate-900/60 backdrop-blur-sm">
+    <div id="modal-panel" class="w-full sm:max-w-2xl max-h-[92dvh] overflow-y-auto bg-white dark:bg-slate-900 rounded-t-3xl sm:rounded-2xl shadow-2xl flex flex-col">
+
+      <!-- Modal Header -->
+      <div class="sticky top-0 z-10 bg-white dark:bg-slate-900 px-5 py-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between rounded-t-3xl sm:rounded-t-2xl">
+        <div class="flex items-center gap-3">
+          <div class="p-2 bg-primary/10 rounded-xl">
+            <span id="modal-icon" class="material-symbols-outlined text-primary text-[22px]">school</span>
+          </div>
+          <div>
+            <h2 id="modal-title" class="font-extrabold text-lg text-slate-900 dark:text-white"></h2>
+            <p id="modal-subtitle" class="text-xs text-slate-500"></p>
+          </div>
+        </div>
+        <button onclick="closeModal()" class="flex items-center justify-center w-9 h-9 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 transition-colors">
+          <span class="material-symbols-outlined text-[22px]">close</span>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="px-5 py-6 flex flex-col gap-6">
+
+        <!-- Score + infos rapides -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div class="bg-primary/5 rounded-xl p-3 flex flex-col items-center gap-1">
+            <span class="material-symbols-outlined text-primary text-[20px]">star</span>
+            <p id="modal-score" class="font-extrabold text-primary text-lg"></p>
+            <p class="text-[10px] text-slate-500 font-semibold text-center">Compatibilité</p>
+          </div>
+          <div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-3 flex flex-col items-center gap-1">
+            <span class="material-symbols-outlined text-slate-500 text-[20px]">schedule</span>
+            <p id="modal-duree" class="font-bold text-slate-800 dark:text-white text-sm"></p>
+            <p class="text-[10px] text-slate-500 font-semibold text-center">Durée</p>
+          </div>
+          <div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-3 flex flex-col items-center gap-1">
+            <span class="material-symbols-outlined text-slate-500 text-[20px]">payments</span>
+            <p id="modal-cout" class="font-bold text-slate-800 dark:text-white text-sm"></p>
+            <p class="text-[10px] text-slate-500 font-semibold text-center">Coût/an</p>
+          </div>
+          <div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-3 flex flex-col items-center gap-1">
+            <span class="material-symbols-outlined text-slate-500 text-[20px]">trending_up</span>
+            <p id="modal-debouches" class="font-bold text-slate-800 dark:text-white text-sm text-center"></p>
+            <p class="text-[10px] text-slate-500 font-semibold text-center">Débouchés</p>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div>
+          <h3 class="font-bold text-slate-800 dark:text-white mb-2 flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[20px]">info</span>
+            Description
+          </h3>
+          <p id="modal-desc" class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed"></p>
+        </div>
+
+        <!-- Universités dans ta ville -->
+        <div>
+          <h3 class="font-bold text-slate-800 dark:text-white mb-3 flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[20px]">location_on</span>
+            Universités près de chez toi
+            <span class="text-xs font-normal text-primary bg-primary/10 px-2 py-0.5 rounded-full">Ouagadougou</span>
+          </h3>
+          <div id="modal-univ-proches" class="space-y-3"></div>
+        </div>
+
+        <!-- Autres universités -->
+        <div>
+          <h3 class="font-bold text-slate-800 dark:text-white mb-3 flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[20px]">account_balance</span>
+            Autres établissements au Burkina Faso
+          </h3>
+          <div id="modal-univ-autres" class="space-y-3"></div>
+        </div>
+
+        <!-- Budget match -->
+        <div id="modal-budget-block" class="bg-primary/5 border border-primary/20 rounded-2xl p-4">
+          <div class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-primary text-[22px] shrink-0">verified</span>
+            <div>
+              <p class="font-bold text-primary text-sm mb-1">Compatible avec ton budget</p>
+              <p id="modal-budget-msg" class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed"></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="sticky bottom-0 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 px-5 py-4 flex gap-3">
+        <button onclick="closeModal()" class="flex-1 border-2 border-primary/20 text-primary font-bold py-3 rounded-xl hover:bg-primary/5 transition-all">
+          Fermer
+        </button>
+        <a href="conseiller.html" class="flex-[2] bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-primary/20 transition-all active:scale-95 no-underline">
+          <span class="material-symbols-outlined text-[18px]">smart_toy</span>
+          Discuter avec le conseiller IA
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Budget sélectionné par l'étudiant (récupéré depuis profil.html, ici simulé)
+    const studentBudget = '300k-600k'; // < valeurs possibles: '<300k', '300k-600k', '600k-1M', '>1M'
+    const studentVille  = 'Ouagadougou';
+
+    const filieresData = {
+      informatique: {
+        titre: 'Génie Informatique',
+        sousTitre: 'Développement logiciel, réseaux et intelligence artificielle',
+        icone: 'computer',
+        score: '87 %',
+        duree: '3 – 5 ans',
+        cout: '~500k FCFA/an',
+        debouches: 'Forte demande',
+        desc: 'Le Génie Informatique forme des ingénieurs capables de concevoir, développer et maintenir des systèmes informatiques complexes. Les diplômés travaillent dans le développement logiciel, la cybersécurité, le cloud computing et l\'intelligence artificielle.',
+        univProches: [
+          { nom: 'Institut International d\'Ingénierie (2iE)', ville: 'Ouagadougou', scolarite: '500 000 FCFA/an', budget: '300k-600k', public: false },
+          { nom: 'Université Joseph Ki-Zerbo (UJKZ)', ville: 'Ouagadougou', scolarite: '15 000 FCFA/an', budget: '<300k', public: true },
+          { nom: 'École Supérieure d\'Informatique (ESI)', ville: 'Ouagadougou', scolarite: '300 000 FCFA/an', budget: '300k-600k', public: false },
+        ],
+        univAutres: [
+          { nom: 'Université Nazi Boni', ville: 'Bobo-Dioulasso', scolarite: '20 000 FCFA/an', budget: '<300k', public: true },
+          { nom: 'Université de Fada N\'Gourma', ville: 'Fada N\'Gourma', scolarite: '18 000 FCFA/an', budget: '<300k', public: true },
+          { nom: 'Institut Supérieur Privé ISIG', ville: 'Ouagadougou', scolarite: '600 000 FCFA/an', budget: '600k-1M', public: false },
+        ],
+        budgetMsg: 'Plusieurs établissements à Ouagadougou correspondent à ton budget de 300k–600k FCFA/an, notamment 2iE et l\'ESI. Les universités publiques sont également disponibles à moins de 30 000 FCFA/an.',
+      },
+      industriel: {
+        titre: 'Génie Industriel',
+        sousTitre: 'Optimisation des processus et gestion de production',
+        icone: 'precision_manufacturing',
+        score: '79 %',
+        duree: '5 ans',
+        cout: '~650k FCFA/an',
+        debouches: 'Bonne demande',
+        desc: 'Le Génie Industriel forme des ingénieurs spécialisés dans la conception et l\'amélioration des systèmes de production. Les compétences acquises couvrent la gestion des opérations, la qualité et la logistique industrielle.',
+        univProches: [
+          { nom: 'Institut International d\'Ingénierie (2iE)', ville: 'Ouagadougou', scolarite: '650 000 FCFA/an', budget: '600k-1M', public: false },
+          { nom: 'École Supérieure Polytechnique de Ouagadougou', ville: 'Ouagadougou', scolarite: '400 000 FCFA/an', budget: '300k-600k', public: false },
+        ],
+        univAutres: [
+          { nom: 'Université Nazi Boni — Département IUT', ville: 'Bobo-Dioulasso', scolarite: '25 000 FCFA/an', budget: '<300k', public: true },
+          { nom: 'Université Aube Nouvelle', ville: 'Bobo-Dioulasso', scolarite: '500 000 FCFA/an', budget: '300k-600k', public: false },
+          { nom: 'ESTS Koudougou', ville: 'Koudougou', scolarite: '20 000 FCFA/an', budget: '<300k', public: true },
+        ],
+        budgetMsg: 'Ton budget de 300k–600k FCFA/an correspond à l\'École Supérieure Polytechnique de Ouagadougou. Pour un budget plus réduit, les universités publiques comme Nazi Boni proposent ce cursus à moins de 30 000 FCFA/an.',
+      },
+      comptable: {
+        titre: 'Expertise Comptable',
+        sousTitre: 'Gestion financière, audit et conseil juridique',
+        icone: 'calculate',
+        score: '72 %',
+        duree: '3 – 8 ans',
+        cout: '~400k FCFA/an',
+        debouches: 'Stable',
+        desc: 'L\'Expertise Comptable prépare aux métiers de la finance, de l\'audit et du conseil fiscal. Le diplôme est reconnu au niveau régional (OHADA) et ouvre des portes dans les entreprises, cabinets et organisations internationales.',
+        univProches: [
+          { nom: 'Institut Supérieur de Comptabilité et Gestion (INSCG)', ville: 'Ouagadougou', scolarite: '350 000 FCFA/an', budget: '300k-600k', public: false },
+          { nom: 'Université Joseph Ki-Zerbo — UFR/SEG', ville: 'Ouagadougou', scolarite: '10 000 FCFA/an', budget: '<300k', public: true },
+          { nom: 'ISIG Management', ville: 'Ouagadougou', scolarite: '450 000 FCFA/an', budget: '300k-600k', public: false },
+        ],
+        univAutres: [
+          { nom: 'Université Nazi Boni — UFR/SEG', ville: 'Bobo-Dioulasso', scolarite: '12 000 FCFA/an', budget: '<300k', public: true },
+          { nom: 'Centre Africain d\'Études Comptables (CAEC)', ville: 'Ouagadougou', scolarite: '500 000 FCFA/an', budget: '300k-600k', public: false },
+          { nom: 'Institut Supérieur Panafricain', ville: 'Ouagadougou', scolarite: '400 000 FCFA/an', budget: '300k-600k', public: false },
+        ],
+        budgetMsg: 'Excellente nouvelle ! Ton budget de 300k–600k FCFA/an correspond parfaitement à plusieurs établissements à Ouagadougou. L\'INSCG et l\'ISIG Management sont tous deux dans ta fourchette budgétaire.',
+      }
+    };
+
+    function univCard(u) {
+      const match = u.budget === studentBudget;
+      const prochaine = u.ville === studentVille;
+      return `
+        <div class="flex items-start gap-3 p-3 rounded-xl border ${ match ? 'border-primary/30 bg-primary/5' : 'border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50' }">
+          <div class="p-1.5 rounded-lg ${ u.public ? 'bg-blue-100 dark:bg-blue-900/30' : 'bg-amber-100 dark:bg-amber-900/30' } shrink-0 mt-0.5">
+            <span class="material-symbols-outlined text-[18px] ${ u.public ? 'text-blue-600' : 'text-amber-600' }">account_balance</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="font-bold text-sm text-slate-900 dark:text-white leading-tight">${ u.nom }</p>
+            <div class="flex flex-wrap gap-1.5 mt-1.5">
+              <span class="inline-flex items-center gap-1 text-[11px] text-slate-500 bg-slate-100 dark:bg-slate-700 px-2 py-0.5 rounded-full">
+                <span class="material-symbols-outlined text-[13px]">location_on</span>${ u.ville }
+              </span>
+              <span class="inline-flex items-center gap-1 text-[11px] ${ match ? 'text-primary bg-primary/10 font-semibold' : 'text-slate-500 bg-slate-100 dark:bg-slate-700' } px-2 py-0.5 rounded-full">
+                <span class="material-symbols-outlined text-[13px]">payments</span>${ u.scolarite }
+              </span>
+              ${ u.public ? '<span class="inline-flex items-center text-[11px] text-blue-600 bg-blue-50 dark:bg-blue-900/20 px-2 py-0.5 rounded-full">Public</span>' : '<span class="inline-flex items-center text-[11px] text-amber-700 bg-amber-50 dark:bg-amber-900/20 px-2 py-0.5 rounded-full">Privé</span>' }
+              ${ match ? '<span class="inline-flex items-center gap-1 text-[11px] text-primary bg-primary/10 font-bold px-2 py-0.5 rounded-full"><span class="material-symbols-outlined text-[13px]">check_circle</span>Dans ton budget</span>' : '' }
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function openModal(key) {
+      const d = filieresData[key];
+      document.getElementById('modal-title').textContent    = d.titre;
+      document.getElementById('modal-subtitle').textContent = d.sousTitre;
+      document.getElementById('modal-icon').textContent     = d.icone;
+      document.getElementById('modal-score').textContent    = d.score;
+      document.getElementById('modal-duree').textContent    = d.duree;
+      document.getElementById('modal-cout').textContent     = d.cout;
+      document.getElementById('modal-debouches').textContent = d.debouches;
+      document.getElementById('modal-desc').textContent     = d.desc;
+      document.getElementById('modal-budget-msg').textContent = d.budgetMsg;
+      document.getElementById('modal-univ-proches').innerHTML = d.univProches.map(univCard).join('');
+      document.getElementById('modal-univ-autres').innerHTML  = d.univAutres.map(univCard).join('');
+      const modal = document.getElementById('modal');
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    // Fermer en cliquant sur le fond
+    document.getElementById('modal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+  </script>
 
 </body>
 </html>
