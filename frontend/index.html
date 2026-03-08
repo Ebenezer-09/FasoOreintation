@@ -5,7 +5,9 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block" rel="stylesheet"/>
 <style>
   .material-symbols-outlined {
     font-family: 'Material Symbols Outlined';
@@ -50,25 +52,6 @@
   </style>
   </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
-<!-- Top Navigation Bar -->
-<nav class="sticky top-0 z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/10">
-<div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-<div class="flex items-center gap-2">
-<div class="text-primary">
-<span class="material-symbols-outlined text-3xl">school</span>
-</div>
-<h2 class="text-primary text-xl font-bold tracking-tight">FasoOrientation</h2>
-</div>
-<div class="flex items-center gap-4">
-<button class="hidden md:flex items-center text-sm font-medium hover:text-primary transition-colors">
-                    A propos
-                </button>
-<button class="p-2 rounded-full hover:bg-primary/10 transition-colors">
-<span class="material-symbols-outlined">account_circle</span>
-</button>
-</div>
-</div>
-</nav>
 <!-- Hero Section -->
 <main class="flex-1">
 <div class="max-w-7xl mx-auto px-4 py-8 md:py-16 grid lg:grid-cols-2 gap-12 items-center">
@@ -80,7 +63,7 @@
                     Analyse tes résultats scolaires, tes intérêts et ton budget pour recevoir des recommandations personnalisées.
                 </p>
 <div class="flex flex-col sm:flex-row gap-4">
-<a href="profil.html" class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 shadow-lg shadow-primary/20 transition-all">
+<a href="profil.html" class="bg-primary hover:bg-primary/90 text-white px-5 py-2.5 sm:px-8 sm:py-4 rounded-xl font-bold text-sm sm:text-lg flex items-center justify-center gap-2 shadow-lg shadow-primary/20 transition-all">
 <span>Commencer mon orientation</span>
 <span class="material-symbols-outlined">arrow_forward</span>
 </a>
@@ -141,25 +124,4 @@
 </div>
 </section>
 </main>
-<!-- Bottom Navigation Bar (Mobile) -->
-<div class="md:hidden sticky bottom-0 z-50 bg-white dark:bg-background-dark border-t border-primary/10 px-4 pb-3 pt-2">
-<div class="flex gap-2 justify-around max-w-md mx-auto">
-<a class="flex flex-col items-center gap-1 text-primary" href="#">
-<span class="material-symbols-outlined">home</span>
-<p class="text-[10px] font-medium">Accueil</p>
-</a>
-<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
-<span class="material-symbols-outlined">school</span>
-<p class="text-[10px] font-medium">Filières</p>
-</a>
-<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
-<span class="material-symbols-outlined">favorite</span>
-<p class="text-[10px] font-medium">Favoris</p>
-</a>
-<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
-<span class="material-symbols-outlined">person</span>
-<p class="text-[10px] font-medium">Profil</p>
-</a>
-</div>
-</div>
 </body></html>
