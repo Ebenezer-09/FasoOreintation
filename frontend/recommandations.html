@@ -26,6 +26,8 @@
     }
   </script>
   <title>Recommandations - FasoOrientation</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     body { min-height: 100dvh; font-family: 'Lexend', sans-serif; }
     .material-symbols-outlined {
@@ -81,6 +83,13 @@
     </div>
   </div>
 
+  <!-- LOADING OVERLAY -->
+  <div id="loading-overlay" class="fixed inset-0 z-[200] bg-white/90 dark:bg-background-dark/90 flex flex-col items-center justify-center gap-4 transition-opacity duration-300">
+    <div class="size-14 border-4 border-primary/20 border-t-primary rounded-full animate-spin"></div>
+    <p class="font-semibold text-primary text-lg">Génération des recommandations…</p>
+    <p class="text-sm text-slate-500">L'IA analyse ton profil et tes notes</p>
+  </div>
+
   <!-- MAIN -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 pb-12">
 
@@ -94,175 +103,31 @@
       </p>
     </div>
 
-    <!-- CARDS GRID -->
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-
-      <!-- Card 1: Génie Informatique (Top choix) -->
-      <div class="flex flex-col overflow-hidden rounded-2xl border-2 border-primary shadow-lg shadow-primary/10 bg-white dark:bg-slate-900">
-        <!-- Badge top choix -->
-        <div class="relative">
-          <div class="w-full aspect-video bg-cover bg-center bg-no-repeat"
-            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD7PmKAeUX-K3d7XS8ynlhvmHxmmBLLRztt_T1YpUzmRysQcnw_Sp-pnO7CZUYR2udo_vGp4AQPiKcVkQq4U63ONbi2Fp1PNgiFlJhysy0ECHFZRzJiYyIWt4mkp9zbJpSMla9v87zrjzzSrY_O_RSx1f1-mi0uDGLewyYLEhSu5i02Nxg4FjMPayv-v8baac66JD5goDMmOOUQXS7Ls6Fc-z1MZoQTzWBO4jOAq9P0utg02CNNN2Vi6GgcZEKB15TGl52Bdn4CFIM");'></div>
-          <span class="absolute top-3 right-3 bg-primary text-white text-[11px] font-bold px-3 py-1 rounded-full shadow">
-            ⭐ Top Choix
-          </span>
-        </div>
-        <div class="flex flex-col p-5 gap-4 flex-1">
-          <div>
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Génie Informatique</h3>
-            <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Développement logiciel, réseaux et intelligence artificielle.</p>
-          </div>
-          <!-- Score -->
-          <div>
-            <div class="flex justify-between text-xs font-semibold mb-1.5">
-              <span class="text-slate-500">Score de compatibilité</span>
-              <span class="text-primary font-bold">87 %</span>
-            </div>
-            <div class="w-full bg-slate-100 dark:bg-slate-700 h-2.5 rounded-full overflow-hidden">
-              <div class="bar-fill bg-primary h-full rounded-full" style="width: 87%"></div>
-            </div>
-          </div>
-          <!-- Infos -->
-          <div class="grid grid-cols-2 gap-3 text-sm">
-            <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
-              <span class="material-symbols-outlined text-primary text-[20px]">schedule</span>
-              <span>3 – 5 ans</span>
-            </div>
-            <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
-              <span class="material-symbols-outlined text-primary text-[20px]">account_balance</span>
-              <span>12 Univ. (BF)</span>
-            </div>
-            <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
-              <span class="material-symbols-outlined text-primary text-[20px]">payments</span>
-              <span>~500k FCFA/an</span>
-            </div>
-            <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
-              <span class="material-symbols-outlined text-primary text-[20px]">trending_up</span>
-              <span>Forte demande</span>
-            </div>
-          </div>
-          <!-- Actions -->
-          <div class="flex flex-col gap-2 mt-auto">
-            <button onclick="openModal('informatique')" class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all active:scale-95">
-              <span class="material-symbols-outlined text-[18px]">visibility</span>
-              Voir les détails
-            </button>
-            <a href="conseiller.html" class="w-full bg-primary/10 hover:bg-primary/20 text-primary font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all no-underline">
-              <span class="material-symbols-outlined text-[18px]">smart_toy</span>
-              Conseiller IA
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2: Génie Industriel -->
-      <div class="flex flex-col overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900">
-        <div class="w-full aspect-video bg-cover bg-center bg-no-repeat"
-          style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDiGY_HNlZVBjQ2hCnfZqPcPP4Z91BKwOq5iurVsHa7yPclC9wlb1zttZ9ZNG_ErA97ImjdSFWIfoJMUs2kvADpIEBpcvfIHV4lKB7Elt0h6RKZs76ev4vPLV7omQ5LNxnYMFnD2A3XN0yguL_wfU712F1_fdpLSeoygVFvmChKHbtC3X5qxk9nFg1BuhKtGFahspjFomaUIUT1ItfPyybriwYQ8HiOzSYMZwGzjlN9qrTqiD2iJYWM3EG1J2jt_sBaI1jR1u6FpJY");'></div>
-        <div class="flex flex-col p-5 gap-4 flex-1">
-          <div>
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Génie Industriel</h3>
-            <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Optimisation des processus et gestion de production.</p>
-          </div>
-          <div>
-            <div class="flex justify-between text-xs font-semibold mb-1.5">
-              <span class="text-slate-500">Score de compatibilité</span>
-              <span class="text-primary font-bold">79 %</span>
-            </div>
-            <div class="w-full bg-slate-100 dark:bg-slate-700 h-2.5 rounded-full overflow-hidden">
-              <div class="bar-fill bg-primary h-full rounded-full" style="width: 79%"></div>
-            </div>
-          </div>
-          <div class="grid grid-cols-2 gap-3 text-sm">
-            <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
-              <span class="material-symbols-outlined text-primary text-[20px]">schedule</span>
-              <span>5 ans</span>
-            </div>
-            <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
-              <span class="material-symbols-outlined text-primary text-[20px]">account_balance</span>
-              <span>8 Univ. (BF)</span>
-            </div>
-            <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
-              <span class="material-symbols-outlined text-primary text-[20px]">payments</span>
-              <span>~650k FCFA/an</span>
-            </div>
-          </div>
-          <div class="flex flex-col gap-2 mt-auto">
-            <button onclick="openModal('industriel')" class="w-full border-2 border-primary text-primary font-bold py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-primary/5 transition-all">
-              <span class="material-symbols-outlined text-[18px]">visibility</span>
-              Voir les détails
-            </button>
-            <a href="conseiller.html" class="w-full bg-primary/10 hover:bg-primary/20 text-primary font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all no-underline">
-              <span class="material-symbols-outlined text-[18px]">smart_toy</span>
-              Conseiller IA
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3: Expertise Comptable -->
-      <div class="flex flex-col overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900">
-        <div class="w-full aspect-video bg-cover bg-center bg-no-repeat"
-          style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAk27cCSRzKKx6TipuE6yyTNIMbKjcR3m7EgfyiJ8FkMITM0teWGxIfcj25wl5QfFDubWmguYVJqZM3FXx7eqdV41ThzgmK_ndx8UJ9zp3mY3fAs4s_0QkzHWIqZngStnoM8vb7F3a6sntfhjJyMBoq0gx1k4hjGFox8UBnvBQKm5gMP9u5x2H5YbV6wKlMa-L5Nc39dGaxX5chIa2wXd2GDZQz83OfWR7MKUaLU6W7zZ4Ns5xuDGLFkroZ80BF9__soJ2YNeMjjQc");'></div>
-        <div class="flex flex-col p-5 gap-4 flex-1">
-          <div>
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Expertise Comptable</h3>
-            <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Gestion financière, audit et conseil juridique.</p>
-          </div>
-          <div>
-            <div class="flex justify-between text-xs font-semibold mb-1.5">
-              <span class="text-slate-500">Score de compatibilité</span>
-              <span class="text-primary font-bold">72 %</span>
-            </div>
-            <div class="w-full bg-slate-100 dark:bg-slate-700 h-2.5 rounded-full overflow-hidden">
-              <div class="bar-fill bg-primary h-full rounded-full" style="width: 72%"></div>
-            </div>
-          </div>
-          <div class="grid grid-cols-2 gap-3 text-sm">
-            <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
-              <span class="material-symbols-outlined text-primary text-[20px]">schedule</span>
-              <span>3 – 8 ans</span>
-            </div>
-            <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
-              <span class="material-symbols-outlined text-primary text-[20px]">account_balance</span>
-              <span>15 Univ. (BF)</span>
-            </div>
-            <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
-              <span class="material-symbols-outlined text-primary text-[20px]">payments</span>
-              <span>~400k FCFA/an</span>
-            </div>
-          </div>
-          <div class="flex flex-col gap-2 mt-auto">
-            <button onclick="openModal('comptable')" class="w-full border-2 border-primary text-primary font-bold py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-primary/5 transition-all">
-              <span class="material-symbols-outlined text-[18px]">visibility</span>
-              Voir les détails
-            </button>
-            <a href="conseiller.html" class="w-full bg-primary/10 hover:bg-primary/20 text-primary font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all no-underline">
-              <span class="material-symbols-outlined text-[18px]">smart_toy</span>
-              Conseiller IA
-            </a>
-          </div>
-        </div>
-      </div>
-
+    <!-- CARDS GRID (dynamically rendered) -->
+    <div id="cards-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
     </div>
 
-    <!-- CTA FINAL -->
-    <div class="mt-10 bg-slate-900 dark:bg-primary/20 rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 border dark:border-primary/30">
-      <div class="flex gap-4 items-start">
-        <div class="bg-primary/20 p-3 rounded-xl shrink-0">
-          <span class="material-symbols-outlined text-primary text-[24px]">smart_toy</span>
+    <!-- RAPPORT + CTA -->
+    <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <!-- Bouton Rapport -->
+      <button onclick="generateReport()" id="btn-rapport" class="bg-white dark:bg-slate-900 rounded-2xl p-6 flex items-center gap-4 border-2 border-primary/20 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all active:scale-[0.98] group text-left">
+        <div class="bg-red-50 dark:bg-red-900/20 p-3 rounded-xl shrink-0 group-hover:bg-red-100 transition-colors">
+          <span class="material-symbols-outlined text-red-500 text-[28px]">picture_as_pdf</span>
         </div>
         <div>
-          <h4 class="font-bold text-white dark:text-slate-100 mb-1">Besoin d'aide pour choisir ?</h4>
-          <p class="text-sm text-slate-300 leading-relaxed">
-            Notre conseiller IA peut t'aider à affiner ton choix selon ta situation personnelle.
-          </p>
+          <h4 class="font-bold text-slate-900 dark:text-white mb-0.5">Télécharger le rapport</h4>
+          <p class="text-xs text-slate-500">Rapport PDF complet avec analyse, notes et recommandations</p>
         </div>
-      </div>
-      <a href="conseiller.html" class="shrink-0 bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-all active:scale-95 shadow-lg shadow-primary/20 w-full sm:w-auto justify-center no-underline">
-        <span class="material-symbols-outlined text-[18px]">chat</span>
-        Discuter avec l'IA
+      </button>
+      <!-- CTA Conseiller -->
+      <a href="conseiller.html" class="bg-slate-900 dark:bg-primary/20 rounded-2xl p-6 flex items-center gap-4 border dark:border-primary/30 hover:shadow-lg transition-all no-underline group">
+        <div class="bg-primary/20 p-3 rounded-xl shrink-0">
+          <span class="material-symbols-outlined text-primary text-[28px]">smart_toy</span>
+        </div>
+        <div>
+          <h4 class="font-bold text-white dark:text-slate-100 mb-0.5">Besoin d'aide pour choisir ?</h4>
+          <p class="text-xs text-slate-300">Discute avec notre conseiller IA pour affiner ton orientation</p>
+        </div>
       </a>
     </div>
 
@@ -329,7 +194,7 @@
           <h3 class="font-bold text-slate-800 dark:text-white mb-3 flex items-center gap-2">
             <span class="material-symbols-outlined text-primary text-[20px]">location_on</span>
             Universités près de chez toi
-            <span class="text-xs font-normal text-primary bg-primary/10 px-2 py-0.5 rounded-full">Ouagadougou</span>
+            <span id="modal-ville-badge" class="text-xs font-normal text-primary bg-primary/10 px-2 py-0.5 rounded-full">Ouagadougou</span>
           </h3>
           <div id="modal-univ-proches" class="space-y-3"></div>
         </div>
@@ -369,92 +234,243 @@
     </div>
   </div>
 
-  <script>
-    // Budget sélectionné par l'étudiant (récupéré depuis profil.html, ici simulé)
-    const studentBudget = '300k-600k'; // < valeurs possibles: '<300k', '300k-600k', '600k-1M', '>1M'
-    const studentVille  = 'Ouagadougou';
+  <!-- ========= RAPPORT PDF (hidden, rendered for html2canvas) ========= -->
+  <div id="report-container" style="position:absolute;left:-9999px;top:0;width:800px;background:#fff;font-family:'Lexend',sans-serif;color:#1e293b;"></div>
 
-    const filieresData = {
-      informatique: {
-        titre: 'Génie Informatique',
-        sousTitre: 'Développement logiciel, réseaux et intelligence artificielle',
-        icone: 'computer',
-        score: '87 %',
-        duree: '3 – 5 ans',
-        cout: '~500k FCFA/an',
-        debouches: 'Forte demande',
-        desc: 'Le Génie Informatique forme des ingénieurs capables de concevoir, développer et maintenir des systèmes informatiques complexes. Les diplômés travaillent dans le développement logiciel, la cybersécurité, le cloud computing et l\'intelligence artificielle.',
-        univProches: [
-          { nom: 'Institut International d\'Ingénierie (2iE)', ville: 'Ouagadougou', scolarite: '500 000 FCFA/an', budget: '300k-600k', public: false },
-          { nom: 'Université Joseph Ki-Zerbo (UJKZ)', ville: 'Ouagadougou', scolarite: '15 000 FCFA/an', budget: '<300k', public: true },
-          { nom: 'École Supérieure d\'Informatique (ESI)', ville: 'Ouagadougou', scolarite: '300 000 FCFA/an', budget: '300k-600k', public: false },
-        ],
-        univAutres: [
-          { nom: 'Université Nazi Boni', ville: 'Bobo-Dioulasso', scolarite: '20 000 FCFA/an', budget: '<300k', public: true },
-          { nom: 'Université de Fada N\'Gourma', ville: 'Fada N\'Gourma', scolarite: '18 000 FCFA/an', budget: '<300k', public: true },
-          { nom: 'Institut Supérieur Privé ISIG', ville: 'Ouagadougou', scolarite: '600 000 FCFA/an', budget: '600k-1M', public: false },
-        ],
-        budgetMsg: 'Plusieurs établissements à Ouagadougou correspondent à ton budget de 300k–600k FCFA/an, notamment 2iE et l\'ESI. Les universités publiques sont également disponibles à moins de 30 000 FCFA/an.',
-      },
-      industriel: {
-        titre: 'Génie Industriel',
-        sousTitre: 'Optimisation des processus et gestion de production',
-        icone: 'precision_manufacturing',
-        score: '79 %',
-        duree: '5 ans',
-        cout: '~650k FCFA/an',
-        debouches: 'Bonne demande',
-        desc: 'Le Génie Industriel forme des ingénieurs spécialisés dans la conception et l\'amélioration des systèmes de production. Les compétences acquises couvrent la gestion des opérations, la qualité et la logistique industrielle.',
-        univProches: [
-          { nom: 'Institut International d\'Ingénierie (2iE)', ville: 'Ouagadougou', scolarite: '650 000 FCFA/an', budget: '600k-1M', public: false },
-          { nom: 'École Supérieure Polytechnique de Ouagadougou', ville: 'Ouagadougou', scolarite: '400 000 FCFA/an', budget: '300k-600k', public: false },
-        ],
-        univAutres: [
-          { nom: 'Université Nazi Boni — Département IUT', ville: 'Bobo-Dioulasso', scolarite: '25 000 FCFA/an', budget: '<300k', public: true },
-          { nom: 'Université Aube Nouvelle', ville: 'Bobo-Dioulasso', scolarite: '500 000 FCFA/an', budget: '300k-600k', public: false },
-          { nom: 'ESTS Koudougou', ville: 'Koudougou', scolarite: '20 000 FCFA/an', budget: '<300k', public: true },
-        ],
-        budgetMsg: 'Ton budget de 300k–600k FCFA/an correspond à l\'École Supérieure Polytechnique de Ouagadougou. Pour un budget plus réduit, les universités publiques comme Nazi Boni proposent ce cursus à moins de 30 000 FCFA/an.',
-      },
-      comptable: {
-        titre: 'Expertise Comptable',
-        sousTitre: 'Gestion financière, audit et conseil juridique',
-        icone: 'calculate',
-        score: '72 %',
-        duree: '3 – 8 ans',
-        cout: '~400k FCFA/an',
-        debouches: 'Stable',
-        desc: 'L\'Expertise Comptable prépare aux métiers de la finance, de l\'audit et du conseil fiscal. Le diplôme est reconnu au niveau régional (OHADA) et ouvre des portes dans les entreprises, cabinets et organisations internationales.',
-        univProches: [
-          { nom: 'Institut Supérieur de Comptabilité et Gestion (INSCG)', ville: 'Ouagadougou', scolarite: '350 000 FCFA/an', budget: '300k-600k', public: false },
-          { nom: 'Université Joseph Ki-Zerbo — UFR/SEG', ville: 'Ouagadougou', scolarite: '10 000 FCFA/an', budget: '<300k', public: true },
-          { nom: 'ISIG Management', ville: 'Ouagadougou', scolarite: '450 000 FCFA/an', budget: '300k-600k', public: false },
-        ],
-        univAutres: [
-          { nom: 'Université Nazi Boni — UFR/SEG', ville: 'Bobo-Dioulasso', scolarite: '12 000 FCFA/an', budget: '<300k', public: true },
-          { nom: 'Centre Africain d\'Études Comptables (CAEC)', ville: 'Ouagadougou', scolarite: '500 000 FCFA/an', budget: '300k-600k', public: false },
-          { nom: 'Institut Supérieur Panafricain', ville: 'Ouagadougou', scolarite: '400 000 FCFA/an', budget: '300k-600k', public: false },
-        ],
-        budgetMsg: 'Excellente nouvelle ! Ton budget de 300k–600k FCFA/an correspond parfaitement à plusieurs établissements à Ouagadougou. L\'INSCG et l\'ISIG Management sont tous deux dans ta fourchette budgétaire.',
-      }
+  <script src="js/storage.js"></script>
+  <script src="js/groq.js"></script>
+  <script>
+    // ── État global ──
+    let studentBudget = '300k-600k';
+    let studentVille  = 'Ouagadougou';
+    let filieresData  = {};
+
+    const iconMap = {
+      'informatique': 'computer', 'génie informatique': 'computer', 'développement': 'computer',
+      'industriel': 'precision_manufacturing', 'génie industriel': 'precision_manufacturing',
+      'comptab': 'calculate', 'finance': 'calculate', 'audit': 'calculate',
+      'gestion': 'business_center', 'management': 'business_center', 'marketing': 'campaign',
+      'ressources humaines': 'groups', 'rh': 'groups',
+      'médecine': 'health_and_safety', 'santé': 'health_and_safety', 'pharma': 'medication',
+      'droit': 'gavel', 'juridique': 'gavel',
+      'agronomie': 'agriculture', 'agriculture': 'agriculture',
+      'éducation': 'school', 'enseignement': 'school',
+      'civil': 'engineering', 'btp': 'engineering', 'bâtiment': 'engineering',
+      'électrique': 'bolt', 'électro': 'bolt', 'énergie': 'bolt',
+      'mécanique': 'settings', 'productique': 'settings',
+      'mathématique': 'functions', 'physique': 'science', 'chimie': 'science',
+      'biolog': 'biotech', 'svt': 'biotech',
+      'communication': 'record_voice_over', 'journalisme': 'record_voice_over',
+      'psychologie': 'psychology', 'sociolog': 'diversity_3',
+      'économi': 'trending_up', 'banque': 'account_balance', 'assurance': 'shield',
+      'mine': 'landscape', 'géologie': 'landscape',
     };
 
+    function guessIcon(nom) {
+      const n = nom.toLowerCase();
+      for (const [key, icon] of Object.entries(iconMap)) {
+        if (n.includes(key)) return icon;
+      }
+      return 'school';
+    }
+
+    // ── Render les 3 cards ──
+    function renderCards(filieres) {
+      const grid = document.getElementById('cards-grid');
+      grid.innerHTML = '';
+      filieres.forEach((f, i) => {
+        const key = 'filiere_' + i;
+        const isTop = i === 0;
+        const nbUniv = (f.universites || []).length;
+        const icon = guessIcon(f.nom);
+
+        const card = document.createElement('div');
+        card.className = `flex flex-col overflow-hidden rounded-2xl ${isTop ? 'border-2 border-primary shadow-lg shadow-primary/10' : 'border border-slate-200 dark:border-slate-800 shadow-sm'} bg-white dark:bg-slate-900`;
+        card.innerHTML = `
+          <div class="relative ${isTop ? 'bg-primary' : 'bg-slate-100 dark:bg-slate-800'} px-5 py-6 flex items-center gap-4">
+            <div class="p-3 ${isTop ? 'bg-white/20' : 'bg-primary/10'} rounded-2xl shrink-0">
+              <span class="material-symbols-outlined ${isTop ? 'text-white' : 'text-primary'} text-[32px]">${icon}</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="text-lg font-bold ${isTop ? 'text-white' : 'text-slate-900 dark:text-white'} leading-tight">${esc(f.nom)}</h3>
+              <div class="flex items-center gap-2 mt-1.5">
+                <span class="text-xs font-bold ${isTop ? 'bg-white/20 text-white' : 'bg-primary/10 text-primary'} px-2.5 py-0.5 rounded-full">${f.score}%</span>
+                <span class="text-xs ${isTop ? 'text-white/70' : 'text-slate-500'}">${esc(f.duree)}</span>
+              </div>
+            </div>
+            ${isTop ? '<span class="absolute top-3 right-3 bg-white/20 text-white text-[11px] font-bold px-3 py-1 rounded-full">⭐ Top Choix</span>' : ''}
+          </div>
+          <div class="flex flex-col p-5 gap-4 flex-1">
+            <div>
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white">${esc(f.nom)}</h3>
+              <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">${esc(f.description)}</p>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs font-semibold mb-1.5">
+                <span class="text-slate-500">Score de compatibilité</span>
+                <span class="text-primary font-bold">${f.score} %</span>
+              </div>
+              <div class="w-full bg-slate-100 dark:bg-slate-700 h-2.5 rounded-full overflow-hidden">
+                <div class="bar-fill bg-primary h-full rounded-full" style="width: ${f.score}%"></div>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3 text-sm">
+              <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                <span class="material-symbols-outlined text-primary text-[20px]">schedule</span>
+                <span>${esc(f.duree)}</span>
+              </div>
+              <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                <span class="material-symbols-outlined text-primary text-[20px]">account_balance</span>
+                <span>${nbUniv} Univ. (BF)</span>
+              </div>
+              <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                <span class="material-symbols-outlined text-primary text-[20px]">payments</span>
+                <span>${esc(f.cout)}</span>
+              </div>
+              <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                <span class="material-symbols-outlined text-primary text-[20px]">trending_up</span>
+                <span>${esc(f.debouches)}</span>
+              </div>
+            </div>
+            <div class="flex flex-col gap-2 mt-auto">
+              <button onclick="openModal('${key}')" class="w-full ${isTop ? 'bg-primary hover:bg-primary/90 text-white' : 'border-2 border-primary text-primary hover:bg-primary/5'} font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all active:scale-95">
+                <span class="material-symbols-outlined text-[18px]">visibility</span>
+                Voir les détails
+              </button>
+              <a href="conseiller.html" class="w-full bg-primary/10 hover:bg-primary/20 text-primary font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all no-underline">
+                <span class="material-symbols-outlined text-[18px]">smart_toy</span>
+                Conseiller IA
+              </a>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // ── Construire filieresData pour les modals ──
+    function buildFilieresData(filieres) {
+      filieresData = {};
+      filieres.forEach((f, i) => {
+        const key = 'filiere_' + i;
+        const univs = f.universites || [];
+        const proches = univs.filter(u => u.ville && u.ville.toLowerCase() === studentVille.toLowerCase());
+        const autres = univs.filter(u => !u.ville || u.ville.toLowerCase() !== studentVille.toLowerCase());
+        // If all unis are in same city, split differently
+        const finalProches = proches.length > 0 ? proches : univs.slice(0, Math.ceil(univs.length / 2));
+        const finalAutres = proches.length > 0 ? autres : univs.slice(Math.ceil(univs.length / 2));
+
+        filieresData[key] = {
+          titre: f.nom,
+          sousTitre: f.description,
+          icone: guessIcon(f.nom),
+          score: f.score + ' %',
+          duree: f.duree,
+          cout: f.cout,
+          debouches: f.debouches,
+          desc: f.description,
+          univProches: finalProches.map(u => ({
+            nom: u.nom, ville: u.ville || studentVille,
+            scolarite: u.scolarite || 'N/A',
+            budget: guessBudget(u.scolarite),
+            public: u.public !== undefined ? u.public : false
+          })),
+          univAutres: finalAutres.map(u => ({
+            nom: u.nom, ville: u.ville || 'Burkina Faso',
+            scolarite: u.scolarite || 'N/A',
+            budget: guessBudget(u.scolarite),
+            public: u.public !== undefined ? u.public : false
+          })),
+          budgetMsg: `Filière recommandée en fonction de ton budget de ${studentBudget} FCFA/an. Consulte le détail des universités pour comparer les frais de scolarité.`,
+        };
+      });
+    }
+
+    function guessBudget(scolarite) {
+      if (!scolarite) return '300k-600k';
+      const numStr = scolarite.replace(/[^\d]/g, '');
+      const num = parseInt(numStr);
+      if (isNaN(num)) return '300k-600k';
+      if (num < 300000) return '<300k';
+      if (num < 600000) return '300k-600k';
+      if (num < 1000000) return '600k-1M';
+      return '>1M';
+    }
+
+    function esc(str) {
+      const d = document.createElement('div');
+      d.textContent = str || '';
+      return d.innerHTML;
+    }
+
+    // ── Normalisation accents pour matching filières ──
+    function normalizeStr(s) {
+      return (s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+    }
+
+    // ── Retrouver les universités réelles depuis le JSON ──
+    function findUniversitiesForFiliere(filiereNom, allUniversites) {
+      const query = normalizeStr(filiereNom);
+      const queryWords = query.split(/[\s\-()]+/).filter(w => w.length >= 4);
+
+      // Scorer chaque entrée : 100 = exact, N = mots-clés communs
+      const scored = allUniversites.map(u => {
+        const f = normalizeStr(u.filiere);
+        let score = 0;
+        if (f === query) {
+          score = 100;
+        } else if (queryWords.length >= 2) {
+          const matched = queryWords.filter(k => f.includes(k)).length;
+          if (matched >= Math.min(2, queryWords.length)) score = matched;
+        } else if (queryWords.length === 1 && queryWords[0].length >= 5) {
+          if (f.includes(queryWords[0])) score = 1;
+        }
+        return { u, score };
+      }).filter(e => e.score > 0);
+
+      // Trier par score décroissant, dédoublonner par université
+      scored.sort((a, b) => b.score - a.score);
+      const seen = new Set();
+      return scored
+        .filter(({ u }) => { if (seen.has(u.universite)) return false; seen.add(u.universite); return true; })
+        .map(({ u }) => ({
+          nom: u.universite,
+          ville: u.ville,
+          structure: u.structure,
+          scolarite: '15 500 FCFA/an',
+          public: !u.universite.toLowerCase().includes('catholique')
+        }));
+    }
+
+    // ── Enrichir les filières avec les vraies universités du JSON ──
+    function enrichFilieres(filieres, allUniversites) {
+      if (!allUniversites || allUniversites.length === 0) return filieres;
+      return filieres.map(f => {
+        const unis = findUniversitiesForFiliere(f.nom, allUniversites);
+        return {
+          ...f,
+          cout: unis.length > 0 ? '~15 500 FCFA/an' : f.cout,
+          universites: unis.length > 0 ? unis : (f.universites || [])
+        };
+      });
+    }
+
+    // ── Univ card (modal) ──
     function univCard(u) {
       const match = u.budget === studentBudget;
-      const prochaine = u.ville === studentVille;
       return `
         <div class="flex items-start gap-3 p-3 rounded-xl border ${ match ? 'border-primary/30 bg-primary/5' : 'border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50' }">
           <div class="p-1.5 rounded-lg ${ u.public ? 'bg-blue-100 dark:bg-blue-900/30' : 'bg-amber-100 dark:bg-amber-900/30' } shrink-0 mt-0.5">
             <span class="material-symbols-outlined text-[18px] ${ u.public ? 'text-blue-600' : 'text-amber-600' }">account_balance</span>
           </div>
           <div class="flex-1 min-w-0">
-            <p class="font-bold text-sm text-slate-900 dark:text-white leading-tight">${ u.nom }</p>
+            <p class="font-bold text-sm text-slate-900 dark:text-white leading-tight">${ esc(u.nom) }</p>
             <div class="flex flex-wrap gap-1.5 mt-1.5">
               <span class="inline-flex items-center gap-1 text-[11px] text-slate-500 bg-slate-100 dark:bg-slate-700 px-2 py-0.5 rounded-full">
-                <span class="material-symbols-outlined text-[13px]">location_on</span>${ u.ville }
+                <span class="material-symbols-outlined text-[13px]">location_on</span>${ esc(u.ville) }
               </span>
               <span class="inline-flex items-center gap-1 text-[11px] ${ match ? 'text-primary bg-primary/10 font-semibold' : 'text-slate-500 bg-slate-100 dark:bg-slate-700' } px-2 py-0.5 rounded-full">
-                <span class="material-symbols-outlined text-[13px]">payments</span>${ u.scolarite }
+                <span class="material-symbols-outlined text-[13px]">payments</span>${ esc(u.scolarite) }
               </span>
               ${ u.public ? '<span class="inline-flex items-center text-[11px] text-blue-600 bg-blue-50 dark:bg-blue-900/20 px-2 py-0.5 rounded-full">Public</span>' : '<span class="inline-flex items-center text-[11px] text-amber-700 bg-amber-50 dark:bg-amber-900/20 px-2 py-0.5 rounded-full">Privé</span>' }
               ${ match ? '<span class="inline-flex items-center gap-1 text-[11px] text-primary bg-primary/10 font-bold px-2 py-0.5 rounded-full"><span class="material-symbols-outlined text-[13px]">check_circle</span>Dans ton budget</span>' : '' }
@@ -466,6 +482,7 @@
 
     function openModal(key) {
       const d = filieresData[key];
+      if (!d) return;
       document.getElementById('modal-title').textContent    = d.titre;
       document.getElementById('modal-subtitle').textContent = d.sousTitre;
       document.getElementById('modal-icon').textContent     = d.icone;
@@ -475,6 +492,7 @@
       document.getElementById('modal-debouches').textContent = d.debouches;
       document.getElementById('modal-desc').textContent     = d.desc;
       document.getElementById('modal-budget-msg').textContent = d.budgetMsg;
+      document.getElementById('modal-ville-badge').textContent = studentVille;
       document.getElementById('modal-univ-proches').innerHTML = d.univProches.map(univCard).join('');
       document.getElementById('modal-univ-autres').innerHTML  = d.univAutres.map(univCard).join('');
       const modal = document.getElementById('modal');
@@ -487,10 +505,396 @@
       document.body.style.overflow = '';
     }
 
-    // Fermer en cliquant sur le fond
     document.getElementById('modal').addEventListener('click', function(e) {
       if (e.target === this) closeModal();
     });
+
+    // ── Message d'erreur si l'IA est indisponible ──
+    function showErrorMessage() {
+      document.getElementById('loading-overlay').classList.add('hidden');
+      document.getElementById('cards-grid').innerHTML = `
+        <div class="col-span-full flex flex-col items-center justify-center py-20 gap-5 text-center">
+          <div class="p-5 bg-slate-100 dark:bg-slate-800 rounded-2xl">
+            <span class="material-symbols-outlined text-slate-400 text-[48px]">wifi_off</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-slate-700 dark:text-slate-300 mb-1">Analyse temporairement indisponible</h3>
+            <p class="text-sm text-slate-500 max-w-sm">Le service d'intelligence artificielle ne répond pas pour le moment. Veuillez réessayer dans quelques instants.</p>
+          </div>
+          <button onclick="location.reload()" class="flex items-center gap-2 bg-primary text-white font-bold py-3 px-6 rounded-xl hover:bg-primary/90 transition-all active:scale-95">
+            <span class="material-symbols-outlined text-[18px]">refresh</span>
+            Réessayer
+          </button>
+        </div>
+      `;
+    }
+
+    // ── Init ──
+    (async function init() {
+      const profil  = FoStorage.getProfil();
+      const analyse = FoStorage.getAnalyse();
+
+      if (profil) {
+        studentBudget = profil.budgetValue || profil.budget || studentBudget;
+        studentVille  = profil.ville || studentVille;
+      }
+
+      // Charger les données réelles des universités publiques du BF
+      let allUnivsData = [];
+      try {
+        const res = await fetch('assets/universite.json');
+        allUnivsData = await res.json();
+        window.__FO_UNIVS_DATA = Array.isArray(allUnivsData) ? allUnivsData : [];
+      } catch (e) {
+        console.warn('universite.json non disponible:', e);
+        window.__FO_UNIVS_DATA = [];
+      }
+
+      // Cache : ré-enrichit avec les vraies universités du JSON même si déjà en cache
+      const cached = FoStorage.getReco();
+      if (cached && cached.filieres && cached.filieres.length >= 3) {
+        const filieres = enrichFilieres(cached.filieres, allUnivsData);
+        renderCards(filieres);
+        buildFilieresData(filieres);
+        document.getElementById('loading-overlay').classList.add('hidden');
+        return;
+      }
+
+      // Appel Groq avec la liste réelle des filières
+      try {
+        const prompt = buildRecoPrompt(profil, analyse, allUnivsData);
+        const raw = await groqChat([{ role: 'user', content: prompt }], { maxTokens: 2048, temperature: 0.6 });
+        const jsonStr = raw.replace(/```json\s*/gi, '').replace(/```/g, '').trim();
+        const data = JSON.parse(jsonStr);
+
+        if (data.filieres && data.filieres.length >= 3) {
+          FoStorage.saveReco(data);
+          const filieres = enrichFilieres(data.filieres, allUnivsData);
+          renderCards(filieres);
+          buildFilieresData(filieres);
+          document.getElementById('loading-overlay').classList.add('hidden');
+          return;
+        }
+      } catch (e) {
+        console.warn('Groq reco failed:', e);
+        showErrorMessage();
+      }
+    })();
+
+    // ── SVG horizontal bar (compact) ──
+    function svgBar(nom, note, maxNote = 20) {
+      const pct = Math.round((note / maxNote) * 100);
+      const color = note >= 14 ? '#1e804f' : note >= 10 ? '#f59e0b' : '#ef4444';
+      return `<div style="margin-bottom:4px;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:1px;">
+          <span style="font-size:9px;font-weight:600;color:#334155;">${nom}</span>
+          <span style="font-size:9px;font-weight:700;color:${color};">${note.toFixed(1)}</span>
+        </div>
+        <div style="height:5px;background:#e2e8f0;border-radius:3px;overflow:hidden;">
+          <div style="height:100%;width:${pct}%;background:${color};border-radius:3px;"></div>
+        </div>
+      </div>`;
+    }
+
+    // ── SVG radar (compact) ──
+    function svgRadarReport(notes, size = 220) {
+      const sorted = Object.entries(notes).sort((a, b) => b[1] - a[1]);
+      const n = Math.min(sorted.length, 8);
+      if (n < 3) return '<p style="color:#94a3b8;font-style:italic;font-size:10px;">Pas assez de matieres</p>';
+      const cx = size / 2, cy = size / 2, R = size * 0.30;
+      let html = `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">`;
+      for (let l = 1; l <= 4; l++) {
+        const r = (R / 4) * l;
+        const pts = [];
+        for (let i = 0; i < n; i++) {
+          const a = (2 * Math.PI * i / n) - Math.PI / 2;
+          pts.push(`${cx + r * Math.cos(a)},${cy + r * Math.sin(a)}`);
+        }
+        html += `<polygon fill="none" stroke="#e2e8f0" stroke-width="0.7" points="${pts.join(' ')}"/>`;
+      }
+      for (let i = 0; i < n; i++) {
+        const a = (2 * Math.PI * i / n) - Math.PI / 2;
+        html += `<line x1="${cx}" y1="${cy}" x2="${cx + R * Math.cos(a)}" y2="${cy + R * Math.sin(a)}" stroke="#e2e8f0" stroke-width="0.7"/>`;
+      }
+      const dataPts = [], circles = [];
+      for (let i = 0; i < n; i++) {
+        const note = sorted[i][1];
+        const pct = Math.min(note / 20, 1);
+        const a = (2 * Math.PI * i / n) - Math.PI / 2;
+        const x = cx + R * pct * Math.cos(a);
+        const y = cy + R * pct * Math.sin(a);
+        dataPts.push(`${x.toFixed(1)},${y.toFixed(1)}`);
+        const col = note >= 12 ? '#1e804f' : '#f97316';
+        circles.push(`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3" fill="${col}" stroke="white" stroke-width="1"/>`);
+      }
+      html += `<polygon fill="rgba(30,128,79,0.15)" stroke="#1e804f" stroke-width="1.5" stroke-linejoin="round" points="${dataPts.join(' ')}"/>`;
+      html += circles.join('');
+      for (let i = 0; i < n; i++) {
+        const a = (2 * Math.PI * i / n) - Math.PI / 2;
+        const lx = cx + (R + 22) * Math.cos(a);
+        const ly = cy + (R + 22) * Math.sin(a);
+        const anchor = Math.abs(Math.cos(a)) < 0.15 ? 'middle' : Math.cos(a) > 0 ? 'start' : 'end';
+        html += `<text text-anchor="${anchor}" x="${lx.toFixed(1)}" y="${(ly + 3).toFixed(1)}" fill="#475569" font-size="7" font-weight="600">${sorted[i][0]}</text>`;
+      }
+      html += '</svg>';
+      return html;
+    }
+
+    // ── Générer le rapport PDF ──
+    async function generateReport() {
+      const btn = document.getElementById('btn-rapport');
+      btn.disabled = true;
+      btn.querySelector('h4').textContent = 'Generation en cours...';
+
+      const profil  = FoStorage.getProfil()  || {};
+      const analyse = FoStorage.getAnalyse() || {};
+      const reco    = FoStorage.getReco()    || {};
+      const notes   = analyse.notes || {};
+      const sorted  = Object.entries(notes).sort((a, b) => b[1] - a[1]);
+      const moyenne = analyse.moyenne || 0;
+      const filieres = reco.filieres || [];
+
+      const careerMap = { tech: 'Technologie', health: 'Sante', biz: 'Business', eng: 'Ingenierie', edu: 'Education', admin: 'Administration' };
+      const niveauColor = moyenne >= 14 ? '#1e804f' : moyenne >= 10 ? '#f59e0b' : '#ef4444';
+      const niveauText = moyenne >= 16 ? 'Excellent' : moyenne >= 14 ? 'Tres bon' : moyenne >= 12 ? 'Bon' : moyenne >= 10 ? 'Passable' : 'Insuffisant';
+
+      const forts = sorted.filter(e => e[1] >= 12);
+      const allFaibles = sorted.filter(e => e[1] < 12);
+
+      // Filter axes d'amélioration: only subjects relevant to the career domain
+      const relevantMap = {
+        tech: ['mathematiques','maths','math','physique','physique-chimie','informatique','svt','sciences','technologie','anglais'],
+        eng: ['mathematiques','maths','math','physique','physique-chimie','informatique','svt','sciences','technologie','dessin','anglais'],
+        health: ['svt','sciences','physique','physique-chimie','chimie','biologie','mathematiques','maths','math','anglais'],
+        biz: ['mathematiques','maths','math','francais','anglais','economie','comptabilite','gestion','droit','communication'],
+        admin: ['francais','anglais','mathematiques','maths','math','histoire','geographie','philosophie','droit','economie'],
+        edu: ['francais','philosophie','mathematiques','maths','math','anglais','histoire','geographie','svt','sciences','pedagogie']
+      };
+      const career = profil.carriere || '';
+      const relevantKeys = relevantMap[career] || Object.values(relevantMap).flat();
+      const normalize = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[-_]/g, ' ');
+      const relevantFaibles = allFaibles.filter(([m]) => {
+        const low = normalize(m);
+        return relevantKeys.some(k => low.includes(k) || k.includes(low));
+      });
+
+      // Build sentences
+      let fortsSentence = '';
+      if (forts.length > 0) {
+        const items = forts.slice(0, 3).map(([m, n]) => `${m} (${n.toFixed(1)}/20)`);
+        if (items.length === 1) {
+          fortsSentence = `L'eleve demontre une solide maitrise en ${items[0]}, un atout determinant pour les filieres envisagees dans le domaine ${careerMap[career] || 'vise'}.`;
+        } else {
+          const last = items.pop();
+          fortsSentence = `L'eleve presente de solides competences en ${items.join(', ')} et ${last}. Ces resultats constituent des bases solides pour reussir dans les filieres recommandees.`;
+        }
+      } else {
+        fortsSentence = 'Aucune matiere ne se distingue particulierement au-dessus de la moyenne. Un travail regulier dans les disciplines cles du domaine vise permettra de progresser.';
+      }
+
+      let faiblesSentence = '';
+      if (relevantFaibles.length > 0) {
+        const items = relevantFaibles.slice(0, 3).map(([m, n]) => `${m} (${n.toFixed(1)}/20)`);
+        if (items.length === 1) {
+          faiblesSentence = `Pour optimiser ses chances dans les filieres recommandees, un renforcement en ${items[0]} serait benefique, car cette discipline est essentielle dans le domaine ${careerMap[career] || 'vise'}.`;
+        } else {
+          const last = items.pop();
+          faiblesSentence = `Pour reussir pleinement dans le domaine ${careerMap[career] || 'vise'}, il est conseille de renforcer les acquis en ${items.join(', ')} et ${last}. Ces disciplines sont directement liees aux filieres recommandees et meritent une attention particuliere.`;
+        }
+      } else {
+        faiblesSentence = 'Aucune faiblesse significative n\'a ete identifiee dans les matieres cles du domaine vise. Le profil academique est bien adapte aux filieres recommandees.';
+      }
+
+      const conseilRaw = (analyse.conseilIA || '').replace(/\s+/g, ' ').trim();
+      const conseilText = conseilRaw;
+      const conseilFontSize = conseilText.length > 900 ? '7.4px' : conseilText.length > 650 ? '8px' : '8.6px';
+      const conseilLineHeight = conseilText.length > 900 ? '1.55' : '1.72';
+
+      const container = document.getElementById('report-container');
+
+      // Build universities table rows per filiere
+      const filiereRows = filieres.map((f, i) => {
+        const univs = (f.universites && f.universites.length)
+          ? f.universites
+          : findUniversitiesForFiliere(f.nom, window.__FO_UNIVS_DATA || []);
+        const scoreColor = f.score >= 80 ? '#166534' : f.score >= 60 ? '#b45309' : '#64748b';
+        const scoreBg = f.score >= 80 ? '#dcfce7' : f.score >= 60 ? '#fef3c7' : '#f1f5f9';
+        const visibleUnivs = univs.slice(0, 4);
+        const remainingUnivs = Math.max(0, univs.length - visibleUnivs.length);
+        const univList = visibleUnivs.length > 0
+          ? `${visibleUnivs.map(u => `${u.nom} (${u.ville || 'BF'})`).join('<br>')}${remainingUnivs > 0 ? `<br><span style="color:#64748b;font-style:italic;">+ ${remainingUnivs} autres universites</span>` : ''}`
+          : 'Aucune universite trouvee';
+        return `<tr style="border-bottom:1px solid #f1f5f9;line-height:1.4;vertical-align:top;">
+          <td style="padding:7px 8px;font-size:9px;font-weight:800;color:#1e293b;text-align:center;width:22px;">${i + 1}</td>
+          <td style="padding:7px 8px;font-size:8.8px;font-weight:700;color:#1e293b;overflow-wrap:anywhere;">${f.nom}<br><span style="font-weight:500;color:#64748b;font-size:7.4px;">${f.duree} · ${f.cout}</span></td>
+          <td style="padding:7px 8px;text-align:center;width:44px;"><span style="font-size:9.4px;font-weight:800;color:${scoreColor};background:${scoreBg};padding:2px 8px;border-radius:12px;display:inline-block;min-width:40px;">${f.score}%</span></td>
+          <td style="padding:7px 8px;font-size:8px;color:#475569;width:120px;overflow-wrap:anywhere;">${f.debouches}</td>
+          <td style="padding:7px 8px;font-size:8px;color:#334155;line-height:1.5;overflow-wrap:anywhere;word-break:break-word;">${univList}</td>
+        </tr>`;
+      }).join('');
+
+      container.innerHTML = `
+        <div style="width:800px;height:1131px;background:white;font-family:'Segoe UI',Arial,sans-serif;color:#1e293b;display:flex;flex-direction:column;overflow:hidden;">
+
+          <!-- HEADER -->
+          <div style="background:linear-gradient(135deg,#166534 0%,#15803d 60%,#22c55e 100%);padding:18px 26px;display:flex;align-items:center;justify-content:space-between;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+              <div>
+                <h1 style="font-size:22px;font-weight:800;color:white;margin:0;">FasoOrientation</h1>
+                <p style="font-size:9px;color:rgba(255,255,255,0.78);margin:2px 0 0 0;">Rapport d'orientation scolaire et professionnelle</p>
+              </div>
+            </div>
+            <div style="background:rgba(255,255,255,0.15);border-radius:8px;padding:6px 13px;text-align:right;">
+              <p style="font-size:11px;color:white;font-weight:700;margin:0;">${new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+            </div>
+          </div>
+
+          <div style="padding:16px 24px 12px;flex:1;display:flex;flex-direction:column;">
+
+            <!-- PROFIL — ligne compacte -->
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
+              <div style="display:flex;align-items:center;gap:6px;background:#166534;border-radius:6px;padding:5px 10px;">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="white"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+                <span style="font-size:9px;font-weight:700;color:white;text-transform:uppercase;letter-spacing:0.5px;">Profil</span>
+              </div>
+              <span style="background:#f0fdf4;color:#166534;font-size:9px;font-weight:700;padding:5px 11px;border-radius:6px;">Bac ${profil.bac || '—'}</span>
+              <span style="background:#eff6ff;color:#1e40af;font-size:9px;font-weight:700;padding:5px 11px;border-radius:6px;">${careerMap[profil.carriere] || '—'}</span>
+              <span style="background:#fefce8;color:#92400e;font-size:9px;font-weight:700;padding:5px 11px;border-radius:6px;">${profil.budget || '—'}</span>
+              ${profil.ville ? `<span style="background:#fdf4ff;color:#6b21a8;font-size:9px;font-weight:700;padding:5px 11px;border-radius:6px;">${profil.ville}</span>` : ''}
+              ${(profil.matieres && profil.matieres.length) ? profil.matieres.map(m => `<span style="background:#f1f5f9;color:#334155;font-size:8px;font-weight:600;padding:4px 8px;border-radius:6px;">${m}</span>`).join('') : ''}
+            </div>
+
+            <!-- STATS + RADAR — 2 colonnes -->
+            <div style="display:flex;margin-bottom:12px;align-items:flex-start;justify-content:space-between;">
+
+              <!-- Moyenne cercle SVG -->
+              <div style="flex:0 0 160px;text-align:center;">
+                <svg width="130" height="130" viewBox="0 0 110 110">
+                  <circle cx="55" cy="55" r="48" fill="none" stroke="#e2e8f0" stroke-width="6"/>
+                  <circle cx="55" cy="55" r="48" fill="none" stroke="${niveauColor}" stroke-width="6"
+                    stroke-dasharray="${(moyenne / 20 * 301.6).toFixed(1)} 301.6" stroke-linecap="round"
+                    transform="rotate(-90 55 55)"/>
+                  <text x="55" y="50" text-anchor="middle" dominant-baseline="middle" font-size="28" font-weight="800" fill="${niveauColor}">${moyenne.toFixed(1)}</text>
+                  <text x="55" y="68" text-anchor="middle" dominant-baseline="middle" font-size="10" fill="#94a3b8">/ 20</text>
+                  <text x="55" y="82" text-anchor="middle" dominant-baseline="middle" font-size="9" font-weight="700" fill="${niveauColor}">${niveauText}</text>
+                </svg>
+                <div style="display:flex;justify-content:center;gap:12px;margin-top:2px;">
+                  <div style="text-align:center;"><span style="font-size:14px;font-weight:800;color:#1e293b;">${forts.length}</span><br><span style="font-size:7px;color:#64748b;text-transform:uppercase;">Atouts</span></div>
+                  <div style="text-align:center;"><span style="font-size:14px;font-weight:800;color:#1e293b;">${sorted.length}</span><br><span style="font-size:7px;color:#64748b;text-transform:uppercase;">Matieres</span></div>
+                  <div style="text-align:center;"><span style="font-size:14px;font-weight:800;color:#1e293b;">${filieres.length}</span><br><span style="font-size:7px;color:#64748b;text-transform:uppercase;">Filieres</span></div>
+                </div>
+              </div>
+
+              <!-- Radar -->
+              <div style="flex:0 0 560px;background:#f8fafc;border-radius:10px;padding:8px 4px 8px 8px;margin-left:auto;display:flex;justify-content:flex-end;">
+                ${svgRadarReport(notes, 245)}
+              </div>
+
+            </div>
+
+            <!-- SYNTHESE — 2 colonnes -->
+            <div style="display:flex;gap:10px;margin-bottom:12px;">
+              <div style="flex:1;background:#f0fdf4;border-radius:8px;padding:10px 12px;">
+                <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="#166534"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                  <span style="font-size:8px;font-weight:800;color:#166534;text-transform:uppercase;letter-spacing:0.5px;">Points forts</span>
+                </div>
+                <p style="font-size:8.6px;color:#334155;line-height:1.7;margin:0;overflow-wrap:anywhere;">${fortsSentence}</p>
+              </div>
+              <div style="flex:1;background:#fff7ed;border-radius:8px;padding:10px 12px;">
+                <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="#b45309"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+                  <span style="font-size:8px;font-weight:800;color:#b45309;text-transform:uppercase;letter-spacing:0.5px;">Axes a renforcer</span>
+                </div>
+                <p style="font-size:8.6px;color:#334155;line-height:1.7;margin:0;overflow-wrap:anywhere;">${faiblesSentence}</p>
+              </div>
+            </div>
+
+            <!-- CONSEIL IA -->
+            ${analyse.conseilIA ? `
+            <div style="background:#1e293b;border-radius:8px;padding:10px 14px;margin-bottom:12px;">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="#94a3b8"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26C17.81 13.47 19 11.38 19 9c0-3.86-3.14-7-7-7z"/></svg>
+                <span style="font-size:8px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px;">Conseil personnalise</span>
+              </div>
+              <p style="font-size:${conseilFontSize};color:#cbd5e1;line-height:${conseilLineHeight};margin:0;overflow-wrap:anywhere;">${conseilText}</p>
+            </div>` : ''}
+
+            <!-- FILIERES — TABLEAU -->
+            <div style="margin-bottom:2px;">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:7px;">
+                <div style="background:#b45309;border-radius:6px;padding:5px 10px;display:flex;align-items:center;gap:5px;">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="white"><path d="M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z"/></svg>
+                  <span style="font-size:8.5px;font-weight:700;color:white;text-transform:uppercase;letter-spacing:0.5px;">Filieres recommandees & Universites</span>
+                </div>
+              </div>
+              <table style="width:100%;border-collapse:collapse;background:white;border-radius:6px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.06);table-layout:fixed;">
+                <thead>
+                  <tr style="background:#f8fafc;">
+                    <th style="padding:6px 7px;font-size:7.5px;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;text-align:center;font-weight:700;width:22px;">#</th>
+                    <th style="padding:6px 7px;font-size:7.5px;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;text-align:left;font-weight:700;">Filiere</th>
+                    <th style="padding:6px 7px;font-size:7.5px;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;text-align:center;font-weight:700;width:44px;">Score</th>
+                    <th style="padding:6px 7px;font-size:7.5px;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;text-align:left;font-weight:700;width:120px;">Debouches</th>
+                    <th style="padding:6px 7px;font-size:7.5px;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;text-align:left;font-weight:700;width:320px;">Universites</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${filiereRows}
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+
+          <!-- FOOTER -->
+          <div style="background:#166534;padding:6px 24px;display:flex;justify-content:space-between;align-items:center;">
+            <p style="font-size:7px;color:rgba(255,255,255,0.6);margin:0;">${new Date().getFullYear()} FasoOrientation — Recommandations generees par IA, a titre indicatif.</p>
+            <p style="font-size:7px;color:rgba(255,255,255,0.8);font-weight:600;margin:0;">Burkina Faso${profil.ville ? ' — ' + profil.ville : ''}</p>
+          </div>
+
+        </div>
+      `;
+
+      try {
+        const canvas = await html2canvas(container, {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: '#ffffff',
+          width: 800,
+          windowWidth: 800,
+        });
+
+        const { jsPDF } = window.jspdf;
+        const imgData = canvas.toDataURL('image/jpeg', 0.92);
+        const pageW = 210;
+        const pageH = 297;
+        const margin = 5;
+        const maxW = pageW - margin * 2;
+        const maxH = pageH - margin * 2;
+
+        let renderW = maxW;
+        let renderH = (canvas.height * renderW) / canvas.width;
+        if (renderH > maxH) {
+          renderH = maxH;
+          renderW = (canvas.width * renderH) / canvas.height;
+        }
+
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const x = (pageW - renderW) / 2;
+        const y = (pageH - renderH) / 2;
+        pdf.addImage(imgData, 'JPEG', x, y, renderW, renderH);
+
+        pdf.save('FasoOrientation_Rapport.pdf');
+      } catch (err) {
+        console.error('Erreur generation PDF:', err);
+        alert('Erreur lors de la generation du rapport. Veuillez reessayer.');
+      }
+
+      btn.disabled = false;
+      btn.querySelector('h4').textContent = 'Telecharger le rapport';
+      container.innerHTML = '';
+    }
   </script>
 
 </body>

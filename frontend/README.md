@@ -49,3 +49,6 @@ frontend/
 - [ ] Intégrer avec le backend API
 - [ ] Ajouter la gestion des favoris
 - [ ] Implémenter l'authentification utilisateur
+
+
+cd /home/bakouan/Bureau/PROJET/FasoInnovation/frontend && python3 -m http.server 8000

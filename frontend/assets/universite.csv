@@ -1,0 +1,85 @@
+id_filiere,filiere,sigle,universite,ville,structure
+8,ALLEMAND,ALL,Université Ouaga I Pr JKZ,Ouagadougou,UFR/LAC
+7,ANGLAIS,ANG,Université Ouaga I Pr JKZ,Ouagadougou,UFR/LAC
+11,ART GESTION ET ADMINISTRATION CULTURELLES ( AGAC),AGAC,Université Ouaga I Pr JKZ,Ouagadougou,UFR/LAC
+23,ASSISTANT DE DIRECTION BILINGUE,ADB,Université Ouaga I Pr JKZ,Ouagadougou,IBAM
+22,ASSURANCE BANQUE FINANCE,ABF,Université Ouaga I Pr JKZ,Ouagadougou,IBAM
+59,Assurance-Banque-Finances (ABF),ABF,Université NAZI BONI - Bobo Dioulasso,Bobo Dioulasso,IUT
+14,CHIRURGIE DENTAIRE (CD),CHU-DENT,Université Ouaga I Pr JKZ,Ouagadougou,UFR/SDS
+58,Communication d'Entreprise ( C E),COMM-ENT,Université NAZI BONI - Bobo Dioulasso,Bobo Dioulasso,IUT
+10,COMMUNICATION ET JOURNALISME (CJ),COM-JOUR,Université Ouaga I Pr JKZ,Ouagadougou,UFR/LAC
+20,COMPTABILITE CONTRÔLE AUDIT,CCA,Université Ouaga I Pr JKZ,Ouagadougou,IBAM
+69,Comptabilité Contrôle et Audit (CCA),CCA,Centre Universitaire Polytechnique de Kaya,Kaya,IUT
+78,Comptabilité-Contrôle-Audit (CCA),CCA,Université de Dedougou,Dedougou,IUP
+85,Droit,SJP,Centre Universitaire de Banfora,Banfora,CUP/Banfora
+61,Finances Comptabilité et Gestion d'Entréprise (FCGE),FCGE,Université NAZI BONI - Bobo Dioulasso,Bobo Dioulasso,IUT
+71,Finances-Comptabilité,FC,Université de Ouahigouya,Ouahigouya,IFPM
+51,Génie Biologique,GENIE-BIO,Université NAZI BONI - Bobo Dioulasso,Bobo Dioulasso,UFR/SJPEG
+66,Génie Civil (GC),GENIE-CIV,Université NAZI BONI - Bobo Dioulasso,Bobo Dioulasso,IUT
+80,Génie Civil (GC),GC,Université de Fada N'Gourma,Fada N'Gourma,UDFG
+40,Génie Civil/Bâtiment et Travaux Publics,GC-BTP,Université NORBERT ZONGO - Koudougou,Koudougou,IUT
+41,Génie Electrique (GE),GENIE-ELEC,Université NORBERT ZONGO - Koudougou,Koudougou,IUT
+65,"Génie Electrique, option Electronique (ELO)",ELO,Université NAZI BONI - Bobo Dioulasso,Bobo Dioulasso,IUT
+64,"Génie Electrique, option Electrotechnique (ETK)",ETK,Université NAZI BONI - Bobo Dioulasso,Bobo Dioulasso,IUT
+63,Génie Industriel et Maintenance ( GIM),GIM,Université NAZI BONI - Bobo Dioulasso,Bobo Dioulasso,IUT
+62,Génie Mécanique et Productique (GMP),GMP,Université NAZI BONI - Bobo Dioulasso,Bobo Dioulasso,IUT
+81,Génie Minier (GM),GM,Université de Fada N'Gourma,Fada N'Gourma,UDFG
+31,GEOGRAPHIE,GEO,Université NORBERT ZONGO - Koudougou,Koudougou,UFR/LSH
+2,GEOGRAPHIE,GEO,Université Ouaga I Pr JKZ,Ouagadougou,UFR/SH
+73,Gestion des Ressources Humaines,GRH,Université de Ouahigouya,Ouahigouya,IFPM
+83,Gestion du Patrimoine Culturel et Touristique,GPCT,Centre Universitaire de Gaoua,Gaoua,CUP/Gaoua
+74,Gestion Foncière et Immobilière,GFI,Université de Ouahigouya,Ouahigouya,ESJPA
+32,HISTOIRE ET ARCHEOLOGIE,HIST-ARCH,Université NORBERT ZONGO - Koudougou,Koudougou,UFR/LSH
+3,HISTOIRE ET ARCHEOLOGIE,HISTO-ARCH,Université Ouaga I Pr JKZ,Ouagadougou,UFR/SH
+53,Histoire et archeologie,HIST-ARCH,Université NAZI BONI - Bobo Dioulasso,Bobo Dioulasso,UFR/SJPEG
+54,Histoire et archeologie,Anthropologie,Université NAZI BONI - Bobo Dioulasso,Bobo Dioulasso,UFR/SJPEG
+86,LETTRES MODERNES,LET-MOD,Centre Universitaire de Banfora,Banfora,CUP/Banfora
+87,LETTRES MODERNES,LET-MOD,Centre Universitaire de Banfora,Banfora,CUP/Banfora
+35,LETTRES MODERNES,LET-MOD,Université NORBERT ZONGO - Koudougou,Koudougou,UFR/LSH
+52,Lettres Modernes,LET-MOD,Université NAZI BONI - Bobo Dioulasso,Bobo Dioulasso,UFR/SJPEG
+6,LETTRES MODERNES,LET-MOD,Université Ouaga I Pr JKZ,Ouagadougou,UFR/LAC
+67,Licence de Statistique et Informatique Appliquée à l'Economie (LSIE),LSIE,Centre Universitaire Polytechnique de Kaya,Kaya,UFR/ST
+50,Licence en Statistique et Informatique (LSI),LSI,Université NAZI BONI - Bobo Dioulasso,Bobo Dioulasso,UFR/SJPEG
+43,Licence professionnelle en sciences techniques et comptables,FC,Université NORBERT ZONGO - Koudougou,Koudougou,IUT
+9,LINGUISTIQUE,LINGUIST,Université Ouaga I Pr JKZ,Ouagadougou,UFR/LAC
+19,MANAGEMENT DE LA QUALITE EN AGRO-ALIMENTAIRE (MQA),MQA,Université Ouaga I Pr JKZ,Ouagadougou,UFR/SVT
+77,Management et Contrôle de Qualité en Agro-alimentaire (MCQA),MCQA,Université de Dedougou,Dedougou,UFR/SAT
+45,Management et Gestion des Entreprises Touristiques et Hôtelières (MGETH),MGETH,Université NORBERT ZONGO - Koudougou,Koudougou,IUT
+21,MARKETING ET GESTION,MG,Université Ouaga I Pr JKZ,Ouagadougou,IBAM
+72,Marketing et Gestion,MARK-GEST,Université de Ouahigouya,Ouahigouya,IFPM
+44,Marketing et Gestion (MG),MARK-GES,Université NORBERT ZONGO - Koudougou,Koudougou,IUT
+60,Marketing et Gestion Commercial (MGC),MGC,Université NAZI BONI - Bobo Dioulasso,Bobo Dioulasso,IUT
+84,Mathematique Physique Chimie Informatique (MPCI),MPCI,Centre Universitaire de Banfora,Banfora,CUP/Banfora
+37,Mathématiques Physique Chimie et Informatique,MPCI,Université NORBERT ZONGO - Koudougou,Koudougou,UFR/ST
+49,Mathématiques Physiques Informatique (MPI),MPI,Université NAZI BONI - Bobo Dioulasso,Bobo Dioulasso,UFR/SJPEG
+68,Maths-Physique-Chimie-Informatique (MPCI),MPCI,Centre Universitaire Polytechnique de Kaya,Kaya,UFR/ST
+70,Médecine,MEDECINE,Université de Ouahigouya,Ouahigouya,ESSAN
+55,Médecine,MEDECINE,Université NAZI BONI - Bobo Dioulasso,Bobo Dioulasso,INSSA
+12,MEDECINE,MEDECINE,Université Ouaga I Pr JKZ,Ouagadougou,UFR/SDS
+24,METHODE INFORMATIQUE APPLIQUEE A LA GESTION,MIAGE,Université Ouaga I Pr JKZ,Ouagadougou,IBAM
+79,Méthodes Informatiques Appliqués à la Gestion,MIAGE,Université de Dedougou,Dedougou,IUP
+56,Pharmacie,PHARMA,Université NAZI BONI - Bobo Dioulasso,Bobo Dioulasso,INSSA
+13,PHARMACIE,PHARMA,Université Ouaga I Pr JKZ,Ouagadougou,UFR/SDS
+5,PHILOSOPHIE,PHILO,Université Ouaga I Pr JKZ,Ouagadougou,UFR/SH
+92,Programme de formation en pédagogie et didactique appropriées à l'enseignement supérieur,PFPDA,Université Ouaga I Pr JKZ,Ouagadougou,UFR/LAC
+33,PSYCHOLOGIE,PSYCHO,Université NORBERT ZONGO - Koudougou,Koudougou,UFR/LSH
+4,PSYCHOLOGIE,PSYCHO,Université Ouaga I Pr JKZ,Ouagadougou,UFR/SH
+88,Réseaux Informatiques et Télécommunications,Réseaux Télécom,Université Catholique de l’Afrique de l’Ouest-Unité Universitaire à Bobo Dioulasso,Bobo Dioulasso,UCAO-UUB
+48,Sciences biologiques (SB),SB,Université NAZI BONI - Bobo Dioulasso,Bobo Dioulasso,UFR/SJPEG
+76,Sciences Biologiques (SB),SB,Université de Dedougou,Dedougou,UFR/SAT
+82,Sciences Biologiques Appliquée,SBA,Centre Universitaire de Gaoua,Gaoua,CUP/Gaoua
+36,Sciences de l'Information Documentaire,SID,Université NORBERT ZONGO - Koudougou,Koudougou,UFR/LSH
+38,Sciences de la Vie et de la Terre,SVT,Université NORBERT ZONGO - Koudougou,Koudougou,UFR/ST
+39,Sciences Economiques et de Gestion,ECO,Université NORBERT ZONGO - Koudougou,Koudougou,UFR/SEG
+47,Sciences Economiques et de Gestion (SEG),SEG,Université NAZI BONI - Bobo Dioulasso,Bobo Dioulasso,UFR/SJPEG
+75,Sciences et Technologie,ST,Université de Ouahigouya,Ouahigouya,ESST
+18,"SCIENCES ET TEHNOLOGIE (ST) - CHIMIE, BIOLOGIE, GEOLOGIE",ST-CHI-BIO,Université Ouaga I Pr JKZ,Ouagadougou,UFR/SVT
+16,"SCIENCES ET TEHNOLOGIE (ST) - MATHS, PHYSIQUES, CHIMIE ET INFORMATIQUE",MPCI,Université Ouaga I Pr JKZ,Ouagadougou,UFR/SEA
+26,SCIENCES INFORMATIQUES APPLIQUEES,SIA,Université Ouaga I Pr JKZ,Ouagadougou,IFOAD
+46,Sciences Juridiques et Politiques (SJP),SJP,Université NAZI BONI - Bobo Dioulasso,Bobo Dioulasso,UFR/SJPEG
+57,Sécretariat de Direction (SD),SD,Université NAZI BONI - Bobo Dioulasso,Bobo Dioulasso,IUT
+1,SOCIOLOGIE,Socio,Université Ouaga I Pr JKZ,Ouagadougou,UFR/SH
+25,STATISTIQUES SOCIALES,STAT-SO,Université Ouaga I Pr JKZ,Ouagadougou,ISSP
+15,TECHNICIEN SUPERIEUR DE SANTE (TSS) ANALYSES BIOMEDICALES,TECHN-BIO,Université Ouaga I Pr JKZ,Ouagadougou,UFR/SDS
+42,Techniques Administratives (TA),TECH-ADM,Université NORBERT ZONGO - Koudougou,Koudougou,IUT
+17,TECHNOLOGIE SOLAIRE ET APPLIQUEE (TSA),TSA,Université Ouaga I Pr JKZ,Ouagadougou,UFR/SEA

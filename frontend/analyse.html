@@ -85,13 +85,32 @@
     <!-- INTRO -->
     <div class="mb-8">
       <div class="flex flex-wrap items-center gap-3 mb-3">
-        <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white">Étape 3 — Analyse de ton profil académique</h2>
-        <span class="inline-flex items-center gap-1.5 bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 px-3 py-1 rounded-full">
-          <span class="material-symbols-outlined text-blue-600 dark:text-blue-400 text-[16px]">auto_awesome</span>
-          <span class="text-blue-700 dark:text-blue-300 text-xs font-semibold uppercase tracking-wider">Analyse IA</span>
-        </span>
+        <div id="badge-niveau" class="hidden items-center gap-1.5 bg-primary/10 border border-primary/20 px-3 py-1.5 rounded-full">
+          <span id="badge-niveau-text" class="text-primary text-sm font-bold"></span>
+        </div>
+        <div id="badge-pct" class="text-xs text-slate-400 font-medium hidden"></div>
       </div>
-      <p class="text-slate-500 dark:text-slate-400 max-w-2xl">Voici le résumé de tes résultats scolaires. Ces données guident nos recommandations d'orientation.</p>
+      <div class="flex items-center gap-4 mb-2">
+        <div id="intro-moy-circle" class="hidden relative w-16 h-16 shrink-0 flex items-center justify-center">
+          <svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
+            <circle cx="18" cy="18" r="15.9" fill="none" stroke="#e2e8f0" stroke-width="3"/>
+            <circle id="intro-moy-arc" cx="18" cy="18" r="15.9" fill="none" stroke="#1e804f" stroke-width="3" stroke-dasharray="0, 100" stroke-linecap="round"/>
+          </svg>
+          <div class="absolute text-center">
+            <p id="intro-moy-val" class="text-sm font-extrabold text-primary leading-none"></p>
+            <p class="text-[8px] text-slate-400 font-semibold">/ 20</p>
+          </div>
+        </div>
+        <div>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+            <span class="inline-flex items-center gap-1.5 bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 px-3 py-1 rounded-full">
+              <span class="material-symbols-outlined text-blue-600 dark:text-blue-400 text-[16px]">auto_awesome</span>
+              <span class="text-blue-700 dark:text-blue-300 text-xs font-semibold uppercase tracking-wider">Analyse IA</span>
+            </span>
+          </h2>
+          <p class="text-slate-500 dark:text-slate-400 max-w-2xl mt-1">Voici le résumé de tes résultats scolaires. Ces données guident nos recommandations d'orientation.</p>
+        </div>
+      </div>
     </div>
 
     <!-- GRID 2 colonnes desktop -->
@@ -107,36 +126,10 @@
               <span class="material-symbols-outlined text-primary text-[22px]">radar</span>
               Performance par matière
             </h3>
-            <span class="text-sm text-primary font-semibold bg-primary/10 px-3 py-1 rounded-full">Semestre 1</span>
+            <span id="radar-label" class="text-sm text-primary font-semibold bg-primary/10 px-3 py-1 rounded-full">Toutes classes</span>
           </div>
-          <div class="relative w-full aspect-square bg-slate-50 dark:bg-slate-800/50 rounded-2xl flex items-center justify-center border border-slate-100 dark:border-slate-700 overflow-hidden p-4">
-            <svg class="w-full h-full drop-shadow-lg" viewBox="0 0 220 220">
-              <!-- Grilles de fond -->
-              <polygon fill="none" stroke="#e2e8f0" stroke-width="1" points="110,20 185,72 158,160 62,160 35,72"/>
-              <polygon fill="none" stroke="#e2e8f0" stroke-width="1" points="110,47 161,83 141,145 79,145 59,83"/>
-              <polygon fill="none" stroke="#e2e8f0" stroke-width="1" points="110,74 137,94 124,130 96,130 83,94"/>
-              <!-- Axes -->
-              <line x1="110" y1="20" x2="110" y2="160" stroke="#e2e8f0" stroke-width="1"/>
-              <line x1="110" y1="110" x2="185" y2="72" stroke="#e2e8f0" stroke-width="1"/>
-              <line x1="110" y1="110" x2="158" y2="160" stroke="#e2e8f0" stroke-width="1"/>
-              <line x1="110" y1="110" x2="62" y2="160" stroke="#e2e8f0" stroke-width="1"/>
-              <line x1="110" y1="110" x2="35" y2="72" stroke="#e2e8f0" stroke-width="1"/>
-              <!-- Données -->
-              <polygon fill="rgba(30,128,79,0.2)" stroke="#1e804f" stroke-width="2.5" stroke-linejoin="round"
-                points="110,28 178,76 148,155 72,155 42,76"/>
-              <!-- Points -->
-              <circle cx="110" cy="28" r="4" fill="#1e804f"/>
-              <circle cx="178" cy="76" r="4" fill="#1e804f"/>
-              <circle cx="148" cy="155" r="4" fill="#1e804f"/>
-              <circle cx="72" cy="155" r="4" fill="#f97316"/>
-              <circle cx="42" cy="76" r="4" fill="#f97316"/>
-              <!-- Labels -->
-              <text text-anchor="middle" x="110" y="13" class="fill-slate-600 dark:fill-slate-300" font-size="10" font-weight="700">MATHS</text>
-              <text text-anchor="start" x="190" y="76" class="fill-slate-600 dark:fill-slate-300" font-size="10" font-weight="700">INFO</text>
-              <text text-anchor="middle" x="155" y="175" class="fill-slate-600 dark:fill-slate-300" font-size="10" font-weight="700">PHYSIQUE</text>
-              <text text-anchor="middle" x="60" y="175" class="fill-slate-600 dark:fill-slate-300" font-size="10" font-weight="700">FRANÇAIS</text>
-              <text text-anchor="end" x="28" y="76" class="fill-slate-600 dark:fill-slate-300" font-size="10" font-weight="700">SVT</text>
-            </svg>
+          <div class="relative w-full bg-slate-50 dark:bg-slate-800/50 rounded-2xl flex items-center justify-center border border-slate-100 dark:border-slate-700 overflow-hidden p-4" style="aspect-ratio: 1/1">
+            <svg id="radar-svg" class="w-full h-full drop-shadow-lg" viewBox="0 0 340 340"></svg>
           </div>
         </div>
 
@@ -146,52 +139,8 @@
             <span class="material-symbols-outlined text-primary text-[22px]">bar_chart</span>
             Notes détaillées
           </h3>
-          <div class="space-y-4">
-            <div>
-              <div class="flex justify-between mb-1.5">
-                <span class="text-sm font-semibold">Informatique</span>
-                <span class="text-sm font-bold text-primary">19.0 / 20</span>
-              </div>
-              <div class="h-2.5 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
-                <div class="bar-fill h-full bg-primary rounded-full" style="width: 95%"></div>
-              </div>
-            </div>
-            <div>
-              <div class="flex justify-between mb-1.5">
-                <span class="text-sm font-semibold">Mathématiques</span>
-                <span class="text-sm font-bold text-primary">18.5 / 20</span>
-              </div>
-              <div class="h-2.5 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
-                <div class="bar-fill h-full bg-primary rounded-full" style="width: 92%"></div>
-              </div>
-            </div>
-            <div>
-              <div class="flex justify-between mb-1.5">
-                <span class="text-sm font-semibold">Physique-Chimie</span>
-                <span class="text-sm font-bold text-primary">17.0 / 20</span>
-              </div>
-              <div class="h-2.5 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
-                <div class="bar-fill h-full bg-primary rounded-full" style="width: 85%"></div>
-              </div>
-            </div>
-            <div>
-              <div class="flex justify-between mb-1.5">
-                <span class="text-sm font-semibold">SVT</span>
-                <span class="text-sm font-bold text-orange-500">11.5 / 20</span>
-              </div>
-              <div class="h-2.5 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
-                <div class="bar-fill h-full bg-orange-400 rounded-full" style="width: 57%"></div>
-              </div>
-            </div>
-            <div>
-              <div class="flex justify-between mb-1.5">
-                <span class="text-sm font-semibold">Français</span>
-                <span class="text-sm font-bold text-orange-500">10.0 / 20</span>
-              </div>
-              <div class="h-2.5 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
-                <div class="bar-fill h-full bg-orange-400 rounded-full" style="width: 50%"></div>
-              </div>
-            </div>
+          <div id="bars-container" class="space-y-4">
+            <p class="text-sm text-slate-400 italic">Chargement...</p>
           </div>
         </div>
 
@@ -206,34 +155,8 @@
             <span class="material-symbols-outlined text-primary text-[22px]">trending_up</span>
             Points forts
           </h3>
-          <div class="space-y-3">
-            <div class="flex items-center justify-between p-3 bg-primary/5 rounded-xl border border-primary/10">
-              <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-primary/15 rounded-lg flex items-center justify-center">
-                  <span class="material-symbols-outlined text-primary text-[18px]">computer</span>
-                </div>
-                <span class="font-semibold text-sm">Informatique</span>
-              </div>
-              <span class="text-sm font-bold bg-primary text-white px-2.5 py-1 rounded-lg">19.0 / 20</span>
-            </div>
-            <div class="flex items-center justify-between p-3 bg-primary/5 rounded-xl border border-primary/10">
-              <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-primary/15 rounded-lg flex items-center justify-center">
-                  <span class="material-symbols-outlined text-primary text-[18px]">calculate</span>
-                </div>
-                <span class="font-semibold text-sm">Mathématiques</span>
-              </div>
-              <span class="text-sm font-bold bg-primary text-white px-2.5 py-1 rounded-lg">18.5 / 20</span>
-            </div>
-            <div class="flex items-center justify-between p-3 bg-primary/5 rounded-xl border border-primary/10">
-              <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-primary/15 rounded-lg flex items-center justify-center">
-                  <span class="material-symbols-outlined text-primary text-[18px]">science</span>
-                </div>
-                <span class="font-semibold text-sm">Physique-Chimie</span>
-              </div>
-              <span class="text-sm font-bold bg-primary text-white px-2.5 py-1 rounded-lg">17.0 / 20</span>
-            </div>
+          <div id="forts-container" class="space-y-3">
+            <p class="text-sm text-slate-400 italic">Chargement...</p>
           </div>
         </div>
 
@@ -243,25 +166,8 @@
             <span class="material-symbols-outlined text-orange-500 text-[22px]">priority_high</span>
             Axes d'amélioration
           </h3>
-          <div class="space-y-3">
-            <div class="flex items-center justify-between p-3 bg-orange-50 dark:bg-orange-900/10 rounded-xl border border-orange-100 dark:border-orange-800/30">
-              <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-orange-100 dark:bg-orange-900/20 rounded-lg flex items-center justify-center">
-                  <span class="material-symbols-outlined text-orange-500 text-[18px]">biotech</span>
-                </div>
-                <span class="font-semibold text-sm">SVT</span>
-              </div>
-              <span class="text-sm font-bold bg-orange-100 text-orange-700 px-2.5 py-1 rounded-lg">11.5 / 20</span>
-            </div>
-            <div class="flex items-center justify-between p-3 bg-orange-50 dark:bg-orange-900/10 rounded-xl border border-orange-100 dark:border-orange-800/30">
-              <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-orange-100 dark:bg-orange-900/20 rounded-lg flex items-center justify-center">
-                  <span class="material-symbols-outlined text-orange-500 text-[18px]">menu_book</span>
-                </div>
-                <span class="font-semibold text-sm">Français</span>
-              </div>
-              <span class="text-sm font-bold bg-orange-100 text-orange-700 px-2.5 py-1 rounded-lg">10.0 / 20</span>
-            </div>
+          <div id="faibles-container" class="space-y-3">
+            <p class="text-sm text-slate-400 italic">Chargement...</p>
           </div>
         </div>
 
@@ -274,10 +180,10 @@
             <div>
               <h4 class="font-bold text-white dark:text-slate-100 mb-2 flex items-center gap-2">
                 Conseil de l'IA
-                <span class="text-[10px] font-bold bg-primary/30 text-primary px-2 py-0.5 rounded">GPT</span>
+                <span class="text-[10px] font-bold bg-primary/30 text-primary px-2 py-0.5 rounded">IA</span>
               </h4>
-              <p class="text-sm text-slate-300 dark:text-slate-300 leading-relaxed">
-                Ton profil est fortement orienté vers les <strong class="text-white">sciences dures</strong>. Pour équilibrer tes résultats, concentre-toi sur la méthodologie de dissertation en Français. Tes performances en Informatique et Maths t'ouvrent la voie vers l'<strong class="text-primary">Ingénierie ou la Tech</strong>.
+              <p id="conseil-ia-text" class="text-sm text-slate-300 dark:text-slate-300 leading-relaxed">
+                Analyse en cours...
               </p>
             </div>
           </div>
@@ -288,18 +194,18 @@
           <div class="relative w-24 h-24 shrink-0 flex items-center justify-center">
             <svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
               <circle cx="18" cy="18" r="15.9" fill="none" stroke="#e2e8f0" stroke-width="3"/>
-              <circle cx="18" cy="18" r="15.9" fill="none" stroke="#1e804f" stroke-width="3"
-                stroke-dasharray="76, 100" stroke-linecap="round"/>
+              <circle id="moy-arc" cx="18" cy="18" r="15.9" fill="none" stroke="#1e804f" stroke-width="3"
+                stroke-dasharray="0, 100" stroke-linecap="round"/>
             </svg>
             <div class="absolute text-center">
-              <p class="text-xl font-extrabold text-primary leading-none">15.2</p>
+              <p id="moy-circle-val" class="text-xl font-extrabold text-primary leading-none">—</p>
               <p class="text-[10px] text-slate-400 font-semibold">/20</p>
             </div>
           </div>
           <div>
             <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider mb-1">Moyenne générale</p>
-            <p class="text-2xl font-extrabold text-slate-900 dark:text-white">15.2 / 20</p>
-            <p class="text-sm text-primary font-semibold mt-1">Très bon niveau ✓</p>
+            <p id="moy-text" class="text-2xl font-extrabold text-slate-900 dark:text-white">— / 20</p>
+            <p id="moy-appreciation" class="text-sm text-primary font-semibold mt-1"></p>
           </div>
         </div>
 
@@ -326,6 +232,285 @@
       </div>
     </div>
   </div>
+
+  <!-- Loading overlay -->
+  <div id="loading-overlay" class="fixed inset-0 z-[200] bg-white/95 dark:bg-background-dark/95 flex flex-col items-center justify-center gap-4 hidden">
+    <div class="w-12 h-12 border-4 border-primary/20 border-t-primary rounded-full animate-spin"></div>
+    <p class="text-lg font-bold text-slate-800 dark:text-white">Analyse IA en cours...</p>
+    <p id="loading-msg" class="text-sm text-slate-500">Envoi des données au modèle d'IA</p>
+  </div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/groq.js"></script>
+  <script>
+    // ── Agréger les notes depuis les bulletins analysés ────────────────────
+    function aggregateNotes() {
+      const bulls = FoStorage.getBulletins();
+      const matMap = {}; // nom → { total, count }
+
+      Object.values(bulls).forEach(b => {
+        if (!b || !b.analyse || !b.analyse.matieres) return;
+        b.analyse.matieres.forEach(m => {
+          const key = m.nom.trim();
+          if (!matMap[key]) matMap[key] = { total: 0, count: 0 };
+          matMap[key].total += (m.moyenne ?? m.notes?.[0] ?? 0);
+          matMap[key].count += 1;
+        });
+      });
+
+      const notes = {};
+      Object.entries(matMap).forEach(([nom, v]) => {
+        notes[nom] = +(v.total / v.count).toFixed(2);
+      });
+      return notes;
+    }
+
+    // ── Dessiner le radar SVG dynamiquement ────────────────────────────────
+    function drawRadar(sorted) {
+      const svg = document.getElementById('radar-svg');
+      const n = Math.min(sorted.length, 8);
+      if (n < 3) {
+        svg.innerHTML = '<text x="170" y="175" text-anchor="middle" font-size="12" class="fill-slate-400">Pas assez de matières pour le radar</text>';
+        return;
+      }
+      const cx = 170, cy = 170, R = 100;
+      const levels = 4;
+      let html = '';
+
+      // Grilles concentriques
+      for (let l = 1; l <= levels; l++) {
+        const r = (R / levels) * l;
+        const pts = [];
+        for (let i = 0; i < n; i++) {
+          const angle = (2 * Math.PI * i / n) - Math.PI / 2;
+          pts.push(`${cx + r * Math.cos(angle)},${cy + r * Math.sin(angle)}`);
+        }
+        html += `<polygon fill="none" stroke="#e2e8f0" stroke-width="0.8" points="${pts.join(' ')}"/>`;
+      }
+
+      // Axes
+      for (let i = 0; i < n; i++) {
+        const angle = (2 * Math.PI * i / n) - Math.PI / 2;
+        html += `<line x1="${cx}" y1="${cy}" x2="${cx + R * Math.cos(angle)}" y2="${cy + R * Math.sin(angle)}" stroke="#e2e8f0" stroke-width="0.8"/>`;
+      }
+
+      // Données
+      const dataPts = [];
+      const circles = [];
+      for (let i = 0; i < n; i++) {
+        const note = sorted[i][1];
+        const pct = Math.min(note / 20, 1);
+        const angle = (2 * Math.PI * i / n) - Math.PI / 2;
+        const x = cx + R * pct * Math.cos(angle);
+        const y = cy + R * pct * Math.sin(angle);
+        dataPts.push(`${x.toFixed(1)},${y.toFixed(1)}`);
+        const color = note >= 12 ? '#1e804f' : '#f97316';
+        circles.push(`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4.5" fill="${color}" stroke="white" stroke-width="1.5"/>`);
+      }
+      html += `<polygon fill="rgba(30,128,79,0.15)" stroke="#1e804f" stroke-width="2" stroke-linejoin="round" points="${dataPts.join(' ')}"/>`;
+      html += circles.join('');
+
+      // Labels — texte complet, multiligne si besoin
+      for (let i = 0; i < n; i++) {
+        const angle = (2 * Math.PI * i / n) - Math.PI / 2;
+        const cosA = Math.cos(angle);
+        const sinA = Math.sin(angle);
+        const labelDist = R + 30;
+        const lx = cx + labelDist * cosA;
+        const ly = cy + labelDist * sinA;
+        const anchor = Math.abs(cosA) < 0.15 ? 'middle' : cosA > 0 ? 'start' : 'end';
+        const fullLabel = sorted[i][0];
+
+        // Découper en mots, max 2 lignes
+        const words = fullLabel.split(/[\s-]+/);
+        let lines = [];
+        if (words.length <= 2) {
+          lines = [fullLabel];
+        } else {
+          const mid = Math.ceil(words.length / 2);
+          lines = [words.slice(0, mid).join(' '), words.slice(mid).join(' ')];
+        }
+
+        const lineH = 11;
+        const startY = ly - ((lines.length - 1) * lineH) / 2 + 3;
+        lines.forEach((line, li) => {
+          html += `<text text-anchor="${anchor}" x="${lx.toFixed(1)}" y="${(startY + li * lineH).toFixed(1)}" class="fill-slate-600 dark:fill-slate-300" font-size="8.5" font-weight="600">${line}</text>`;
+        });
+      }
+
+      svg.innerHTML = html;
+    }
+
+    // ── Appréciation textuelle ─────────────────────────────────────────────
+    function appreciation(moy) {
+      if (moy >= 16) return 'Excellent niveau ✓';
+      if (moy >= 14) return 'Très bon niveau ✓';
+      if (moy >= 12) return 'Bon niveau ✓';
+      if (moy >= 10) return 'Niveau passable';
+      return 'Niveau à améliorer';
+    }
+
+    // ── Rendu complet ──────────────────────────────────────────────────────
+    function renderPage(notes, conseilIA) {
+      const sorted = Object.entries(notes).sort((a, b) => b[1] - a[1]);
+      const values = sorted.map(e => e[1]);
+      const moyenne = values.length ? +(values.reduce((a, b) => a + b, 0) / values.length).toFixed(1) : 0;
+
+      // Badge niveau
+      const badge = document.getElementById('badge-niveau');
+      const badgeText = document.getElementById('badge-niveau-text');
+      badge.classList.remove('hidden');
+      badge.classList.add('flex');
+      badgeText.textContent = appreciation(moyenne);
+
+      // Intro circle
+      const introCircle = document.getElementById('intro-moy-circle');
+      introCircle.classList.remove('hidden');
+      document.getElementById('intro-moy-val').textContent = moyenne.toFixed(1);
+      document.getElementById('intro-moy-arc').setAttribute('stroke-dasharray', `${Math.round(moyenne / 20 * 100)}, 100`);
+
+      // Radar
+      drawRadar(sorted);
+
+      // Barres
+      const bars = document.getElementById('bars-container');
+      bars.innerHTML = sorted.map(([mat, note]) => {
+        const pct = Math.round((note / 20) * 100);
+        const isGood = note >= 12;
+        return `<div>
+          <div class="flex justify-between mb-1.5">
+            <span class="text-sm font-semibold">${mat}</span>
+            <span class="text-sm font-bold ${isGood ? 'text-primary' : 'text-orange-500'}">${note.toFixed(1)} / 20</span>
+          </div>
+          <div class="h-2.5 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+            <div class="bar-fill h-full ${isGood ? 'bg-primary' : 'bg-orange-400'} rounded-full" style="width: ${pct}%"></div>
+          </div>
+        </div>`;
+      }).join('');
+
+      // Points forts (top 3, >= 12)
+      const forts = sorted.filter(e => e[1] >= 12).slice(0, 3);
+      const fortsC = document.getElementById('forts-container');
+      fortsC.innerHTML = forts.length ? forts.map(([mat, note]) => `
+        <div class="flex items-center justify-between p-3 bg-primary/5 rounded-xl border border-primary/10">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-primary/15 rounded-lg flex items-center justify-center">
+              <span class="material-symbols-outlined text-primary text-[18px]">star</span>
+            </div>
+            <span class="font-semibold text-sm">${mat}</span>
+          </div>
+          <span class="text-sm font-bold bg-primary text-white px-2.5 py-1 rounded-lg">${note.toFixed(1)} / 20</span>
+        </div>`).join('')
+        : '<p class="text-sm text-slate-400 italic">Aucun point fort identifié</p>';
+
+      // Axes d'amélioration (bottom, < 12 ou les 2 derniers)
+      const faibles = sorted.filter(e => e[1] < 12).length
+        ? sorted.filter(e => e[1] < 12)
+        : sorted.slice(-2);
+      const faiblesC = document.getElementById('faibles-container');
+      faiblesC.innerHTML = faibles.map(([mat, note]) => `
+        <div class="flex items-center justify-between p-3 bg-orange-50 dark:bg-orange-900/10 rounded-xl border border-orange-100 dark:border-orange-800/30">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-orange-100 dark:bg-orange-900/20 rounded-lg flex items-center justify-center">
+              <span class="material-symbols-outlined text-orange-500 text-[18px]">trending_down</span>
+            </div>
+            <span class="font-semibold text-sm">${mat}</span>
+          </div>
+          <span class="text-sm font-bold bg-orange-100 text-orange-700 px-2.5 py-1 rounded-lg">${note.toFixed(1)} / 20</span>
+        </div>`).join('');
+
+      // Conseil IA
+      document.getElementById('conseil-ia-text').innerHTML = conseilIA || 'Aucun conseil disponible.';
+
+      // Moyenne générale (bottom card)
+      document.getElementById('moy-circle-val').textContent = moyenne.toFixed(1);
+      document.getElementById('moy-arc').setAttribute('stroke-dasharray', `${Math.round(moyenne / 20 * 100)}, 100`);
+      document.getElementById('moy-text').textContent = moyenne.toFixed(1) + ' / 20';
+      document.getElementById('moy-appreciation').textContent = appreciation(moyenne);
+
+      // Sauvegarder l'analyse globale
+      FoStorage.saveAnalyse({
+        notes,
+        moyenne,
+        pointsForts: forts.map(e => e[0]),
+        axesAmelioration: faibles.map(e => e[0]),
+        conseilIA
+      });
+    }
+
+    // ── Initialisation ─────────────────────────────────────────────────────
+    (async function init() {
+      const overlay = document.getElementById('loading-overlay');
+      const profil = FoStorage.getProfil();
+      const bulls  = FoStorage.getBulletins();
+      const hasAnalyse = Object.values(bulls).some(b => b && b.analyse && b.analyse.matieres);
+
+      // Agréger les notes réelles des bulletins
+      const notes = aggregateNotes();
+      const sorted = Object.entries(notes).sort((a, b) => b[1] - a[1]);
+
+      if (sorted.length === 0) {
+        // Aucun bulletin analysé → pas de données
+        document.getElementById('bars-container').innerHTML = '<p class="text-sm text-slate-400 italic">Aucun bulletin analysé. Retourne à l\'étape précédente pour importer tes bulletins.</p>';
+        document.getElementById('forts-container').innerHTML = '<p class="text-sm text-slate-400 italic">—</p>';
+        document.getElementById('faibles-container').innerHTML = '<p class="text-sm text-slate-400 italic">—</p>';
+        document.getElementById('conseil-ia-text').textContent = 'Importe et analyse tes bulletins pour recevoir un conseil personnalisé.';
+        return;
+      }
+
+      // Vérifier si on a déjà une analyse sauvegardée
+      const savedAnalyse = FoStorage.getAnalyse();
+      if (savedAnalyse && savedAnalyse.conseilIA && savedAnalyse.notes) {
+        renderPage(notes, savedAnalyse.conseilIA);
+        return;
+      }
+
+      // Générer le conseil IA via Groq
+      overlay.classList.remove('hidden');
+      try {
+        document.getElementById('loading-msg').textContent = 'Génération du conseil personnalisé...';
+        // Traduire le code carrière en libellé
+        const careerMap = { tech: 'Technologie / Informatique', health: 'Santé / Médecine', biz: 'Business / Commerce / Gestion', eng: 'Ingénierie / Sciences de l\'ingénieur', edu: 'Éducation / Enseignement', admin: 'Administration publique / Droit' };
+        const careerLabel = careerMap[profil?.carriere] || 'Non précisé';
+        const forts = sorted.filter(e => e[1] >= 12).slice(0, 3).map(e => e[0]);
+        const faibles = sorted.filter(e => e[1] < 12).map(e => e[0]);
+        const prompt = `Tu es un conseiller d'orientation scolaire expert du système éducatif du Burkina Faso.
+
+PROFIL DE L'ÉLÈVE :
+- Série du Baccalauréat : ${profil?.bac || 'Non précisée'}
+- Matières favorites : ${(profil?.matieres || []).join(', ') || 'Non précisées'}
+- Domaine de carrière souhaité : ${careerLabel}
+- Budget annuel : ${profil?.budget || 'Non précisé'}
+
+RÉSULTATS SCOLAIRES (moyennes agrégées sur toutes les classes) :
+${sorted.map(([m, n]) => `- ${m} : ${n}/20`).join('\n')}
+- Moyenne générale : ${(sorted.reduce((s, e) => s + e[1], 0) / sorted.length).toFixed(1)}/20
+
+POINTS FORTS : ${forts.length ? forts.join(', ') : 'Aucun >= 12/20'}
+AXES D'AMÉLIORATION : ${faibles.length ? faibles.join(', ') : 'Toutes les matières >= 12/20'}
+
+INSTRUCTIONS :
+1. Analyse la cohérence entre sa série de Bac (${profil?.bac || '?'}), ses points forts/faibles et son domaine de carrière souhaité (${careerLabel}).
+2. Donne un conseil TRÈS personnalisé de 3-4 phrases en HTML (utilise <strong> pour les mots clés).
+3. Mentionne des filières CONCRÈTES au Burkina Faso adaptées à son profil (ex: ISGE, 2iE, UNB, UNZ, ESI, ESCO-IGES, etc.).
+4. Si ses notes faibles peuvent être un obstacle pour son domaine souhaité, dis-le clairement mais avec bienveillance.
+5. Propose un plan d'action concret (matières à renforcer, type de préparation).`;
+
+        const conseil = await groqChat([
+          { role: 'system', content: 'Tu es un conseiller d\'orientation scolaire bienveillant et expert du Burkina Faso. Réponds UNIQUEMENT avec le conseil personnalisé (3-4 phrases en HTML avec <strong>). Pas de JSON, pas de titre, pas de liste à puces. Sois direct et concret.' },
+          { role: 'user', content: prompt }
+        ], { maxTokens: 500, temperature: 0.6 });
+
+        overlay.classList.add('hidden');
+        renderPage(notes, conseil.trim());
+      } catch (err) {
+        console.error('Erreur Groq conseil:', err);
+        overlay.classList.add('hidden');
+        const fallback = `Tes résultats montrent un profil intéressant. Continue à travailler tes matières fortes tout en améliorant les plus faibles pour un dossier équilibré.`;
+        renderPage(notes, fallback);
+      }
+    })();
+  </script>
 
 </body>
 </html>

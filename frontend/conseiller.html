@@ -174,51 +174,48 @@
     </p>
   </footer>
 
+  <script src="js/storage.js"></script>
+  <script src="js/groq.js"></script>
   <script>
-    // ── Réponses simulées ──────────────────────────────────────────────
-    const aiResponses = {
-      'pourquoi cette filière me correspond': [
-        "D'après ton profil, tu as de solides bases en mathématiques et une forte curiosité pour les sciences. Ces atouts sont exactement ce que demande cette filière !",
-        "Ton score de compatibilité est basé sur tes résultats académiques, tes centres d'intérêt et ton projet professionnel. Continue dans cette voie, tu as les ressources pour réussir. 💪"
-      ],
-      'débouchés': [
-        "Les débouchés dans ce domaine sont très variés au Burkina Faso et dans la sous-région :",
-        "• Entreprises privées et startups\n• Administration publique\n• ONG et organisations internationales\n• Entrepreneuriat\n\nLe marché de l'emploi est en croissance constante dans ce secteur."
-      ],
-      'salaire': [
-        "Les salaires varient selon l'expérience et le secteur :",
-        "• Débutant (0-2 ans) : 150 000 – 300 000 FCFA/mois\n• Junior (2-5 ans) : 300 000 – 600 000 FCFA/mois\n• Senior (5+ ans) : 600 000 FCFA et plus\n\nLes diplômés travaillant pour des entreprises internationales peuvent atteindre des salaires bien supérieurs."
-      ],
-      'comparer': [
-        "Pour comparer deux filières efficacement, dis-moi lesquelles t'intéressent ! Je peux analyser pour toi les critères suivants : durée des études, coût de la scolarité, débouchés, salaires moyens et niveau de difficulté.",
-        "Laquelle voudrais-tu comparer avec ton choix principal ?"
-      ],
-      'compétences': [
-        "Les compétences clés à développer dans cette filière sont :",
-        "• Rigueur et organisation\n• Capacité d'analyse et de synthèse\n• Travail en équipe\n• Maîtrise des outils numériques\n• Communication professionnelle\n\nCes compétences s'acquièrent au fil des cours, des stages et des projets pratiques."
-      ],
-      'université': [
-        "Plusieurs établissements de qualité au Burkina Faso proposent cette formation. Je te recommande de visiter leurs campus ouverts et de rencontrer des étudiants actuels pour mieux choisir.",
-        "As-tu une préférence pour Ouagadougou ou Bobo-Dioulasso ? Je peux affiner ma réponse selon ta localisation."
-      ],
-      'default': [
-        "Merci pour ta question ! C'est un sujet très important pour ton orientation.",
-        "Je suis en train d'analyser les informations liées à ton profil pour te donner une réponse personnalisée. En attendant, n'hésite pas à me donner plus de détails sur ta situation pour que je puisse mieux t'aider. 😊"
-      ]
-    };
+    // ── État global ──
+    let chatHistory = []; // [{role, content}] pour l'API Groq
+    let systemPromptText = '';
 
-    function getAIResponse(question) {
-      const q = question.toLowerCase();
-      if (q.includes('pourquoi') || q.includes('correspond') || q.includes('compatible')) return aiResponses['pourquoi cette filière me correspond'];
-      if (q.includes('débouché') || q.includes('emploi') || q.includes('travail') || q.includes('métier')) return aiResponses['débouchés'];
-      if (q.includes('salaire') || q.includes('revenu') || q.includes('argent') || q.includes('gagne')) return aiResponses['salaire'];
-      if (q.includes('compar') || q.includes('différence') || q.includes('entre')) return aiResponses['comparer'];
-      if (q.includes('compétence') || q.includes('qualité') || q.includes('aptitude')) return aiResponses['compétences'];
-      if (q.includes('université') || q.includes('école') || q.includes('établissement') || q.includes('faculté')) return aiResponses['université'];
-      return aiResponses['default'];
-    }
+    // ── Init au chargement ──
+    (function init() {
+      const profil  = FoStorage.getProfil();
+      const analyse = FoStorage.getAnalyse();
+      systemPromptText = buildSystemPrompt(profil, analyse);
 
-    // ── Helpers ──────────────────────────────────────────────────────
+      // Personnaliser le greeting
+      const greetingEl = document.querySelector('#msg-greeting .bg-white p, #msg-greeting .dark\\:bg-slate-800 p');
+      if (profil && profil.bac) {
+        const firstBubble = document.querySelectorAll('#msg-greeting .bg-white p, #msg-greeting [class*="bg-white"] p')[0];
+        if (firstBubble) {
+          let greeting = 'Bonjour ! Je suis ravi de t\'accompagner dans ta réflexion.';
+          if (profil.ville) greeting += ` Tu es basé(e) à ${profil.ville}, c'est noté.`;
+          greeting += ` Avec ton Bac série ${profil.bac}, l'orientation est une étape importante et je suis là pour t'apporter des réponses rassurantes et précises.`;
+          firstBubble.textContent = greeting;
+        }
+      }
+
+      // Restaurer l'historique du chat
+      const saved = FoStorage.getChat();
+      if (saved && saved.length > 0) {
+        chatHistory = saved.filter(m => m.role === 'user' || m.role === 'assistant');
+        // Re-render les messages sauvegardés
+        saved.forEach(m => {
+          if (m.role === 'user') {
+            addUserMessageDOM(m.content, m.time || '');
+          } else if (m.role === 'assistant') {
+            addAIMessageDOM([m.content], m.time || '');
+          }
+        });
+        document.getElementById('quick-chips').style.display = 'none';
+      }
+    })();
+
+    // ── Helpers ──
     function nowTime() {
       return new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
     }
@@ -228,12 +225,26 @@
       container.scrollTop = container.scrollHeight;
     }
 
-    // Affiche l'heure du greeting
     document.getElementById('greeting-time').textContent = nowTime();
 
-    // ── Ajouter message utilisateur ──────────────────────────────────
-    function addUserMessage(text) {
-      const t = nowTime();
+    function escapeHtml(str) {
+      const d = document.createElement('div');
+      d.textContent = str;
+      return d.innerHTML;
+    }
+
+    // ── Formatage markdown simple ──
+    function formatResponse(text) {
+      return text
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\n• /g, '\n&#8226; ')
+        .replace(/\n- /g, '\n&#8226; ')
+        .replace(/\n/g, '<br>');
+    }
+
+    // ── Ajouter message utilisateur (DOM only) ──
+    function addUserMessageDOM(text, time) {
+      const t = time || nowTime();
       const el = document.createElement('div');
       el.className = 'flex flex-row-reverse gap-3 max-w-[85%] ml-auto';
       el.innerHTML = `
@@ -251,7 +262,7 @@
       scrollBottom();
     }
 
-    // ── Indicateur "en train d'écrire" ───────────────────────────────
+    // ── Indicateur "en train d'écrire" ──
     function addTypingIndicator() {
       const el = document.createElement('div');
       el.id = 'typing-indicator';
@@ -273,14 +284,14 @@
       return el;
     }
 
-    // ── Ajouter réponse IA ───────────────────────────────────────────
-    function addAIMessage(lines) {
-      const t = nowTime();
+    // ── Ajouter réponse IA (DOM only) ──
+    function addAIMessageDOM(lines, time) {
+      const t = time || nowTime();
       const el = document.createElement('div');
       el.className = 'flex gap-3 max-w-[85%]';
       const bubbles = lines.map(line =>
         `<div class="bg-white dark:bg-slate-800 p-4 rounded-2xl rounded-tl-none message-shadow border border-primary/5">
-          <p class="text-[15px] leading-relaxed whitespace-pre-line">${escapeHtml(line)}</p>
+          <p class="text-[15px] leading-relaxed whitespace-pre-line">${formatResponse(line)}</p>
         </div>`
       ).join('');
       el.innerHTML = `
@@ -296,25 +307,57 @@
       scrollBottom();
     }
 
-    // ── Envoyer message ──────────────────────────────────────────────
-    function sendMessage() {
+    // ── Envoyer message (avec appel Groq) ──
+    async function sendMessage() {
       const input = document.getElementById('chat-input');
       const text = input.value.trim();
       if (!text) return;
 
-      addUserMessage(text);
+      const time = nowTime();
+      addUserMessageDOM(text, time);
       input.value = '';
       input.style.height = 'auto';
 
       // Masquer les chips après premier message
       document.getElementById('quick-chips').style.display = 'none';
 
+      // Ajouter à l'historique
+      chatHistory.push({ role: 'user', content: text });
+
       const typing = addTypingIndicator();
 
-      setTimeout(() => {
+      try {
+        // Construire les messages pour Groq
+        const messages = [
+          { role: 'system', content: systemPromptText },
+          ...chatHistory
+        ];
+
+        const response = await groqChat(messages, { maxTokens: 1024, temperature: 0.7 });
+
         typing.remove();
-        addAIMessage(getAIResponse(text));
-      }, 1200 + Math.random() * 600);
+
+        const aiTime = nowTime();
+        addAIMessageDOM([response], aiTime);
+
+        // Sauvegarder dans l'historique
+        chatHistory.push({ role: 'assistant', content: response });
+
+        // Persister dans localStorage
+        const toSave = chatHistory.map((m, i) => ({
+          ...m,
+          time: m.time || aiTime
+        }));
+        FoStorage.saveChat(toSave);
+
+      } catch (e) {
+        typing.remove();
+        console.warn('Groq chat error:', e);
+        const fallback = 'Désolé, je rencontre un problème technique. Vérifie ta connexion internet et réessaie. Si le problème persiste, n\'hésite pas à reformuler ta question.';
+        const aiTime = nowTime();
+        addAIMessageDOM([fallback], aiTime);
+        chatHistory.push({ role: 'assistant', content: fallback });
+      }
     }
 
     function sendChip(btn) {
@@ -332,15 +375,12 @@
 
     function clearChat() {
       const container = document.getElementById('chat-messages');
-      // Garder uniquement les deux premiers enfants (date + greeting)
       while (container.children.length > 2) {
         container.removeChild(container.lastChild);
       }
       document.getElementById('quick-chips').style.display = 'flex';
-    }
-
-    function escapeHtml(str) {
-      return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+      chatHistory = [];
+      FoStorage.clearChat();
     }
   </script>
 

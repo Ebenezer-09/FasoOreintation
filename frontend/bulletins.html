@@ -4,6 +4,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,6 +37,7 @@
       direction: ltr; -webkit-font-feature-settings: 'liga';
       font-feature-settings: 'liga'; -webkit-font-smoothing: antialiased;
     }
+    .ocr-progress { transition: width 0.3s ease; }
   </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
@@ -84,107 +86,160 @@
       <p class="text-slate-500 dark:text-slate-400 max-w-2xl">Notre système analysera tes résultats pour identifier tes points forts et les filières adaptées à ton profil.</p>
     </div>
 
-    <!-- PROGRESS CLASSE -->
-    <div class="bg-white dark:bg-slate-900 rounded-2xl p-5 sm:p-6 shadow-sm border border-slate-100 dark:border-slate-800 mb-8">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">Étape en cours</p>
-          <p class="text-xl font-bold text-slate-900 dark:text-white">Classe de 2nde</p>
-          <p class="text-sm text-slate-500 mt-1">Complète ton profil pour obtenir une analyse précise.</p>
-        </div>
-        <div class="flex flex-col items-start sm:items-end gap-2">
-          <span class="text-primary font-bold text-sm bg-primary/10 px-3 py-1 rounded-full">1 / 4 classes</span>
-          <div class="flex gap-1.5 w-48">
-            <div class="h-2 flex-1 rounded-full bg-primary"></div>
-            <div class="h-2 flex-1 rounded-full bg-primary/15"></div>
-            <div class="h-2 flex-1 rounded-full bg-primary/15"></div>
-            <div class="h-2 flex-1 rounded-full bg-primary/15"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- GRILLE DES DOCUMENTS -->
     <h3 class="font-bold text-slate-800 dark:text-white text-lg mb-4">Tes documents à fournir</h3>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
 
-      <!-- Card 1: 2nde (Active) -->
-      <div class="bg-white dark:bg-slate-900 border-2 border-primary rounded-2xl p-5 shadow-md">
-        <div class="flex justify-between items-start mb-5">
+      <!-- Card 1: 2nde -->
+      <div class="bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 rounded-2xl p-5" id="card-seconde">
+        <div class="flex justify-between items-start mb-4">
           <div class="flex items-center gap-3">
-            <div class="p-2 bg-primary/10 text-primary rounded-xl">
+            <div class="p-2 bg-slate-100 dark:bg-slate-800 text-slate-400 rounded-xl" id="icon-box-seconde">
               <span class="material-symbols-outlined text-[22px]">school</span>
             </div>
             <div>
-              <h4 class="font-bold text-slate-900 dark:text-slate-100">Bulletins de 2nde</h4>
-              <p class="text-xs text-slate-500">Annuel ou par trimestres</p>
+              <h4 class="font-bold text-slate-800 dark:text-slate-100">Bulletins de 2nde</h4>
+              <p class="text-xs text-slate-500" id="status-seconde">Annuel ou par trimestres</p>
             </div>
           </div>
-          <span class="text-[10px] font-bold uppercase tracking-widest bg-primary text-white px-2 py-1 rounded-lg">Requis</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest bg-slate-100 dark:bg-slate-800 text-slate-500 px-2 py-1 rounded-lg" id="badge-seconde">2nde</span>
         </div>
-        <button class="w-full flex items-center justify-center gap-3 p-4 rounded-xl border-2 border-dashed border-primary/40 bg-primary/5 hover:bg-primary/10 transition-all group">
-          <span class="material-symbols-outlined text-primary text-[28px] group-hover:scale-110 transition-transform">picture_as_pdf</span>
-          <span class="text-sm font-semibold text-primary">Importer un PDF ou une image</span>
+        <!-- Barre de progression extraction -->
+        <div id="progress-seconde" class="hidden mb-3">
+          <div class="h-2 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+            <div class="ocr-progress h-full bg-primary rounded-full" style="width:0%" id="bar-seconde"></div>
+          </div>
+          <p class="text-xs text-primary font-semibold mt-1" id="progress-text-seconde">Extraction en cours...</p>
+        </div>
+        <!-- Info fichier chargé -->
+        <div id="file-info-seconde" class="hidden mb-3 flex items-center gap-2 p-2 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
+          <span class="material-symbols-outlined text-primary text-[18px]">description</span>
+          <span class="text-xs text-slate-600 dark:text-slate-300 truncate flex-1" id="file-name-seconde"></span>
+          <span class="material-symbols-outlined text-green-500 text-[18px]">check_circle</span>
+        </div>
+        <!-- Résultats analyse IA -->
+        <div id="result-analyse-seconde" class="hidden mb-3"></div>
+        <!-- Bouton upload -->
+        <input type="file" accept="image/*,.pdf" class="hidden" id="file-seconde" onchange="handleFile('seconde',this)">
+        <button onclick="document.getElementById('file-seconde').click()" class="w-full flex items-center justify-center gap-3 p-4 rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:border-primary/40 hover:bg-primary/5 transition-all group" id="btn-seconde">
+          <span class="material-symbols-outlined text-slate-400 group-hover:text-primary text-[24px] transition-colors">upload_file</span>
+          <span class="text-sm font-semibold text-slate-500 group-hover:text-primary transition-colors">Importer un PDF ou une image</span>
+        </button>
+        <!-- Bouton analyser (affiché après upload) -->
+        <button onclick="analyserBulletin('seconde')" class="hidden mt-3 w-full flex items-center justify-center gap-2 py-3 px-4 bg-primary text-white font-bold rounded-xl text-sm hover:bg-primary/90 transition-all active:scale-95 shadow-lg shadow-primary/20" id="btn-analyse-seconde">
+          <span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+          Analyser avec l'IA
         </button>
       </div>
 
-      <!-- Card 2: 1ère (En attente) -->
-      <div class="bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 rounded-2xl p-5 opacity-75">
-        <div class="flex justify-between items-start mb-5">
+      <!-- Card 2: 1ère -->
+      <div class="bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 rounded-2xl p-5" id="card-premiere">
+        <div class="flex justify-between items-start mb-4">
           <div class="flex items-center gap-3">
-            <div class="p-2 bg-slate-100 dark:bg-slate-800 text-slate-400 rounded-xl">
+            <div class="p-2 bg-slate-100 dark:bg-slate-800 text-slate-400 rounded-xl" id="icon-box-premiere">
               <span class="material-symbols-outlined text-[22px]">history_edu</span>
             </div>
             <div>
               <h4 class="font-bold text-slate-800 dark:text-slate-100">Bulletins de 1ère</h4>
-              <p class="text-xs text-slate-500">Document non ajouté</p>
+              <p class="text-xs text-slate-500" id="status-premiere">Facultatif</p>
             </div>
           </div>
-          <span class="material-symbols-outlined text-slate-300 text-[22px]">pending</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest bg-slate-100 dark:bg-slate-800 text-slate-500 px-2 py-1 rounded-lg" id="badge-premiere">1ère</span>
         </div>
-        <button class="w-full py-3 px-4 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 font-semibold rounded-xl text-sm flex items-center justify-center gap-2 hover:bg-slate-200 transition-colors">
-          <span class="material-symbols-outlined text-[18px]">upload</span>
-          Téléverser un document
+        <div id="progress-premiere" class="hidden mb-3">
+          <div class="h-2 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+            <div class="ocr-progress h-full bg-primary rounded-full" style="width:0%" id="bar-premiere"></div>
+          </div>
+          <p class="text-xs text-primary font-semibold mt-1" id="progress-text-premiere">Extraction en cours...</p>
+        </div>
+        <div id="file-info-premiere" class="hidden mb-3 flex items-center gap-2 p-2 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
+          <span class="material-symbols-outlined text-primary text-[18px]">description</span>
+          <span class="text-xs text-slate-600 dark:text-slate-300 truncate flex-1" id="file-name-premiere"></span>
+          <span class="material-symbols-outlined text-green-500 text-[18px]">check_circle</span>
+        </div>
+        <div id="result-analyse-premiere" class="hidden mb-3"></div>
+        <input type="file" accept="image/*,.pdf" class="hidden" id="file-premiere" onchange="handleFile('premiere',this)">
+        <button onclick="document.getElementById('file-premiere').click()" class="w-full flex items-center justify-center gap-3 p-4 rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:border-primary/40 hover:bg-primary/5 transition-all group" id="btn-premiere">
+          <span class="material-symbols-outlined text-slate-400 group-hover:text-primary text-[24px] transition-colors">upload_file</span>
+          <span class="text-sm font-semibold text-slate-500 group-hover:text-primary transition-colors">Importer un PDF ou une image</span>
+        </button>
+        <button onclick="analyserBulletin('premiere')" class="hidden mt-3 w-full flex items-center justify-center gap-2 py-3 px-4 bg-primary text-white font-bold rounded-xl text-sm hover:bg-primary/90 transition-all active:scale-95 shadow-lg shadow-primary/20" id="btn-analyse-premiere">
+          <span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+          Analyser avec l'IA
         </button>
       </div>
 
-      <!-- Card 3: Terminale (En attente) -->
-      <div class="bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 rounded-2xl p-5 opacity-75">
-        <div class="flex justify-between items-start mb-5">
+      <!-- Card 3: Terminale -->
+      <div class="bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 rounded-2xl p-5" id="card-terminale">
+        <div class="flex justify-between items-start mb-4">
           <div class="flex items-center gap-3">
-            <div class="p-2 bg-slate-100 dark:bg-slate-800 text-slate-400 rounded-xl">
+            <div class="p-2 bg-slate-100 dark:bg-slate-800 text-slate-400 rounded-xl" id="icon-box-terminale">
               <span class="material-symbols-outlined text-[22px]">edit_note</span>
             </div>
             <div>
               <h4 class="font-bold text-slate-800 dark:text-slate-100">Bulletins de Terminale</h4>
-              <p class="text-xs text-slate-500">En cours d'année</p>
+              <p class="text-xs text-slate-500" id="status-terminale">Facultatif</p>
             </div>
           </div>
-          <span class="material-symbols-outlined text-slate-300 text-[22px]">pending</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest bg-slate-100 dark:bg-slate-800 text-slate-500 px-2 py-1 rounded-lg" id="badge-terminale">Terminale</span>
         </div>
-        <button class="w-full py-3 px-4 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 font-semibold rounded-xl text-sm flex items-center justify-center gap-2 hover:bg-slate-200 transition-colors">
-          <span class="material-symbols-outlined text-[18px]">upload</span>
-          Téléverser un document
+        <div id="progress-terminale" class="hidden mb-3">
+          <div class="h-2 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+            <div class="ocr-progress h-full bg-primary rounded-full" style="width:0%" id="bar-terminale"></div>
+          </div>
+          <p class="text-xs text-primary font-semibold mt-1" id="progress-text-terminale">Extraction en cours...</p>
+        </div>
+        <div id="file-info-terminale" class="hidden mb-3 flex items-center gap-2 p-2 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
+          <span class="material-symbols-outlined text-primary text-[18px]">description</span>
+          <span class="text-xs text-slate-600 dark:text-slate-300 truncate flex-1" id="file-name-terminale"></span>
+          <span class="material-symbols-outlined text-green-500 text-[18px]">check_circle</span>
+        </div>
+        <div id="result-analyse-terminale" class="hidden mb-3"></div>
+        <input type="file" accept="image/*,.pdf" class="hidden" id="file-terminale" onchange="handleFile('terminale',this)">
+        <button onclick="document.getElementById('file-terminale').click()" class="w-full flex items-center justify-center gap-3 p-4 rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:border-primary/40 hover:bg-primary/5 transition-all group" id="btn-terminale">
+          <span class="material-symbols-outlined text-slate-400 group-hover:text-primary text-[24px] transition-colors">upload_file</span>
+          <span class="text-sm font-semibold text-slate-500 group-hover:text-primary transition-colors">Importer un PDF ou une image</span>
+        </button>
+        <button onclick="analyserBulletin('terminale')" class="hidden mt-3 w-full flex items-center justify-center gap-2 py-3 px-4 bg-primary text-white font-bold rounded-xl text-sm hover:bg-primary/90 transition-all active:scale-95 shadow-lg shadow-primary/20" id="btn-analyse-terminale">
+          <span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+          Analyser avec l'IA
         </button>
       </div>
 
-      <!-- Card 4: Bac (Verrouillé) -->
-      <div class="bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 rounded-2xl p-5 opacity-60">
-        <div class="flex justify-between items-start mb-5">
+      <!-- Card 4: Bac -->
+      <div class="bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 rounded-2xl p-5" id="card-bac">
+        <div class="flex justify-between items-start mb-4">
           <div class="flex items-center gap-3">
-            <div class="p-2 bg-slate-100 dark:bg-slate-800 text-slate-400 rounded-xl">
+            <div class="p-2 bg-slate-100 dark:bg-slate-800 text-slate-400 rounded-xl" id="icon-box-bac">
               <span class="material-symbols-outlined text-[22px]">workspace_premium</span>
             </div>
             <div>
               <h4 class="font-bold text-slate-800 dark:text-slate-100">Résultats du Bac</h4>
-              <p class="text-xs text-slate-500">Relevé de notes officiel</p>
+              <p class="text-xs text-slate-500" id="status-bac">Relevé de notes officiel</p>
             </div>
           </div>
-          <span class="material-symbols-outlined text-slate-400 text-[22px]">lock</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest bg-slate-100 dark:bg-slate-800 text-slate-500 px-2 py-1 rounded-lg" id="badge-bac">Bac</span>
         </div>
-        <button disabled class="w-full py-3 px-4 bg-slate-100 dark:bg-slate-800 text-slate-400 font-semibold rounded-xl text-sm cursor-not-allowed flex items-center justify-center gap-2">
-          <span class="material-symbols-outlined text-[18px]">schedule</span>
-          Bientôt disponible
+        <div id="progress-bac" class="hidden mb-3">
+          <div class="h-2 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+            <div class="ocr-progress h-full bg-primary rounded-full" style="width:0%" id="bar-bac"></div>
+          </div>
+          <p class="text-xs text-primary font-semibold mt-1" id="progress-text-bac">Extraction en cours...</p>
+        </div>
+        <div id="file-info-bac" class="hidden mb-3 flex items-center gap-2 p-2 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
+          <span class="material-symbols-outlined text-primary text-[18px]">description</span>
+          <span class="text-xs text-slate-600 dark:text-slate-300 truncate flex-1" id="file-name-bac"></span>
+          <span class="material-symbols-outlined text-green-500 text-[18px]">check_circle</span>
+        </div>
+        <div id="result-analyse-bac" class="hidden mb-3"></div>
+        <input type="file" accept="image/*,.pdf" class="hidden" id="file-bac" onchange="handleFile('bac',this)">
+        <button onclick="document.getElementById('file-bac').click()" class="w-full flex items-center justify-center gap-3 p-4 rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:border-primary/40 hover:bg-primary/5 transition-all group" id="btn-bac">
+          <span class="material-symbols-outlined text-slate-400 group-hover:text-primary text-[24px] transition-colors">upload_file</span>
+          <span class="text-sm font-semibold text-slate-500 group-hover:text-primary transition-colors">Importer un PDF ou une image</span>
+        </button>
+        <button onclick="analyserBulletin('bac')" class="hidden mt-3 w-full flex items-center justify-center gap-2 py-3 px-4 bg-primary text-white font-bold rounded-xl text-sm hover:bg-primary/90 transition-all active:scale-95 shadow-lg shadow-primary/20" id="btn-analyse-bac">
+          <span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+          Analyser avec l'IA
         </button>
       </div>
 
@@ -222,6 +277,319 @@
       </div>
     </div>
   </div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/groq.js"></script>
+  <script>
+    // ── Config PDF.js worker ────────────────────────────────────────────────
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    // ── Vider le localStorage et rediriger vers l'accueil si rafraîchissement
+    if (performance.navigation.type === 1) {
+      FoStorage.clearAll();
+      window.location.replace('index.html');
+    }
+
+    // ── Stockage : texte (PDF natif) ou images base64 (scanné / image) ──────
+    const extractedTexts  = {};   // classe → string
+    const extractedImages = {};   // classe → [base64DataUrl, ...]
+
+    // ── Restaurer les bulletins déjà traités ────────────────────────────────
+    (function restore() {
+      const bulls = FoStorage.getBulletins();
+      Object.keys(bulls).forEach(classe => {
+        const data = bulls[classe];
+        if (data && (data.text || data.images)) {
+          if (data.text)   extractedTexts[classe]  = data.text;
+          if (data.images) extractedImages[classe] = data.images;
+          showFileInfo(classe, data.fileName || 'Document');
+          showAnalyseBtn(classe);
+          if (data.analyse) renderAnalyse(classe, data.analyse);
+        }
+      });
+    })();
+
+    // ── Afficher les infos du fichier chargé ────────────────────────────────
+    function showFileInfo(classe, fileName) {
+      const infoDiv  = document.getElementById('file-info-' + classe);
+      const nameSpan = document.getElementById('file-name-' + classe);
+      const card     = document.getElementById('card-' + classe);
+      const progress = document.getElementById('progress-' + classe);
+      if (infoDiv)  infoDiv.classList.remove('hidden');
+      if (nameSpan) nameSpan.textContent = fileName;
+      if (progress) progress.classList.add('hidden');
+      if (card) card.style.borderColor = '#1e804f';
+      const btn = document.getElementById('btn-' + classe);
+      if (btn) {
+        btn.innerHTML = `<span class="material-symbols-outlined text-[20px]">refresh</span><span class="text-sm font-semibold">Remplacer le document</span>`;
+        btn.className = 'w-full flex items-center justify-center gap-2 py-2 px-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-500 hover:bg-slate-100 transition-all text-sm mt-2';
+      }
+    }
+
+    // ── Afficher le bouton analyser ─────────────────────────────────────────
+    function showAnalyseBtn(classe) {
+      const btn = document.getElementById('btn-analyse-' + classe);
+      if (btn) btn.classList.remove('hidden');
+    }
+
+    // ── Convertir un File en base64 data URL ────────────────────────────────
+    function fileToBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = e => resolve(e.target.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // ── Rendre les pages PDF en images base64 via canvas ───────────────────
+    async function pdfToImages(arrayBuffer, bar, progressText, startPct = 50) {
+      const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+      const images = [];
+      for (let i = 1; i <= pdf.numPages; i++) {
+        const page = await pdf.getPage(i);
+        const viewport = page.getViewport({ scale: 1.5 });
+        const canvas = document.createElement('canvas');
+        canvas.width  = viewport.width;
+        canvas.height = viewport.height;
+        await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+        images.push(canvas.toDataURL('image/jpeg', 0.7));
+        const pct = startPct + Math.round((i / pdf.numPages) * (95 - startPct));
+        bar.style.width = pct + '%';
+        progressText.textContent = `Conversion page ${i}/${pdf.numPages}...`;
+      }
+      return images;
+    }
+
+    // ── Gestion du chargement de fichier ────────────────────────────────────
+    async function handleFile(classe, input) {
+      const file = input.files[0];
+      if (!file) return;
+
+      const progressDiv  = document.getElementById('progress-' + classe);
+      const bar          = document.getElementById('bar-' + classe);
+      const progressText = document.getElementById('progress-text-' + classe);
+      const resultDiv    = document.getElementById('result-analyse-' + classe);
+
+      progressDiv.classList.remove('hidden');
+      if (resultDiv) resultDiv.classList.add('hidden');
+      bar.style.width = '0%';
+      bar.style.backgroundColor = '#1e804f';
+      progressText.textContent = 'Préparation...';
+
+      // Réinitialiser les entrées précédentes pour cette classe
+      delete extractedTexts[classe];
+      delete extractedImages[classe];
+
+      try {
+        const isPDF = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
+
+        if (isPDF) {
+          progressText.textContent = 'Lecture du PDF...';
+          bar.style.width = '5%';
+          const arrayBuffer = await file.arrayBuffer();
+          const bufferCopy = arrayBuffer.slice(0);
+          const pdfDoc = await pdfjsLib.getDocument({ data: bufferCopy }).promise;
+
+          // Tentative extraction texte natif
+          let fullText = '';
+          for (let i = 1; i <= pdfDoc.numPages; i++) {
+            const page = await pdfDoc.getPage(i);
+            const content = await page.getTextContent();
+            fullText += content.items.map(item => item.str).join(' ') + '\n';
+            bar.style.width = Math.round((i / pdfDoc.numPages) * 45) + 5 + '%';
+            progressText.textContent = `Lecture page ${i}/${pdfDoc.numPages}...`;
+          }
+
+          const texteMeaningful = fullText.replace(/\s/g, '');
+          if (texteMeaningful.length >= 80) {
+            // PDF avec texte natif
+            extractedTexts[classe] = fullText;
+            FoStorage.saveBulletin(classe, { text: fullText, fileName: file.name, date: new Date().toISOString() });
+          } else {
+            // PDF scanné → convertir en images
+            progressText.textContent = 'PDF scanné — conversion en images...';
+            const images = await pdfToImages(arrayBuffer, bar, progressText, 50);
+            extractedImages[classe] = images;
+            FoStorage.saveBulletin(classe, { images, fileName: file.name, date: new Date().toISOString() });
+          }
+
+        } else if (file.type.startsWith('image/')) {
+          // Image directe → base64
+          progressText.textContent = 'Chargement de l\'image...';
+          bar.style.width = '60%';
+          const base64 = await fileToBase64(file);
+          extractedImages[classe] = [base64];
+          FoStorage.saveBulletin(classe, { images: [base64], fileName: file.name, date: new Date().toISOString() });
+
+        } else {
+          throw new Error('Format non supporté. Utilisez un PDF ou une image (JPG, PNG).');
+        }
+
+        bar.style.width = '100%';
+        progressText.textContent = 'Document prêt ✓';
+        showFileInfo(classe, file.name);
+        showAnalyseBtn(classe);
+
+      } catch (err) {
+        bar.style.width = '100%';
+        bar.style.backgroundColor = '#ef4444';
+        progressText.textContent = 'Erreur : ' + (err.message || String(err));
+      }
+    }
+
+    // ── Appel Groq Vision (pour images / PDF scannés) ───────────────────────
+    async function groqVisionAnalyse(classe, images) {
+      const isBac = classe === 'bac' || classe === 'releve';
+      const instruction = isBac
+        ? `Tu es un expert en lecture de relevés de notes du Baccalauréat au Burkina Faso.\n\nAnalyse ce relevé de notes du Bac.\nExtrait TOUTES les matières et leur note unique visible.\nIl n'y a PAS de trimestres, c'est un examen unique : une seule note par matière.\nCalcule la moyenne générale (somme des notes / nombre de matières).\n\nRÈGLES STRICTES :\n- N'invente AUCUNE note. Utilise uniquement ce qui est visible.\n- Notes sur 20. Si illisible → {"erreur": "Document illisible"}\n- Inclus aussi le coefficient si visible.\n\nRéponds UNIQUEMENT en JSON valide :\n{"classe":"bac","trimestres":1,"matieres":[{"nom":"Mathématiques","notes":[12.5],"moyenne":12.5}],"moyenneGenerale":12.1,"appreciation":"Passable"}`
+        : `Tu es un expert en lecture de bulletins scolaires du Burkina Faso.\n\nAnalyse ce bulletin de la classe ${classe}.\nExtrait TOUTES les matières et leurs notes RÉELLES visibles dans l'image.\nLe bulletin peut avoir 1, 2 ou 3 trimestres.\nCalcule la moyenne de chaque matière (somme/nb trimestres, arrondi 2 décimales).\nCalcule la moyenne générale.\n\nRÈGLES STRICTES :\n- N'invente AUCUNE note. Utilise uniquement ce qui est visible.\n- Notes sur 20. Si illisible → {"erreur": "Document illisible"}\n\nRéponds UNIQUEMENT en JSON valide :\n{"classe":"${classe}","trimestres":3,"matieres":[{"nom":"Mathématiques","notes":[14.5,15,13.5],"moyenne":14.33}],"moyenneGenerale":14.1,"appreciation":"Bien"}`;
+
+      // Limiter à max 4 images et réduire la qualité
+      const maxImages = images.slice(0, 4);
+      const content = [
+        { type: 'text', text: instruction },
+        ...maxImages.map(url => ({ type: 'image_url', image_url: { url } }))
+      ];
+
+      const res = await fetch(GROQ_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${GROQ_API_KEY}` },
+        body: JSON.stringify({
+          model: 'meta-llama/llama-4-scout-17b-16e-instruct',
+          messages: [{ role: 'user', content }],
+          max_tokens: 2000,
+          temperature: 0.1
+        })
+      });
+      if (!res.ok) throw new Error(`Groq Vision API ${res.status}: ${await res.text()}`);
+      const data = await res.json();
+      return data.choices[0].message.content;
+    }
+
+    // ── Prompt pour PDF texte ───────────────────────────────────────────────
+    function buildBulletinPrompt(classe, rawText) {
+      const isBac = classe === 'bac' || classe === 'releve';
+      if (isBac) {
+        return `Tu es un système expert en analyse de relevés de notes du Baccalauréat au Burkina Faso.\n\nTEXTE EXTRAIT DU RELEVÉ :\n"""\n${rawText.slice(0, 7000)}\n"""\n\nExtrait TOUTES les matières et leur note unique (pas de trimestres, c'est un examen).\nCalcule la moyenne générale (somme des notes / nombre de matières).\n\nRÈGLES STRICTES :\n- Utilise UNIQUEMENT les notes présentes dans le texte. N'invente AUCUNE note.\n- Notes sur 20. Si rien de lisible → {"erreur": "Aucune note lisible"}\n\nRéponds UNIQUEMENT en JSON valide :\n{"classe":"bac","trimestres":1,"matieres":[{"nom":"Mathématiques","notes":[12.5],"moyenne":12.5}],"moyenneGenerale":12.1,"appreciation":"Passable"}`;
+      }
+      return `Tu es un système expert en analyse de bulletins scolaires du Burkina Faso.\n\nCLASSE : ${classe}\nTEXTE EXTRAIT DU BULLETIN :\n"""\n${rawText.slice(0, 7000)}\n"""\n\nExtrait TOUTES les matières et leurs notes RÉELLES directement présentes dans le texte.\nLe bulletin peut contenir 1, 2 ou 3 trimestres.\n\nRÈGLES STRICTES :\n- Utilise UNIQUEMENT les notes présentes dans le texte. N'invente AUCUNE note.\n- Notes sur 20. Si rien de lisible → {"erreur": "Aucune note lisible"}\n- Moyenne = somme/nb trimestres, arrondi 2 décimales\n\nRéponds UNIQUEMENT en JSON valide :\n{"classe":"${classe}","trimestres":3,"matieres":[{"nom":"Mathématiques","notes":[14.5,15,13.5],"moyenne":14.33}],"moyenneGenerale":14.1,"appreciation":"Bien"}`;
+    }
+
+    // ── Rendu du tableau de notes ────────────────────────────────────────────
+    function renderAnalyse(classe, data) {
+      const container = document.getElementById('result-analyse-' + classe);
+      if (!container) return;
+
+      if (data.erreur) {
+        container.innerHTML = `
+          <div class="rounded-xl border border-orange-200 bg-orange-50 dark:bg-orange-900/20 p-3 flex items-start gap-2">
+            <span class="material-symbols-outlined text-orange-400 text-[20px] shrink-0">warning</span>
+            <div>
+              <p class="text-xs font-bold text-orange-700 dark:text-orange-300">Document illisible</p>
+              <p class="text-xs text-orange-600 dark:text-orange-400 mt-0.5">${data.erreur}. Essaie avec une image plus nette.</p>
+            </div>
+          </div>`;
+        container.classList.remove('hidden');
+        return;
+      }
+
+      const noteColor = n => n >= 16 ? 'text-green-600 font-bold' : n >= 14 ? 'text-primary font-semibold' : n >= 10 ? 'text-slate-700 dark:text-slate-300' : 'text-red-500 font-semibold';
+
+      const isSingleNote = (data.trimestres || 1) === 1;
+
+      const triHeaders = isSingleNote
+        ? '<th class="px-2 py-1.5 text-center text-[10px] font-bold uppercase text-slate-400">Note</th>'
+        : Array.from({ length: data.trimestres }, (_, i) =>
+            `<th class="px-2 py-1.5 text-center text-[10px] font-bold uppercase text-slate-400 whitespace-nowrap">T${i + 1}</th>`
+          ).join('');
+
+      const rows = (data.matieres || []).map(m => {
+        const noteCells = (m.notes || []).map(n =>
+          `<td class="px-2 py-1.5 text-center text-xs ${noteColor(n)}">${n}</td>`
+        ).join('');
+        return `<tr class="border-b border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+          <td class="px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-300 max-w-[140px] truncate">${m.nom}</td>
+          ${noteCells}
+          ${!isSingleNote ? `<td class="px-2 py-1.5 text-center text-xs font-bold ${noteColor(m.moyenne)} bg-primary/5 dark:bg-primary/10">${m.moyenne}</td>` : ''}
+        </tr>`;
+      }).join('');
+
+      const moyHeader = !isSingleNote
+        ? '<th class="px-2 py-1.5 text-center text-[10px] font-bold uppercase text-primary bg-primary/5">Moy.</th>'
+        : '';
+
+      container.innerHTML = `
+        <div class="rounded-xl border border-primary/20 overflow-hidden bg-white dark:bg-slate-900">
+          <div class="flex items-center justify-between px-3 py-2 bg-primary/10 border-b border-primary/20">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-[16px]">analytics</span>
+              <span class="text-xs font-bold text-primary">Résultats analysés</span>
+            </div>
+            <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full">Moy. gén. : ${data.moyenneGenerale}/20</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs">
+              <thead class="bg-slate-50 dark:bg-slate-800">
+                <tr>
+                  <th class="px-3 py-1.5 text-left text-[10px] font-bold uppercase text-slate-400">Matière</th>
+                  ${triHeaders}
+                  ${moyHeader}
+                </tr>
+              </thead>
+              <tbody>${rows}</tbody>
+            </table>
+          </div>
+          ${data.appreciation ? `<p class="px-3 py-2 text-xs text-slate-500 italic border-t border-slate-100 dark:border-slate-800">Appréciation : ${data.appreciation}</p>` : ''}
+        </div>`;
+      container.classList.remove('hidden');
+    }
+
+    // ── Clic sur "Analyser avec l'IA" ───────────────────────────────────────
+    async function analyserBulletin(classe) {
+      const btn     = document.getElementById('btn-analyse-' + classe);
+      const hasText = extractedTexts[classe];
+      const hasImgs = extractedImages[classe] && extractedImages[classe].length > 0;
+
+      if (!hasText && !hasImgs) {
+        alert('Aucun document disponible. Veuillez d\'abord importer un fichier.');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = `<span class="material-symbols-outlined text-[20px] animate-spin">progress_activity</span> <span>Analyse IA en cours...</span>`;
+
+      try {
+        let response;
+        if (hasImgs) {
+          // PDF scanné ou image → Groq Vision
+          response = await groqVisionAnalyse(classe, extractedImages[classe]);
+        } else {
+          // PDF texte natif → Groq texte
+          response = await groqChat([{ role: 'user', content: buildBulletinPrompt(classe, hasText) }], { maxTokens: 1500, temperature: 0.1 });
+        }
+
+        const cleaned = response.replace(/```json\s*/gi, '').replace(/```\s*/gi, '').trim();
+        const data = JSON.parse(cleaned);
+
+        const saved = FoStorage.getBulletins()[classe] || {};
+        saved.analyse = data;
+        FoStorage.saveBulletin(classe, saved);
+
+        renderAnalyse(classe, data);
+
+        btn.innerHTML = `<span class="material-symbols-outlined text-[20px]">refresh</span> <span>Ré-analyser</span>`;
+        btn.disabled = false;
+        btn.className = 'mt-3 w-full flex items-center justify-center gap-2 py-2 px-4 rounded-xl border border-primary/30 text-primary font-semibold text-sm hover:bg-primary/5 transition-all';
+
+      } catch (err) {
+        btn.disabled = false;
+        btn.innerHTML = `<span class="material-symbols-outlined text-[20px]">error</span> <span>Erreur — Réessayer</span>`;
+        btn.className = 'mt-3 w-full flex items-center justify-center gap-2 py-2 px-4 rounded-xl border border-red-200 text-red-500 font-semibold text-sm hover:bg-red-50 transition-all';
+        console.error('Erreur analyse:', err);
+      }
+    }
+  </script>
 
 </body>
 </html>

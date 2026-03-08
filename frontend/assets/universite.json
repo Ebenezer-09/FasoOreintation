@@ -1,0 +1,674 @@
+[
+  {
+    "filiere": "ALLEMAND",
+    "sigle": "ALL",
+    "universite": "Université Ouaga I Pr JKZ",
+    "ville": "Ouagadougou",
+    "structure": "UFR/LAC",
+    "id_filiere": "8"
+  },
+  {
+    "filiere": "ANGLAIS",
+    "sigle": "ANG",
+    "universite": "Université Ouaga I Pr JKZ",
+    "ville": "Ouagadougou",
+    "structure": "UFR/LAC",
+    "id_filiere": "7"
+  },
+  {
+    "filiere": "ART GESTION ET ADMINISTRATION CULTURELLES ( AGAC)",
+    "sigle": "AGAC",
+    "universite": "Université Ouaga I Pr JKZ",
+    "ville": "Ouagadougou",
+    "structure": "UFR/LAC",
+    "id_filiere": "11"
+  },
+  {
+    "filiere": "ASSISTANT DE DIRECTION BILINGUE",
+    "sigle": "ADB",
+    "universite": "Université Ouaga I Pr JKZ",
+    "ville": "Ouagadougou",
+    "structure": "IBAM",
+    "id_filiere": "23"
+  },
+  {
+    "filiere": "ASSURANCE BANQUE FINANCE",
+    "sigle": "ABF",
+    "universite": "Université Ouaga I Pr JKZ",
+    "ville": "Ouagadougou",
+    "structure": "IBAM",
+    "id_filiere": "22"
+  },
+  {
+    "filiere": "Assurance-Banque-Finances (ABF)",
+    "sigle": "ABF",
+    "universite": "Université NAZI BONI - Bobo Dioulasso",
+    "ville": "Bobo Dioulasso",
+    "structure": "IUT",
+    "id_filiere": "59"
+  },
+  {
+    "filiere": "CHIRURGIE DENTAIRE (CD)",
+    "sigle": "CHU-DENT",
+    "universite": "Université Ouaga I Pr JKZ",
+    "ville": "Ouagadougou",
+    "structure": "UFR/SDS",
+    "id_filiere": "14"
+  },
+  {
+    "filiere": "Communication d'Entreprise ( C E)",
+    "sigle": "COMM-ENT",
+    "universite": "Université NAZI BONI - Bobo Dioulasso",
+    "ville": "Bobo Dioulasso",
+    "structure": "IUT",
+    "id_filiere": "58"
+  },
+  {
+    "filiere": "COMMUNICATION ET JOURNALISME (CJ)",
+    "sigle": "COM-JOUR",
+    "universite": "Université Ouaga I Pr JKZ",
+    "ville": "Ouagadougou",
+    "structure": "UFR/LAC",
+    "id_filiere": "10"
+  },
+  {
+    "filiere": "COMPTABILITE CONTRÔLE AUDIT",
+    "sigle": "CCA",
+    "universite": "Université Ouaga I Pr JKZ",
+    "ville": "Ouagadougou",
+    "structure": "IBAM",
+    "id_filiere": "20"
+  },
+  {
+    "filiere": "Comptabilité Contrôle et Audit (CCA)",
+    "sigle": "CCA",
+    "universite": "Centre Universitaire Polytechnique de Kaya",
+    "ville": "Kaya",
+    "structure": "IUT",
+    "id_filiere": "69"
+  },
+  {
+    "filiere": "Comptabilité-Contrôle-Audit (CCA)",
+    "sigle": "CCA",
+    "universite": "Université de Dedougou",
+    "ville": "Dedougou",
+    "structure": "IUP",
+    "id_filiere": "78"
+  },
+  {
+    "filiere": "Droit",
+    "sigle": "SJP",
+    "universite": "Centre Universitaire de Banfora",
+    "ville": "Banfora",
+    "structure": "CUP/Banfora",
+    "id_filiere": "85"
+  },
+  {
+    "filiere": "Finances Comptabilité et Gestion d'Entréprise (FCGE)",
+    "sigle": "FCGE",
+    "universite": "Université NAZI BONI - Bobo Dioulasso",
+    "ville": "Bobo Dioulasso",
+    "structure": "IUT",
+    "id_filiere": "61"
+  },
+  {
+    "filiere": "Finances-Comptabilité",
+    "sigle": "FC",
+    "universite": "Université de Ouahigouya",
+    "ville": "Ouahigouya",
+    "structure": "IFPM",
+    "id_filiere": "71"
+  },
+  {
+    "filiere": "Génie Biologique",
+    "sigle": "GENIE-BIO",
+    "universite": "Université NAZI BONI - Bobo Dioulasso",
+    "ville": "Bobo Dioulasso",
+    "structure": "UFR/SJPEG",
+    "id_filiere": "51"
+  },
+  {
+    "filiere": "Génie Civil (GC)",
+    "sigle": "GENIE-CIV",
+    "universite": "Université NAZI BONI - Bobo Dioulasso",
+    "ville": "Bobo Dioulasso",
+    "structure": "IUT",
+    "id_filiere": "66"
+  },
+  {
+    "filiere": "Génie Civil (GC)",
+    "sigle": "GC",
+    "universite": "Université de Fada N'Gourma",
+    "ville": "Fada N'Gourma",
+    "structure": "UDFG",
+    "id_filiere": "80"
+  },
+  {
+    "filiere": "Génie Civil/Bâtiment et Travaux Publics",
+    "sigle": "GC-BTP",
+    "universite": "Université NORBERT ZONGO - Koudougou",
+    "ville": "Koudougou",
+    "structure": "IUT",
+    "id_filiere": "40"
+  },
+  {
+    "filiere": "Génie Electrique (GE)",
+    "sigle": "GENIE-ELEC",
+    "universite": "Université NORBERT ZONGO - Koudougou",
+    "ville": "Koudougou",
+    "structure": "IUT",
+    "id_filiere": "41"
+  },
+  {
+    "filiere": "Génie Electrique, option Electronique (ELO)",
+    "sigle": "ELO",
+    "universite": "Université NAZI BONI - Bobo Dioulasso",
+    "ville": "Bobo Dioulasso",
+    "structure": "IUT",
+    "id_filiere": "65"
+  },
+  {
+    "filiere": "Génie Electrique, option Electrotechnique (ETK)",
+    "sigle": "ETK",
+    "universite": "Université NAZI BONI - Bobo Dioulasso",
+    "ville": "Bobo Dioulasso",
+    "structure": "IUT",
+    "id_filiere": "64"
+  },
+  {
+    "filiere": "Génie Industriel et Maintenance ( GIM)",
+    "sigle": "GIM",
+    "universite": "Université NAZI BONI - Bobo Dioulasso",
+    "ville": "Bobo Dioulasso",
+    "structure": "IUT",
+    "id_filiere": "63"
+  },
+  {
+    "filiere": "Génie Mécanique et Productique (GMP)",
+    "sigle": "GMP",
+    "universite": "Université NAZI BONI - Bobo Dioulasso",
+    "ville": "Bobo Dioulasso",
+    "structure": "IUT",
+    "id_filiere": "62"
+  },
+  {
+    "filiere": "Génie Minier (GM)",
+    "sigle": "GM",
+    "universite": "Université de Fada N'Gourma",
+    "ville": "Fada N'Gourma",
+    "structure": "UDFG",
+    "id_filiere": "81"
+  },
+  {
+    "filiere": "GEOGRAPHIE",
+    "sigle": "GEO",
+    "universite": "Université NORBERT ZONGO - Koudougou",
+    "ville": "Koudougou",
+    "structure": "UFR/LSH",
+    "id_filiere": "31"
+  },
+  {
+    "filiere": "GEOGRAPHIE",
+    "sigle": "GEO",
+    "universite": "Université Ouaga I Pr JKZ",
+    "ville": "Ouagadougou",
+    "structure": "UFR/SH",
+    "id_filiere": "2"
+  },
+  {
+    "filiere": "Gestion des Ressources Humaines",
+    "sigle": "GRH",
+    "universite": "Université de Ouahigouya",
+    "ville": "Ouahigouya",
+    "structure": "IFPM",
+    "id_filiere": "73"
+  },
+  {
+    "filiere": "Gestion du Patrimoine Culturel et Touristique",
+    "sigle": "GPCT",
+    "universite": "Centre Universitaire de Gaoua",
+    "ville": "Gaoua",
+    "structure": "CUP/Gaoua",
+    "id_filiere": "83"
+  },
+  {
+    "filiere": "Gestion Foncière et Immobilière",
+    "sigle": "GFI",
+    "universite": "Université de Ouahigouya",
+    "ville": "Ouahigouya",
+    "structure": "ESJPA",
+    "id_filiere": "74"
+  },
+  {
+    "filiere": "HISTOIRE ET ARCHEOLOGIE",
+    "sigle": "HIST-ARCH",
+    "universite": "Université NORBERT ZONGO - Koudougou",
+    "ville": "Koudougou",
+    "structure": "UFR/LSH",
+    "id_filiere": "32"
+  },
+  {
+    "filiere": "HISTOIRE ET ARCHEOLOGIE",
+    "sigle": "HISTO-ARCH",
+    "universite": "Université Ouaga I Pr JKZ",
+    "ville": "Ouagadougou",
+    "structure": "UFR/SH",
+    "id_filiere": "3"
+  },
+  {
+    "filiere": "Histoire et archeologie",
+    "sigle": "HIST-ARCH",
+    "universite": "Université NAZI BONI - Bobo Dioulasso",
+    "ville": "Bobo Dioulasso",
+    "structure": "UFR/SJPEG",
+    "id_filiere": "53"
+  },
+  {
+    "filiere": "Histoire et archeologie",
+    "sigle": "Anthropologie",
+    "universite": "Université NAZI BONI - Bobo Dioulasso",
+    "ville": "Bobo Dioulasso",
+    "structure": "UFR/SJPEG",
+    "id_filiere": "54"
+  },
+  {
+    "filiere": "LETTRES MODERNES",
+    "sigle": "LET-MOD",
+    "universite": "Centre Universitaire de Banfora",
+    "ville": "Banfora",
+    "structure": "CUP/Banfora",
+    "id_filiere": "86"
+  },
+  {
+    "filiere": "LETTRES MODERNES",
+    "sigle": "LET-MOD",
+    "universite": "Centre Universitaire de Banfora",
+    "ville": "Banfora",
+    "structure": "CUP/Banfora",
+    "id_filiere": "87"
+  },
+  {
+    "filiere": "LETTRES MODERNES",
+    "sigle": "LET-MOD",
+    "universite": "Université NORBERT ZONGO - Koudougou",
+    "ville": "Koudougou",
+    "structure": "UFR/LSH",
+    "id_filiere": "35"
+  },
+  {
+    "filiere": "Lettres Modernes",
+    "sigle": "LET-MOD",
+    "universite": "Université NAZI BONI - Bobo Dioulasso",
+    "ville": "Bobo Dioulasso",
+    "structure": "UFR/SJPEG",
+    "id_filiere": "52"
+  },
+  {
+    "filiere": "LETTRES MODERNES",
+    "sigle": "LET-MOD",
+    "universite": "Université Ouaga I Pr JKZ",
+    "ville": "Ouagadougou",
+    "structure": "UFR/LAC",
+    "id_filiere": "6"
+  },
+  {
+    "filiere": "Licence de Statistique et Informatique Appliquée à l'Economie (LSIE)",
+    "sigle": "LSIE",
+    "universite": "Centre Universitaire Polytechnique de Kaya",
+    "ville": "Kaya",
+    "structure": "UFR/ST",
+    "id_filiere": "67"
+  },
+  {
+    "filiere": "Licence en Statistique et Informatique (LSI)",
+    "sigle": "LSI",
+    "universite": "Université NAZI BONI - Bobo Dioulasso",
+    "ville": "Bobo Dioulasso",
+    "structure": "UFR/SJPEG",
+    "id_filiere": "50"
+  },
+  {
+    "filiere": "Licence professionnelle en sciences techniques et comptables",
+    "sigle": "FC",
+    "universite": "Université NORBERT ZONGO - Koudougou",
+    "ville": "Koudougou",
+    "structure": "IUT",
+    "id_filiere": "43"
+  },
+  {
+    "filiere": "LINGUISTIQUE",
+    "sigle": "LINGUIST",
+    "universite": "Université Ouaga I Pr JKZ",
+    "ville": "Ouagadougou",
+    "structure": "UFR/LAC",
+    "id_filiere": "9"
+  },
+  {
+    "filiere": "MANAGEMENT DE LA QUALITE EN AGRO-ALIMENTAIRE (MQA)",
+    "sigle": "MQA",
+    "universite": "Université Ouaga I Pr JKZ",
+    "ville": "Ouagadougou",
+    "structure": "UFR/SVT",
+    "id_filiere": "19"
+  },
+  {
+    "filiere": "Management et Contrôle de Qualité en Agro-alimentaire (MCQA)",
+    "sigle": "MCQA",
+    "universite": "Université de Dedougou",
+    "ville": "Dedougou",
+    "structure": "UFR/SAT",
+    "id_filiere": "77"
+  },
+  {
+    "filiere": "Management et Gestion des Entreprises Touristiques et Hôtelières (MGETH)",
+    "sigle": "MGETH",
+    "universite": "Université NORBERT ZONGO - Koudougou",
+    "ville": "Koudougou",
+    "structure": "IUT",
+    "id_filiere": "45"
+  },
+  {
+    "filiere": "MARKETING ET GESTION",
+    "sigle": "MG",
+    "universite": "Université Ouaga I Pr JKZ",
+    "ville": "Ouagadougou",
+    "structure": "IBAM",
+    "id_filiere": "21"
+  },
+  {
+    "filiere": "Marketing et Gestion",
+    "sigle": "MARK-GEST",
+    "universite": "Université de Ouahigouya",
+    "ville": "Ouahigouya",
+    "structure": "IFPM",
+    "id_filiere": "72"
+  },
+  {
+    "filiere": "Marketing et Gestion (MG)",
+    "sigle": "MARK-GES",
+    "universite": "Université NORBERT ZONGO - Koudougou",
+    "ville": "Koudougou",
+    "structure": "IUT",
+    "id_filiere": "44"
+  },
+  {
+    "filiere": "Marketing et Gestion Commercial (MGC)",
+    "sigle": "MGC",
+    "universite": "Université NAZI BONI - Bobo Dioulasso",
+    "ville": "Bobo Dioulasso",
+    "structure": "IUT",
+    "id_filiere": "60"
+  },
+  {
+    "filiere": "Mathematique Physique Chimie Informatique (MPCI)",
+    "sigle": "MPCI",
+    "universite": "Centre Universitaire de Banfora",
+    "ville": "Banfora",
+    "structure": "CUP/Banfora",
+    "id_filiere": "84"
+  },
+  {
+    "filiere": "Mathématiques Physique Chimie et Informatique",
+    "sigle": "MPCI",
+    "universite": "Université NORBERT ZONGO - Koudougou",
+    "ville": "Koudougou",
+    "structure": "UFR/ST",
+    "id_filiere": "37"
+  },
+  {
+    "filiere": "Mathématiques Physiques Informatique (MPI)",
+    "sigle": "MPI",
+    "universite": "Université NAZI BONI - Bobo Dioulasso",
+    "ville": "Bobo Dioulasso",
+    "structure": "UFR/SJPEG",
+    "id_filiere": "49"
+  },
+  {
+    "filiere": "Maths-Physique-Chimie-Informatique (MPCI)",
+    "sigle": "MPCI",
+    "universite": "Centre Universitaire Polytechnique de Kaya",
+    "ville": "Kaya",
+    "structure": "UFR/ST",
+    "id_filiere": "68"
+  },
+  {
+    "filiere": "Médecine",
+    "sigle": "MEDECINE",
+    "universite": "Université de Ouahigouya",
+    "ville": "Ouahigouya",
+    "structure": "ESSAN",
+    "id_filiere": "70"
+  },
+  {
+    "filiere": "Médecine",
+    "sigle": "MEDECINE",
+    "universite": "Université NAZI BONI - Bobo Dioulasso",
+    "ville": "Bobo Dioulasso",
+    "structure": "INSSA",
+    "id_filiere": "55"
+  },
+  {
+    "filiere": "MEDECINE",
+    "sigle": "MEDECINE",
+    "universite": "Université Ouaga I Pr JKZ",
+    "ville": "Ouagadougou",
+    "structure": "UFR/SDS",
+    "id_filiere": "12"
+  },
+  {
+    "filiere": "METHODE INFORMATIQUE APPLIQUEE A LA GESTION",
+    "sigle": "MIAGE",
+    "universite": "Université Ouaga I Pr JKZ",
+    "ville": "Ouagadougou",
+    "structure": "IBAM",
+    "id_filiere": "24"
+  },
+  {
+    "filiere": "Méthodes Informatiques Appliqués à la Gestion",
+    "sigle": "MIAGE",
+    "universite": "Université de Dedougou",
+    "ville": "Dedougou",
+    "structure": "IUP",
+    "id_filiere": "79"
+  },
+  {
+    "filiere": "Pharmacie",
+    "sigle": "PHARMA",
+    "universite": "Université NAZI BONI - Bobo Dioulasso",
+    "ville": "Bobo Dioulasso",
+    "structure": "INSSA",
+    "id_filiere": "56"
+  },
+  {
+    "filiere": "PHARMACIE",
+    "sigle": "PHARMA",
+    "universite": "Université Ouaga I Pr JKZ",
+    "ville": "Ouagadougou",
+    "structure": "UFR/SDS",
+    "id_filiere": "13"
+  },
+  {
+    "filiere": "PHILOSOPHIE",
+    "sigle": "PHILO",
+    "universite": "Université Ouaga I Pr JKZ",
+    "ville": "Ouagadougou",
+    "structure": "UFR/SH",
+    "id_filiere": "5"
+  },
+  {
+    "filiere": "Programme de formation en pédagogie et didactique appropriées à l'enseignement supérieur",
+    "sigle": "PFPDA",
+    "universite": "Université Ouaga I Pr JKZ",
+    "ville": "Ouagadougou",
+    "structure": "UFR/LAC",
+    "id_filiere": "92"
+  },
+  {
+    "filiere": "PSYCHOLOGIE",
+    "sigle": "PSYCHO",
+    "universite": "Université NORBERT ZONGO - Koudougou",
+    "ville": "Koudougou",
+    "structure": "UFR/LSH",
+    "id_filiere": "33"
+  },
+  {
+    "filiere": "PSYCHOLOGIE",
+    "sigle": "PSYCHO",
+    "universite": "Université Ouaga I Pr JKZ",
+    "ville": "Ouagadougou",
+    "structure": "UFR/SH",
+    "id_filiere": "4"
+  },
+  {
+    "filiere": "Réseaux Informatiques et Télécommunications",
+    "sigle": "Réseaux Télécom",
+    "universite": "Université Catholique de l’Afrique de l’Ouest-Unité Universitaire à Bobo Dioulasso",
+    "ville": "Bobo Dioulasso",
+    "structure": "UCAO-UUB",
+    "id_filiere": "88"
+  },
+  {
+    "filiere": "Sciences biologiques (SB)",
+    "sigle": "SB",
+    "universite": "Université NAZI BONI - Bobo Dioulasso",
+    "ville": "Bobo Dioulasso",
+    "structure": "UFR/SJPEG",
+    "id_filiere": "48"
+  },
+  {
+    "filiere": "Sciences Biologiques (SB)",
+    "sigle": "SB",
+    "universite": "Université de Dedougou",
+    "ville": "Dedougou",
+    "structure": "UFR/SAT",
+    "id_filiere": "76"
+  },
+  {
+    "filiere": "Sciences Biologiques Appliquée",
+    "sigle": "SBA",
+    "universite": "Centre Universitaire de Gaoua",
+    "ville": "Gaoua",
+    "structure": "CUP/Gaoua",
+    "id_filiere": "82"
+  },
+  {
+    "filiere": "Sciences de l'Information Documentaire",
+    "sigle": "SID",
+    "universite": "Université NORBERT ZONGO - Koudougou",
+    "ville": "Koudougou",
+    "structure": "UFR/LSH",
+    "id_filiere": "36"
+  },
+  {
+    "filiere": "Sciences de la Vie et de la Terre",
+    "sigle": "SVT",
+    "universite": "Université NORBERT ZONGO - Koudougou",
+    "ville": "Koudougou",
+    "structure": "UFR/ST",
+    "id_filiere": "38"
+  },
+  {
+    "filiere": "Sciences Economiques et de Gestion",
+    "sigle": "ECO",
+    "universite": "Université NORBERT ZONGO - Koudougou",
+    "ville": "Koudougou",
+    "structure": "UFR/SEG",
+    "id_filiere": "39"
+  },
+  {
+    "filiere": "Sciences Economiques et de Gestion (SEG)",
+    "sigle": "SEG",
+    "universite": "Université NAZI BONI - Bobo Dioulasso",
+    "ville": "Bobo Dioulasso",
+    "structure": "UFR/SJPEG",
+    "id_filiere": "47"
+  },
+  {
+    "filiere": "Sciences et Technologie",
+    "sigle": "ST",
+    "universite": "Université de Ouahigouya",
+    "ville": "Ouahigouya",
+    "structure": "ESST",
+    "id_filiere": "75"
+  },
+  {
+    "filiere": "SCIENCES ET TEHNOLOGIE (ST) - CHIMIE, BIOLOGIE, GEOLOGIE",
+    "sigle": "ST-CHI-BIO",
+    "universite": "Université Ouaga I Pr JKZ",
+    "ville": "Ouagadougou",
+    "structure": "UFR/SVT",
+    "id_filiere": "18"
+  },
+  {
+    "filiere": "SCIENCES ET TEHNOLOGIE (ST) - MATHS, PHYSIQUES, CHIMIE ET INFORMATIQUE",
+    "sigle": "MPCI",
+    "universite": "Université Ouaga I Pr JKZ",
+    "ville": "Ouagadougou",
+    "structure": "UFR/SEA",
+    "id_filiere": "16"
+  },
+  {
+    "filiere": "SCIENCES INFORMATIQUES APPLIQUEES",
+    "sigle": "SIA",
+    "universite": "Université Ouaga I Pr JKZ",
+    "ville": "Ouagadougou",
+    "structure": "IFOAD",
+    "id_filiere": "26"
+  },
+  {
+    "filiere": "Sciences Juridiques et Politiques (SJP)",
+    "sigle": "SJP",
+    "universite": "Université NAZI BONI - Bobo Dioulasso",
+    "ville": "Bobo Dioulasso",
+    "structure": "UFR/SJPEG",
+    "id_filiere": "46"
+  },
+  {
+    "filiere": "Sécretariat de Direction (SD)",
+    "sigle": "SD",
+    "universite": "Université NAZI BONI - Bobo Dioulasso",
+    "ville": "Bobo Dioulasso",
+    "structure": "IUT",
+    "id_filiere": "57"
+  },
+  {
+    "filiere": "SOCIOLOGIE",
+    "sigle": "Socio",
+    "universite": "Université Ouaga I Pr JKZ",
+    "ville": "Ouagadougou",
+    "structure": "UFR/SH",
+    "id_filiere": "1"
+  },
+  {
+    "filiere": "STATISTIQUES SOCIALES",
+    "sigle": "STAT-SO",
+    "universite": "Université Ouaga I Pr JKZ",
+    "ville": "Ouagadougou",
+    "structure": "ISSP",
+    "id_filiere": "25"
+  },
+  {
+    "filiere": "TECHNICIEN SUPERIEUR DE SANTE (TSS) ANALYSES BIOMEDICALES",
+    "sigle": "TECHN-BIO",
+    "universite": "Université Ouaga I Pr JKZ",
+    "ville": "Ouagadougou",
+    "structure": "UFR/SDS",
+    "id_filiere": "15"
+  },
+  {
+    "filiere": "Techniques Administratives (TA)",
+    "sigle": "TECH-ADM",
+    "universite": "Université NORBERT ZONGO - Koudougou",
+    "ville": "Koudougou",
+    "structure": "IUT",
+    "id_filiere": "42"
+  },
+  {
+    "filiere": "TECHNOLOGIE SOLAIRE ET APPLIQUEE (TSA)",
+    "sigle": "TSA",
+    "universite": "Université Ouaga I Pr JKZ",
+    "ville": "Ouagadougou",
+    "structure": "UFR/SEA",
+    "id_filiere": "17"
+  }
+]

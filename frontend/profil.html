@@ -125,7 +125,7 @@
               <div class="flex h-12 items-center justify-center rounded-xl border-2 border-slate-200 dark:border-slate-700 text-slate-600 font-bold text-lg peer-checked:border-primary peer-checked:bg-primary peer-checked:text-white transition-all hover:border-primary/50">C</div>
             </label>
             <label class="cursor-pointer">
-              <input checked class="peer sr-only" name="bac" type="radio" value="D"/>
+              <input class="peer sr-only" name="bac" type="radio" value="D"/>
               <div class="flex h-12 items-center justify-center rounded-xl border-2 border-slate-200 dark:border-slate-700 text-slate-600 font-bold text-lg peer-checked:border-primary peer-checked:bg-primary peer-checked:text-white transition-all hover:border-primary/50">D</div>
             </label>
             <label class="cursor-pointer">
@@ -146,8 +146,8 @@
             Matières favorites
           </h3>
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            <label class="flex items-center gap-3 p-3 rounded-xl border-2 cursor-pointer transition-all border-primary/30 bg-primary/5 has-[:checked]:border-primary has-[:checked]:bg-primary/10 hover:border-primary/50">
-              <input checked class="rounded text-primary h-4 w-4 shrink-0 focus:ring-primary" type="checkbox"/>
+            <label class="flex items-center gap-3 p-3 rounded-xl border-2 cursor-pointer transition-all border-slate-200 dark:border-slate-700 has-[:checked]:border-primary has-[:checked]:bg-primary/10 hover:border-primary/50">
+              <input class="rounded text-primary h-4 w-4 shrink-0 focus:ring-primary" type="checkbox"/>
               <span class="text-sm font-medium">Mathématiques</span>
             </label>
             <label class="flex items-center gap-3 p-3 rounded-xl border-2 cursor-pointer transition-all border-slate-200 dark:border-slate-700 has-[:checked]:border-primary has-[:checked]:bg-primary/10 hover:border-primary/50">
@@ -158,8 +158,8 @@
               <input class="rounded text-primary h-4 w-4 shrink-0 focus:ring-primary" type="checkbox"/>
               <span class="text-sm font-medium">SVT</span>
             </label>
-            <label class="flex items-center gap-3 p-3 rounded-xl border-2 cursor-pointer transition-all border-primary/30 bg-primary/5 has-[:checked]:border-primary has-[:checked]:bg-primary/10 hover:border-primary/50">
-              <input checked class="rounded text-primary h-4 w-4 shrink-0 focus:ring-primary" type="checkbox"/>
+            <label class="flex items-center gap-3 p-3 rounded-xl border-2 cursor-pointer transition-all border-slate-200 dark:border-slate-700 has-[:checked]:border-primary has-[:checked]:bg-primary/10 hover:border-primary/50">
+              <input class="rounded text-primary h-4 w-4 shrink-0 focus:ring-primary" type="checkbox"/>
               <span class="text-sm font-medium">Informatique</span>
             </label>
             <label class="flex items-center gap-3 p-3 rounded-xl border-2 cursor-pointer transition-all border-slate-200 dark:border-slate-700 has-[:checked]:border-primary has-[:checked]:bg-primary/10 hover:border-primary/50">
@@ -200,8 +200,8 @@
               <span class="material-symbols-outlined text-2xl text-primary">trending_up</span>
               <span class="text-[11px] font-bold uppercase tracking-wide">Business</span>
             </label>
-            <label class="flex flex-col items-center gap-2 p-3 rounded-xl border-2 border-primary bg-primary/10 cursor-pointer transition-all has-[:checked]:border-primary has-[:checked]:bg-primary/10">
-              <input checked class="sr-only" name="career" type="radio" value="eng"/>
+            <label class="flex flex-col items-center gap-2 p-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 cursor-pointer hover:border-primary/40 transition-all has-[:checked]:border-primary has-[:checked]:bg-primary/10">
+              <input class="sr-only" name="career" type="radio" value="eng"/>
               <span class="material-symbols-outlined text-2xl text-primary">engineering</span>
               <span class="text-[11px] font-bold uppercase tracking-wide">Ingénierie</span>
             </label>
@@ -225,9 +225,9 @@
               <span class="material-symbols-outlined text-primary text-[22px]">payments</span>
               Budget annuel
             </h3>
-            <span id="budget-label" class="text-sm font-bold text-white bg-primary px-3 py-1 rounded-full">300k – 600k FCFA</span>
+            <span id="budget-label" class="text-sm font-bold text-white bg-primary px-3 py-1 rounded-full">< 300k FCFA</span>
           </div>
-          <input id="budget-range" type="range" min="0" max="3" step="1" value="1"
+          <input id="budget-range" type="range" min="0" max="3" step="1" value="0"
             class="w-full h-2 bg-primary/20 rounded-lg appearance-none cursor-pointer accent-primary"
             oninput="updateBudget(this.value)"/>
           <div class="flex justify-between text-[11px] text-slate-400 mt-3 font-semibold">
@@ -247,7 +247,7 @@
           </h3>
           <div class="relative">
             <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
-            <input class="w-full pl-11 pr-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:outline-none placeholder:text-slate-400 transition-all text-sm" placeholder="Ex: Ouagadougou, Bobo-Dioulasso..." type="text"/>
+            <input class="w-full pl-11 pr-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:outline-none placeholder:text-slate-400 transition-all text-sm" placeholder="Ex: Ouagadougou, Bobo-Dioulasso..." type="text" id="ville-input"/>
           </div>
           <p class="text-xs text-slate-400 mt-2">La ville dans laquelle vous souhaitez étudier.</p>
         </div>
@@ -268,7 +268,7 @@
           <span class="material-symbols-outlined text-[18px]">arrow_back</span>
           Retour
         </a>
-        <a href="bulletins.html" class="flex-1 sm:flex-none bg-primary hover:bg-primary/90 text-white font-bold py-2 px-5 sm:py-3 sm:px-8 rounded-xl text-sm flex items-center justify-center gap-1.5 shadow-lg shadow-primary/20 transition-all active:scale-95">
+        <a href="bulletins.html" id="btn-continuer" class="flex-1 sm:flex-none bg-primary hover:bg-primary/90 text-white font-bold py-2 px-5 sm:py-3 sm:px-8 rounded-xl text-sm flex items-center justify-center gap-1.5 shadow-lg shadow-primary/20 transition-all active:scale-95">
           Continuer
           <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
         </a>
@@ -277,14 +277,55 @@
     </div>
   </div>
 
+  <script src="js/storage.js"></script>
   <script>
     const budgetLabels = ['< 300k FCFA', '300k – 600k FCFA', '600k – 1M FCFA', '> 1M FCFA'];
+    const budgetValues = ['<300k', '300k-600k', '600k-1M', '>1M'];
     function updateBudget(val) {
       document.getElementById('budget-label').textContent = budgetLabels[val];
     }
-    function goToNextStep() {
-      alert('Étape 3 en cours de développement !');
-    }
+
+    // Restaurer le profil sauvegardé
+    (function restore() {
+      const p = FoStorage.getProfil();
+      if (!p) return;
+      // Bac
+      const bacRadio = document.querySelector(`input[name="bac"][value="${p.bac}"]`);
+      if (bacRadio) bacRadio.checked = true;
+      // Matières
+      document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+        const label = cb.closest('label').querySelector('span.text-sm')?.textContent.trim();
+        cb.checked = (p.matieres || []).includes(label);
+      });
+      // Carrière
+      const careerRadio = document.querySelector(`input[name="career"][value="${p.carriere}"]`);
+      if (careerRadio) careerRadio.checked = true;
+      // Budget
+      const bi = budgetValues.indexOf(p.budgetValue);
+      if (bi >= 0) {
+        document.getElementById('budget-range').value = bi;
+        updateBudget(bi);
+      }
+      // Ville
+      if (p.ville) document.getElementById('ville-input').value = p.ville;
+    })();
+
+    // Sauvegarder avant de continuer
+    document.getElementById('btn-continuer').addEventListener('click', function(e) {
+      const bac = document.querySelector('input[name="bac"]:checked')?.value || '';
+      const matieres = [];
+      document.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+        const label = cb.closest('label').querySelector('span.text-sm')?.textContent.trim();
+        if (label) matieres.push(label);
+      });
+      const carriere = document.querySelector('input[name="career"]:checked')?.value || '';
+      const budgetIdx = document.getElementById('budget-range').value;
+      const budget = budgetLabels[budgetIdx];
+      const budgetValue = budgetValues[budgetIdx];
+      const ville = document.getElementById('ville-input').value.trim();
+
+      FoStorage.saveProfil({ bac, matieres, carriere, budget, budgetValue, ville });
+    });
   </script>
 </body>
 </html>
