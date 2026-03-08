@@ -1,5 +1,10 @@
 // ─── FasoOrientation · Groq LLM Client ─────────────────────────────────────
-const GROQ_API_KEY = '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';
+const GROQ_API_KEYS = [
+  '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',
+  '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',
+  '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',
+];
+let currentGroqKeyIndex = 0;
 const GROQ_URL    = 'https://api.groq.com/openai/v1/chat/completions';
 const GROQ_MODEL  = 'llama-3.3-70b-versatile';
 
@@ -12,27 +17,54 @@ const GROQ_MODEL  = 'llama-3.3-70b-versatile';
  * @returns {Promise<string>} Texte de la réponse du LLM
  */
 async function groqChat(messages, opts = {}) {
-  const res = await fetch(GROQ_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${GROQ_API_KEY}`,
-    },
-    body: JSON.stringify({
-      model: GROQ_MODEL,
-      messages,
-      max_tokens: opts.maxTokens || 1024,
-      temperature: opts.temperature ?? 0.7,
-    }),
-  });
+  const errors = [];
+  const keyCount = GROQ_API_KEYS.length;
 
-  if (!res.ok) {
+  // Try each key once, starting from the current active key.
+  for (let attempt = 0; attempt < keyCount; attempt++) {
+    const idx = (currentGroqKeyIndex + attempt) % keyCount;
+    const key = GROQ_API_KEYS[idx];
+
+    const res = await fetch(GROQ_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${key}`,
+      },
+      body: JSON.stringify({
+        model: GROQ_MODEL,
+        messages,
+        max_tokens: opts.maxTokens || 1024,
+        temperature: opts.temperature ?? 0.7,
+      }),
+    });
+
+    if (res.ok) {
+      currentGroqKeyIndex = idx;
+      const data = await res.json();
+      return data.choices[0].message.content;
+    }
+
     const err = await res.text();
-    throw new Error(`Groq API ${res.status}: ${err}`);
+    const lowerErr = err.toLowerCase();
+    const isLimitError =
+      res.status === 429 ||
+      lowerErr.includes('rate limit') ||
+      lowerErr.includes('quota') ||
+      lowerErr.includes('limit exceeded') ||
+      lowerErr.includes('insufficient_quota');
+
+    errors.push(`key#${idx + 1} -> ${res.status}: ${err}`);
+
+    if (isLimitError) {
+      // Continue to next key if this one is limited/quota-exceeded.
+      continue;
+    }
+
+    // For non-limit errors, still try next key for resilience.
   }
 
-  const data = await res.json();
-  return data.choices[0].message.content;
+  throw new Error(`Groq API failed on all keys: ${errors.join(' | ')}`);
 }
 
 // ─── Prompt système pour le conseiller d'orientation ────────────────────────
