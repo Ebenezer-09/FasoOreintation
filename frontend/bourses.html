@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html class="light" lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta name="theme-color" content="#fbbf24" />
+  <meta name="description" content="Bourses d'études et financements disponibles - FasoOrientation" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" href="/assets/icons/icon.svg" type="image/svg+xml" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap"
+    rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block"
+    rel="stylesheet" />
+
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#1e804f",
+            "secondary": "#fbbf24",
+            "background-light": "#f6f8f7",
+            "background-dark": "#131f19",
+          },
+          fontFamily: { "display": ["DM Sans", "sans-serif"] },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+
+  <title>Bourses & Opportunités - FasoOrientation</title>
+
+  <style>
+    body {
+      min-height: 100dvh;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .serif {
+      font-family: 'DM Serif Display', serif;
+    }
+
+    .card-hover {
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .card-hover:hover {
+      box-shadow: 0 8px 32px rgba(251, 191, 36, 0.13);
+      transform: translateY(-2px);
+    }
+
+    /* Subtle amber background gradient — same approach as recommandations (#f9faf9) but amber-tinted */
+    body {
+      background: linear-gradient(160deg, #fffbeb 0%, #f9faf9 35%, #f9faf9 100%);
+    }
+
+    /* Skeleton */
+    @keyframes shimmer {
+      0% {
+        background-position: -800px 0;
+      }
+
+      100% {
+        background-position: 800px 0;
+      }
+    }
+
+    .skeleton {
+      background: linear-gradient(90deg, #f5f5f0 25%, #ede9db 50%, #f5f5f0 75%);
+      background-size: 800px 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 1rem;
+    }
+
+    /* Search focus */
+    #search-input:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2);
+    }
+
+    /* Pill filters */
+    .filter-pill {
+      cursor: pointer;
+      transition: all 0.18s;
+      border: 1.5px solid transparent;
+    }
+
+    .filter-pill:hover {
+      border-color: #fbbf24;
+      background: #fef3c7;
+      color: #78350f;
+    }
+
+    .filter-pill.active {
+      background: #fbbf24;
+      color: #fff;
+      border-color: #fbbf24;
+      font-weight: 600;
+    }
+
+    /* Deadline pulse */
+    @keyframes pulse-dot {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: .4
+      }
+    }
+
+    .pulse-open {
+      animation: pulse-dot 1.8s ease-in-out infinite;
+    }
+
+    /* Modal slide */
+    #modal {
+      transition: opacity 0.2s ease;
+    }
+
+    #modal.hidden {
+      pointer-events: none;
+    }
+
+    #modal-panel {
+      transition: transform 0.25s cubic-bezier(.4, 0, .2, 1), opacity 0.25s ease;
+    }
+
+    /* Page nav active */
+    .page-btn {
+      transition: all 0.15s;
+    }
+
+    .page-btn:hover:not([disabled]) {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .page-btn.active {
+      background: #fbbf24;
+      color: white;
+      font-weight: 700;
+    }
+
+    .page-btn:disabled {
+      opacity: .35;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+
+<body class="font-display text-slate-900 dark:text-slate-100 dark:bg-background-dark min-h-screen">
+
+  <!-- ── NAV ─────────────────────────────────────────────────────────────────── -->
+  <nav
+    class="sticky top-0 z-50 bg-white/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-slate-100 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 h-14 flex items-center gap-3">
+      <a href="index.html"
+        class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 hover:text-slate-700 transition-colors">
+        <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+      </a>
+      <div class="w-px h-4 bg-slate-200 dark:bg-slate-700"></div>
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded bg-secondary flex items-center justify-center">
+          <span class="material-symbols-outlined text-white text-[14px]">school</span>
+        </div>
+        <span class="font-semibold text-sm text-slate-800 dark:text-slate-100">FasoOrientation</span>
+      </div>
+      <span class="text-slate-200 dark:text-slate-700 text-sm">/</span>
+      <span class="text-sm text-slate-400 hidden sm:block">Bourses</span>
+
+      <div class="ml-auto flex items-center gap-3">
+        <!-- Live badge -->
+        <div id="live-badge"
+          class="hidden items-center gap-1.5 text-[11px] font-semibold text-amber-600 bg-amber-50 dark:bg-amber-900/20 dark:text-amber-400 px-2.5 py-1 rounded-full">
+          <span class="pulse-open w-1.5 h-1.5 rounded-full bg-amber-500 inline-block"></span>
+          En direct
+        </div>
+        <!-- Total -->
+        <span class="text-xs text-slate-400" id="nav-total"></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── MAIN ─────────────────────────────────────────────────────────────────── -->
+  <main class="max-w-6xl mx-auto px-5 sm:px-8 py-10 pb-16">
+
+    <!-- HEADER — exactly like recommandations -->
+    <div class="mb-10 max-w-xl">
+      <p class="text-xs font-semibold text-secondary tracking-widest uppercase mb-3">Financements disponibles</p>
+      <h2 class="serif text-3xl md:text-4xl text-slate-900 dark:text-white leading-tight mb-3">
+        Bourses d'études<br>pour ton parcours
+      </h2>
+      <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+        Sélection mise à jour automatiquement depuis SaharaBold, FundMyDegree Africa et Scholar Africa.
+      </p>
+    </div>
+
+    <!-- SEARCH + FILTERS -->
+    <div class="flex flex-col sm:flex-row gap-3 mb-8">
+      <!-- Search -->
+      <div class="relative flex-1 max-w-sm">
+        <span
+          class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-300 text-[18px]">search</span>
+        <input id="search-input" type="search" placeholder="Rechercher une bourse…"
+          class="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 text-sm transition" />
+      </div>
+      <!-- Niveau pills -->
+      <div class="flex flex-wrap gap-2 items-center">
+        <button
+          class="filter-pill active text-xs px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400"
+          data-niveau="">Tous</button>
+        <button
+          class="filter-pill text-xs px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400"
+          data-niveau="Bachelor">Licence</button>
+        <button
+          class="filter-pill text-xs px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400"
+          data-niveau="Master">Master</button>
+        <button
+          class="filter-pill text-xs px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400"
+          data-niveau="PhD">Doctorat</button>
+      </div>
+    </div>
+
+    <!-- Results label -->
+    <p class="text-xs text-slate-400 mb-5" id="results-label">Chargement…</p>
+
+    <!-- SKELETONS -->
+    <div id="skeleton-container" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 mb-10">
+      <div class="skeleton h-52 w-full"></div>
+      <div class="skeleton h-52 w-full"></div>
+      <div class="skeleton h-52 w-full"></div>
+      <div class="skeleton h-52 w-full opacity-50"></div>
+      <div class="skeleton h-52 w-full opacity-30"></div>
+      <div class="skeleton h-52 w-full opacity-20"></div>
+    </div>
+
+    <!-- CARDS GRID -->
+    <div id="cards-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 mb-10" style="display:none"></div>
+
+    <!-- EMPTY STATE -->
+    <div id="empty-state" class="hidden flex flex-col items-center justify-center py-20 gap-5 text-center">
+      <div class="w-16 h-16 bg-amber-50 dark:bg-amber-900/20 rounded-2xl flex items-center justify-center">
+        <span class="material-symbols-outlined text-amber-400 text-[32px]">search_off</span>
+      </div>
+      <div>
+        <h3 class="font-semibold text-slate-700 dark:text-slate-300 mb-1">Aucune bourse trouvée</h3>
+        <p class="text-sm text-slate-400 max-w-xs">Essaie d'autres mots-clés ou supprime les filtres actifs.</p>
+      </div>
+      <button onclick="resetFilters()"
+        class="flex items-center gap-2 bg-secondary text-white text-sm font-semibold py-2.5 px-5 rounded-xl hover:bg-amber-400 transition-all active:scale-95">
+        <span class="material-symbols-outlined text-[16px]">filter_alt_off</span>
+        Réinitialiser les filtres
+      </button>
+    </div>
+
+    <!-- ERROR STATE -->
+    <div id="error-state" class="hidden flex flex-col items-center justify-center py-20 gap-5 text-center">
+      <div class="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center">
+        <span class="material-symbols-outlined text-slate-400 text-[32px]">wifi_off</span>
+      </div>
+      <div>
+        <h3 class="font-semibold text-slate-700 dark:text-slate-300 mb-1">Service temporairement indisponible</h3>
+        <p class="text-sm text-slate-400 max-w-xs" id="error-msg">Impossible de contacter le serveur.</p>
+      </div>
+      <button onclick="fetchScholarships()"
+        class="flex items-center gap-2 bg-secondary text-white text-sm font-semibold py-2.5 px-5 rounded-xl hover:bg-amber-400 transition-all active:scale-95">
+        <span class="material-symbols-outlined text-[16px]">refresh</span>
+        Réessayer
+      </button>
+    </div>
+
+    <!-- PAGINATION -->
+    <div id="pagination" class="hidden flex justify-center items-center gap-2 mt-6"></div>
+
+  </main>
+
+
+  <!-- ── MODAL DÉTAIL (same pattern as recommandations) ────────────────────── -->
+  <div id="modal"
+    class="hidden fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-0 sm:p-6 bg-slate-900/40 backdrop-blur-sm">
+    <div id="modal-panel"
+      class="w-full sm:max-w-xl max-h-[92dvh] overflow-y-auto bg-white dark:bg-slate-900 rounded-t-2xl sm:rounded-2xl shadow-xl flex flex-col">
+
+      <!-- Header -->
+      <div
+        class="sticky top-0 z-10 bg-white dark:bg-slate-900 px-6 py-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 bg-secondary/10 rounded-lg flex items-center justify-center">
+            <span id="modal-icon" class="material-symbols-outlined text-secondary text-[18px]">school</span>
+          </div>
+          <div>
+            <h2 id="modal-title" class="font-semibold text-base text-slate-900 dark:text-white leading-tight"></h2>
+            <p id="modal-subtitle" class="text-xs text-secondary mt-0.5 font-medium"></p>
+          </div>
+        </div>
+        <button onclick="closeModal()"
+          class="w-8 h-8 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 flex items-center justify-center transition-colors">
+          <span class="material-symbols-outlined text-[18px]">close</span>
+        </button>
+      </div>
+
+      <!-- Body -->
+      <div class="px-6 py-5 flex flex-col gap-5">
+
+        <!-- Stats row -->
+        <div id="modal-stats" class="grid grid-cols-3 gap-3"></div>
+
+        <!-- Detail rows -->
+        <div id="modal-body" class="space-y-3"></div>
+
+      </div>
+
+      <!-- Footer -->
+      <div
+        class="sticky bottom-0 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 px-6 py-4 flex gap-3">
+        <button onclick="closeModal()"
+          class="flex-1 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 font-semibold py-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 text-sm transition-all">
+          Fermer
+        </button>
+        <a id="modal-link" href="#" target="_blank" rel="noopener"
+          class="flex-[2] bg-secondary hover:bg-amber-400 text-white font-semibold py-2.5 rounded-xl flex items-center justify-center gap-2 text-sm transition-all active:scale-[0.98]">
+          <span class="material-symbols-outlined text-[16px]">open_in_new</span>
+          Postuler maintenant
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="js/pwa.js"></script>
+
+  <script>
+    // ── State ──────────────────────────────────────────────────────────────────
+    const state = { page: 1, limit: 12, total: 0, search: '', niveau: '' };
+
+    // ── Fetch ──────────────────────────────────────────────────────────────────
+    async function fetchScholarships() {
+      showSkeleton();
+      const params = new URLSearchParams({ page: state.page, limit: state.limit });
+      if (state.search) params.set('search', state.search);
+      if (state.niveau) params.set('niveau', state.niveau);
+
+      try {
+        const base = window.FASO_ENV?.API_BASE_URL || '/api';
+        const res = await fetch(`${base}/scholarships?${params}`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const json = await res.json();
+        if (!json.success) throw new Error(json.message || 'Erreur API');
+
+        state.total = json.total || 0;
+        renderCards(json.data || []);
+        renderPagination();
+        updateNav();
+
+      } catch (err) {
+        showError(err.message);
+      }
+    }
+
+    // ── Render grid ────────────────────────────────────────────────────────────
+    function renderCards(items) {
+      hideSkeleton();
+      const grid = document.getElementById('cards-grid');
+      const empty = document.getElementById('empty-state');
+      const label = document.getElementById('results-label');
+
+      if (!items.length) {
+        grid.style.display = 'none';
+        empty.classList.remove('hidden');
+        label.textContent = 'Aucun résultat';
+        return;
+      }
+
+      empty.classList.add('hidden');
+      grid.style.display = 'grid';
+      label.textContent = `${state.total} bourse${state.total > 1 ? 's' : ''} disponible${state.total > 1 ? 's' : ''}`;
+
+      grid.innerHTML = items.map((s, i) => scholarshipCard(s, i)).join('');
+    }
+
+    function scholarshipCard(s, i) {
+      const isFirst = i === 0 && state.page === 1;
+      const isOpen = deadlineOpen(s.application_deadline);
+      const platform = s.source_platform || s.provider || 'International';
+      const icon = platformIcon(platform);
+      const deadline = fmtDeadline(s.application_deadline);
+      const nv = niveauBadge(s.eligibility_criteria);
+      const country = s.target_countries?.[0] || null;
+
+      return `
+  <div class="card-hover flex flex-col overflow-hidden rounded-2xl bg-white dark:bg-slate-900 border
+              ${isFirst ? 'border-secondary/40 ring-1 ring-secondary/20' : 'border-slate-200 dark:border-slate-800'}
+              relative cursor-pointer" onclick='openModal(${JSON.stringify(s).replace(/'/g, "&#39;")})'>
+
+    ${isFirst ? `<div class="absolute top-4 right-4 z-10">
+      <span class="text-[10px] font-semibold text-secondary bg-secondary/10 px-2.5 py-1 rounded-full">⭐ Mis en avant</span>
+    </div>` : ''}
+
+    <!-- Card header -->
+    <div class="p-5 border-b border-slate-100 dark:border-slate-800 flex items-start gap-4">
+      <div class="w-11 h-11 rounded-xl ${isFirst ? 'bg-secondary' : 'bg-slate-100 dark:bg-slate-800'} flex items-center justify-center shrink-0">
+        <span class="material-symbols-outlined ${isFirst ? 'text-white' : 'text-slate-500'} text-[22px]">${icon}</span>
+      </div>
+      <div class="flex-1 min-w-0 ${isFirst ? 'pr-20' : ''}">
+        <h3 class="font-semibold text-sm text-slate-900 dark:text-white leading-snug line-clamp-2">${esc(s.name)}</h3>
+        <div class="flex items-center flex-wrap gap-x-2 gap-y-1 mt-1.5">
+          ${isOpen
+          ? `<span class="inline-flex items-center gap-1 text-[10px] font-semibold text-green-600 bg-green-50 dark:bg-green-900/20 px-2 py-0.5 rounded-full">
+                 <span class="pulse-open w-1.5 h-1.5 rounded-full bg-green-500"></span>Ouvert</span>`
+          : `<span class="text-[10px] font-semibold text-slate-400 bg-slate-100 dark:bg-slate-700 px-2 py-0.5 rounded-full">Fermé</span>`
+        }
+          ${nv ? `<span class="text-[10px] font-semibold px-2 py-0.5 rounded-full ${nv.cls}">${nv.label}</span>` : ''}
+        </div>
+      </div>
+    </div>
+
+    <!-- Card body -->
+    <div class="p-5 flex flex-col gap-4 flex-1">
+
+      <!-- Info grid -->
+      <div class="grid grid-cols-2 gap-2">
+        <div class="flex items-center gap-1.5 text-xs text-slate-500">
+          <span class="material-symbols-outlined text-slate-300 text-[16px]">source</span>
+          <span class="truncate">${esc(platform)}</span>
+        </div>
+        ${country ? `<div class="flex items-center gap-1.5 text-xs text-slate-500">
+          <span class="material-symbols-outlined text-slate-300 text-[16px]">public</span>
+          <span class="truncate">${esc(country)}</span>
+        </div>` : ''}
+        ${deadline ? `<div class="col-span-2 flex items-center gap-1.5 text-xs font-medium text-amber-600 dark:text-amber-400">
+          <span class="material-symbols-outlined text-[16px]">calendar_month</span>
+          Limite : ${deadline}
+        </div>` : ''}
+      </div>
+
+      <!-- Divider + CTA -->
+      <div class="flex gap-2 mt-auto pt-1">
+        <button onclick="event.stopPropagation();openModal(${JSON.stringify(s).replace(/'/g, "&#39;")})"
+          class="flex-1 ${isFirst ? 'bg-secondary text-white' : 'border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'}
+                 text-xs font-semibold py-2.5 rounded-xl flex items-center justify-center gap-1.5 hover:opacity-90 transition-all active:scale-[0.98]">
+          <span class="material-symbols-outlined text-[15px]">visibility</span>
+          Voir détails
+        </button>
+        ${s.website_url ? `<a href="${esc(s.website_url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()"
+          class="flex-1 ${isFirst ? 'bg-secondary/10 text-secondary' : 'bg-slate-50 dark:bg-slate-800 text-slate-500'}
+                 text-xs font-semibold py-2.5 rounded-xl flex items-center justify-center gap-1.5 hover:opacity-80 transition-all">
+          <span class="material-symbols-outlined text-[15px]">open_in_new</span>
+          Postuler
+        </a>` : ''}
+      </div>
+    </div>
+  </div>`;
+    }
+
+    // ── Modal ─────────────────────────────────────────────────────────────────
+    function openModal(s) {
+      const platform = s.source_platform || s.provider || 'International';
+      const deadline = fmtDeadline(s.application_deadline);
+      const isOpen = deadlineOpen(s.application_deadline);
+
+      document.getElementById('modal-icon').textContent = platformIcon(platform);
+      document.getElementById('modal-title').textContent = s.name;
+      document.getElementById('modal-subtitle').textContent = platform;
+
+      // Stats mini-cards
+      const stats = [
+        { label: 'Statut', value: isOpen ? '🟢 Ouvert' : '🔴 Fermé' },
+        { label: 'Deadline', value: deadline || 'N/A' },
+        { label: 'Niveau', value: s.eligibility_criteria?.slice(0, 18) || 'Tous niveaux' },
+      ];
+      document.getElementById('modal-stats').innerHTML = stats.map(st => `
+    <div class="bg-amber-50 dark:bg-amber-900/10 rounded-xl p-3 flex flex-col items-center gap-1 text-center">
+      <p class="font-semibold text-slate-800 dark:text-white text-xs leading-tight">${esc(st.value)}</p>
+      <p class="text-[10px] text-slate-400 font-medium">${st.label}</p>
+    </div>`).join('');
+
+      // Info rows
+      const rows = [
+        s.target_countries?.length && { icon: 'public', label: 'Pays cibles', value: s.target_countries.join(', ') },
+        s.description && { icon: 'description', label: 'Description', value: s.description },
+        s.amount_fcfa && { icon: 'payments', label: 'Montant', value: Number(s.amount_fcfa).toLocaleString('fr-FR') + ' FCFA' },
+        s.duration_months && { icon: 'hourglass', label: 'Durée', value: s.duration_months + ' mois' },
+      ].filter(Boolean);
+
+      document.getElementById('modal-body').innerHTML = rows.length ? rows.map(r => `
+    <div class="flex items-start gap-3 p-3 rounded-xl border border-slate-100 dark:border-slate-800">
+      <span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">${r.icon}</span>
+      <div>
+        <p class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-0.5">${r.label}</p>
+        <p class="text-sm text-slate-700 dark:text-slate-200">${esc(String(r.value))}</p>
+      </div>
+    </div>`).join('')
+        : `<p class="text-sm text-slate-400 italic">Aucune information supplémentaire disponible.</p>`;
+
+      const link = document.getElementById('modal-link');
+      if (s.website_url) { link.href = s.website_url; link.style.display = ''; }
+      else link.style.display = 'none';
+
+      const modal = document.getElementById('modal');
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('modal').addEventListener('click', e => { if (e.target === document.getElementById('modal')) closeModal(); });
+
+    // ── Pagination ────────────────────────────────────────────────────────────
+    function renderPagination() {
+      const totalPages = Math.ceil(state.total / state.limit);
+      const pag = document.getElementById('pagination');
+      if (totalPages <= 1) { pag.classList.add('hidden'); return; }
+      pag.classList.remove('hidden');
+
+      let html = `<button class="page-btn px-3 py-2 rounded-lg text-sm border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900"
+    onclick="goPage(${state.page - 1})" ${state.page === 1 ? 'disabled' : ''}>
+    <span class="material-symbols-outlined text-base">chevron_left</span></button>`;
+
+      for (let p = 1; p <= totalPages; p++) {
+        html += `<button class="page-btn px-3.5 py-2 rounded-lg text-sm border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 ${p === state.page ? 'active' : ''}"
+      onclick="goPage(${p})">${p}</button>`;
+      }
+      html += `<button class="page-btn px-3 py-2 rounded-lg text-sm border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900"
+    onclick="goPage(${state.page + 1})" ${state.page === totalPages ? 'disabled' : ''}>
+    <span class="material-symbols-outlined text-base">chevron_right</span></button>`;
+
+      pag.innerHTML = html;
+    }
+
+    function goPage(p) {
+      const totalPages = Math.ceil(state.total / state.limit);
+      if (p < 1 || p > totalPages) return;
+      state.page = p;
+      fetchScholarships();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ── Filters ───────────────────────────────────────────────────────────────
+    document.querySelectorAll('.filter-pill[data-niveau]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-pill[data-niveau]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        state.niveau = btn.dataset.niveau; state.page = 1;
+        fetchScholarships();
+      });
+    });
+
+    let searchTimer;
+    document.getElementById('search-input').addEventListener('input', e => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => { state.search = e.target.value.trim(); state.page = 1; fetchScholarships(); }, 400);
+    });
+
+    function resetFilters() {
+      document.getElementById('search-input').value = '';
+      document.querySelectorAll('.filter-pill[data-niveau]').forEach(b => b.classList.remove('active'));
+      document.querySelector('.filter-pill[data-niveau=""]').classList.add('active');
+      state.search = ''; state.niveau = ''; state.page = 1;
+      fetchScholarships();
+    }
+
+    // ── UI helpers ────────────────────────────────────────────────────────────
+    function showSkeleton() {
+      document.getElementById('skeleton-container').style.display = 'grid';
+      document.getElementById('cards-grid').style.display = 'none';
+      document.getElementById('empty-state').classList.add('hidden');
+      document.getElementById('error-state').classList.add('hidden');
+      document.getElementById('pagination').classList.add('hidden');
+    }
+    function hideSkeleton() {
+      document.getElementById('skeleton-container').style.display = 'none';
+      document.getElementById('error-state').classList.add('hidden');
+    }
+    function showError(msg) {
+      hideSkeleton();
+      document.getElementById('cards-grid').style.display = 'none';
+      document.getElementById('empty-state').classList.add('hidden');
+      document.getElementById('error-state').classList.remove('hidden');
+      document.getElementById('error-msg').textContent = msg;
+      document.getElementById('results-label').textContent = 'Erreur de chargement';
+    }
+    function updateNav() {
+      document.getElementById('live-badge').classList.remove('hidden');
+      document.getElementById('live-badge').style.display = 'flex';
+      document.getElementById('nav-total').textContent = `${state.total} bourse${state.total > 1 ? 's' : ''}`;
+    }
+
+    // ── Utilities ─────────────────────────────────────────────────────────────
+    function deadlineOpen(dl) {
+      if (!dl) return true;
+      return new Date(dl) >= new Date();
+    }
+    function fmtDeadline(dl) {
+      if (!dl) return null;
+      try { return new Date(dl).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }); }
+      catch { return dl; }
+    }
+    function niveauBadge(criteria) {
+      if (!criteria) return null;
+      const c = criteria.toLowerCase();
+      if (c.includes('bachelor') || c.includes('undergraduate') || c.includes('licence'))
+        return { cls: 'text-amber-700 bg-amber-100 dark:bg-amber-900/20 dark:text-amber-400', label: 'Licence' };
+      if (c.includes('master') || c.includes('mba'))
+        return { cls: 'text-blue-700 bg-blue-100 dark:bg-blue-900/20 dark:text-blue-400', label: 'Master' };
+      if (c.includes('phd') || c.includes('doctorat') || c.includes('postdoc'))
+        return { cls: 'text-violet-700 bg-violet-100 dark:bg-violet-900/20 dark:text-violet-400', label: 'Doctorat' };
+      return { cls: 'text-green-700 bg-green-100 dark:bg-green-900/20 dark:text-green-400', label: criteria.slice(0, 18) };
+    }
+    function platformIcon(p) {
+      const pl = (p || '').toLowerCase();
+      if (pl.includes('sahara')) return 'terrain';
+      if (pl.includes('fund')) return 'account_balance';
+      if (pl.includes('scholar')) return 'school';
+      return 'public';
+    }
+    function esc(s) {
+      const d = document.createElement('div');
+      d.textContent = String(s || '');
+      return d.innerHTML;
+    }
+
+    // ── Init ──────────────────────────────────────────────────────────────────
+    fetchScholarships();
+  </script>
+</body>
+
+</html>

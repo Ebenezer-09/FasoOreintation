@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html class="light" lang="fr">
+<head>
+    
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="theme-color" content="#1e804f"/>
+<link rel="manifest" href="/manifest.webmanifest"/>
+<link rel="icon" href="/assets/icons/icon.svg" type="image/svg+xml"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block" rel="stylesheet"/>
+<style>
+  .material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+  }
+</style>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "primary": "#1e804f",
+                    "secondary": "#fbbf24",
+                    "background-light": "#f6f8f7",
+                    "background-dark": "#131f19",
+                },
+                fontFamily: {
+                    "display": ["Lexend", "sans-serif"]
+                },
+                borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+            },
+        },
+    }
+</script>
+
+    <title>Inscription - FasoOrientation</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-md bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-xl p-8 my-4">
+        <!-- Logo / Entête -->
+        <div class="text-center mb-6">
+            <a href="index.html" class="inline-flex items-center gap-2 mb-3">
+                <span class="material-symbols-outlined text-primary text-4xl">school</span>
+                <span class="font-bold text-2xl text-slate-900 dark:text-white">FasoOrientation</span>
+            </a>
+            <h1 class="text-xl font-bold text-slate-900 dark:text-white">Créer votre compte</h1>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Rejoignez-nous pour construire votre avenir</p>
+        </div>
+
+        <!-- Messages d'erreur/succès -->
+        <div id="message-box" class="hidden mb-4 p-4 rounded-xl text-sm font-medium transition-all">
+            <span id="message-text"></span>
+        </div>
+
+        <form id="signup-form" class="space-y-4">
+            <!-- Nom & Prénom (Disposés côte à côte proprement) -->
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label for="lastname" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Nom</label>
+                    <input type="text" id="lastname" name="lastname" placeholder="Nom" required
+                        class="block w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-sm transition-all outline-none">
+                </div>
+                <div>
+                    <label for="firstname" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Prénom</label>
+                    <input type="text" id="firstname" name="firstname" placeholder="Prénom" required
+                        class="block w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-sm transition-all outline-none">
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div>
+                <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Adresse email</label>
+                <div class="relative rounded-xl shadow-sm">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                        <span class="material-symbols-outlined text-xl">mail</span>
+                    </div>
+                    <input type="email" id="email" name="email" placeholder="exemple@email.com" required
+                        class="block w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-sm transition-all outline-none">
+                </div>
+            </div>
+
+            <!-- Numéro de téléphone -->
+            <div>
+                <label for="phone" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Numéro de téléphone</label>
+                <div class="relative rounded-xl shadow-sm">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                        <span class="material-symbols-outlined text-xl">call</span>
+                    </div>
+                    <input type="tel" id="phone" name="phone" placeholder="Ex: +226 01 02 03 04" required
+                        class="block w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-sm transition-all outline-none">
+                </div>
+            </div>
+
+            <!-- Mot de passe -->
+            <div>
+                <label for="password" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Mot de passe</label>
+                <div class="relative rounded-xl shadow-sm">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                        <span class="material-symbols-outlined text-xl">lock</span>
+                    </div>
+                    <input type="password" id="password" name="password" placeholder="••••••••" required
+                        class="block w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-sm transition-all outline-none">
+                </div>
+            </div>
+
+            <!-- Confirmation du mot de passe -->
+            <div>
+                <label for="password_confirmation" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Confirmer le mot de passe</label>
+                <div class="relative rounded-xl shadow-sm">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                        <span class="material-symbols-outlined text-xl">gpp_good</span>
+                    </div>
+                    <input type="password" id="password_confirmation" name="password_confirmation" placeholder="••••••••" required
+                        class="block w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-sm transition-all outline-none">
+                </div>
+            </div>
+
+            <!-- Conditions Générales -->
+            <div class="flex items-start mt-2">
+                <input type="checkbox" id="terms" name="terms" required
+                    class="mt-1 h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900">
+                <label for="terms" class="ml-2 block text-xs text-slate-600 dark:text-slate-400 leading-normal">
+                    J'accepte les <a href="#" class="font-semibold text-primary hover:underline">conditions générales d'utilisation</a> et la politique de confidentialité.
+                </label>
+            </div>
+
+            <!-- Bouton de soumission -->
+            <button type="submit" id="submit-btn" 
+                class="w-full bg-primary hover:bg-primary/90 text-white py-3.5 px-4 rounded-xl font-bold text-sm shadow-lg shadow-primary/20 transition-all transform active:scale-[0.98] mt-2">
+                S'inscrire
+            </button>
+        </form>
+
+        <!-- Lien de connexion -->
+        <div class="text-center mt-5 pt-5 border-t border-slate-100 dark:border-slate-700/60 text-sm text-slate-600 dark:text-slate-400">
+            Déjà un compte ? 
+            <a href="connexion.html" class="font-semibold text-primary hover:underline ml-1">Se connecter</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/env.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/auth-api.js"></script>
+    <script>
+        document.getElementById('signup-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Récupérer les valeurs
+            const firstName = document.getElementById('firstname').value;
+            const lastName = document.getElementById('lastname').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+            const passwordConfirmation = document.getElementById('password_confirmation').value;
+            const submitBtn = document.getElementById('submit-btn');
+            const messageBox = document.getElementById('message-box');
+            const messageText = document.getElementById('message-text');
+
+            // Désactiver le bouton
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Inscription en cours...';
+
+            // Appeler l'API
+            const result = await authAPI.signup({
+                firstName,
+                lastName,
+                email,
+                phone,
+                password,
+                passwordConfirmation,
+            });
+
+            // Réactiver le bouton
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'S\'inscrire';
+
+            // Afficher le message
+            messageBox.classList.remove('hidden');
+
+            if (result.success) {
+                messageBox.classList.add('bg-green-100', 'text-green-800', 'dark:bg-green-900', 'dark:text-green-200');
+                messageBox.classList.remove('bg-red-100', 'text-red-800', 'dark:bg-red-900', 'dark:text-red-200');
+                messageText.textContent = '✓ Inscription réussie! Redirection vers la connexion...';
+                
+                // Rediriger après 2 secondes
+                setTimeout(() => {
+                    window.location.href = 'connexion.html';
+                }, 2000);
+            } else {
+                messageBox.classList.add('bg-red-100', 'text-red-800', 'dark:bg-red-900', 'dark:text-red-200');
+                messageBox.classList.remove('bg-green-100', 'text-green-800', 'dark:bg-green-900', 'dark:text-green-200');
+                messageText.textContent = '✗ ' + result.message;
+            }
+        });
+    </script>
+    <script src="js/pwa.js"></script>
+</body>
+</html>

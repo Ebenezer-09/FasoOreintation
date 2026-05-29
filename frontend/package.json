@@ -4,13 +4,11 @@
   "description": "Frontend pour la plateforme d'orientation universitaire FasoOrientation",
   "main": "index.html",
   "scripts": {
-    "dev": "open index.html",
-    "build": "mkdir -p public && cp -r *.html css js assets public/ 2>/dev/null; exit 0",
+    "build": "mkdir -p public && cp -r *.html *.webmanifest sw.js css js assets public/ 2>/dev/null; echo '✅ Build complete - files in ./public'; exit 0",
     "lint": "echo 'Linting to be implemented'"
   },
   "keywords": ["orientation", "université", "Burkina Faso", "éducation"],
   "author": "FasoInnovation",
   "license": "MIT",
-  "devDependencies": {},
   "dependencies": {}
 }

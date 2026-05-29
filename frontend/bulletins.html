@@ -3,6 +3,9 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta name="theme-color" content="#1e804f"/>
+  <link rel="manifest" href="/manifest.webmanifest"/>
+  <link rel="icon" href="/assets/icons/icon.svg" type="image/svg+xml"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
@@ -41,6 +44,18 @@
   </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+
+  <!-- Scripts d'authentification -->
+  <script src="js/env.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/auth-api.js"></script>
+  <script src="js/auth-manager.js"></script>
+  <script>
+    // Vérifier que l'utilisateur est connecté
+    if (!AuthManager.isLoggedIn()) {
+      window.location.href = 'connexion.html';
+    }
+  </script>
 
   <!-- TOP NAV -->
   <nav class="sticky top-0 z-50 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-primary/10">
@@ -278,7 +293,6 @@
     </div>
   </div>
 
-  <script src="js/storage.js"></script>
   <script src="js/groq.js"></script>
   <script>
     // ── Config PDF.js worker ────────────────────────────────────────────────
@@ -340,6 +354,76 @@
         reader.onerror = reject;
         reader.readAsDataURL(file);
       });
+    }
+
+    function normalizeText(value) {
+      return String(value || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/[’']/g, ' ')
+        .replace(/[^a-z0-9]+/g, ' ')
+        .trim();
+    }
+
+    function subjectAppearsInText(subject, rawText) {
+      if (!rawText) return true;
+      const text = ` ${normalizeText(rawText)} `;
+      const normalizedSubject = normalizeText(subject);
+      if (!normalizedSubject) return false;
+
+      const variants = new Set([normalizedSubject]);
+      if (normalizedSubject === 'histoire geo') variants.add('histoire geographie');
+      if (normalizedSubject === 'histoire geographie') variants.add('histoire geo');
+      if (normalizedSubject === 'mathematiques') variants.add('maths');
+      if (normalizedSubject === 'maths') variants.add('mathematiques');
+      if (normalizedSubject === 'physique chimie') {
+        variants.add('physique');
+        variants.add('chimie');
+      }
+
+      return [...variants].some(v => text.includes(` ${v} `));
+    }
+
+    function cleanExtractedAnalysis(data, rawText = '') {
+      if (!data || data.erreur) return data;
+
+      const cleanedMatieres = [];
+      const seen = new Set();
+
+      (data.matieres || []).forEach(m => {
+        const nom = String(m?.nom || '').trim();
+        if (!nom || !subjectAppearsInText(nom, rawText)) return;
+
+        const notes = (m.notes || [])
+          .map(n => Number(n))
+          .filter(n => Number.isFinite(n) && n >= 0 && n <= 20);
+        const moyenne = Number(m.moyenne ?? (notes.length ? notes.reduce((a, b) => a + b, 0) / notes.length : NaN));
+        const validMoyenne = Number.isFinite(moyenne) && moyenne >= 0 && moyenne <= 20 ? Math.round(moyenne * 100) / 100 : null;
+        if (!notes.length && validMoyenne === null) return;
+
+        const key = normalizeText(nom);
+        if (seen.has(key)) return;
+        seen.add(key);
+
+        cleanedMatieres.push({
+          ...m,
+          nom,
+          notes: notes.length ? notes : [validMoyenne],
+          moyenne: validMoyenne ?? Math.round((notes.reduce((a, b) => a + b, 0) / notes.length) * 100) / 100
+        });
+      });
+
+      if (!cleanedMatieres.length) {
+        return { erreur: 'Aucune matière extraite avec une note valide' };
+      }
+
+      const allNotes = cleanedMatieres.flatMap(m => m.notes);
+      return {
+        ...data,
+        matieres: cleanedMatieres,
+        moyenneGenerale: Math.round((allNotes.reduce((a, b) => a + b, 0) / allNotes.length) * 100) / 100
+      };
     }
 
     // ── Rendre les pages PDF en images base64 via canvas ───────────────────
@@ -442,8 +526,8 @@
     async function groqVisionAnalyse(classe, images) {
       const isBac = classe === 'bac' || classe === 'releve';
       const instruction = isBac
-        ? `Tu es un expert en lecture de relevés de notes du Baccalauréat au Burkina Faso.\n\nAnalyse ce relevé de notes du Bac.\nExtrait TOUTES les matières et leur note unique visible.\nIl n'y a PAS de trimestres, c'est un examen unique : une seule note par matière.\nCalcule la moyenne générale (somme des notes / nombre de matières).\n\nRÈGLES STRICTES :\n- N'invente AUCUNE note. Utilise uniquement ce qui est visible.\n- Notes sur 20. Si illisible → {"erreur": "Document illisible"}\n- Inclus aussi le coefficient si visible.\n\nRéponds UNIQUEMENT en JSON valide :\n{"classe":"bac","trimestres":1,"matieres":[{"nom":"Mathématiques","notes":[12.5],"moyenne":12.5}],"moyenneGenerale":12.1,"appreciation":"Passable"}`
-        : `Tu es un expert en lecture de bulletins scolaires du Burkina Faso.\n\nAnalyse ce bulletin de la classe ${classe}.\nExtrait TOUTES les matières et leurs notes RÉELLES visibles dans l'image.\nLe bulletin peut avoir 1, 2 ou 3 trimestres.\nCalcule la moyenne de chaque matière (somme/nb trimestres, arrondi 2 décimales).\nCalcule la moyenne générale.\n\nRÈGLES STRICTES :\n- N'invente AUCUNE note. Utilise uniquement ce qui est visible.\n- Notes sur 20. Si illisible → {"erreur": "Document illisible"}\n\nRéponds UNIQUEMENT en JSON valide :\n{"classe":"${classe}","trimestres":3,"matieres":[{"nom":"Mathématiques","notes":[14.5,15,13.5],"moyenne":14.33}],"moyenneGenerale":14.1,"appreciation":"Bien"}`;
+        ? `Tu es un expert en lecture de relevés de notes du Baccalauréat au Burkina Faso.\n\nAnalyse ce relevé de notes du Bac.\nExtrait UNIQUEMENT les matières dont le nom et la note unique sont visibles.\nIl n'y a PAS de trimestres, c'est un examen unique : une seule note par matière.\nCalcule la moyenne générale (somme des notes / nombre de matières).\n\nRÈGLES STRICTES :\n- N'invente AUCUNE matière et AUCUNE note.\n- N'ajoute pas des matières typiques si elles ne sont pas visibles.\n- Notes sur 20. Si illisible → {"erreur": "Document illisible"}\n- Inclus aussi le coefficient si visible.\n\nRéponds UNIQUEMENT en JSON valide avec les noms exactement visibles :\n{"classe":"bac","trimestres":1,"matieres":[{"nom":"Nom visible","notes":[12.5],"moyenne":12.5}],"moyenneGenerale":12.5,"appreciation":"Passable"}`
+        : `Tu es un expert en lecture de bulletins scolaires du Burkina Faso.\n\nAnalyse ce bulletin de la classe ${classe}.\nExtrait UNIQUEMENT les matières dont le nom et les notes sont visibles dans l'image.\nLe bulletin peut avoir 1, 2 ou 3 trimestres.\nCalcule la moyenne de chaque matière (somme/nb trimestres, arrondi 2 décimales).\nCalcule la moyenne générale.\n\nRÈGLES STRICTES :\n- N'invente AUCUNE matière et AUCUNE note.\n- N'ajoute pas des matières typiques si elles ne sont pas visibles.\n- Notes sur 20. Si illisible → {"erreur": "Document illisible"}\n\nRéponds UNIQUEMENT en JSON valide avec les noms exactement visibles :\n{"classe":"${classe}","trimestres":3,"matieres":[{"nom":"Nom visible","notes":[12.5,13,14],"moyenne":13.17}],"moyenneGenerale":13.17,"appreciation":"Bien"}`;
 
       // Limiter à max 4 images et réduire la qualité
       const maxImages = images.slice(0, 4);
@@ -452,28 +536,19 @@
         ...maxImages.map(url => ({ type: 'image_url', image_url: { url } }))
       ];
 
-      const res = await fetch(GROQ_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${GROQ_API_KEY}` },
-        body: JSON.stringify({
-          model: 'meta-llama/llama-4-scout-17b-16e-instruct',
-          messages: [{ role: 'user', content }],
-          max_tokens: 2000,
-          temperature: 0.1
-        })
-      });
-      if (!res.ok) throw new Error(`Groq Vision API ${res.status}: ${await res.text()}`);
-      const data = await res.json();
-      return data.choices[0].message.content;
+      return await groqChat(
+        [{ role: 'user', content }],
+        { task: 'extraction', maxTokens: 2000, temperature: 0.1 }
+      );
     }
 
     // ── Prompt pour PDF texte ───────────────────────────────────────────────
     function buildBulletinPrompt(classe, rawText) {
       const isBac = classe === 'bac' || classe === 'releve';
       if (isBac) {
-        return `Tu es un système expert en analyse de relevés de notes du Baccalauréat au Burkina Faso.\n\nTEXTE EXTRAIT DU RELEVÉ :\n"""\n${rawText.slice(0, 7000)}\n"""\n\nExtrait TOUTES les matières et leur note unique (pas de trimestres, c'est un examen).\nCalcule la moyenne générale (somme des notes / nombre de matières).\n\nRÈGLES STRICTES :\n- Utilise UNIQUEMENT les notes présentes dans le texte. N'invente AUCUNE note.\n- Notes sur 20. Si rien de lisible → {"erreur": "Aucune note lisible"}\n\nRéponds UNIQUEMENT en JSON valide :\n{"classe":"bac","trimestres":1,"matieres":[{"nom":"Mathématiques","notes":[12.5],"moyenne":12.5}],"moyenneGenerale":12.1,"appreciation":"Passable"}`;
+        return `Tu es un système expert en analyse de relevés de notes du Baccalauréat au Burkina Faso.\n\nTEXTE EXTRAIT DU RELEVÉ :\n"""\n${rawText.slice(0, 7000)}\n"""\n\nExtrait UNIQUEMENT les matières dont le nom et la note sont présents dans le texte extrait.\nIl n'y a PAS de trimestres, c'est un examen unique : une seule note par matière.\nCalcule la moyenne générale (somme des notes / nombre de matières).\n\nRÈGLES STRICTES :\n- Utilise UNIQUEMENT les matières et notes présentes dans le texte.\n- N'invente AUCUNE matière et AUCUNE note.\n- Notes sur 20. Si rien de lisible → {"erreur": "Aucune note lisible"}\n\nRéponds UNIQUEMENT en JSON valide avec les noms exactement présents dans le texte :\n{"classe":"bac","trimestres":1,"matieres":[{"nom":"Nom présent","notes":[12.5],"moyenne":12.5}],"moyenneGenerale":12.5,"appreciation":"Passable"}`;
       }
-      return `Tu es un système expert en analyse de bulletins scolaires du Burkina Faso.\n\nCLASSE : ${classe}\nTEXTE EXTRAIT DU BULLETIN :\n"""\n${rawText.slice(0, 7000)}\n"""\n\nExtrait TOUTES les matières et leurs notes RÉELLES directement présentes dans le texte.\nLe bulletin peut contenir 1, 2 ou 3 trimestres.\n\nRÈGLES STRICTES :\n- Utilise UNIQUEMENT les notes présentes dans le texte. N'invente AUCUNE note.\n- Notes sur 20. Si rien de lisible → {"erreur": "Aucune note lisible"}\n- Moyenne = somme/nb trimestres, arrondi 2 décimales\n\nRéponds UNIQUEMENT en JSON valide :\n{"classe":"${classe}","trimestres":3,"matieres":[{"nom":"Mathématiques","notes":[14.5,15,13.5],"moyenne":14.33}],"moyenneGenerale":14.1,"appreciation":"Bien"}`;
+      return `Tu es un système expert en analyse de bulletins scolaires du Burkina Faso.\n\nCLASSE : ${classe}\nTEXTE EXTRAIT DU BULLETIN :\n"""\n${rawText.slice(0, 7000)}\n"""\n\nExtrait UNIQUEMENT les matières dont le nom et les notes sont présents dans le texte extrait.\nLe bulletin peut contenir 1, 2 ou 3 trimestres.\n\nRÈGLES STRICTES :\n- Utilise UNIQUEMENT les matières et notes présentes dans le texte.\n- N'invente AUCUNE matière et AUCUNE note.\n- Notes sur 20. Si rien de lisible → {"erreur": "Aucune note lisible"}\n- Moyenne = somme/nb trimestres, arrondi 2 décimales\n\nRéponds UNIQUEMENT en JSON valide avec les noms exactement présents dans le texte :\n{"classe":"${classe}","trimestres":3,"matieres":[{"nom":"Nom présent","notes":[12.5,13,14],"moyenne":13.17}],"moyenneGenerale":13.17,"appreciation":"Bien"}`;
     }
 
     // ── Rendu du tableau de notes ────────────────────────────────────────────
@@ -504,14 +579,21 @@
             `<th class="px-2 py-1.5 text-center text-[10px] font-bold uppercase text-slate-400 whitespace-nowrap">T${i + 1}</th>`
           ).join('');
 
-      const rows = (data.matieres || []).map(m => {
-        const noteCells = (m.notes || []).map(n =>
-          `<td class="px-2 py-1.5 text-center text-xs ${noteColor(n)}">${n}</td>`
+      const rows = (data.matieres || []).map((m, matIdx) => {
+        // Calculer la moyenne si elle n'existe pas
+        const moyenne = m.moyenne !== undefined && m.moyenne !== null
+          ? m.moyenne
+          : (m.notes && m.notes.length > 0 
+              ? Math.round((m.notes.reduce((a, b) => a + b, 0) / m.notes.length) * 100) / 100
+              : 0);
+        
+        const noteCells = (m.notes || []).map((n, noteIdx) =>
+          `<td class="px-2 py-1.5 text-center text-xs ${noteColor(n)} cursor-pointer hover:bg-primary/20 transition-colors editable-note" data-mat="${matIdx}" data-note="${noteIdx}" title="Cliquez pour modifier">${n}</td>`
         ).join('');
         return `<tr class="border-b border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50">
           <td class="px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-300 max-w-[140px] truncate">${m.nom}</td>
           ${noteCells}
-          ${!isSingleNote ? `<td class="px-2 py-1.5 text-center text-xs font-bold ${noteColor(m.moyenne)} bg-primary/5 dark:bg-primary/10">${m.moyenne}</td>` : ''}
+          ${!isSingleNote ? `<td class="px-2 py-1.5 text-center text-xs font-bold ${noteColor(moyenne)} bg-primary/5 dark:bg-primary/10 average-cell" data-mat="${matIdx}">${moyenne}</td>` : ''}
         </tr>`;
       }).join('');
 
@@ -543,6 +625,89 @@
           ${data.appreciation ? `<p class="px-3 py-2 text-xs text-slate-500 italic border-t border-slate-100 dark:border-slate-800">Appréciation : ${data.appreciation}</p>` : ''}
         </div>`;
       container.classList.remove('hidden');
+      
+      // ──── Activer l'édition des notes ────────────────────────────────────
+      makeNotesEditable(classe, data, noteColor);
+    }
+
+    // ── Fonction pour rendre les notes éditables ──────────────────────────────
+    function makeNotesEditable(classe, data, noteColor) {
+      const editableCells = document.querySelectorAll(`#result-analyse-${classe} .editable-note`);
+      
+      editableCells.forEach(cell => {
+        cell.addEventListener('click', function(e) {
+          if (this.querySelector('input')) return; // Déjà en édition
+          
+          const matIdx = parseInt(this.dataset.mat);
+          const noteIdx = parseInt(this.dataset.note);
+          const currentValue = parseFloat(this.textContent);
+          
+          const input = document.createElement('input');
+          input.type = 'number';
+          input.min = '0';
+          input.max = '20';
+          input.step = '0.01';
+          input.value = currentValue;
+          input.className = 'w-12 px-1 py-0.5 text-center border border-primary rounded text-xs font-semibold';
+          
+          this.textContent = '';
+          this.appendChild(input);
+          input.focus();
+          input.select();
+          
+          function saveEdit() {
+            const newValue = parseFloat(input.value) || 0;
+            const validValue = Math.max(0, Math.min(20, newValue));
+            
+            // Mise à jour des données
+            data.matieres[matIdx].notes[noteIdx] = validValue;
+            
+            // Recalcul de la moyenne de la matière
+            const notes = data.matieres[matIdx].notes;
+            data.matieres[matIdx].moyenne = Math.round((notes.reduce((a, b) => a + b, 0) / notes.length) * 100) / 100;
+            
+            // Recalcul de la moyenne générale
+            const allNotes = data.matieres.flatMap(m => m.notes);
+            data.moyenneGenerale = Math.round((allNotes.reduce((a, b) => a + b, 0) / allNotes.length) * 100) / 100;
+            
+            // Sauvegarde
+            const saved = FoStorage.getBulletins()[classe] || {};
+            saved.analyse = data;
+            FoStorage.saveBulletin(classe, saved);
+            
+            // Mise à jour de l'affichage
+            const container = document.getElementById(`result-analyse-${classe}`);
+            
+            // Mise à jour de la cellule de note
+            cell.textContent = validValue;
+            cell.className = `px-2 py-1.5 text-center text-xs ${noteColor(validValue)} cursor-pointer hover:bg-primary/20 transition-colors editable-note`;
+            
+            // Mise à jour de la moyenne affichée
+            const avgCell = container.querySelector(`[data-mat="${matIdx}"].average-cell`);
+            if (avgCell) {
+              avgCell.textContent = data.matieres[matIdx].moyenne;
+              avgCell.className = `px-2 py-1.5 text-center text-xs font-bold ${noteColor(data.matieres[matIdx].moyenne)} bg-primary/5 dark:bg-primary/10 average-cell`;
+            }
+            
+            // Mise à jour de la moyenne générale
+            const moyHeader = container.querySelector('span.text-xs.font-bold.text-primary.bg-primary\\/10');
+            if (moyHeader && moyHeader.textContent.includes('Moy. gén.')) {
+              moyHeader.textContent = `Moy. gén. : ${data.moyenneGenerale}/20`;
+            }
+          }
+          
+          function cancelEdit() {
+            cell.textContent = currentValue;
+            cell.className = `px-2 py-1.5 text-center text-xs ${noteColor(currentValue)} cursor-pointer hover:bg-primary/20 transition-colors editable-note`;
+          }
+          
+          input.addEventListener('blur', saveEdit);
+          input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') saveEdit();
+            if (e.key === 'Escape') cancelEdit();
+          });
+        });
+      });
     }
 
     // ── Clic sur "Analyser avec l'IA" ───────────────────────────────────────
@@ -566,15 +731,20 @@
           response = await groqVisionAnalyse(classe, extractedImages[classe]);
         } else {
           // PDF texte natif → Groq texte
-          response = await groqChat([{ role: 'user', content: buildBulletinPrompt(classe, hasText) }], { maxTokens: 1500, temperature: 0.1 });
+          response = await groqChat(
+            [{ role: 'user', content: buildBulletinPrompt(classe, hasText) }],
+            { task: 'extraction', maxTokens: 1500, temperature: 0.1 }
+          );
         }
 
         const cleaned = response.replace(/```json\s*/gi, '').replace(/```\s*/gi, '').trim();
-        const data = JSON.parse(cleaned);
+        const data = cleanExtractedAnalysis(JSON.parse(cleaned), hasText || '');
 
         const saved = FoStorage.getBulletins()[classe] || {};
         saved.analyse = data;
         FoStorage.saveBulletin(classe, saved);
+        localStorage.removeItem('fo_analyse');
+        localStorage.removeItem('fo_reco');
 
         renderAnalyse(classe, data);
 
@@ -591,5 +761,8 @@
     }
   </script>
 
+<script src="js/auth.js"></script>
+<script src="js/navigator.js"></script>
+<script src="js/pwa.js"></script>
 </body>
 </html>

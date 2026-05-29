@@ -1,0 +1,43 @@
+{
+  "name": "FasoOrientation",
+  "short_name": "FasoOrientation",
+  "description": "Plateforme d'orientation universitaire pour les lyceens au Burkina Faso.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "browser"],
+  "background_color": "#f6f8f7",
+  "theme_color": "#1e804f",
+  "orientation": "portrait-primary",
+  "lang": "fr",
+  "dir": "ltr",
+  "categories": ["education", "productivity"],
+  "icons": [
+    {
+      "src": "/assets/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Profil",
+      "short_name": "Profil",
+      "description": "Completer le profil d'orientation",
+      "url": "/profil.html"
+    },
+    {
+      "name": "Bulletins",
+      "short_name": "Bulletins",
+      "description": "Ajouter ou verifier les bulletins",
+      "url": "/bulletins.html"
+    },
+    {
+      "name": "Recommandations",
+      "short_name": "Recos",
+      "description": "Voir les filieres recommandees",
+      "url": "/recommandations.html"
+    }
+  ]
+}

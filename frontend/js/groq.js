@@ -1,12 +1,32 @@
 // ─── FasoOrientation · Groq LLM Client ─────────────────────────────────────
-const GROQ_API_KEYS = [
-  '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',
-  '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',
-  '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',
-];
-let currentGroqKeyIndex = 0;
-const GROQ_URL    = 'https://api.groq.com/openai/v1/chat/completions';
-const GROQ_MODEL  = 'llama-3.3-70b-versatile';
+const FasoEnv = window.FASO_ENV || {};
+const API_BASE_URL = FasoEnv.API_BASE_URL || '/api';
+const GROQ_MODELS = {
+  chat: FasoEnv.GROQ_CHAT_MODEL || 'llama-3.3-70b-versatile',
+  recommendation: FasoEnv.GROQ_RECOMMENDATION_MODEL || FasoEnv.GROQ_CHAT_MODEL || 'llama-3.3-70b-versatile',
+  extraction: FasoEnv.GROQ_EXTRACTION_MODEL || 'meta-llama/llama-4-scout-17b-16e-instruct',
+};
+
+function getGroqModel(task = 'chat') {
+  return GROQ_MODELS[task] || GROQ_MODELS.chat;
+}
+
+function clearInvalidSessionAndRedirect() {
+  if (window.authAPI?.clearSession) {
+    window.authAPI.clearSession();
+  } else {
+    localStorage.removeItem('auth_token');
+    localStorage.removeItem('refresh_token');
+    localStorage.removeItem('expires_at');
+    localStorage.removeItem('user_data');
+    localStorage.removeItem('login_time');
+  }
+
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  if (currentPage !== 'connexion.html') {
+    window.location.href = 'connexion.html?session=expired';
+  }
+}
 
 /**
  * Appelle l'API Groq et renvoie le texte de la réponse.
@@ -14,68 +34,75 @@ const GROQ_MODEL  = 'llama-3.3-70b-versatile';
  * @param {object}  opts                                   Options optionnelles
  * @param {number}  opts.maxTokens                         Limite de tokens (défaut 1024)
  * @param {number}  opts.temperature                       Température (défaut 0.7)
+ * @param {string}  opts.task                              chat | recommendation | extraction
+ * @param {string}  opts.model                             Modèle Groq explicite
  * @returns {Promise<string>} Texte de la réponse du LLM
  */
 async function groqChat(messages, opts = {}) {
-  const errors = [];
-  const keyCount = GROQ_API_KEYS.length;
+  const model = opts.model || getGroqModel(opts.task || 'chat');
 
-  // Try each key once, starting from the current active key.
-  for (let attempt = 0; attempt < keyCount; attempt++) {
-    const idx = (currentGroqKeyIndex + attempt) % keyCount;
-    const key = GROQ_API_KEYS[idx];
+  async function sendRequest() {
+    const token = localStorage.getItem('auth_token');
 
-    const res = await fetch(GROQ_URL, {
+    if (!token) {
+      throw new Error('Connexion requise pour utiliser les fonctionnalités IA.');
+    }
+
+    return fetch(`${API_BASE_URL}/ai/chat`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${key}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        model: GROQ_MODEL,
+        model,
         messages,
-        max_tokens: opts.maxTokens || 1024,
+        maxTokens: opts.maxTokens || 1024,
         temperature: opts.temperature ?? 0.7,
+        task: opts.task || 'chat',
       }),
     });
-
-    if (res.ok) {
-      currentGroqKeyIndex = idx;
-      const data = await res.json();
-      return data.choices[0].message.content;
-    }
-
-    const err = await res.text();
-    const lowerErr = err.toLowerCase();
-    const isLimitError =
-      res.status === 429 ||
-      lowerErr.includes('rate limit') ||
-      lowerErr.includes('quota') ||
-      lowerErr.includes('limit exceeded') ||
-      lowerErr.includes('insufficient_quota');
-
-    errors.push(`key#${idx + 1} -> ${res.status}: ${err}`);
-
-    if (isLimitError) {
-      // Continue to next key if this one is limited/quota-exceeded.
-      continue;
-    }
-
-    // For non-limit errors, still try next key for resilience.
   }
 
-  throw new Error(`Groq API failed on all keys: ${errors.join(' | ')}`);
+  let res = await sendRequest();
+
+  if (res.status === 401 && window.authAPI?.refreshSession) {
+    const refreshResult = await window.authAPI.refreshSession();
+    if (refreshResult.success) {
+      res = await sendRequest();
+    } else {
+      clearInvalidSessionAndRedirect();
+      throw new Error(refreshResult.message || 'Session expirée, veuillez vous reconnecter');
+    }
+  }
+
+  const data = await res.json().catch(() => ({}));
+
+  if (!res.ok || !data.success) {
+    if (res.status === 401) {
+      clearInvalidSessionAndRedirect();
+    }
+    throw new Error(data.message || `Erreur IA (${res.status})`);
+  }
+
+  return data.content;
 }
 
 // ─── Prompt système pour le conseiller d'orientation ────────────────────────
-function buildSystemPrompt(profil, analyse) {
-  let ctx = `Tu es un conseiller d'orientation scolaire bienveillant et expert du système éducatif au Burkina Faso. Tu parles en français simple et encourageant. Tu connais les universités, filières, débouchés et les réalités du marché de l'emploi au Burkina Faso et en Afrique de l'Ouest.\n\n`;
+function buildSystemPrompt(profil, analyse, filiere) {
+  let ctx = `Tu es un conseiller d'orientation scolaire bienveillant et expert du système éducatif au Burkina Faso. Tu parles en français simple, direct et encourageant. Ta mission est de conseiller l'élève en croisant toujours 4 éléments: ses notes réelles, ses préférences, sa série du Bac et le domaine dans lequel il aimerait exercer plus tard.\n\n`;
+  ctx += `RÈGLES DE CONSEIL :\n`;
+  ctx += `- Ne conseille jamais une filière uniquement parce qu'elle est populaire: justifie le choix avec les notes, la série du Bac, les préférences et le projet professionnel.\n`;
+  ctx += `- Quand une matière clé est faible pour le domaine visé, dis-le avec tact et propose un plan de renforcement concret.\n`;
+  ctx += `- Quand une matière forte soutient le projet, cite-la explicitement.\n`;
+  ctx += `- Privilégie les filières et écoles réellement présentes dans les recommandations ou dans les données fournies; si tu n'es pas sûr d'une école, formule une vérification à faire au lieu d'inventer.\n`;
+  ctx += `- Adapte le conseil au Burkina Faso et aux réalités d'études/emploi en Afrique de l'Ouest.\n\n`;
 
   if (profil) {
     ctx += `PROFIL DE L'ÉLÈVE :\n`;
     ctx += `- Série du Bac : ${profil.bac || 'Non renseigné'}\n`;
     ctx += `- Matières favorites : ${(profil.matieres || []).join(', ') || 'Non renseigné'}\n`;
-    ctx += `- Domaine de carrière souhaité : ${profil.carriere || 'Non renseigné'}\n`;
+    ctx += `- Domaine de carrière souhaité / domaine où il aimerait exercer : ${profil.carriere || 'Non renseigné'}\n`;
     ctx += `- Budget annuel : ${profil.budget || 'Non renseigné'}\n`;
     ctx += `- Ville souhaitée : ${profil.ville || 'Non renseigné'}\n\n`;
   }
@@ -90,9 +117,26 @@ function buildSystemPrompt(profil, analyse) {
     if (analyse.moyenne) ctx += `- Moyenne générale : ${analyse.moyenne}/20\n`;
     if (analyse.pointsForts) ctx += `- Points forts : ${analyse.pointsForts.join(', ')}\n`;
     if (analyse.axesAmelioration) ctx += `- Axes d'amélioration : ${analyse.axesAmelioration.join(', ')}\n\n`;
+    ctx += `Utilise ces notes comme base principale de raisonnement: ne les remplace pas par des suppositions.\n\n`;
   }
 
-  ctx += `Réponds de manière concise (3-5 phrases max par idée). Utilise des listes à puces quand c'est pertinent. Sois encourageant mais honnête.`;
+  if (filiere) {
+    ctx += `FILIÈRE ACTUELLEMENT EXPLORÉE :\n`;
+    ctx += `- Nom : ${filiere.nom}\n`;
+    ctx += `- Score de compatibilité : ${filiere.score}\n`;
+    ctx += `- Durée : ${filiere.duree}\n`;
+    ctx += `- Coût : ${filiere.cout}\n`;
+    ctx += `- Débouchés : ${filiere.debouches}\n`;
+    ctx += `- Description : ${filiere.description}\n\n`;
+    if (Array.isArray(filiere.universites) && filiere.universites.length > 0) {
+      ctx += `- Écoles associées : ${filiere.universites.slice(0, 5).map(u => `${u.nom || u.universite || 'École'} (${u.ville || 'BF'})`).join(', ')}\n\n`;
+    }
+    ctx += `CADRE STRICT DE DISCUSSION : l'élève a cliqué sur cette filière précise. Tu dois donc répondre prioritairement par rapport à "${filiere.nom}" et ne pas refaire une orientation générale.\n`;
+    ctx += `Si l'élève demande "je pourrais exercer quoi plus tard", donne les métiers liés à "${filiere.nom}" uniquement, puis explique les compétences et matières à renforcer pour cette filière.\n`;
+    ctx += `Ne propose d'autres filières que si l'élève demande explicitement une comparaison, une alternative ou un changement d'orientation.\n\n`;
+  }
+
+  ctx += `Réponds de manière concise (3-5 phrases max par idée). Utilise des listes à puces quand c'est pertinent. Sois encourageant mais honnête, avec des recommandations actionnables.`;
   return ctx;
 }
 
@@ -107,14 +151,14 @@ ${Object.entries(ocrTexts).map(([classe, data]) => `--- ${classe} ---\n${data.te
 
 Réponds UNIQUEMENT en JSON valide (sans commentaire, sans markdown) avec cette structure exacte :
 {
-  "notes": {"Mathématiques": 15.5, "Physique-Chimie": 14, "SVT": 12, "Français": 11, "Informatique": 17, "Anglais": 13},
+  "notes": {"Nom matière extraite": 15.5},
   "moyenne": 14.2,
-  "pointsForts": ["Mathématiques", "Informatique"],
-  "axesAmelioration": ["Français", "SVT"],
+  "pointsForts": ["Nom matière extraite"],
+  "axesAmelioration": ["Nom matière extraite"],
   "conseilIA": "Phrase de conseil personnalisé de 2-3 lignes."
 }
 
-Adapte les matières et notes aux données OCR. Si les données sont illisibles, propose des notes cohérentes avec la série ${profil?.bac || 'D'} au Burkina Faso.`;
+Utilise uniquement les matières et notes présentes dans les données OCR. Si les données sont illisibles, réponds avec {"erreur":"Données illisibles"} au lieu d'inventer des notes.`;
 }
 
 // ─── Prompt pour générer les recommandations ────────────────────────────────
@@ -123,7 +167,7 @@ function buildRecoPrompt(profil, analyse, univData) {
   let filiereSection = '';
   if (univData && univData.length > 0) {
     const uniqueNames = [...new Set(univData.map(u => u.filiere))].sort();
-    filiereSection = `\n\nFILIÈRES DISPONIBLES DANS LES UNIVERSITÉS PUBLIQUES DU BURKINA FASO (toutes à ~15 500 FCFA/an) :\n${uniqueNames.map(f => `• ${f}`).join('\n')}\n\nUtilise EXACTEMENT ces noms dans tes recommandations. Laisse "universites": [] vide (les données seront ajoutées séparément).`;
+    filiereSection = `\n\nFILIÈRES DISPONIBLES DANS LES UNIVERSITÉS PUBLIQUES DU BURKINA FASO (toutes à ~15 500 FCFA/an) :\n${uniqueNames.map(f => `• ${f}`).join('\n')}\n\nUtilise EXACTEMENT ces noms dans tes recommandations. Choisis les filières qui correspondent au domaine visé, aux notes, aux préférences et à la série du Bac. Laisse "universites": [] vide (les données seront ajoutées séparément).`;
   }
 
   const carriere = profil?.carriere || 'non précisée';
@@ -134,6 +178,8 @@ function buildRecoPrompt(profil, analyse, univData) {
 PROFIL :
 - Série : ${profil?.bac || 'D'}
 - Carrière visée (PRIORITÉ #1) : ${carriere}
+- Domaine où l'élève aimerait exercer : ${carriere}
+- Matières préférées : ${(profil?.matieres || []).join(', ') || 'non précisées'}
 - Budget : ${profil?.budget || 'non précisé'}
 - Ville : ${profil?.ville || 'non précisée'}
 
@@ -141,10 +187,11 @@ RÉSULTATS ACADÉMIQUES :
 - Notes : ${JSON.stringify(analyse?.notes || {})}
 - Moyenne : ${analyse?.moyenne || 'N/A'}/20
 - Points forts : ${(analyse?.pointsForts || []).join(', ')}
+- Axes à renforcer : ${(analyse?.axesAmelioration || []).join(', ')}
 ${filiereSection}
 
 Recommande EXACTEMENT 3 filières menant à la carrière "${carriere}", classées par score de compatibilité décroissant.
-Dans chaque description, explique explicitement comment cette filière conduit à "${carriere}".
+Dans chaque description, explique explicitement comment cette filière conduit à "${carriere}" et cite au moins une note, une préférence ou la série du Bac pour justifier le conseil.
 
 Réponds UNIQUEMENT en JSON valide (sans markdown) :
 {

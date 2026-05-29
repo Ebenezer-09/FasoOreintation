@@ -5,7 +5,55 @@
     "universite": "Université Ouaga I Pr JKZ",
     "ville": "Ouagadougou",
     "structure": "UFR/LAC",
-    "id_filiere": "8"
+    "id_filiere": "8",
+    "series_bac_acceptees": [
+      "A",
+      "D",
+      "G"
+    ],
+    "matieres_cles": [
+      "Français",
+      "Allemand",
+      "Philosophie"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Enseignement",
+      "Traduction",
+      "Interprétariat",
+      "Tourisme",
+      "Relations internationales"
+    ],
+    "conditions_admission": "Sélection sur dossier via CampusFaso. Classement basé sur la moyenne du BAC et les notes en Allemand et Français.",
+    "domaine": "Langues, Lettres & Humanités",
+    "domaines_carriere": [
+      "biz",
+      "edu"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 10.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "allemand",
+      "all",
+      "langues",
+      "lettres",
+      "humanites",
+      "ufr",
+      "lac",
+      "francais",
+      "philosophie",
+      "enseignement",
+      "traduction",
+      "interpretariat",
+      "tourisme",
+      "relations",
+      "internationales"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "ANGLAIS",
@@ -13,7 +61,52 @@
     "universite": "Université Ouaga I Pr JKZ",
     "ville": "Ouagadougou",
     "structure": "UFR/LAC",
-    "id_filiere": "7"
+    "id_filiere": "7",
+    "series_bac_acceptees": [
+      "A",
+      "D",
+      "G"
+    ],
+    "matieres_cles": [
+      "Français",
+      "Anglais",
+      "Philosophie"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Enseignement",
+      "Traduction",
+      "Interprétariat",
+      "Organisations Internationales"
+    ],
+    "conditions_admission": "Sélection sur dossier via CampusFaso. Excellentes notes exigées en Anglais et Français.",
+    "domaine": "Langues, Lettres & Humanités",
+    "domaines_carriere": [
+      "edu"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 10.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "anglais",
+      "ang",
+      "langues",
+      "lettres",
+      "humanites",
+      "ufr",
+      "lac",
+      "francais",
+      "philosophie",
+      "enseignement",
+      "traduction",
+      "interpretariat",
+      "organisations",
+      "internationales"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "ART GESTION ET ADMINISTRATION CULTURELLES ( AGAC)",
@@ -21,7 +114,57 @@
     "universite": "Université Ouaga I Pr JKZ",
     "ville": "Ouagadougou",
     "structure": "UFR/LAC",
-    "id_filiere": "11"
+    "id_filiere": "11",
+    "series_bac_acceptees": [
+      "A",
+      "D",
+      "G"
+    ],
+    "matieres_cles": [
+      "Français",
+      "Philosophie",
+      "Histoire-Géographie"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Administration culturelle",
+      "Management d'artistes",
+      "Muséologie",
+      "Patrimoine"
+    ],
+    "conditions_admission": "Sélection sur dossier via CampusFaso, basé sur les notes littéraires.",
+    "domaine": "Gestion, Finance & Commerce",
+    "domaines_carriere": [
+      "biz",
+      "admin"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 11,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "art",
+      "gestion",
+      "administration",
+      "culturelles",
+      "agac",
+      "finance",
+      "commerce",
+      "ufr",
+      "lac",
+      "francais",
+      "philosophie",
+      "histoire",
+      "geographie",
+      "culturelle",
+      "management",
+      "artistes",
+      "museologie",
+      "patrimoine"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "ASSISTANT DE DIRECTION BILINGUE",
@@ -29,7 +172,50 @@
     "universite": "Université Ouaga I Pr JKZ",
     "ville": "Ouagadougou",
     "structure": "IBAM",
-    "id_filiere": "23"
+    "id_filiere": "23",
+    "series_bac_acceptees": [
+      "G1",
+      "A",
+      "D"
+    ],
+    "matieres_cles": [
+      "Français",
+      "Anglais",
+      "Techniques d'expression"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Assistant de direction",
+      "Secrétaire bilingue",
+      "Administration"
+    ],
+    "conditions_admission": "Test d'entrée organisé par l'IBAM après pré-sélection sur dossier.",
+    "domaine": "Droit, Administration & Services",
+    "domaines_carriere": [
+      "admin"
+    ],
+    "duree": "2-3 ans",
+    "selectivite": "Forte",
+    "moyenne_min_estimee": 11.5,
+    "type_admission": "Test d’entrée après présélection",
+    "mots_cles_orientation": [
+      "assistant",
+      "direction",
+      "bilingue",
+      "adb",
+      "droit",
+      "administration",
+      "services",
+      "ibam",
+      "francais",
+      "anglais",
+      "techniques",
+      "expression",
+      "secretaire"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "ASSURANCE BANQUE FINANCE",
@@ -37,7 +223,52 @@
     "universite": "Université Ouaga I Pr JKZ",
     "ville": "Ouagadougou",
     "structure": "IBAM",
-    "id_filiere": "22"
+    "id_filiere": "22",
+    "series_bac_acceptees": [
+      "G2",
+      "D",
+      "C"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Comptabilité",
+      "Économie"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Banque",
+      "Microfinance",
+      "Compagnies d'assurance",
+      "Analyse financière"
+    ],
+    "conditions_admission": "Test d'entrée à l'IBAM après pré-sélection sur dossier.",
+    "domaine": "Gestion, Finance & Commerce",
+    "domaines_carriere": [
+      "biz"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Forte",
+    "moyenne_min_estimee": 12,
+    "type_admission": "Test d’entrée après présélection",
+    "mots_cles_orientation": [
+      "assurance",
+      "banque",
+      "finance",
+      "abf",
+      "gestion",
+      "commerce",
+      "ibam",
+      "mathematiques",
+      "comptabilite",
+      "economie",
+      "microfinance",
+      "compagnies",
+      "analyse",
+      "financiere"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Assurance-Banque-Finances (ABF)",
@@ -45,7 +276,53 @@
     "universite": "Université NAZI BONI - Bobo Dioulasso",
     "ville": "Bobo Dioulasso",
     "structure": "IUT",
-    "id_filiere": "59"
+    "id_filiere": "59",
+    "series_bac_acceptees": [
+      "G2",
+      "D",
+      "C"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Comptabilité",
+      "Français"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Conseiller clientèle",
+      "Gestionnaire de portefeuille",
+      "Assurances"
+    ],
+    "conditions_admission": "Sélection très sélective sur dossier (moyenne BAC et Mathématiques).",
+    "domaine": "Gestion, Finance & Commerce",
+    "domaines_carriere": [
+      "biz"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Forte",
+    "moyenne_min_estimee": 12,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "assurance",
+      "banque",
+      "finances",
+      "abf",
+      "gestion",
+      "finance",
+      "commerce",
+      "iut",
+      "mathematiques",
+      "comptabilite",
+      "francais",
+      "conseiller",
+      "clientele",
+      "gestionnaire",
+      "portefeuille",
+      "assurances"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "CHIRURGIE DENTAIRE (CD)",
@@ -53,7 +330,52 @@
     "universite": "Université Ouaga I Pr JKZ",
     "ville": "Ouagadougou",
     "structure": "UFR/SDS",
-    "id_filiere": "14"
+    "id_filiere": "14",
+    "series_bac_acceptees": [
+      "D",
+      "C"
+    ],
+    "matieres_cles": [
+      "SVT",
+      "Sciences Physiques",
+      "Mathématiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Chirurgien Dentiste",
+      "Cliniques privées",
+      "Santé publique"
+    ],
+    "conditions_admission": "Sélection extrêmement rigoureuse via CampusFaso. Moyenne au BAC généralement > 14/20.",
+    "domaine": "Santé",
+    "domaines_carriere": [
+      "health"
+    ],
+    "duree": "6 ans",
+    "selectivite": "Très forte",
+    "moyenne_min_estimee": 14.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "chirurgie",
+      "dentaire",
+      "chu",
+      "dent",
+      "sante",
+      "ufr",
+      "sds",
+      "svt",
+      "sciences",
+      "physiques",
+      "mathematiques",
+      "chirurgien",
+      "dentiste",
+      "cliniques",
+      "privees",
+      "publique"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Communication d'Entreprise ( C E)",
@@ -61,7 +383,53 @@
     "universite": "Université NAZI BONI - Bobo Dioulasso",
     "ville": "Bobo Dioulasso",
     "structure": "IUT",
-    "id_filiere": "58"
+    "id_filiere": "58",
+    "series_bac_acceptees": [
+      "A",
+      "G",
+      "D"
+    ],
+    "matieres_cles": [
+      "Français",
+      "Anglais",
+      "Philosophie"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Chargé de communication",
+      "Relations publiques",
+      "Marketing"
+    ],
+    "conditions_admission": "Sélection sur dossier. Bonnes notes en dissertation/expression requises.",
+    "domaine": "Gestion, Finance & Commerce",
+    "domaines_carriere": [
+      "biz",
+      "admin"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 11,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "communication",
+      "entreprise",
+      "comm",
+      "ent",
+      "gestion",
+      "finance",
+      "commerce",
+      "iut",
+      "francais",
+      "anglais",
+      "philosophie",
+      "charge",
+      "relations",
+      "publiques",
+      "marketing"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "COMMUNICATION ET JOURNALISME (CJ)",
@@ -69,7 +437,53 @@
     "universite": "Université Ouaga I Pr JKZ",
     "ville": "Ouagadougou",
     "structure": "UFR/LAC",
-    "id_filiere": "10"
+    "id_filiere": "10",
+    "series_bac_acceptees": [
+      "A",
+      "D",
+      "G"
+    ],
+    "matieres_cles": [
+      "Français",
+      "Anglais",
+      "Histoire-Géographie"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Journaliste",
+      "Attaché de presse",
+      "Animateur TV/Radio"
+    ],
+    "conditions_admission": "Sélection sur dossier, notes littéraires dominantes.",
+    "domaine": "Communication & Information",
+    "domaines_carriere": [
+      "admin"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 10.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "communication",
+      "journalisme",
+      "com",
+      "jour",
+      "information",
+      "ufr",
+      "lac",
+      "francais",
+      "anglais",
+      "histoire",
+      "geographie",
+      "journaliste",
+      "attache",
+      "presse",
+      "animateur",
+      "radio"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "COMPTABILITE CONTRÔLE AUDIT",
@@ -77,7 +491,52 @@
     "universite": "Université Ouaga I Pr JKZ",
     "ville": "Ouagadougou",
     "structure": "IBAM",
-    "id_filiere": "20"
+    "id_filiere": "20",
+    "series_bac_acceptees": [
+      "G2",
+      "C",
+      "D"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Comptabilité",
+      "Économie"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Expert-comptable",
+      "Auditeur financier",
+      "Contrôleur de gestion"
+    ],
+    "conditions_admission": "Test d'entrée à l'IBAM.",
+    "domaine": "Gestion, Finance & Commerce",
+    "domaines_carriere": [
+      "biz"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Forte",
+    "moyenne_min_estimee": 12,
+    "type_admission": "Test d’entrée après présélection",
+    "mots_cles_orientation": [
+      "comptabilite",
+      "controle",
+      "audit",
+      "cca",
+      "gestion",
+      "finance",
+      "commerce",
+      "ibam",
+      "mathematiques",
+      "economie",
+      "expert",
+      "comptable",
+      "auditeur",
+      "financier",
+      "controleur"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Comptabilité Contrôle et Audit (CCA)",
@@ -85,7 +544,48 @@
     "universite": "Centre Universitaire Polytechnique de Kaya",
     "ville": "Kaya",
     "structure": "IUT",
-    "id_filiere": "69"
+    "id_filiere": "69",
+    "series_bac_acceptees": [
+      "G2",
+      "C",
+      "D"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Comptabilité"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Comptable",
+      "Auditeur",
+      "Finance d'entreprise"
+    ],
+    "conditions_admission": "Sélection sur dossier CampusFaso.",
+    "domaine": "Gestion, Finance & Commerce",
+    "domaines_carriere": [
+      "biz"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 11,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "comptabilite",
+      "controle",
+      "audit",
+      "cca",
+      "gestion",
+      "finance",
+      "commerce",
+      "iut",
+      "mathematiques",
+      "comptable",
+      "auditeur",
+      "entreprise"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Comptabilité-Contrôle-Audit (CCA)",
@@ -93,7 +593,47 @@
     "universite": "Université de Dedougou",
     "ville": "Dedougou",
     "structure": "IUP",
-    "id_filiere": "78"
+    "id_filiere": "78",
+    "series_bac_acceptees": [
+      "G2",
+      "C",
+      "D"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Comptabilité"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Comptable",
+      "Gestionnaire",
+      "Audit"
+    ],
+    "conditions_admission": "Sélection sur dossier CampusFaso.",
+    "domaine": "Gestion, Finance & Commerce",
+    "domaines_carriere": [
+      "biz"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 11,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "comptabilite",
+      "controle",
+      "audit",
+      "cca",
+      "gestion",
+      "finance",
+      "commerce",
+      "iup",
+      "mathematiques",
+      "comptable",
+      "gestionnaire"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Droit",
@@ -101,7 +641,56 @@
     "universite": "Centre Universitaire de Banfora",
     "ville": "Banfora",
     "structure": "CUP/Banfora",
-    "id_filiere": "85"
+    "id_filiere": "85",
+    "series_bac_acceptees": [
+      "A",
+      "D",
+      "G"
+    ],
+    "matieres_cles": [
+      "Français",
+      "Philosophie",
+      "Histoire-Géographie"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Avocat",
+      "Magistrat",
+      "Juriste d'entreprise",
+      "Administration publique"
+    ],
+    "conditions_admission": "Sélection sur dossier (Notes en Français et Philosophie).",
+    "domaine": "Gestion, Finance & Commerce",
+    "domaines_carriere": [
+      "biz",
+      "admin"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 11,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "droit",
+      "sjp",
+      "gestion",
+      "finance",
+      "commerce",
+      "cup",
+      "banfora",
+      "francais",
+      "philosophie",
+      "histoire",
+      "geographie",
+      "avocat",
+      "magistrat",
+      "juriste",
+      "entreprise",
+      "administration",
+      "publique"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Finances Comptabilité et Gestion d'Entréprise (FCGE)",
@@ -109,7 +698,49 @@
     "universite": "Université NAZI BONI - Bobo Dioulasso",
     "ville": "Bobo Dioulasso",
     "structure": "IUT",
-    "id_filiere": "61"
+    "id_filiere": "61",
+    "series_bac_acceptees": [
+      "G2",
+      "D",
+      "C"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Comptabilité"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Directeur Financier",
+      "Comptable",
+      "Gestionnaire"
+    ],
+    "conditions_admission": "Sélection sur dossier (Filière très demandée).",
+    "domaine": "Gestion, Finance & Commerce",
+    "domaines_carriere": [
+      "biz"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 11,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "finances",
+      "comptabilite",
+      "gestion",
+      "entreprise",
+      "fcge",
+      "finance",
+      "commerce",
+      "iut",
+      "mathematiques",
+      "directeur",
+      "financier",
+      "comptable",
+      "gestionnaire"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Finances-Comptabilité",
@@ -117,7 +748,46 @@
     "universite": "Université de Ouahigouya",
     "ville": "Ouahigouya",
     "structure": "IFPM",
-    "id_filiere": "71"
+    "id_filiere": "71",
+    "series_bac_acceptees": [
+      "G2",
+      "D",
+      "C"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Comptabilité"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Comptable",
+      "Banque",
+      "Gestion administrative"
+    ],
+    "conditions_admission": "Sélection sur dossier CampusFaso.",
+    "domaine": "Gestion, Finance & Commerce",
+    "domaines_carriere": [
+      "biz"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 11,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "finances",
+      "comptabilite",
+      "gestion",
+      "finance",
+      "commerce",
+      "ifpm",
+      "mathematiques",
+      "comptable",
+      "banque",
+      "administrative"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Génie Biologique",
@@ -125,7 +795,54 @@
     "universite": "Université NAZI BONI - Bobo Dioulasso",
     "ville": "Bobo Dioulasso",
     "structure": "UFR/SJPEG",
-    "id_filiere": "51"
+    "id_filiere": "51",
+    "series_bac_acceptees": [
+      "D",
+      "C"
+    ],
+    "matieres_cles": [
+      "SVT",
+      "Sciences Physiques",
+      "Mathématiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Laborantin",
+      "Recherche",
+      "Agro-industrie",
+      "Biotechnologies"
+    ],
+    "conditions_admission": "Sélection sur dossier (Bon niveau en SVT exigé).",
+    "domaine": "Ingénierie & Technologies",
+    "domaines_carriere": [
+      "tech",
+      "eng"
+    ],
+    "duree": "3-5 ans",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 12,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "genie",
+      "biologique",
+      "bio",
+      "ingenierie",
+      "technologies",
+      "ufr",
+      "sjpeg",
+      "svt",
+      "sciences",
+      "physiques",
+      "mathematiques",
+      "laborantin",
+      "recherche",
+      "agro",
+      "industrie",
+      "biotechnologies"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Génie Civil (GC)",
@@ -133,7 +850,55 @@
     "universite": "Université NAZI BONI - Bobo Dioulasso",
     "ville": "Bobo Dioulasso",
     "structure": "IUT",
-    "id_filiere": "66"
+    "id_filiere": "66",
+    "series_bac_acceptees": [
+      "C",
+      "D",
+      "E",
+      "F4"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Sciences Physiques",
+      "Dessin industriel (F)"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Ingénieur BTP",
+      "Conducteur de travaux",
+      "Urbanisme"
+    ],
+    "conditions_admission": "Sélection sur dossier très compétitive pour les séries scientifiques.",
+    "domaine": "Ingénierie & Technologies",
+    "domaines_carriere": [
+      "tech",
+      "eng"
+    ],
+    "duree": "3-5 ans",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 12,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "genie",
+      "civil",
+      "civ",
+      "ingenierie",
+      "technologies",
+      "iut",
+      "mathematiques",
+      "sciences",
+      "physiques",
+      "dessin",
+      "industriel",
+      "ingenieur",
+      "btp",
+      "conducteur",
+      "travaux",
+      "urbanisme"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Génie Civil (GC)",
@@ -141,7 +906,49 @@
     "universite": "Université de Fada N'Gourma",
     "ville": "Fada N'Gourma",
     "structure": "UDFG",
-    "id_filiere": "80"
+    "id_filiere": "80",
+    "series_bac_acceptees": [
+      "C",
+      "D",
+      "E",
+      "F4"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Sciences Physiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "BTP",
+      "Génie rural",
+      "Infrastructures"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Ingénierie & Technologies",
+    "domaines_carriere": [
+      "tech",
+      "eng"
+    ],
+    "duree": "3-5 ans",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 12,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "genie",
+      "civil",
+      "ingenierie",
+      "technologies",
+      "udfg",
+      "mathematiques",
+      "sciences",
+      "physiques",
+      "btp",
+      "rural",
+      "infrastructures"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Génie Civil/Bâtiment et Travaux Publics",
@@ -149,7 +956,57 @@
     "universite": "Université NORBERT ZONGO - Koudougou",
     "ville": "Koudougou",
     "structure": "IUT",
-    "id_filiere": "40"
+    "id_filiere": "40",
+    "series_bac_acceptees": [
+      "C",
+      "D",
+      "E",
+      "F4"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Sciences Physiques",
+      "Physique Appliquée"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Technicien supérieur BTP",
+      "Chef de chantier",
+      "Bureau d'études"
+    ],
+    "conditions_admission": "Sélection sur dossier CampusFaso.",
+    "domaine": "Ingénierie & Technologies",
+    "domaines_carriere": [
+      "tech",
+      "eng"
+    ],
+    "duree": "3-5 ans",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 12,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "genie",
+      "civil",
+      "batiment",
+      "travaux",
+      "publics",
+      "btp",
+      "ingenierie",
+      "technologies",
+      "iut",
+      "mathematiques",
+      "sciences",
+      "physiques",
+      "physique",
+      "appliquee",
+      "technicien",
+      "superieur",
+      "chef",
+      "chantier"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Génie Electrique (GE)",
@@ -157,7 +1014,56 @@
     "universite": "Université NORBERT ZONGO - Koudougou",
     "ville": "Koudougou",
     "structure": "IUT",
-    "id_filiere": "41"
+    "id_filiere": "41",
+    "series_bac_acceptees": [
+      "C",
+      "D",
+      "E",
+      "F2",
+      "F3"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Sciences Physiques",
+      "Électricité"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "SONABEL",
+      "Énergies renouvelables",
+      "Maintenance électrique",
+      "Automatisme"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Ingénierie & Technologies",
+    "domaines_carriere": [
+      "tech",
+      "eng"
+    ],
+    "duree": "3-5 ans",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 12,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "genie",
+      "electrique",
+      "elec",
+      "ingenierie",
+      "technologies",
+      "iut",
+      "mathematiques",
+      "sciences",
+      "physiques",
+      "electricite",
+      "sonabel",
+      "energies",
+      "renouvelables",
+      "maintenance",
+      "automatisme"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Génie Electrique, option Electronique (ELO)",
@@ -165,7 +1071,54 @@
     "universite": "Université NAZI BONI - Bobo Dioulasso",
     "ville": "Bobo Dioulasso",
     "structure": "IUT",
-    "id_filiere": "65"
+    "id_filiere": "65",
+    "series_bac_acceptees": [
+      "C",
+      "D",
+      "E",
+      "F2"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Sciences Physiques",
+      "Électronique"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Télécommunications",
+      "Maintenance électronique",
+      "Réseaux"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Technologie & Informatique",
+    "domaines_carriere": [
+      "tech",
+      "eng",
+      "admin"
+    ],
+    "duree": "3-5 ans",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 12,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "genie",
+      "electrique",
+      "option",
+      "electronique",
+      "elo",
+      "technologie",
+      "informatique",
+      "iut",
+      "mathematiques",
+      "sciences",
+      "physiques",
+      "telecommunications",
+      "maintenance",
+      "reseaux"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Génie Electrique, option Electrotechnique (ETK)",
@@ -173,7 +1126,55 @@
     "universite": "Université NAZI BONI - Bobo Dioulasso",
     "ville": "Bobo Dioulasso",
     "structure": "IUT",
-    "id_filiere": "64"
+    "id_filiere": "64",
+    "series_bac_acceptees": [
+      "C",
+      "D",
+      "E",
+      "F3"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Sciences Physiques",
+      "Électrotechnique"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Réseaux électriques",
+      "Industrie",
+      "Installations solaires"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Technologie & Informatique",
+    "domaines_carriere": [
+      "tech",
+      "eng"
+    ],
+    "duree": "3-5 ans",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 12,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "genie",
+      "electrique",
+      "option",
+      "electrotechnique",
+      "etk",
+      "technologie",
+      "informatique",
+      "iut",
+      "mathematiques",
+      "sciences",
+      "physiques",
+      "reseaux",
+      "electriques",
+      "industrie",
+      "installations",
+      "solaires"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Génie Industriel et Maintenance ( GIM)",
@@ -181,7 +1182,54 @@
     "universite": "Université NAZI BONI - Bobo Dioulasso",
     "ville": "Bobo Dioulasso",
     "structure": "IUT",
-    "id_filiere": "63"
+    "id_filiere": "63",
+    "series_bac_acceptees": [
+      "C",
+      "D",
+      "E",
+      "F1",
+      "F2",
+      "F3"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Sciences Physiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Responsable maintenance",
+      "Industrie minière",
+      "Agro-industrie"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Ingénierie & Technologies",
+    "domaines_carriere": [
+      "tech",
+      "eng"
+    ],
+    "duree": "3-5 ans",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 12,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "genie",
+      "industriel",
+      "maintenance",
+      "gim",
+      "ingenierie",
+      "technologies",
+      "iut",
+      "mathematiques",
+      "sciences",
+      "physiques",
+      "responsable",
+      "industrie",
+      "miniere",
+      "agro"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Génie Mécanique et Productique (GMP)",
@@ -189,7 +1237,55 @@
     "universite": "Université NAZI BONI - Bobo Dioulasso",
     "ville": "Bobo Dioulasso",
     "structure": "IUT",
-    "id_filiere": "62"
+    "id_filiere": "62",
+    "series_bac_acceptees": [
+      "C",
+      "D",
+      "E",
+      "F1"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Sciences Physiques",
+      "Mécanique"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Industrie mécanique",
+      "Conception CAO",
+      "Automobile",
+      "Mines"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Ingénierie & Technologies",
+    "domaines_carriere": [
+      "tech",
+      "eng"
+    ],
+    "duree": "3-5 ans",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 12,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "genie",
+      "mecanique",
+      "productique",
+      "gmp",
+      "ingenierie",
+      "technologies",
+      "iut",
+      "mathematiques",
+      "sciences",
+      "physiques",
+      "industrie",
+      "conception",
+      "cao",
+      "automobile",
+      "mines"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Génie Minier (GM)",
@@ -197,7 +1293,49 @@
     "universite": "Université de Fada N'Gourma",
     "ville": "Fada N'Gourma",
     "structure": "UDFG",
-    "id_filiere": "81"
+    "id_filiere": "81",
+    "series_bac_acceptees": [
+      "C",
+      "D",
+      "E"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Sciences Physiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Compagnies minières",
+      "Exploration",
+      "Géotechnique"
+    ],
+    "conditions_admission": "Sélection rigoureuse sur dossier, très prisée au Burkina Faso.",
+    "domaine": "Ingénierie & Technologies",
+    "domaines_carriere": [
+      "tech",
+      "eng"
+    ],
+    "duree": "3-5 ans",
+    "selectivite": "Modérée",
+    "moyenne_min_estimee": 12,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "genie",
+      "minier",
+      "ingenierie",
+      "technologies",
+      "udfg",
+      "mathematiques",
+      "sciences",
+      "physiques",
+      "compagnies",
+      "minieres",
+      "exploration",
+      "geotechnique"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "GEOGRAPHIE",
@@ -205,7 +1343,53 @@
     "universite": "Université NORBERT ZONGO - Koudougou",
     "ville": "Koudougou",
     "structure": "UFR/LSH",
-    "id_filiere": "31"
+    "id_filiere": "31",
+    "series_bac_acceptees": [
+      "A",
+      "D"
+    ],
+    "matieres_cles": [
+      "Histoire-Géographie",
+      "Français",
+      "Mathématiques (bonus)"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Aménagement du territoire",
+      "Environnement",
+      "SIG",
+      "Enseignement"
+    ],
+    "conditions_admission": "Sélection sur dossier (bonne note en HG).",
+    "domaine": "Sciences Humaines & Sociales",
+    "domaines_carriere": [
+      "edu"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 10.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "geographie",
+      "geo",
+      "sciences",
+      "humaines",
+      "sociales",
+      "ufr",
+      "lsh",
+      "histoire",
+      "francais",
+      "mathematiques",
+      "bonus",
+      "amenagement",
+      "territoire",
+      "environnement",
+      "sig",
+      "enseignement"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "GEOGRAPHIE",
@@ -213,7 +1397,48 @@
     "universite": "Université Ouaga I Pr JKZ",
     "ville": "Ouagadougou",
     "structure": "UFR/SH",
-    "id_filiere": "2"
+    "id_filiere": "2",
+    "series_bac_acceptees": [
+      "A",
+      "D"
+    ],
+    "matieres_cles": [
+      "Histoire-Géographie",
+      "Français"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Enseignement",
+      "Urbanisme",
+      "Recherche",
+      "Cartographie"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Sciences Humaines & Sociales",
+    "domaines_carriere": [
+      "edu"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 10.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "geographie",
+      "geo",
+      "sciences",
+      "humaines",
+      "sociales",
+      "ufr",
+      "histoire",
+      "francais",
+      "enseignement",
+      "urbanisme",
+      "recherche",
+      "cartographie"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Gestion des Ressources Humaines",
@@ -221,7 +1446,52 @@
     "universite": "Université de Ouahigouya",
     "ville": "Ouahigouya",
     "structure": "IFPM",
-    "id_filiere": "73"
+    "id_filiere": "73",
+    "series_bac_acceptees": [
+      "G2",
+      "A",
+      "D"
+    ],
+    "matieres_cles": [
+      "Français",
+      "Philosophie",
+      "Mathématiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "DRH",
+      "Administration du personnel",
+      "Recrutement"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Gestion, Finance & Commerce",
+    "domaines_carriere": [
+      "biz",
+      "admin"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 11,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "gestion",
+      "ressources",
+      "humaines",
+      "grh",
+      "finance",
+      "commerce",
+      "ifpm",
+      "francais",
+      "philosophie",
+      "mathematiques",
+      "drh",
+      "administration",
+      "personnel",
+      "recrutement"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Gestion du Patrimoine Culturel et Touristique",
@@ -229,7 +1499,54 @@
     "universite": "Centre Universitaire de Gaoua",
     "ville": "Gaoua",
     "structure": "CUP/Gaoua",
-    "id_filiere": "83"
+    "id_filiere": "83",
+    "series_bac_acceptees": [
+      "A",
+      "D",
+      "G"
+    ],
+    "matieres_cles": [
+      "Histoire-Géographie",
+      "Français",
+      "Langues"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Guide touristique",
+      "Conservateur",
+      "Ministère de la culture"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Gestion, Finance & Commerce",
+    "domaines_carriere": [
+      "biz"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 11,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "gestion",
+      "patrimoine",
+      "culturel",
+      "touristique",
+      "gpct",
+      "finance",
+      "commerce",
+      "cup",
+      "gaoua",
+      "histoire",
+      "geographie",
+      "francais",
+      "langues",
+      "guide",
+      "conservateur",
+      "ministere",
+      "culture"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Gestion Foncière et Immobilière",
@@ -237,7 +1554,50 @@
     "universite": "Université de Ouahigouya",
     "ville": "Ouahigouya",
     "structure": "ESJPA",
-    "id_filiere": "74"
+    "id_filiere": "74",
+    "series_bac_acceptees": [
+      "A",
+      "D",
+      "G2"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Français"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Promotion immobilière",
+      "Administration cadastrale",
+      "Notariat"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Gestion, Finance & Commerce",
+    "domaines_carriere": [
+      "biz",
+      "admin"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 11,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "gestion",
+      "fonciere",
+      "immobiliere",
+      "gfi",
+      "finance",
+      "commerce",
+      "esjpa",
+      "mathematiques",
+      "francais",
+      "promotion",
+      "administration",
+      "cadastrale",
+      "notariat"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "HISTOIRE ET ARCHEOLOGIE",
@@ -245,7 +1605,52 @@
     "universite": "Université NORBERT ZONGO - Koudougou",
     "ville": "Koudougou",
     "structure": "UFR/LSH",
-    "id_filiere": "32"
+    "id_filiere": "32",
+    "series_bac_acceptees": [
+      "A",
+      "D"
+    ],
+    "matieres_cles": [
+      "Histoire-Géographie",
+      "Français",
+      "Philosophie"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Enseignement",
+      "Fouilles archéologiques",
+      "Musées"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Langues, Lettres & Humanités",
+    "domaines_carriere": [
+      "edu"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 10.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "histoire",
+      "archeologie",
+      "hist",
+      "arch",
+      "langues",
+      "lettres",
+      "humanites",
+      "ufr",
+      "lsh",
+      "geographie",
+      "francais",
+      "philosophie",
+      "enseignement",
+      "fouilles",
+      "archeologiques",
+      "musees"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "HISTOIRE ET ARCHEOLOGIE",
@@ -253,7 +1658,49 @@
     "universite": "Université Ouaga I Pr JKZ",
     "ville": "Ouagadougou",
     "structure": "UFR/SH",
-    "id_filiere": "3"
+    "id_filiere": "3",
+    "series_bac_acceptees": [
+      "A",
+      "D"
+    ],
+    "matieres_cles": [
+      "Histoire-Géographie",
+      "Français"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Enseignement supérieur",
+      "Recherche",
+      "Patrimoine"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Sciences Humaines & Sociales",
+    "domaines_carriere": [
+      "edu"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 10.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "histoire",
+      "archeologie",
+      "histo",
+      "arch",
+      "sciences",
+      "humaines",
+      "sociales",
+      "ufr",
+      "geographie",
+      "francais",
+      "enseignement",
+      "superieur",
+      "recherche",
+      "patrimoine"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Histoire et archeologie",
@@ -261,15 +1708,100 @@
     "universite": "Université NAZI BONI - Bobo Dioulasso",
     "ville": "Bobo Dioulasso",
     "structure": "UFR/SJPEG",
-    "id_filiere": "53"
+    "id_filiere": "53",
+    "series_bac_acceptees": [
+      "A",
+      "D"
+    ],
+    "matieres_cles": [
+      "Histoire-Géographie",
+      "Français"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Enseignement",
+      "Archéologie",
+      "Culture"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Sciences Humaines & Sociales",
+    "domaines_carriere": [
+      "edu"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 10.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "histoire",
+      "archeologie",
+      "hist",
+      "arch",
+      "sciences",
+      "humaines",
+      "sociales",
+      "ufr",
+      "sjpeg",
+      "geographie",
+      "francais",
+      "enseignement",
+      "culture"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
-    "filiere": "Histoire et archeologie",
+    "filiere": "Anthropologie",
     "sigle": "Anthropologie",
     "universite": "Université NAZI BONI - Bobo Dioulasso",
     "ville": "Bobo Dioulasso",
     "structure": "UFR/SJPEG",
-    "id_filiere": "54"
+    "id_filiere": "54",
+    "series_bac_acceptees": [
+      "A",
+      "D"
+    ],
+    "matieres_cles": [
+      "Philosophie",
+      "Français",
+      "Histoire-Géographie"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Recherche",
+      "ONG",
+      "Développement social"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Langues, Lettres & Humanités",
+    "domaines_carriere": [
+      "edu",
+      "admin"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 10.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "anthropologie",
+      "langues",
+      "lettres",
+      "humanites",
+      "ufr",
+      "sjpeg",
+      "philosophie",
+      "francais",
+      "histoire",
+      "geographie",
+      "recherche",
+      "ong",
+      "developpement",
+      "social"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "LETTRES MODERNES",
@@ -277,15 +1809,54 @@
     "universite": "Centre Universitaire de Banfora",
     "ville": "Banfora",
     "structure": "CUP/Banfora",
-    "id_filiere": "86"
-  },
-  {
-    "filiere": "LETTRES MODERNES",
-    "sigle": "LET-MOD",
-    "universite": "Centre Universitaire de Banfora",
-    "ville": "Banfora",
-    "structure": "CUP/Banfora",
-    "id_filiere": "87"
+    "id_filiere": "86",
+    "series_bac_acceptees": [
+      "A",
+      "D"
+    ],
+    "matieres_cles": [
+      "Français",
+      "Philosophie",
+      "Anglais"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Enseignement",
+      "Édition",
+      "Critique littéraire",
+      "Journalisme"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Communication & Information",
+    "domaines_carriere": [
+      "edu",
+      "admin"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 10.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "lettres",
+      "modernes",
+      "let",
+      "mod",
+      "communication",
+      "information",
+      "cup",
+      "banfora",
+      "francais",
+      "philosophie",
+      "anglais",
+      "enseignement",
+      "edition",
+      "critique",
+      "litteraire",
+      "journalisme"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "LETTRES MODERNES",
@@ -293,7 +1864,49 @@
     "universite": "Université NORBERT ZONGO - Koudougou",
     "ville": "Koudougou",
     "structure": "UFR/LSH",
-    "id_filiere": "35"
+    "id_filiere": "35",
+    "series_bac_acceptees": [
+      "A",
+      "D"
+    ],
+    "matieres_cles": [
+      "Français",
+      "Philosophie"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Professeur de français",
+      "Rédaction",
+      "Métiers du livre"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Langues, Lettres & Humanités",
+    "domaines_carriere": [
+      "edu"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 10.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "lettres",
+      "modernes",
+      "let",
+      "mod",
+      "langues",
+      "humanites",
+      "ufr",
+      "lsh",
+      "francais",
+      "philosophie",
+      "professeur",
+      "redaction",
+      "metiers",
+      "livre"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Lettres Modernes",
@@ -301,7 +1914,46 @@
     "universite": "Université NAZI BONI - Bobo Dioulasso",
     "ville": "Bobo Dioulasso",
     "structure": "UFR/SJPEG",
-    "id_filiere": "52"
+    "id_filiere": "52",
+    "series_bac_acceptees": [
+      "A",
+      "D"
+    ],
+    "matieres_cles": [
+      "Français",
+      "Philosophie"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Enseignement",
+      "Communication"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Communication & Information",
+    "domaines_carriere": [
+      "edu",
+      "admin"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 10.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "lettres",
+      "modernes",
+      "let",
+      "mod",
+      "communication",
+      "information",
+      "ufr",
+      "sjpeg",
+      "francais",
+      "philosophie",
+      "enseignement"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "LETTRES MODERNES",
@@ -309,7 +1961,47 @@
     "universite": "Université Ouaga I Pr JKZ",
     "ville": "Ouagadougou",
     "structure": "UFR/LAC",
-    "id_filiere": "6"
+    "id_filiere": "6",
+    "series_bac_acceptees": [
+      "A",
+      "D"
+    ],
+    "matieres_cles": [
+      "Français",
+      "Philosophie"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Enseignement",
+      "Lettres",
+      "Arts"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Langues, Lettres & Humanités",
+    "domaines_carriere": [
+      "edu"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 10.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "lettres",
+      "modernes",
+      "let",
+      "mod",
+      "langues",
+      "humanites",
+      "ufr",
+      "lac",
+      "francais",
+      "philosophie",
+      "enseignement",
+      "arts"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Licence de Statistique et Informatique Appliquée à l'Economie (LSIE)",
@@ -317,7 +2009,53 @@
     "universite": "Centre Universitaire Polytechnique de Kaya",
     "ville": "Kaya",
     "structure": "UFR/ST",
-    "id_filiere": "67"
+    "id_filiere": "67",
+    "series_bac_acceptees": [
+      "C",
+      "D"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Sciences Physiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Data analyst",
+      "INSD",
+      "Banques",
+      "Informatique décisionnelle"
+    ],
+    "conditions_admission": "Sélection sur dossier, très fort niveau en Mathématiques exigé.",
+    "domaine": "Technologie & Informatique",
+    "domaines_carriere": [
+      "tech",
+      "biz"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 12,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "licence",
+      "statistique",
+      "informatique",
+      "appliquee",
+      "economie",
+      "lsie",
+      "technologie",
+      "ufr",
+      "mathematiques",
+      "sciences",
+      "physiques",
+      "data",
+      "analyst",
+      "insd",
+      "banques",
+      "decisionnelle"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Licence en Statistique et Informatique (LSI)",
@@ -325,7 +2063,48 @@
     "universite": "Université NAZI BONI - Bobo Dioulasso",
     "ville": "Bobo Dioulasso",
     "structure": "UFR/SJPEG",
-    "id_filiere": "50"
+    "id_filiere": "50",
+    "series_bac_acceptees": [
+      "C",
+      "D"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Sciences Physiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Statisticien",
+      "Développeur",
+      "Économétrie"
+    ],
+    "conditions_admission": "Sélection sur dossier (séries scientifiques).",
+    "domaine": "Technologie & Informatique",
+    "domaines_carriere": [
+      "tech"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 12,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "licence",
+      "statistique",
+      "informatique",
+      "lsi",
+      "technologie",
+      "ufr",
+      "sjpeg",
+      "mathematiques",
+      "sciences",
+      "physiques",
+      "statisticien",
+      "developpeur",
+      "econometrie"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Licence professionnelle en sciences techniques et comptables",
@@ -333,7 +2112,47 @@
     "universite": "Université NORBERT ZONGO - Koudougou",
     "ville": "Koudougou",
     "structure": "IUT",
-    "id_filiere": "43"
+    "id_filiere": "43",
+    "series_bac_acceptees": [
+      "G2",
+      "D",
+      "C"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Comptabilité"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Comptabilité",
+      "Contrôle de gestion"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Gestion, Finance & Commerce",
+    "domaines_carriere": [
+      "biz"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 11,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "licence",
+      "professionnelle",
+      "sciences",
+      "techniques",
+      "comptables",
+      "gestion",
+      "finance",
+      "commerce",
+      "iut",
+      "mathematiques",
+      "comptabilite",
+      "controle"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "LINGUISTIQUE",
@@ -341,7 +2160,51 @@
     "universite": "Université Ouaga I Pr JKZ",
     "ville": "Ouagadougou",
     "structure": "UFR/LAC",
-    "id_filiere": "9"
+    "id_filiere": "9",
+    "series_bac_acceptees": [
+      "A",
+      "D"
+    ],
+    "matieres_cles": [
+      "Français",
+      "Philosophie",
+      "Langues nationales/étrangères"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Recherche (CNRST)",
+      "Alphabétisation",
+      "Traduction"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Langues, Lettres & Humanités",
+    "domaines_carriere": [
+      "edu"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 10.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "linguistique",
+      "linguist",
+      "langues",
+      "lettres",
+      "humanites",
+      "ufr",
+      "lac",
+      "francais",
+      "philosophie",
+      "nationales",
+      "etrangeres",
+      "recherche",
+      "cnrst",
+      "alphabetisation",
+      "traduction"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "MANAGEMENT DE LA QUALITE EN AGRO-ALIMENTAIRE (MQA)",
@@ -349,7 +2212,53 @@
     "universite": "Université Ouaga I Pr JKZ",
     "ville": "Ouagadougou",
     "structure": "UFR/SVT",
-    "id_filiere": "19"
+    "id_filiere": "19",
+    "series_bac_acceptees": [
+      "D",
+      "C"
+    ],
+    "matieres_cles": [
+      "SVT",
+      "Sciences Physiques",
+      "Mathématiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Industrie agroalimentaire",
+      "Contrôle qualité",
+      "Laboratoire national"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Sciences, Agroalimentaire & Environnement",
+    "domaines_carriere": [
+      "health",
+      "eng"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 10.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "management",
+      "qualite",
+      "agro",
+      "alimentaire",
+      "mqa",
+      "sciences",
+      "agroalimentaire",
+      "environnement",
+      "ufr",
+      "svt",
+      "physiques",
+      "mathematiques",
+      "industrie",
+      "controle",
+      "laboratoire",
+      "national"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Management et Contrôle de Qualité en Agro-alimentaire (MCQA)",
@@ -357,7 +2266,52 @@
     "universite": "Université de Dedougou",
     "ville": "Dedougou",
     "structure": "UFR/SAT",
-    "id_filiere": "77"
+    "id_filiere": "77",
+    "series_bac_acceptees": [
+      "D",
+      "C"
+    ],
+    "matieres_cles": [
+      "SVT",
+      "Sciences Physiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Contrôleur qualité",
+      "Agriculture",
+      "Transformation alimentaire"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Sciences, Agroalimentaire & Environnement",
+    "domaines_carriere": [
+      "health",
+      "eng"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 10.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "management",
+      "controle",
+      "qualite",
+      "agro",
+      "alimentaire",
+      "mcqa",
+      "sciences",
+      "agroalimentaire",
+      "environnement",
+      "ufr",
+      "sat",
+      "svt",
+      "physiques",
+      "controleur",
+      "agriculture",
+      "transformation"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Management et Gestion des Entreprises Touristiques et Hôtelières (MGETH)",
@@ -365,7 +2319,53 @@
     "universite": "Université NORBERT ZONGO - Koudougou",
     "ville": "Koudougou",
     "structure": "IUT",
-    "id_filiere": "45"
+    "id_filiere": "45",
+    "series_bac_acceptees": [
+      "A",
+      "G",
+      "D"
+    ],
+    "matieres_cles": [
+      "Français",
+      "Anglais",
+      "Histoire-Géographie"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Hôtellerie",
+      "Tourisme",
+      "Gestion d'agences"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Gestion, Finance & Commerce",
+    "domaines_carriere": [
+      "biz"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 11,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "management",
+      "gestion",
+      "entreprises",
+      "touristiques",
+      "hotelieres",
+      "mgeth",
+      "finance",
+      "commerce",
+      "iut",
+      "francais",
+      "anglais",
+      "histoire",
+      "geographie",
+      "hotellerie",
+      "tourisme",
+      "agences"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "MARKETING ET GESTION",
@@ -373,7 +2373,50 @@
     "universite": "Université Ouaga I Pr JKZ",
     "ville": "Ouagadougou",
     "structure": "IBAM",
-    "id_filiere": "21"
+    "id_filiere": "21",
+    "series_bac_acceptees": [
+      "G2",
+      "D",
+      "A",
+      "G3"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Français",
+      "Économie"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Responsable marketing",
+      "Commercial",
+      "Chef de produit"
+    ],
+    "conditions_admission": "Test d'entrée à l'IBAM après sélection.",
+    "domaine": "Gestion, Finance & Commerce",
+    "domaines_carriere": [
+      "biz"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Forte",
+    "moyenne_min_estimee": 12,
+    "type_admission": "Test d’entrée après présélection",
+    "mots_cles_orientation": [
+      "marketing",
+      "gestion",
+      "finance",
+      "commerce",
+      "ibam",
+      "mathematiques",
+      "francais",
+      "economie",
+      "responsable",
+      "commercial",
+      "chef",
+      "produit"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Marketing et Gestion",
@@ -381,7 +2424,48 @@
     "universite": "Université de Ouahigouya",
     "ville": "Ouahigouya",
     "structure": "IFPM",
-    "id_filiere": "72"
+    "id_filiere": "72",
+    "series_bac_acceptees": [
+      "G2",
+      "G3",
+      "D",
+      "A"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Français"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Vente",
+      "Marketing",
+      "Distribution"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Gestion, Finance & Commerce",
+    "domaines_carriere": [
+      "biz"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 11,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "marketing",
+      "gestion",
+      "mark",
+      "gest",
+      "finance",
+      "commerce",
+      "ifpm",
+      "mathematiques",
+      "francais",
+      "vente",
+      "distribution"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Marketing et Gestion (MG)",
@@ -389,7 +2473,47 @@
     "universite": "Université NORBERT ZONGO - Koudougou",
     "ville": "Koudougou",
     "structure": "IUT",
-    "id_filiere": "44"
+    "id_filiere": "44",
+    "series_bac_acceptees": [
+      "G2",
+      "G3",
+      "D",
+      "A"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Français"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Marketing d'entreprise",
+      "Vente"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Gestion, Finance & Commerce",
+    "domaines_carriere": [
+      "biz"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 11,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "marketing",
+      "gestion",
+      "mark",
+      "ges",
+      "finance",
+      "commerce",
+      "iut",
+      "mathematiques",
+      "francais",
+      "entreprise",
+      "vente"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Marketing et Gestion Commercial (MGC)",
@@ -397,7 +2521,50 @@
     "universite": "Université NAZI BONI - Bobo Dioulasso",
     "ville": "Bobo Dioulasso",
     "structure": "IUT",
-    "id_filiere": "60"
+    "id_filiere": "60",
+    "series_bac_acceptees": [
+      "G2",
+      "G3",
+      "D",
+      "A"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Français",
+      "Économie"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Directeur commercial",
+      "Gestion de la force de vente"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Gestion, Finance & Commerce",
+    "domaines_carriere": [
+      "biz"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 11,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "marketing",
+      "gestion",
+      "commercial",
+      "mgc",
+      "finance",
+      "commerce",
+      "iut",
+      "mathematiques",
+      "francais",
+      "economie",
+      "directeur",
+      "force",
+      "vente"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Mathematique Physique Chimie Informatique (MPCI)",
@@ -405,7 +2572,50 @@
     "universite": "Centre Universitaire de Banfora",
     "ville": "Banfora",
     "structure": "CUP/Banfora",
-    "id_filiere": "84"
+    "id_filiere": "84",
+    "series_bac_acceptees": [
+      "C",
+      "D",
+      "E"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Sciences Physiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Enseignement des sciences",
+      "Recherche",
+      "Informatique"
+    ],
+    "conditions_admission": "Sélection sur dossier (Moyennes > 10 en Maths/Physique).",
+    "domaine": "Technologie & Informatique",
+    "domaines_carriere": [
+      "tech",
+      "edu"
+    ],
+    "duree": "3 ans puis spécialisation",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 12,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "mathematique",
+      "physique",
+      "chimie",
+      "informatique",
+      "mpci",
+      "technologie",
+      "cup",
+      "banfora",
+      "mathematiques",
+      "sciences",
+      "physiques",
+      "enseignement",
+      "recherche"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Mathématiques Physique Chimie et Informatique",
@@ -413,7 +2623,48 @@
     "universite": "Université NORBERT ZONGO - Koudougou",
     "ville": "Koudougou",
     "structure": "UFR/ST",
-    "id_filiere": "37"
+    "id_filiere": "37",
+    "series_bac_acceptees": [
+      "C",
+      "D",
+      "E"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Sciences Physiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Enseignement",
+      "Laboratoires",
+      "Informatique"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Technologie & Informatique",
+    "domaines_carriere": [
+      "tech",
+      "edu"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 12,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "mathematiques",
+      "physique",
+      "chimie",
+      "informatique",
+      "mpci",
+      "technologie",
+      "ufr",
+      "sciences",
+      "physiques",
+      "enseignement",
+      "laboratoires"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Mathématiques Physiques Informatique (MPI)",
@@ -421,7 +2672,50 @@
     "universite": "Université NAZI BONI - Bobo Dioulasso",
     "ville": "Bobo Dioulasso",
     "structure": "UFR/SJPEG",
-    "id_filiere": "49"
+    "id_filiere": "49",
+    "series_bac_acceptees": [
+      "C",
+      "D",
+      "E"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Sciences Physiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Ingénierie",
+      "Développement logiciel",
+      "Enseignement"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Technologie & Informatique",
+    "domaines_carriere": [
+      "tech",
+      "eng",
+      "edu"
+    ],
+    "duree": "3 ans puis spécialisation",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 12,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "mathematiques",
+      "physiques",
+      "informatique",
+      "mpi",
+      "technologie",
+      "ufr",
+      "sjpeg",
+      "sciences",
+      "ingenierie",
+      "developpement",
+      "logiciel",
+      "enseignement"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Maths-Physique-Chimie-Informatique (MPCI)",
@@ -429,7 +2723,52 @@
     "universite": "Centre Universitaire Polytechnique de Kaya",
     "ville": "Kaya",
     "structure": "UFR/ST",
-    "id_filiere": "68"
+    "id_filiere": "68",
+    "series_bac_acceptees": [
+      "C",
+      "D",
+      "E"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Sciences Physiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Enseignement scientifique",
+      "Recherche",
+      "Bases de données"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Technologie & Informatique",
+    "domaines_carriere": [
+      "tech",
+      "edu"
+    ],
+    "duree": "3 ans puis spécialisation",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 12,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "maths",
+      "physique",
+      "chimie",
+      "informatique",
+      "mpci",
+      "technologie",
+      "ufr",
+      "mathematiques",
+      "sciences",
+      "physiques",
+      "enseignement",
+      "scientifique",
+      "recherche",
+      "bases",
+      "donnees"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Médecine",
@@ -437,7 +2776,49 @@
     "universite": "Université de Ouahigouya",
     "ville": "Ouahigouya",
     "structure": "ESSAN",
-    "id_filiere": "70"
+    "id_filiere": "70",
+    "series_bac_acceptees": [
+      "D",
+      "C"
+    ],
+    "matieres_cles": [
+      "SVT",
+      "Sciences Physiques",
+      "Mathématiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Médecin généraliste",
+      "Spécialiste",
+      "Hôpitaux publics/privés"
+    ],
+    "conditions_admission": "Sélection très rigoureuse. Moyenne requise souvent > 14/20.",
+    "domaine": "Santé",
+    "domaines_carriere": [
+      "health"
+    ],
+    "duree": "7 ans",
+    "selectivite": "Très forte",
+    "moyenne_min_estimee": 15,
+    "type_admission": "À vérifier auprès de l’établissement",
+    "mots_cles_orientation": [
+      "medecine",
+      "sante",
+      "essan",
+      "svt",
+      "sciences",
+      "physiques",
+      "mathematiques",
+      "medecin",
+      "generaliste",
+      "specialiste",
+      "hopitaux",
+      "publics",
+      "prives"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Médecine",
@@ -445,7 +2826,44 @@
     "universite": "Université NAZI BONI - Bobo Dioulasso",
     "ville": "Bobo Dioulasso",
     "structure": "INSSA",
-    "id_filiere": "55"
+    "id_filiere": "55",
+    "series_bac_acceptees": [
+      "D",
+      "C"
+    ],
+    "matieres_cles": [
+      "SVT",
+      "Sciences Physiques",
+      "Mathématiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Médecin",
+      "Santé publique"
+    ],
+    "conditions_admission": "Même niveau d'exigence (Sélection très forte sur dossier CampusFaso).",
+    "domaine": "Santé",
+    "domaines_carriere": [
+      "health"
+    ],
+    "duree": "7 ans",
+    "selectivite": "Très forte",
+    "moyenne_min_estimee": 15,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "medecine",
+      "sante",
+      "inssa",
+      "svt",
+      "sciences",
+      "physiques",
+      "mathematiques",
+      "medecin",
+      "publique"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "MEDECINE",
@@ -453,7 +2871,50 @@
     "universite": "Université Ouaga I Pr JKZ",
     "ville": "Ouagadougou",
     "structure": "UFR/SDS",
-    "id_filiere": "12"
+    "id_filiere": "12",
+    "series_bac_acceptees": [
+      "D",
+      "C"
+    ],
+    "matieres_cles": [
+      "SVT",
+      "Sciences Physiques",
+      "Mathématiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Médecin",
+      "CHU",
+      "Clinique",
+      "Recherche médicale"
+    ],
+    "conditions_admission": "Critères d'excellence exigés au BAC.",
+    "domaine": "Santé",
+    "domaines_carriere": [
+      "health"
+    ],
+    "duree": "7 ans",
+    "selectivite": "Très forte",
+    "moyenne_min_estimee": 15,
+    "type_admission": "À vérifier auprès de l’établissement",
+    "mots_cles_orientation": [
+      "medecine",
+      "sante",
+      "ufr",
+      "sds",
+      "svt",
+      "sciences",
+      "physiques",
+      "mathematiques",
+      "medecin",
+      "chu",
+      "clinique",
+      "recherche",
+      "medicale"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "METHODE INFORMATIQUE APPLIQUEE A LA GESTION",
@@ -461,7 +2922,53 @@
     "universite": "Université Ouaga I Pr JKZ",
     "ville": "Ouagadougou",
     "structure": "IBAM",
-    "id_filiere": "24"
+    "id_filiere": "24",
+    "series_bac_acceptees": [
+      "C",
+      "D",
+      "G2"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Informatique/Logique",
+      "Comptabilité"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Chef de projet IT",
+      "Développeur de SI",
+      "Consultant ERP"
+    ],
+    "conditions_admission": "Test d'entrée à l'IBAM.",
+    "domaine": "Technologie & Informatique",
+    "domaines_carriere": [
+      "tech",
+      "biz"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Forte",
+    "moyenne_min_estimee": 12.5,
+    "type_admission": "Test d’entrée après présélection",
+    "mots_cles_orientation": [
+      "methode",
+      "informatique",
+      "appliquee",
+      "gestion",
+      "miage",
+      "technologie",
+      "ibam",
+      "mathematiques",
+      "logique",
+      "comptabilite",
+      "chef",
+      "projet",
+      "developpeur",
+      "consultant",
+      "erp"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Méthodes Informatiques Appliqués à la Gestion",
@@ -469,7 +2976,49 @@
     "universite": "Université de Dedougou",
     "ville": "Dedougou",
     "structure": "IUP",
-    "id_filiere": "79"
+    "id_filiere": "79",
+    "series_bac_acceptees": [
+      "C",
+      "D",
+      "G2"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Informatique"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Analyste programmeur",
+      "Gestion de base de données"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Technologie & Informatique",
+    "domaines_carriere": [
+      "tech",
+      "biz"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 12,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "methodes",
+      "informatiques",
+      "appliques",
+      "gestion",
+      "miage",
+      "technologie",
+      "informatique",
+      "iup",
+      "mathematiques",
+      "analyste",
+      "programmeur",
+      "base",
+      "donnees"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Pharmacie",
@@ -477,7 +3026,50 @@
     "universite": "Université NAZI BONI - Bobo Dioulasso",
     "ville": "Bobo Dioulasso",
     "structure": "INSSA",
-    "id_filiere": "56"
+    "id_filiere": "56",
+    "series_bac_acceptees": [
+      "D",
+      "C"
+    ],
+    "matieres_cles": [
+      "SVT",
+      "Sciences Physiques",
+      "Mathématiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Pharmacien d'officine",
+      "Industrie pharmaceutique",
+      "Biologiste médical"
+    ],
+    "conditions_admission": "Sélection stricte sur dossier.",
+    "domaine": "Santé",
+    "domaines_carriere": [
+      "health"
+    ],
+    "duree": "6 ans",
+    "selectivite": "Très forte",
+    "moyenne_min_estimee": 14.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "pharmacie",
+      "pharma",
+      "sante",
+      "inssa",
+      "svt",
+      "sciences",
+      "physiques",
+      "mathematiques",
+      "pharmacien",
+      "officine",
+      "industrie",
+      "pharmaceutique",
+      "biologiste",
+      "medical"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "PHARMACIE",
@@ -485,7 +3077,50 @@
     "universite": "Université Ouaga I Pr JKZ",
     "ville": "Ouagadougou",
     "structure": "UFR/SDS",
-    "id_filiere": "13"
+    "id_filiere": "13",
+    "series_bac_acceptees": [
+      "D",
+      "C"
+    ],
+    "matieres_cles": [
+      "SVT",
+      "Sciences Physiques",
+      "Mathématiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "CAMEG",
+      "Officines privées",
+      "Laboratoires d'analyses"
+    ],
+    "conditions_admission": "Sélection stricte sur dossier (moyenne au BAC souvent > 13/20).",
+    "domaine": "Santé",
+    "domaines_carriere": [
+      "health"
+    ],
+    "duree": "6 ans",
+    "selectivite": "Très forte",
+    "moyenne_min_estimee": 14.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "pharmacie",
+      "pharma",
+      "sante",
+      "ufr",
+      "sds",
+      "svt",
+      "sciences",
+      "physiques",
+      "mathematiques",
+      "cameg",
+      "officines",
+      "privees",
+      "laboratoires",
+      "analyses"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "PHILOSOPHIE",
@@ -493,15 +3128,49 @@
     "universite": "Université Ouaga I Pr JKZ",
     "ville": "Ouagadougou",
     "structure": "UFR/SH",
-    "id_filiere": "5"
-  },
-  {
-    "filiere": "Programme de formation en pédagogie et didactique appropriées à l'enseignement supérieur",
-    "sigle": "PFPDA",
-    "universite": "Université Ouaga I Pr JKZ",
-    "ville": "Ouagadougou",
-    "structure": "UFR/LAC",
-    "id_filiere": "92"
+    "id_filiere": "5",
+    "series_bac_acceptees": [
+      "A",
+      "D"
+    ],
+    "matieres_cles": [
+      "Philosophie",
+      "Français"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Enseignement",
+      "Recherche",
+      "Ressources Humaines",
+      "Politique"
+    ],
+    "conditions_admission": "Sélection sur dossier, excellente note en Philosophie.",
+    "domaine": "Droit, Administration & Services",
+    "domaines_carriere": [
+      "edu",
+      "admin"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 10.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "philosophie",
+      "philo",
+      "droit",
+      "administration",
+      "services",
+      "ufr",
+      "francais",
+      "enseignement",
+      "recherche",
+      "ressources",
+      "humaines",
+      "politique"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "PSYCHOLOGIE",
@@ -509,7 +3178,52 @@
     "universite": "Université NORBERT ZONGO - Koudougou",
     "ville": "Koudougou",
     "structure": "UFR/LSH",
-    "id_filiere": "33"
+    "id_filiere": "33",
+    "series_bac_acceptees": [
+      "A",
+      "D"
+    ],
+    "matieres_cles": [
+      "Philosophie",
+      "Français",
+      "SVT"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Psychologue clinicien",
+      "Psychologue du travail",
+      "Action sociale"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Langues, Lettres & Humanités",
+    "domaines_carriere": [
+      "edu",
+      "admin"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 10.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "psychologie",
+      "psycho",
+      "langues",
+      "lettres",
+      "humanites",
+      "ufr",
+      "lsh",
+      "philosophie",
+      "francais",
+      "svt",
+      "psychologue",
+      "clinicien",
+      "travail",
+      "action",
+      "sociale"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "PSYCHOLOGIE",
@@ -517,7 +3231,54 @@
     "universite": "Université Ouaga I Pr JKZ",
     "ville": "Ouagadougou",
     "structure": "UFR/SH",
-    "id_filiere": "4"
+    "id_filiere": "4",
+    "series_bac_acceptees": [
+      "A",
+      "D"
+    ],
+    "matieres_cles": [
+      "Philosophie",
+      "Français",
+      "SVT (bonus)"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Action sociale",
+      "Hôpitaux",
+      "Ressources Humaines",
+      "Éducation"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Langues, Lettres & Humanités",
+    "domaines_carriere": [
+      "edu",
+      "admin"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 10.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "psychologie",
+      "psycho",
+      "langues",
+      "lettres",
+      "humanites",
+      "ufr",
+      "philosophie",
+      "francais",
+      "svt",
+      "bonus",
+      "action",
+      "sociale",
+      "hopitaux",
+      "ressources",
+      "humaines",
+      "education"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Réseaux Informatiques et Télécommunications",
@@ -525,7 +3286,56 @@
     "universite": "Université Catholique de l’Afrique de l’Ouest-Unité Universitaire à Bobo Dioulasso",
     "ville": "Bobo Dioulasso",
     "structure": "UCAO-UUB",
-    "id_filiere": "88"
+    "id_filiere": "88",
+    "series_bac_acceptees": [
+      "C",
+      "D",
+      "E",
+      "F2",
+      "H"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Sciences Physiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "Entre 400 000 et 600 000 FCFA/an",
+    "statut": "Privé (Catholique)",
+    "debouches": [
+      "Ingénieur Réseaux",
+      "Télécommunications (ONATEL, Telecel, Orange)",
+      "Sécurité informatique"
+    ],
+    "conditions_admission": "Dépôt de dossier auprès de l'administration de l'UCAO et entretien possible. Inscription payante.",
+    "domaine": "Technologie & Informatique",
+    "domaines_carriere": [
+      "tech",
+      "eng",
+      "admin"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Modérée",
+    "moyenne_min_estimee": 12,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "reseaux",
+      "informatiques",
+      "telecommunications",
+      "telecom",
+      "technologie",
+      "informatique",
+      "ucao",
+      "uub",
+      "mathematiques",
+      "sciences",
+      "physiques",
+      "ingenieur",
+      "onatel",
+      "telecel",
+      "orange",
+      "securite"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Sciences biologiques (SB)",
@@ -533,7 +3343,49 @@
     "universite": "Université NAZI BONI - Bobo Dioulasso",
     "ville": "Bobo Dioulasso",
     "structure": "UFR/SJPEG",
-    "id_filiere": "48"
+    "id_filiere": "48",
+    "series_bac_acceptees": [
+      "D",
+      "C"
+    ],
+    "matieres_cles": [
+      "SVT",
+      "Sciences Physiques",
+      "Mathématiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Laboratoires",
+      "Recherche agricole",
+      "Environnement"
+    ],
+    "conditions_admission": "Sélection sur dossier (Notes en SVT dominantes).",
+    "domaine": "Sciences, Agroalimentaire & Environnement",
+    "domaines_carriere": [
+      "health",
+      "eng"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 10.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "sciences",
+      "biologiques",
+      "agroalimentaire",
+      "environnement",
+      "ufr",
+      "sjpeg",
+      "svt",
+      "physiques",
+      "mathematiques",
+      "laboratoires",
+      "recherche",
+      "agricole"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Sciences Biologiques (SB)",
@@ -541,7 +3393,46 @@
     "universite": "Université de Dedougou",
     "ville": "Dedougou",
     "structure": "UFR/SAT",
-    "id_filiere": "76"
+    "id_filiere": "76",
+    "series_bac_acceptees": [
+      "D",
+      "C"
+    ],
+    "matieres_cles": [
+      "SVT",
+      "Sciences Physiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Agronomie",
+      "Biologie environnementale"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Sciences, Agroalimentaire & Environnement",
+    "domaines_carriere": [
+      "health",
+      "eng"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 10.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "sciences",
+      "biologiques",
+      "agroalimentaire",
+      "environnement",
+      "ufr",
+      "sat",
+      "svt",
+      "physiques",
+      "agronomie",
+      "biologie",
+      "environnementale"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Sciences Biologiques Appliquée",
@@ -549,7 +3440,50 @@
     "universite": "Centre Universitaire de Gaoua",
     "ville": "Gaoua",
     "structure": "CUP/Gaoua",
-    "id_filiere": "82"
+    "id_filiere": "82",
+    "series_bac_acceptees": [
+      "D",
+      "C"
+    ],
+    "matieres_cles": [
+      "SVT",
+      "Sciences Physiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Elevage",
+      "Agriculture",
+      "Laboratoires d'analyses"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Sciences, Agroalimentaire & Environnement",
+    "domaines_carriere": [
+      "health",
+      "eng"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 10.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "sciences",
+      "biologiques",
+      "appliquee",
+      "sba",
+      "agroalimentaire",
+      "environnement",
+      "cup",
+      "gaoua",
+      "svt",
+      "physiques",
+      "elevage",
+      "agriculture",
+      "laboratoires",
+      "analyses"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Sciences de l'Information Documentaire",
@@ -557,7 +3491,50 @@
     "universite": "Université NORBERT ZONGO - Koudougou",
     "ville": "Koudougou",
     "structure": "UFR/LSH",
-    "id_filiere": "36"
+    "id_filiere": "36",
+    "series_bac_acceptees": [
+      "A",
+      "D",
+      "G"
+    ],
+    "matieres_cles": [
+      "Français",
+      "Histoire-Géographie"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Archiviste",
+      "Documentaliste",
+      "Bibliothécaire"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Communication & Information",
+    "domaines_carriere": [
+      "tech",
+      "admin"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 10.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "sciences",
+      "information",
+      "documentaire",
+      "sid",
+      "communication",
+      "ufr",
+      "lsh",
+      "francais",
+      "histoire",
+      "geographie",
+      "archiviste",
+      "documentaliste",
+      "bibliothecaire"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Sciences de la Vie et de la Terre",
@@ -565,7 +3542,45 @@
     "universite": "Université NORBERT ZONGO - Koudougou",
     "ville": "Koudougou",
     "structure": "UFR/ST",
-    "id_filiere": "38"
+    "id_filiere": "38",
+    "series_bac_acceptees": [
+      "D",
+      "C"
+    ],
+    "matieres_cles": [
+      "SVT",
+      "Sciences Physiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Enseignement (SVT)",
+      "Environnement",
+      "Laboratoire"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Sciences, Agroalimentaire & Environnement",
+    "domaines_carriere": [
+      "edu"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 10.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "sciences",
+      "vie",
+      "terre",
+      "svt",
+      "agroalimentaire",
+      "environnement",
+      "ufr",
+      "physiques",
+      "enseignement",
+      "laboratoire"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Sciences Economiques et de Gestion",
@@ -573,7 +3588,53 @@
     "universite": "Université NORBERT ZONGO - Koudougou",
     "ville": "Koudougou",
     "structure": "UFR/SEG",
-    "id_filiere": "39"
+    "id_filiere": "39",
+    "series_bac_acceptees": [
+      "D",
+      "C",
+      "G2"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Économie",
+      "Français"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Économiste",
+      "Banque",
+      "Finance",
+      "Administration"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Gestion, Finance & Commerce",
+    "domaines_carriere": [
+      "biz",
+      "admin"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 11,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "sciences",
+      "economiques",
+      "gestion",
+      "eco",
+      "finance",
+      "commerce",
+      "ufr",
+      "seg",
+      "mathematiques",
+      "economie",
+      "francais",
+      "economiste",
+      "banque",
+      "administration"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Sciences Economiques et de Gestion (SEG)",
@@ -581,7 +3642,49 @@
     "universite": "Université NAZI BONI - Bobo Dioulasso",
     "ville": "Bobo Dioulasso",
     "structure": "UFR/SJPEG",
-    "id_filiere": "47"
+    "id_filiere": "47",
+    "series_bac_acceptees": [
+      "D",
+      "C",
+      "G2"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Économie"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Finance publique",
+      "Banque",
+      "Audit"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Gestion, Finance & Commerce",
+    "domaines_carriere": [
+      "biz"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 11,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "sciences",
+      "economiques",
+      "gestion",
+      "seg",
+      "finance",
+      "commerce",
+      "ufr",
+      "sjpeg",
+      "mathematiques",
+      "economie",
+      "publique",
+      "banque",
+      "audit"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Sciences et Technologie",
@@ -589,7 +3692,45 @@
     "universite": "Université de Ouahigouya",
     "ville": "Ouahigouya",
     "structure": "ESST",
-    "id_filiere": "75"
+    "id_filiere": "75",
+    "series_bac_acceptees": [
+      "C",
+      "D",
+      "E"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Sciences Physiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Enseignement",
+      "Informatique",
+      "Industrie"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Technologie & Informatique",
+    "domaines_carriere": [
+      "tech",
+      "edu"
+    ],
+    "duree": "3 ans puis spécialisation",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 12,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "sciences",
+      "technologie",
+      "informatique",
+      "esst",
+      "mathematiques",
+      "physiques",
+      "enseignement",
+      "industrie"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "SCIENCES ET TEHNOLOGIE (ST) - CHIMIE, BIOLOGIE, GEOLOGIE",
@@ -597,7 +3738,57 @@
     "universite": "Université Ouaga I Pr JKZ",
     "ville": "Ouagadougou",
     "structure": "UFR/SVT",
-    "id_filiere": "18"
+    "id_filiere": "18",
+    "series_bac_acceptees": [
+      "D",
+      "C"
+    ],
+    "matieres_cles": [
+      "SVT",
+      "Sciences Physiques",
+      "Mathématiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Recherche minière (BUMIGEB)",
+      "Enseignement",
+      "Agronomie",
+      "Biologie"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Ingénierie & Technologies",
+    "domaines_carriere": [
+      "tech",
+      "eng",
+      "edu"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 12,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "sciences",
+      "tehnologie",
+      "chimie",
+      "biologie",
+      "geologie",
+      "chi",
+      "bio",
+      "ingenierie",
+      "technologies",
+      "ufr",
+      "svt",
+      "physiques",
+      "mathematiques",
+      "recherche",
+      "miniere",
+      "bumigeb",
+      "enseignement",
+      "agronomie"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "SCIENCES ET TEHNOLOGIE (ST) - MATHS, PHYSIQUES, CHIMIE ET INFORMATIQUE",
@@ -605,7 +3796,55 @@
     "universite": "Université Ouaga I Pr JKZ",
     "ville": "Ouagadougou",
     "structure": "UFR/SEA",
-    "id_filiere": "16"
+    "id_filiere": "16",
+    "series_bac_acceptees": [
+      "C",
+      "D",
+      "E"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Sciences Physiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Enseignement supérieur",
+      "Ingénierie informatique",
+      "Recherche",
+      "Statistiques"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Technologie & Informatique",
+    "domaines_carriere": [
+      "tech",
+      "eng",
+      "edu"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 12,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "sciences",
+      "tehnologie",
+      "maths",
+      "physiques",
+      "chimie",
+      "informatique",
+      "mpci",
+      "technologie",
+      "ufr",
+      "sea",
+      "mathematiques",
+      "enseignement",
+      "superieur",
+      "ingenierie",
+      "recherche",
+      "statistiques"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "SCIENCES INFORMATIQUES APPLIQUEES",
@@ -613,7 +3852,55 @@
     "universite": "Université Ouaga I Pr JKZ",
     "ville": "Ouagadougou",
     "structure": "IFOAD",
-    "id_filiere": "26"
+    "id_filiere": "26",
+    "series_bac_acceptees": [
+      "C",
+      "D",
+      "E",
+      "H"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "Sciences Physiques",
+      "Anglais"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Développeur",
+      "Administrateur de bases de données",
+      "Ingénieur logiciel"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Technologie & Informatique",
+    "domaines_carriere": [
+      "tech",
+      "eng"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 12,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "sciences",
+      "informatiques",
+      "appliquees",
+      "sia",
+      "technologie",
+      "informatique",
+      "ifoad",
+      "mathematiques",
+      "physiques",
+      "anglais",
+      "developpeur",
+      "administrateur",
+      "bases",
+      "donnees",
+      "ingenieur",
+      "logiciel"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Sciences Juridiques et Politiques (SJP)",
@@ -621,7 +3908,56 @@
     "universite": "Université NAZI BONI - Bobo Dioulasso",
     "ville": "Bobo Dioulasso",
     "structure": "UFR/SJPEG",
-    "id_filiere": "46"
+    "id_filiere": "46",
+    "series_bac_acceptees": [
+      "A",
+      "D",
+      "G"
+    ],
+    "matieres_cles": [
+      "Français",
+      "Philosophie",
+      "Histoire-Géographie"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Magistrature",
+      "Avocature",
+      "Diplomatie",
+      "Conseil juridique"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Droit, Administration & Services",
+    "domaines_carriere": [
+      "admin"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 10.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "sciences",
+      "juridiques",
+      "politiques",
+      "sjp",
+      "droit",
+      "administration",
+      "services",
+      "ufr",
+      "sjpeg",
+      "francais",
+      "philosophie",
+      "histoire",
+      "geographie",
+      "magistrature",
+      "avocature",
+      "diplomatie",
+      "conseil",
+      "juridique"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Sécretariat de Direction (SD)",
@@ -629,7 +3965,48 @@
     "universite": "Université NAZI BONI - Bobo Dioulasso",
     "ville": "Bobo Dioulasso",
     "structure": "IUT",
-    "id_filiere": "57"
+    "id_filiere": "57",
+    "series_bac_acceptees": [
+      "G1",
+      "A",
+      "D"
+    ],
+    "matieres_cles": [
+      "Français",
+      "Anglais",
+      "Philosophie"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Assistante de direction",
+      "Secrétariat de Mairie",
+      "Administration"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Droit, Administration & Services",
+    "domaines_carriere": [
+      "admin"
+    ],
+    "duree": "2-3 ans",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 10.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "secretariat",
+      "direction",
+      "droit",
+      "administration",
+      "services",
+      "iut",
+      "francais",
+      "anglais",
+      "philosophie",
+      "assistante",
+      "mairie"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "SOCIOLOGIE",
@@ -637,7 +4014,53 @@
     "universite": "Université Ouaga I Pr JKZ",
     "ville": "Ouagadougou",
     "structure": "UFR/SH",
-    "id_filiere": "1"
+    "id_filiere": "1",
+    "series_bac_acceptees": [
+      "A",
+      "D"
+    ],
+    "matieres_cles": [
+      "Philosophie",
+      "Français",
+      "Histoire-Géographie"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Travail social",
+      "ONG",
+      "Urbanisme",
+      "Recherche"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Langues, Lettres & Humanités",
+    "domaines_carriere": [
+      "edu",
+      "admin"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 10.5,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "sociologie",
+      "socio",
+      "langues",
+      "lettres",
+      "humanites",
+      "ufr",
+      "philosophie",
+      "francais",
+      "histoire",
+      "geographie",
+      "travail",
+      "social",
+      "ong",
+      "urbanisme",
+      "recherche"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "STATISTIQUES SOCIALES",
@@ -645,7 +4068,47 @@
     "universite": "Université Ouaga I Pr JKZ",
     "ville": "Ouagadougou",
     "structure": "ISSP",
-    "id_filiere": "25"
+    "id_filiere": "25",
+    "series_bac_acceptees": [
+      "C",
+      "D"
+    ],
+    "matieres_cles": [
+      "Mathématiques",
+      "SVT"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Démographe",
+      "Chargé d'études statistiques",
+      "INSD"
+    ],
+    "conditions_admission": "Test d'entrée à l'ISSP ou sélection CampusFaso.",
+    "domaine": "Technologie & Informatique",
+    "domaines_carriere": [
+      "tech"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Forte",
+    "moyenne_min_estimee": 12.5,
+    "type_admission": "Test d’entrée après présélection",
+    "mots_cles_orientation": [
+      "statistiques",
+      "sociales",
+      "stat",
+      "technologie",
+      "informatique",
+      "issp",
+      "mathematiques",
+      "svt",
+      "demographe",
+      "charge",
+      "etudes",
+      "insd"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "TECHNICIEN SUPERIEUR DE SANTE (TSS) ANALYSES BIOMEDICALES",
@@ -653,7 +4116,53 @@
     "universite": "Université Ouaga I Pr JKZ",
     "ville": "Ouagadougou",
     "structure": "UFR/SDS",
-    "id_filiere": "15"
+    "id_filiere": "15",
+    "series_bac_acceptees": [
+      "D",
+      "C"
+    ],
+    "matieres_cles": [
+      "SVT",
+      "Sciences Physiques",
+      "Mathématiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Laborantin en analyses biomédicales",
+      "Hôpitaux",
+      "Cliniques"
+    ],
+    "conditions_admission": "Sélection très stricte sur dossier.",
+    "domaine": "Santé",
+    "domaines_carriere": [
+      "health"
+    ],
+    "duree": "2-3 ans",
+    "selectivite": "Modérée",
+    "moyenne_min_estimee": 10,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "technicien",
+      "superieur",
+      "sante",
+      "tss",
+      "analyses",
+      "biomedicales",
+      "techn",
+      "bio",
+      "ufr",
+      "sds",
+      "svt",
+      "sciences",
+      "physiques",
+      "mathematiques",
+      "laborantin",
+      "hopitaux",
+      "cliniques"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "Techniques Administratives (TA)",
@@ -661,7 +4170,50 @@
     "universite": "Université NORBERT ZONGO - Koudougou",
     "ville": "Koudougou",
     "structure": "IUT",
-    "id_filiere": "42"
+    "id_filiere": "42",
+    "series_bac_acceptees": [
+      "G1",
+      "A",
+      "D"
+    ],
+    "matieres_cles": [
+      "Français",
+      "Anglais"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Administration publique",
+      "Gestion administrative du personnel"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Gestion, Finance & Commerce",
+    "domaines_carriere": [
+      "biz",
+      "admin"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 11,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "techniques",
+      "administratives",
+      "tech",
+      "adm",
+      "gestion",
+      "finance",
+      "commerce",
+      "iut",
+      "francais",
+      "anglais",
+      "administration",
+      "publique",
+      "administrative",
+      "personnel"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   },
   {
     "filiere": "TECHNOLOGIE SOLAIRE ET APPLIQUEE (TSA)",
@@ -669,6 +4221,54 @@
     "universite": "Université Ouaga I Pr JKZ",
     "ville": "Ouagadougou",
     "structure": "UFR/SEA",
-    "id_filiere": "17"
+    "id_filiere": "17",
+    "series_bac_acceptees": [
+      "C",
+      "D",
+      "E",
+      "F3"
+    ],
+    "matieres_cles": [
+      "Sciences Physiques",
+      "Mathématiques"
+    ],
+    "niveau_requis": "BAC",
+    "cout": "15 000 FCFA/an",
+    "statut": "Public",
+    "debouches": [
+      "Ingénieur/Technicien en énergie solaire",
+      "SONABEL",
+      "Énergies renouvelables"
+    ],
+    "conditions_admission": "Sélection sur dossier.",
+    "domaine": "Ingénierie & Technologies",
+    "domaines_carriere": [
+      "tech",
+      "eng"
+    ],
+    "duree": "3 ans (Licence), puis spécialisation possible",
+    "selectivite": "Moyenne",
+    "moyenne_min_estimee": 12,
+    "type_admission": "Sélection sur dossier",
+    "mots_cles_orientation": [
+      "technologie",
+      "solaire",
+      "appliquee",
+      "tsa",
+      "ingenierie",
+      "technologies",
+      "ufr",
+      "sea",
+      "sciences",
+      "physiques",
+      "mathematiques",
+      "ingenieur",
+      "technicien",
+      "energie",
+      "sonabel",
+      "energies",
+      "renouvelables"
+    ],
+    "source": "Base locale FasoOrientation - données à vérifier auprès de CampusFaso et des universités"
   }
 ]

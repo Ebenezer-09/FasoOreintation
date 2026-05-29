@@ -3,6 +3,9 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta name="theme-color" content="#1e804f"/>
+  <link rel="manifest" href="/manifest.webmanifest"/>
+  <link rel="icon" href="/assets/icons/icon.svg" type="image/svg+xml"/>
   <title>Conseiller IA - FasoOrientation</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
@@ -175,17 +178,27 @@
   </footer>
 
   <script src="js/storage.js"></script>
+  <script src="js/env.js"></script>
   <script src="js/groq.js"></script>
   <script>
     // ── État global ──
     let chatHistory = []; // [{role, content}] pour l'API Groq
     let systemPromptText = '';
+    let currentChatContext = 'general';
 
     // ── Init au chargement ──
     (function init() {
       const profil  = FoStorage.getProfil();
       const analyse = FoStorage.getAnalyse();
-      systemPromptText = buildSystemPrompt(profil, analyse);
+      const filiere = FoStorage.getSelectedFiliere();
+      currentChatContext = filiere?.nom ? `filiere:${filiere.nom}` : 'general';
+      systemPromptText = buildSystemPrompt(profil, analyse, filiere);
+
+      const savedContext = FoStorage.getChatContext();
+      if ((savedContext && savedContext !== currentChatContext) || (!savedContext && currentChatContext !== 'general')) {
+        FoStorage.clearChat();
+      }
+      FoStorage.saveChatContext(currentChatContext);
 
       // Personnaliser le greeting
       const greetingEl = document.querySelector('#msg-greeting .bg-white p, #msg-greeting .dark\\:bg-slate-800 p');
@@ -194,9 +207,20 @@
         if (firstBubble) {
           let greeting = 'Bonjour ! Je suis ravi de t\'accompagner dans ta réflexion.';
           if (profil.ville) greeting += ` Tu es basé(e) à ${profil.ville}, c'est noté.`;
-          greeting += ` Avec ton Bac série ${profil.bac}, l'orientation est une étape importante et je suis là pour t'apporter des réponses rassurantes et précises.`;
+          if (filiere?.nom) {
+            greeting += ` Tu as choisi d'échanger sur la filière ${filiere.nom}.`;
+          }
+          greeting += ` Avec ton Bac série ${profil.bac}, je vais répondre en tenant compte de tes notes et de cette recommandation.`;
           firstBubble.textContent = greeting;
         }
+      }
+
+      if (filiere?.nom) {
+        const secondBubble = document.querySelectorAll('#msg-greeting .bg-white p, #msg-greeting [class*="bg-white"] p')[1];
+        if (secondBubble) {
+          secondBubble.textContent = `Pose-moi tes questions sur ${filiere.nom}: métiers possibles, écoles, compétences, préparation ou débouchés.`;
+        }
+        updateFiliereChips(filiere.nom);
       }
 
       // Restaurer l'historique du chat
@@ -226,6 +250,20 @@
     }
 
     document.getElementById('greeting-time').textContent = nowTime();
+
+    function updateFiliereChips(filiereNom) {
+      const chips = document.querySelectorAll('#quick-chips button');
+      const labels = [
+        `Pourquoi ${filiereNom} me correspond ?`,
+        `Quels métiers après ${filiereNom} ?`,
+        `Quelles écoles pour ${filiereNom} ?`,
+        `Quelles matières renforcer ?`,
+        `Comment me préparer ?`
+      ];
+      chips.forEach((chip, i) => {
+        if (labels[i]) chip.textContent = labels[i];
+      });
+    }
 
     function escapeHtml(str) {
       const d = document.createElement('div');
@@ -328,12 +366,16 @@
 
       try {
         // Construire les messages pour Groq
+        const scopedText = currentChatContext.startsWith('filiere:')
+          ? `Question de l'élève à traiter dans le contexte de la filière sélectionnée (${currentChatContext.replace('filiere:', '')}) : ${text}`
+          : text;
         const messages = [
           { role: 'system', content: systemPromptText },
-          ...chatHistory
+          ...chatHistory.slice(0, -1),
+          { role: 'user', content: scopedText }
         ];
 
-        const response = await groqChat(messages, { maxTokens: 1024, temperature: 0.7 });
+        const response = await groqChat(messages, { task: 'chat', maxTokens: 1024, temperature: 0.7 });
 
         typing.remove();
 
@@ -384,5 +426,6 @@
     }
   </script>
 
+  <script src="js/pwa.js"></script>
 </body>
 </html>

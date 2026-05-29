@@ -3,6 +3,9 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta name="theme-color" content="#1e804f"/>
+  <link rel="manifest" href="/manifest.webmanifest"/>
+  <link rel="icon" href="/assets/icons/icon.svg" type="image/svg+xml"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,6 +43,17 @@
   </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+
+  <!-- Scripts d'authentification -->
+  <script src="js/storage.js"></script>
+  <script src="js/auth-api.js"></script>
+  <script src="js/auth-manager.js"></script>
+  <script>
+    // Vérifier que l'utilisateur est connecté
+    if (!AuthManager.isLoggedIn()) {
+      window.location.href = 'connexion.html';
+    }
+  </script>
 
   <!-- TOP NAV -->
   <nav class="sticky top-0 z-50 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-primary/10">
@@ -240,27 +254,69 @@
     <p id="loading-msg" class="text-sm text-slate-500">Envoi des données au modèle d'IA</p>
   </div>
 
-  <script src="js/storage.js"></script>
   <script src="js/groq.js"></script>
   <script>
     // ── Agréger les notes depuis les bulletins analysés ────────────────────
+    function normalizeText(value) {
+      return String(value || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/[’']/g, ' ')
+        .replace(/[^a-z0-9]+/g, ' ')
+        .trim();
+    }
+
+    function subjectKey(name) {
+      const normalized = normalizeText(name);
+      const aliases = {
+        'histoire geo': 'histoire geographie',
+        'histoire geographie': 'histoire geographie',
+        'maths': 'mathematiques',
+        'mathematique': 'mathematiques',
+        'mathematiques': 'mathematiques'
+      };
+      return aliases[normalized] || normalized;
+    }
+
+    function subjectAppearsInText(subject, rawText) {
+      if (!rawText) return true;
+      const text = ` ${normalizeText(rawText)} `;
+      const normalizedSubject = normalizeText(subject);
+      if (!normalizedSubject) return false;
+
+      const variants = new Set([normalizedSubject]);
+      if (normalizedSubject === 'histoire geo') variants.add('histoire geographie');
+      if (normalizedSubject === 'histoire geographie') variants.add('histoire geo');
+      if (normalizedSubject === 'mathematiques') variants.add('maths');
+      if (normalizedSubject === 'maths') variants.add('mathematiques');
+
+      return [...variants].some(v => text.includes(` ${v} `));
+    }
+
     function aggregateNotes() {
       const bulls = FoStorage.getBulletins();
-      const matMap = {}; // nom → { total, count }
+      const matMap = {}; // clé normalisée → { nom, total, count }
 
       Object.values(bulls).forEach(b => {
         if (!b || !b.analyse || !b.analyse.matieres) return;
         b.analyse.matieres.forEach(m => {
-          const key = m.nom.trim();
-          if (!matMap[key]) matMap[key] = { total: 0, count: 0 };
-          matMap[key].total += (m.moyenne ?? m.notes?.[0] ?? 0);
+          const nom = String(m?.nom || '').trim();
+          if (!nom || !subjectAppearsInText(nom, b.text || '')) return;
+
+          const note = Number(m.moyenne ?? m.notes?.[0]);
+          if (!Number.isFinite(note) || note < 0 || note > 20) return;
+
+          const key = subjectKey(nom);
+          if (!matMap[key]) matMap[key] = { nom, total: 0, count: 0 };
+          matMap[key].total += note;
           matMap[key].count += 1;
         });
       });
 
       const notes = {};
-      Object.entries(matMap).forEach(([nom, v]) => {
-        notes[nom] = +(v.total / v.count).toFixed(2);
+      Object.values(matMap).forEach(v => {
+        notes[v.nom] = +(v.total / v.count).toFixed(2);
       });
       return notes;
     }
@@ -511,7 +567,7 @@ INSTRUCTIONS :
         const conseil = await groqChat([
           { role: 'system', content: 'Tu es un conseiller d\'orientation scolaire bienveillant et expert du Burkina Faso. Réponds UNIQUEMENT avec le conseil personnalisé (3-4 phrases en HTML avec <strong>). Pas de JSON, pas de titre, pas de liste à puces. Sois direct et concret.' },
           { role: 'user', content: prompt }
-        ], { maxTokens: 500, temperature: 0.6 });
+        ], { task: 'chat', maxTokens: 500, temperature: 0.6 });
 
         overlay.classList.add('hidden');
         renderPage(notes, conseil.trim());
@@ -524,5 +580,8 @@ INSTRUCTIONS :
     })();
   </script>
 
+<script src="js/auth.js"></script>
+<script src="js/navigator.js"></script>
+<script src="js/pwa.js"></script>
 </body>
 </html>

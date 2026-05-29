@@ -1,0 +1,29 @@
+{
+  "name": "faso-orientation-backend",
+  "version": "1.0.0",
+  "description": "Backend serveur Express pour FasoOrientation",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node dev-server.js",
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "orientation",
+    "université",
+    "Burkina Faso",
+    "express"
+  ],
+  "author": "FasoInnovation",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.106.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.18.2",
+    "ws": "^8.14.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

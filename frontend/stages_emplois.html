@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html class="light" lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta name="theme-color" content="#4f46e5" />
+  <meta name="description" content="Stages et Emplois disponibles - FasoOrientation" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" href="/assets/icons/icon.svg" type="image/svg+xml" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap"
+    rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block"
+    rel="stylesheet" />
+
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#1e804f",
+            "secondary": "#4f46e5",
+            "background-light": "#f6f8f7",
+            "background-dark": "#131f19",
+          },
+          fontFamily: { "display": ["DM Sans", "sans-serif"] },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+
+  <title>Stages & Emplois - FasoOrientation</title>
+
+  <style>
+    body {
+      min-height: 100dvh;
+      font-family: 'DM Sans', sans-serif;
+      background: linear-gradient(160deg, #eef2ff 0%, #f9faf9 35%, #f9faf9 100%);
+    }
+
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .serif { font-family: 'DM Serif Display', serif; }
+
+    .card-hover {
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .card-hover:hover {
+      box-shadow: 0 8px 32px rgba(79, 70, 229, 0.13);
+      transform: translateY(-2px);
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -800px 0; }
+      100% { background-position: 800px 0; }
+    }
+    .skeleton {
+      background: linear-gradient(90deg, #f0f0f8 25%, #e8e8f5 50%, #f0f0f8 75%);
+      background-size: 800px 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 1rem;
+    }
+
+    #search-input:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+    }
+
+    .filter-pill {
+      cursor: pointer;
+      transition: all 0.18s;
+      border: 1.5px solid transparent;
+    }
+    .filter-pill:hover {
+      border-color: #4f46e5;
+      background: #eef2ff;
+      color: #3730a3;
+    }
+    .filter-pill.active {
+      background: #4f46e5;
+      color: #fff;
+      border-color: #4f46e5;
+      font-weight: 600;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1 }
+      50% { opacity: .4 }
+    }
+    .pulse-open { animation: pulse-dot 1.8s ease-in-out infinite; }
+
+    #modal { transition: opacity 0.2s ease; }
+    #modal.hidden { pointer-events: none; }
+    #modal-panel { transition: transform 0.25s cubic-bezier(.4,0,.2,1), opacity 0.25s ease; }
+
+    .page-btn { transition: all 0.15s; }
+    .page-btn:hover:not([disabled]) { background: #eef2ff; color: #3730a3; }
+    .page-btn.active { background: #4f46e5; color: white; font-weight: 700; }
+    .page-btn:disabled { opacity: .35; cursor: not-allowed; }
+
+    /* Type badge colors */
+    .badge-stage { background: #eef2ff; color: #4338ca; }
+    .badge-emploi { background: #f0fdf4; color: #15803d; }
+    .badge-alternance { background: #fdf4ff; color: #9333ea; }
+  </style>
+</head>
+
+<body class="font-display text-slate-900 dark:text-slate-100 dark:bg-background-dark min-h-screen">
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-white/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-slate-100 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 h-14 flex items-center gap-3">
+      <a href="index.html"
+        class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 hover:text-slate-700 transition-colors">
+        <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+      </a>
+      <div class="w-px h-4 bg-slate-200 dark:bg-slate-700"></div>
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded bg-indigo-600 flex items-center justify-center">
+          <span class="material-symbols-outlined text-white text-[14px]">work</span>
+        </div>
+        <span class="font-semibold text-sm text-slate-800 dark:text-slate-100">FasoOrientation</span>
+      </div>
+      <span class="text-slate-200 dark:text-slate-700 text-sm">/</span>
+      <span class="text-sm text-slate-400 hidden sm:block">Stages & Emplois</span>
+
+      <div class="ml-auto flex items-center gap-3">
+        <div id="live-badge"
+          class="hidden items-center gap-1.5 text-[11px] font-semibold text-indigo-600 bg-indigo-50 dark:bg-indigo-900/20 dark:text-indigo-400 px-2.5 py-1 rounded-full">
+          <span class="pulse-open w-1.5 h-1.5 rounded-full bg-indigo-500 inline-block"></span>
+          En direct
+        </div>
+        <span class="text-xs text-slate-400" id="nav-total"></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="max-w-6xl mx-auto px-5 sm:px-8 py-10 pb-16">
+
+    <!-- HEADER -->
+    <div class="mb-10 max-w-xl">
+      <p class="text-xs font-semibold text-indigo-600 tracking-widest uppercase mb-3">Opportunités disponibles</p>
+      <h2 class="serif text-3xl md:text-4xl text-slate-900 dark:text-white leading-tight mb-3">
+        Stages & Emplois<br>pour ton avenir
+      </h2>
+      <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+        Sélection mise à jour depuis les entreprises partenaires et les plateformes locales.
+      </p>
+    </div>
+
+    <!-- SEARCH + FILTERS -->
+    <div class="flex flex-col sm:flex-row gap-3 mb-8">
+      <div class="relative flex-1 max-w-sm">
+        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-300 text-[18px]">search</span>
+        <input id="search-input" type="search" placeholder="Rechercher un poste, une entreprise…"
+          class="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 text-sm transition" />
+      </div>
+      <div class="flex flex-wrap gap-2 items-center">
+        <button class="filter-pill active text-xs px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400" data-type="">Tous</button>
+        <button class="filter-pill text-xs px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400" data-type="stage">Stage</button>
+        <button class="filter-pill text-xs px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400" data-type="emploi">Emploi</button>
+        <button class="filter-pill text-xs px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400" data-type="alternance">Alternance</button>
+      </div>
+    </div>
+
+    <!-- Results label -->
+    <p class="text-xs text-slate-400 mb-5" id="results-label">Chargement…</p>
+
+    <!-- SKELETONS -->
+    <div id="skeleton-container" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 mb-10">
+      <div class="skeleton h-52 w-full"></div>
+      <div class="skeleton h-52 w-full"></div>
+      <div class="skeleton h-52 w-full"></div>
+      <div class="skeleton h-52 w-full opacity-50"></div>
+      <div class="skeleton h-52 w-full opacity-30"></div>
+      <div class="skeleton h-52 w-full opacity-20"></div>
+    </div>
+
+    <!-- CARDS GRID -->
+    <div id="cards-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 mb-10" style="display:none"></div>
+
+    <!-- EMPTY STATE -->
+    <div id="empty-state" class="hidden flex flex-col items-center justify-center py-20 gap-5 text-center">
+      <div class="w-16 h-16 bg-indigo-50 dark:bg-indigo-900/20 rounded-2xl flex items-center justify-center">
+        <span class="material-symbols-outlined text-indigo-400 text-[32px]">search_off</span>
+      </div>
+      <div>
+        <h3 class="font-semibold text-slate-700 dark:text-slate-300 mb-1">Aucune offre trouvée</h3>
+        <p class="text-sm text-slate-400 max-w-xs">Essaie d'autres mots-clés ou supprime les filtres actifs.</p>
+      </div>
+      <button onclick="resetFilters()"
+        class="flex items-center gap-2 bg-indigo-600 text-white text-sm font-semibold py-2.5 px-5 rounded-xl hover:bg-indigo-500 transition-all active:scale-95">
+        <span class="material-symbols-outlined text-[16px]">filter_alt_off</span>
+        Réinitialiser les filtres
+      </button>
+    </div>
+
+    <!-- ERROR STATE -->
+    <div id="error-state" class="hidden flex flex-col items-center justify-center py-20 gap-5 text-center">
+      <div class="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center">
+        <span class="material-symbols-outlined text-slate-400 text-[32px]">wifi_off</span>
+      </div>
+      <div>
+        <h3 class="font-semibold text-slate-700 dark:text-slate-300 mb-1">Service temporairement indisponible</h3>
+        <p class="text-sm text-slate-400 max-w-xs" id="error-msg">Impossible de contacter le serveur.</p>
+      </div>
+      <button onclick="fetchJobs()"
+        class="flex items-center gap-2 bg-indigo-600 text-white text-sm font-semibold py-2.5 px-5 rounded-xl hover:bg-indigo-500 transition-all active:scale-95">
+        <span class="material-symbols-outlined text-[16px]">refresh</span>
+        Réessayer
+      </button>
+    </div>
+
+    <!-- PAGINATION -->
+    <div id="pagination" class="hidden flex justify-center items-center gap-2 mt-6"></div>
+
+  </main>
+
+  <!-- MODAL -->
+  <div id="modal"
+    class="hidden fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-0 sm:p-6 bg-slate-900/40 backdrop-blur-sm">
+    <div id="modal-panel"
+      class="w-full sm:max-w-xl max-h-[92dvh] overflow-y-auto bg-white dark:bg-slate-900 rounded-t-2xl sm:rounded-2xl shadow-xl flex flex-col">
+
+      <!-- Header -->
+      <div class="sticky top-0 z-10 bg-white dark:bg-slate-900 px-6 py-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 bg-indigo-600/10 rounded-lg flex items-center justify-center">
+            <span id="modal-icon" class="material-symbols-outlined text-indigo-600 text-[18px]">work</span>
+          </div>
+          <div>
+            <h2 id="modal-title" class="font-semibold text-base text-slate-900 dark:text-white leading-tight"></h2>
+            <p id="modal-subtitle" class="text-xs text-indigo-600 mt-0.5 font-medium"></p>
+          </div>
+        </div>
+        <button onclick="closeModal()"
+          class="w-8 h-8 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 flex items-center justify-center transition-colors">
+          <span class="material-symbols-outlined text-[18px]">close</span>
+        </button>
+      </div>
+
+      <!-- Body -->
+      <div class="px-6 py-5 flex flex-col gap-5">
+        <div id="modal-stats" class="grid grid-cols-3 gap-3"></div>
+        <div id="modal-body" class="space-y-3"></div>
+      </div>
+
+      <!-- Footer -->
+      <div class="sticky bottom-0 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 px-6 py-4 flex gap-3">
+        <button onclick="closeModal()"
+          class="flex-1 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 font-semibold py-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 text-sm transition-all">
+          Fermer
+        </button>
+        <a id="modal-link" href="#" target="_blank" rel="noopener"
+          class="flex-[2] bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2.5 rounded-xl flex items-center justify-center gap-2 text-sm transition-all active:scale-[0.98]">
+          <span class="material-symbols-outlined text-[16px]">open_in_new</span>
+          Postuler maintenant
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/pwa.js"></script>
+
+  <script>
+    // ── Mock data (remplace par un vrai appel API comme dans bourses.html) ──────
+    const MOCK_JOBS = [
+      {
+        id: 1, type: 'stage', title: 'Assistant(e) Juridique IA', company: 'Cabinet LexTech',
+        location: 'Ouagadougou', description: "Participation au développement d'une base de données vectorielle (RAG) pour l'analyse de décisions de justice.",
+        deadline: '2025-08-15', posted: 'Il y a 2 jours', icon: 'gavel', website_url: '#',
+        salary: null, duration: '6 mois'
+      },
+      {
+        id: 2, type: 'emploi', title: 'Développeur Full-Stack Junior', company: 'Startup SANKAFO',
+        location: 'Ouagadougou', description: 'Rejoignez une équipe dynamique travaillant en méthode SCRUM pour développer des solutions éducatives innovantes (React Native, Next.js).',
+        deadline: null, posted: "Aujourd'hui", icon: 'code', website_url: '#',
+        salary: '150 000 FCFA / mois', duration: 'CDI'
+      },
+      {
+        id: 3, type: 'stage', title: 'Chargé(e) de Communication Digitale', company: 'ONG BurkinaDigital',
+        location: 'Ouagadougou', description: "Gestion des réseaux sociaux, création de contenus visuels et rédaction d'articles pour sensibiliser à l'inclusion numérique.",
+        deadline: '2025-07-30', posted: 'Il y a 5 jours', icon: 'campaign', website_url: '#',
+        salary: 'Non rémunéré', duration: '3 mois'
+      },
+      {
+        id: 4, type: 'emploi', title: 'Comptable Senior', company: 'Groupe FASCOM',
+        location: 'Bobo-Dioulasso', description: 'Tenue de la comptabilité générale et analytique, établissement des états financiers conformément aux normes SYSCOHADA.',
+        deadline: '2025-07-20', posted: 'Il y a 1 semaine', icon: 'calculate', website_url: '#',
+        salary: '250 000 FCFA / mois', duration: 'CDD 1 an'
+      },
+      {
+        id: 5, type: 'alternance', title: 'Technicien Réseaux & Télécoms', company: 'ARCEP Burkina',
+        location: 'Ouagadougou', description: "Formation en alternance pour la surveillance et la maintenance des infrastructures télécoms nationales.",
+        deadline: '2025-09-01', posted: 'Il y a 3 jours', icon: 'router', website_url: '#',
+        salary: '80 000 FCFA / mois', duration: '12 mois'
+      },
+      {
+        id: 6, type: 'stage', title: 'Data Analyst Junior', company: 'Banque de l\'Habitat du BF',
+        location: 'Ouagadougou', description: "Analyse de données clients, création de dashboards de suivi et automatisation des reportings mensuels sous Python et Power BI.",
+        deadline: '2025-08-01', posted: 'Il y a 4 jours', icon: 'bar_chart', website_url: '#',
+        salary: '75 000 FCFA / mois', duration: '4 mois'
+      },
+    ];
+
+    // ── State ──────────────────────────────────────────────────────────────────
+    const state = { page: 1, limit: 12, total: 0, search: '', type: '' };
+
+    // ── Fetch (mock — remplace par un vrai endpoint) ───────────────────────────
+    async function fetchJobs() {
+      showSkeleton();
+      await new Promise(r => setTimeout(r, 700)); // simulate network
+
+      try {
+        let items = [...MOCK_JOBS];
+        if (state.search) {
+          const q = state.search.toLowerCase();
+          items = items.filter(j => j.title.toLowerCase().includes(q) || j.company.toLowerCase().includes(q) || j.description.toLowerCase().includes(q));
+        }
+        if (state.type) items = items.filter(j => j.type === state.type);
+
+        state.total = items.length;
+        const start = (state.page - 1) * state.limit;
+        renderCards(items.slice(start, start + state.limit));
+        renderPagination();
+        updateNav();
+      } catch (err) {
+        showError(err.message);
+      }
+    }
+
+    // ── Render ─────────────────────────────────────────────────────────────────
+    function renderCards(items) {
+      hideSkeleton();
+      const grid = document.getElementById('cards-grid');
+      const empty = document.getElementById('empty-state');
+      const label = document.getElementById('results-label');
+
+      if (!items.length) {
+        grid.style.display = 'none';
+        empty.classList.remove('hidden');
+        label.textContent = 'Aucun résultat';
+        return;
+      }
+
+      empty.classList.add('hidden');
+      grid.style.display = 'grid';
+      label.textContent = `${state.total} offre${state.total > 1 ? 's' : ''} disponible${state.total > 1 ? 's' : ''}`;
+      grid.innerHTML = items.map((j, i) => jobCard(j, i)).join('');
+    }
+
+    function typeBadge(type) {
+      const map = {
+        stage: { cls: 'badge-stage', label: 'STAGE' },
+        emploi: { cls: 'badge-emploi', label: 'EMPLOI' },
+        alternance: { cls: 'badge-alternance', label: 'ALTERNANCE' },
+      };
+      return map[type] || { cls: 'badge-stage', label: type.toUpperCase() };
+    }
+
+    function jobCard(j, i) {
+      const isFirst = i === 0 && state.page === 1;
+      const isOpen = deadlineOpen(j.deadline);
+      const deadline = fmtDeadline(j.deadline);
+      const badge = typeBadge(j.type);
+
+      return `
+  <div class="card-hover flex flex-col overflow-hidden rounded-2xl bg-white dark:bg-slate-900 border
+              ${isFirst ? 'border-indigo-400/40 ring-1 ring-indigo-400/20' : 'border-slate-200 dark:border-slate-800'}
+              relative cursor-pointer" onclick='openModal(${JSON.stringify(j).replace(/'/g, "&#39;")})'>
+
+    ${isFirst ? `<div class="absolute top-4 right-4 z-10">
+      <span class="text-[10px] font-semibold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full">⭐ En avant</span>
+    </div>` : ''}
+
+    <!-- Card header -->
+    <div class="p-5 border-b border-slate-100 dark:border-slate-800 flex items-start gap-4">
+      <div class="w-11 h-11 rounded-xl ${isFirst ? 'bg-indigo-600' : 'bg-slate-100 dark:bg-slate-800'} flex items-center justify-center shrink-0">
+        <span class="material-symbols-outlined ${isFirst ? 'text-white' : 'text-slate-500'} text-[22px]">${esc(j.icon)}</span>
+      </div>
+      <div class="flex-1 min-w-0 ${isFirst ? 'pr-20' : ''}">
+        <h3 class="font-semibold text-sm text-slate-900 dark:text-white leading-snug line-clamp-2">${esc(j.title)}</h3>
+        <div class="flex items-center flex-wrap gap-x-2 gap-y-1 mt-1.5">
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${badge.cls}">${badge.label}</span>
+          ${isOpen
+            ? `<span class="inline-flex items-center gap-1 text-[10px] font-semibold text-green-600 bg-green-50 dark:bg-green-900/20 px-2 py-0.5 rounded-full">
+                 <span class="pulse-open w-1.5 h-1.5 rounded-full bg-green-500"></span>Ouvert</span>`
+            : `<span class="text-[10px] font-semibold text-slate-400 bg-slate-100 dark:bg-slate-700 px-2 py-0.5 rounded-full">Fermé</span>`
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Card body -->
+    <div class="p-5 flex flex-col gap-4 flex-1">
+      <div class="grid grid-cols-2 gap-2">
+        <div class="flex items-center gap-1.5 text-xs text-slate-500">
+          <span class="material-symbols-outlined text-slate-300 text-[16px]">business</span>
+          <span class="truncate">${esc(j.company)}</span>
+        </div>
+        <div class="flex items-center gap-1.5 text-xs text-slate-500">
+          <span class="material-symbols-outlined text-slate-300 text-[16px]">location_on</span>
+          <span class="truncate">${esc(j.location)}</span>
+        </div>
+        ${deadline ? `<div class="col-span-2 flex items-center gap-1.5 text-xs font-medium text-indigo-600 dark:text-indigo-400">
+          <span class="material-symbols-outlined text-[16px]">calendar_month</span>
+          Limite : ${deadline}
+        </div>` : `<div class="col-span-2 flex items-center gap-1.5 text-xs text-slate-400">
+          <span class="material-symbols-outlined text-[16px]">schedule</span>
+          ${esc(j.posted)}
+        </div>`}
+      </div>
+
+      <div class="flex gap-2 mt-auto pt-1">
+        <button onclick="event.stopPropagation();openModal(${JSON.stringify(j).replace(/'/g, "&#39;")})"
+          class="flex-1 ${isFirst ? 'bg-indigo-600 text-white' : 'border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'}
+                 text-xs font-semibold py-2.5 rounded-xl flex items-center justify-center gap-1.5 hover:opacity-90 transition-all active:scale-[0.98]">
+          <span class="material-symbols-outlined text-[15px]">visibility</span>
+          Voir détails
+        </button>
+        ${j.website_url ? `<a href="${esc(j.website_url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()"
+          class="flex-1 ${isFirst ? 'bg-indigo-50 text-indigo-600' : 'bg-slate-50 dark:bg-slate-800 text-slate-500'}
+                 text-xs font-semibold py-2.5 rounded-xl flex items-center justify-center gap-1.5 hover:opacity-80 transition-all">
+          <span class="material-symbols-outlined text-[15px]">open_in_new</span>
+          Postuler
+        </a>` : ''}
+      </div>
+    </div>
+  </div>`;
+    }
+
+    // ── Modal ─────────────────────────────────────────────────────────────────
+    function openModal(j) {
+      const deadline = fmtDeadline(j.deadline);
+      const isOpen = deadlineOpen(j.deadline);
+      const badge = typeBadge(j.type);
+
+      document.getElementById('modal-icon').textContent = j.icon || 'work';
+      document.getElementById('modal-title').textContent = j.title;
+      document.getElementById('modal-subtitle').textContent = j.company + ' • ' + j.location;
+
+      const stats = [
+        { label: 'Type', value: badge.label },
+        { label: 'Statut', value: isOpen ? '🟢 Ouvert' : '🔴 Fermé' },
+        { label: 'Deadline', value: deadline || 'Non précisé' },
+      ];
+      document.getElementById('modal-stats').innerHTML = stats.map(st => `
+    <div class="bg-indigo-50 dark:bg-indigo-900/10 rounded-xl p-3 flex flex-col items-center gap-1 text-center">
+      <p class="font-semibold text-slate-800 dark:text-white text-xs leading-tight">${esc(st.value)}</p>
+      <p class="text-[10px] text-slate-400 font-medium">${st.label}</p>
+    </div>`).join('');
+
+      const rows = [
+        j.description && { icon: 'description', label: 'Description', value: j.description },
+        j.salary && { icon: 'payments', label: 'Rémunération', value: j.salary },
+        j.duration && { icon: 'hourglass', label: 'Durée / Contrat', value: j.duration },
+        j.location && { icon: 'location_on', label: 'Lieu', value: j.location },
+      ].filter(Boolean);
+
+      document.getElementById('modal-body').innerHTML = rows.length ? rows.map(r => `
+    <div class="flex items-start gap-3 p-3 rounded-xl border border-slate-100 dark:border-slate-800">
+      <span class="material-symbols-outlined text-indigo-600 text-[18px] shrink-0 mt-0.5">${r.icon}</span>
+      <div>
+        <p class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-0.5">${r.label}</p>
+        <p class="text-sm text-slate-700 dark:text-slate-200">${esc(String(r.value))}</p>
+      </div>
+    </div>`).join('')
+        : `<p class="text-sm text-slate-400 italic">Aucune information supplémentaire disponible.</p>`;
+
+      const link = document.getElementById('modal-link');
+      if (j.website_url) { link.href = j.website_url; link.style.display = ''; }
+      else link.style.display = 'none';
+
+      document.getElementById('modal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('modal').addEventListener('click', e => {
+      if (e.target === document.getElementById('modal')) closeModal();
+    });
+
+    // ── Pagination ────────────────────────────────────────────────────────────
+    function renderPagination() {
+      const totalPages = Math.ceil(state.total / state.limit);
+      const pag = document.getElementById('pagination');
+      if (totalPages <= 1) { pag.classList.add('hidden'); return; }
+      pag.classList.remove('hidden');
+
+      let html = `<button class="page-btn px-3 py-2 rounded-lg text-sm border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900"
+    onclick="goPage(${state.page - 1})" ${state.page === 1 ? 'disabled' : ''}>
+    <span class="material-symbols-outlined text-base">chevron_left</span></button>`;
+      for (let p = 1; p <= totalPages; p++) {
+        html += `<button class="page-btn px-3.5 py-2 rounded-lg text-sm border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 ${p === state.page ? 'active' : ''}"
+      onclick="goPage(${p})">${p}</button>`;
+      }
+      html += `<button class="page-btn px-3 py-2 rounded-lg text-sm border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900"
+    onclick="goPage(${state.page + 1})" ${state.page === totalPages ? 'disabled' : ''}>
+    <span class="material-symbols-outlined text-base">chevron_right</span></button>`;
+      pag.innerHTML = html;
+    }
+
+    function goPage(p) {
+      const totalPages = Math.ceil(state.total / state.limit);
+      if (p < 1 || p > totalPages) return;
+      state.page = p;
+      fetchJobs();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ── Filters ───────────────────────────────────────────────────────────────
+    document.querySelectorAll('.filter-pill[data-type]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-pill[data-type]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        state.type = btn.dataset.type; state.page = 1;
+        fetchJobs();
+      });
+    });
+
+    let searchTimer;
+    document.getElementById('search-input').addEventListener('input', e => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => { state.search = e.target.value.trim(); state.page = 1; fetchJobs(); }, 400);
+    });
+
+    function resetFilters() {
+      document.getElementById('search-input').value = '';
+      document.querySelectorAll('.filter-pill[data-type]').forEach(b => b.classList.remove('active'));
+      document.querySelector('.filter-pill[data-type=""]').classList.add('active');
+      state.search = ''; state.type = ''; state.page = 1;
+      fetchJobs();
+    }
+
+    // ── UI helpers ────────────────────────────────────────────────────────────
+    function showSkeleton() {
+      document.getElementById('skeleton-container').style.display = 'grid';
+      document.getElementById('cards-grid').style.display = 'none';
+      document.getElementById('empty-state').classList.add('hidden');
+      document.getElementById('error-state').classList.add('hidden');
+      document.getElementById('pagination').classList.add('hidden');
+    }
+    function hideSkeleton() {
+      document.getElementById('skeleton-container').style.display = 'none';
+      document.getElementById('error-state').classList.add('hidden');
+    }
+    function showError(msg) {
+      hideSkeleton();
+      document.getElementById('cards-grid').style.display = 'none';
+      document.getElementById('empty-state').classList.add('hidden');
+      document.getElementById('error-state').classList.remove('hidden');
+      document.getElementById('error-msg').textContent = msg;
+      document.getElementById('results-label').textContent = 'Erreur de chargement';
+    }
+    function updateNav() {
+      const badge = document.getElementById('live-badge');
+      badge.classList.remove('hidden');
+      badge.style.display = 'flex';
+      document.getElementById('nav-total').textContent = `${state.total} offre${state.total > 1 ? 's' : ''}`;
+    }
+
+    // ── Utilities ─────────────────────────────────────────────────────────────
+    function deadlineOpen(dl) { if (!dl) return true; return new Date(dl) >= new Date(); }
+    function fmtDeadline(dl) {
+      if (!dl) return null;
+      try { return new Date(dl).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }); }
+      catch { return dl; }
+    }
+    function esc(s) {
+      const d = document.createElement('div');
+      d.textContent = String(s || '');
+      return d.innerHTML;
+    }
+
+    // ── Init ──────────────────────────────────────────────────────────────────
+    fetchJobs();
+  </script>
+</body>
+</html>
