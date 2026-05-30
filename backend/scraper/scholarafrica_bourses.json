@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "titre": "Browse All Scholarships",
+    "description": "Explore 400+ fully funded scholarships for African students. Filter by country, field & level. DAAD, Chevening, Commonwealth, Mastercard Foundation & more. Refreshed regularly.",
+    "deadline": "30 MAY 2026",
+    "pays": null,
+    "niveau": "Master",
+    "lien": "https://scholar.africa/scholarships",
+    "source": "Scholar Africa"
+  }
+]
